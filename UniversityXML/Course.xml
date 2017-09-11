@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<AllCourses>
+   <Course>
+    <CourseCode>CS227</CourseCode>
+    <CourseName>Introduction to C++</CourseName>
+    <PreReq>None</PreReq>
+  </Course>
+  <Course>
+    <CourseCode>CS228</CourseCode>
+    <CourseName>Data Structures in C++</CourseName>
+    <PreReq>CS227</PreReq>
+  </Course>
+  <Course>
+    <CourseCode>CS309</CourseCode>
+    <CourseName>Software Engineering</CourseName>
+    <PreReq>CS228</PreReq>
+  </Course>
+  <Course>
+    <CourseCode>CS311</CourseCode>
+    <CourseName>Design and Analysis of Algorithms</CourseName>
+    <PreReq>CS228</PreReq>
+  </Course>
+  <Course>
+    <CourseCode>CS311</CourseCode>
+    <CourseName>Design and Analysis of Algorithms</CourseName>
+    <PreReq>CS330</PreReq>
+  </Course>
+  <Course>
+    <CourseCode>CS321</CourseCode>
+    <CourseName>Computer Architecture</CourseName>
+    <PreReq>CS311</PreReq>
+  </Course>
+  <Course>
+    <CourseCode>CS330</CourseCode>
+    <CourseName>Discrete Mathematics</CourseName>
+    <PreReq>CS228</PreReq>
+  </Course>
+  <Course>
+    <CourseCode>CS331</CourseCode>
+    <CourseName>Theory of Computation</CourseName>
+    <PreReq>CS228</PreReq>
+  </Course>
+  <Course>
+    <CourseCode>CS342</CourseCode>
+    <CourseName>Programming languages</CourseName>
+    <PreReq>CS228</PreReq>
+  </Course>
+  <Course>
+    <CourseCode>CS352</CourseCode>
+    <CourseName>Operating Systems</CourseName>
+    <PreReq>CS228</PreReq>
+  </Course>
+  <Course>
+    <CourseCode>CS363</CourseCode>
+    <CourseName>Introduction to Database Systems</CourseName>
+    <PreReq>CS311</PreReq>
+  </Course>
+  <Course>
+    <CourseCode>CS461</CourseCode>
+    <CourseName>Database Internals</CourseName>
+    <PreReq>CS311</PreReq>
+  </Course>
+  <Course>
+    <CourseCode>CS461</CourseCode>
+    <CourseName>Database Internals</CourseName>
+    <PreReq>CS363</PreReq>
+  </Course>
+  <Course>
+    <CourseCode>CS511</CourseCode>
+    <CourseName>Advanced Design and Analysis of Algorithms</CourseName>
+    <PreReq>CS311</PreReq>
+  </Course>
+</AllCourses>

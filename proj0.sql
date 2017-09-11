@@ -1,3 +1,6 @@
+# Force being unsafe
+SET SQL_SAFE_UPDATES=0; 
+
 # Item 1
 create table Person (
 Name char (20),
@@ -27,7 +30,7 @@ Foreign key (MentorID) references Instructor(InstructorID)
 );
 
 # Item 4
-# MIGHT NOT BE DONE
+# !! MIGHT NOT BE DONE !!
 # Note that a course can have several prerequisites. This is why CourseCode alone cannot be a key. If a course has no prerequisites, the string �None� is entered. For a given course a tuple, will exist for every prerequisite for the course.
 create table Course (
 CourseCode char (6) not null,
@@ -36,7 +39,7 @@ PreReq char (6) # "None" entered for no prerequisites
 );
 
 # Item 5
-# MIGHT NOT BE DONE
+# !! MIGHT NOT BE DONE !!
 # He might have said this is it, not sure
 create table Offering (
 CourseCode char (6) not null,
@@ -56,9 +59,6 @@ Grade char(4) not null,
 primary key (CourseCode, StudentID),
 foreign key (CourseCode, SectionNo) references Offering(CourseCode, SectionNo)
 );
-
-# Loading Commands
-# Generates a lot of warnings
 
 # Item 7
 load xml local infile 'U:\\cs363\\UniversityXML\\Person.xml'
@@ -91,10 +91,15 @@ into table Enrollment
 rows identified by '<Enrollment>';
 
 # Item 13
+Select StudentID and MentorID from Student
+where (Classification = "Junior" or Classification = "Senior") and GPA > 3.8;
 
+# Item 14
+# !! Not sure how to determine being taken by a sophomore, check Enrollment? !!
+Select distinct CourseCode from Course;
 
-
-
+# Item 15
+Select * from Student;
 
 
 

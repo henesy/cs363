@@ -91,15 +91,53 @@ into table Enrollment
 rows identified by '<Enrollment>';
 
 # Item 13
-Select StudentID and MentorID from Student
+Select StudentID and MentorID 
+from Student
 where (Classification = "Junior" or Classification = "Senior") and GPA > 3.8;
 
 # Item 14
-# !! Not sure how to determine being taken by a sophomore, check Enrollment? !!
-Select distinct CourseCode from Course;
+# !! Uncertain if correct !!
+SELECT distinct Offering.CourseCode, Offering.SectionNo
+FROM Offering
+INNER JOIN Enrollment ON Offering.CourseCode = Enrollment.CourseCode
+INNER JOIN Student ON Enrollment.StudentID = Student.StudentID and Student.Classification = 'Sophomore';
 
 # Item 15
-Select * from Student;
+SELECT distinct Person.Name, Instructor.Salary
+FROM Person
+inner join Instructor on Person.ID = Instructor.InstructorID
+inner JOIN Student ON Instructor.InstructorID = Student.MentorID and Student.Classification = 'Freshman';
+
+# Item 16
+Select sum(Instructor.Salary)
+from Instructor
+where Instructor.InstructorID not in (select Offering.InstructorID from Offering);
+
+# Item 17
+Select Person.Name, Person.DOB
+from Person
+inner join Student on Person.ID = Student.StudentID
+where Year(Person.DOB) = 1976;
+
+# Item 18
+# !! This returns nothing, but glancing at the data, this might be nothing? feels silly !!
+Select Person.Name, Instructor.Rank
+from Person
+inner join Instructor on Person.ID = Instructor.InstructorID
+where Instructor.InstructorID not in (select Offering.InstructorID from Offering)
+and 
+Instructor.InstructorID not in (select Student.MentorID from Student);
+
+# Item 19
+Select Student.StudentID, Person.Name, max(Person.DOB)
+from Person
+inner join Student on Person.ID = Student.StudentID;
+
+# Item 20
+Select Person.ID, Person.DOB, Person.Name
+from Person
+where Person.ID not in (select Student.StudentID from Student) and Person.ID not in (select Instructor.InstructorID from Instructor);
+
 
 
 

@@ -138,7 +138,132 @@ Select Person.ID, Person.DOB, Person.Name
 from Person
 where Person.ID not in (select Student.StudentID from Student) and Person.ID not in (select Instructor.InstructorID from Instructor);
 
+# Item 21
+Select Person.name, count(Student.MentorID)
+From Instructor
+left join Person on Instructor.InstructorID = Person.ID
+left join Student on Instructor.InstructorID = MentorID
+Group By Instructor.InstructorID;
 
+# Item 22
+Select count(Student.StudentID), avg(Student.GPA)
+From Student
+Group By Student.Classification
+Order By Student.Classification;
 
+# Item 23
+Select Enrollment.CourseCode, count(Enrollment.StudentID)
+From Enrollment
+Group By Enrollment.CourseCode
+Order By count(Enrollment.StudentID) ASC;
 
+# Item 24
+# Oh Bleh...
+Select Student.StudentID, Student.MentorID
+From Student
+join Enrollment on Student.StudentID = Enrollment.StudentID
+join Offering on Enrollment.CourseCode = Offering.CourseCode
+Where Offering.InstructorID = Student.MentorID
+AND Offering.CourseCode = Enrollment.CourseCode
+AND Enrollment.StudentID = Student.StudentID;
 
+# Item 25
+Select Student.StudentID, Person.Name, Student.CreditHours
+From Student
+left join Person on Student.StudentID = Person.ID
+Where Student.Classification = 'freshman'
+AND Person.DOB >= '1976-01-01';
+
+# Item 26
+Insert Into Person (Name, ID, Address, DOB)
+Values ('Briggs Jason', '480293439', '215 North Hyland Avenue', '1975-01-15'); 
+
+Insert Into Student(StudentID, Classification, GPA, MentorID, CreditHours)
+Values ('480293439', 'junior', '3.48', '201586985', 75);
+
+Insert Into Enrollment (CourseCode, SectionNo, StudentID, Grade)
+Values ('CS311', '2', '480293439', 'A');
+
+Insert Into Enrollment (CourseCode, SectionNo, StudentID, Grade)
+Values ('CS330', '1', '480293439', 'A-');
+
+Select *
+From Person P
+Where P.Name= 'Briggs Jason';
+
+Select *
+From Student S
+Where S.StudentID= '480293439';
+
+Select *
+From Enrollment E
+Where E.StudentID = '480293439';
+
+# Item 27
+Delete From Enrollment
+Where Enrollment.StudentID in 
+(Select Student.StudentID 
+From Student
+Where GPA < 0.5);
+                                
+Delete From Student
+Where Student.GPA < 0.5;
+
+Select *
+From Student S
+Where S.GPA < 0.5;
+
+# Item 28
+#These two Selects are to check before and after
+Select P.Name, I.Salary
+From Instructor I, Person P
+Where I.InstructorID = P.ID
+and P.Name = 'Ricky Ponting';
+
+Select P.Name, I.Salary
+From Instructor I, Person P
+Where I.InstructorID = P.ID
+and P.Name = 'Darren Lehmann';
+
+Update Instructor
+Set Instructor.Salary = Instructor.Salary*1.10
+Where InstructorID in;
+
+Select count(Student.MentorID)
+From Instructor
+left join Student on Instructor.InstructorID = MentorID
+left join Person on Instructor.InstructorID = Person.ID
+Where(Person.Name = 'Ricky Ponting' Or Person.Name = 'Darren Lehmann')
+And count(Student.MentorID) >= 5
+Group By Person.Name;
+
+#Same Selects as before just to verify
+Select P.Name, I.Salary
+From Instructor I, Person P
+Where I.InstructorID = P.ID
+and P.Name = 'Ricky Ponting';
+
+Select P.Name, I.Salary
+From Instructor I, Person P
+Where I.InstructorID = P.ID
+and P.Name = 'Darren Lehmann';
+
+# Item 29
+Insert Into Person(Name, ID, Address, DOB)
+Values ('Trevor Horns', '000957303', '23 Canberra Street', '1964-11-23');
+
+Select *
+From Person P
+Where P.Name = 'Trevor Horns';
+
+# Item 30
+Delete From Student
+Where StudentID in
+(Select Person.ID From Person where Person.name = 'Jan Austin');
+
+Delete From Person
+Where Name = 'Jan Austin';
+
+Select *
+From Person P
+Where P.Name = 'Jan Austin';

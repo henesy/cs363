@@ -30,8 +30,6 @@ Foreign key (MentorID) references Instructor(InstructorID)
 );
 
 # Item 4
-# !! MIGHT NOT BE DONE !!
-# Note that a course can have several prerequisites. This is why CourseCode alone cannot be a key. If a course has no prerequisites, the string �None� is entered. For a given course a tuple, will exist for every prerequisite for the course.
 create table Course (
 CourseCode char (6) not null,
 CourseName char (50),
@@ -39,8 +37,6 @@ PreReq char (6) # "None" entered for no prerequisites
 );
 
 # Item 5
-# !! MIGHT NOT BE DONE !!
-# He might have said this is it, not sure
 create table Offering (
 CourseCode char (6) not null,
 SectionNo int not null,
@@ -50,7 +46,6 @@ Primary key (CourseCode, SectionNo)
 );
 
 # Item 6
-#  Note that we would expect that a CourseCode, SectionNo pair in the Offering table must occur in the Course table.
 create table Enrollment (
 CourseCode char(6) not null,
 SectionNo int not null,
@@ -96,7 +91,6 @@ from Student
 where (Classification = "Junior" or Classification = "Senior") and GPA > 3.8;
 
 # Item 14
-# !! Uncertain if correct !!
 SELECT distinct Offering.CourseCode, Offering.SectionNo
 FROM Offering
 INNER JOIN Enrollment ON Offering.CourseCode = Enrollment.CourseCode
@@ -120,7 +114,6 @@ inner join Student on Person.ID = Student.StudentID
 where Year(Person.DOB) = 1976;
 
 # Item 18
-# !! This returns nothing, but glancing at the data, this might be nothing? feels silly !!
 Select Person.Name, Instructor.Rank
 from Person
 inner join Instructor on Person.ID = Instructor.InstructorID
@@ -158,7 +151,6 @@ Group By Enrollment.CourseCode
 Order By count(Enrollment.StudentID) ASC;
 
 # Item 24
-# Oh Bleh...
 Select Student.StudentID, Student.MentorID
 From Student
 join Enrollment on Student.StudentID = Enrollment.StudentID
@@ -214,7 +206,6 @@ From Student S
 Where S.GPA < 0.5;
 
 # Item 28
-#These two Selects are to check before and after
 Select P.Name, I.Salary
 From Instructor I, Person P
 Where I.InstructorID = P.ID
@@ -225,19 +216,36 @@ From Instructor I, Person P
 Where I.InstructorID = P.ID
 and P.Name = 'Darren Lehmann';
 
+
 Update Instructor
-Set Instructor.Salary = Instructor.Salary*1.10
-Where InstructorID in;
+inner join Person on Instructor.InstructorID = Person.ID
+Set Instructor.Salary = CASE
+	WHEN 
+    (
+	Select count(Student.MentorID) as total_ricky
+	From Person
+	left join Student on Person.ID = MentorID
+	Where(Person.Name = 'Ricky Ponting')
+	)
+    >= 5 and Person.Name = 'Ricky Ponting' then Instructor.Salary*1.10
+    ELSE Instructor.Salary
+END;
 
-Select count(Student.MentorID)
-From Instructor
-left join Student on Instructor.InstructorID = MentorID
-left join Person on Instructor.InstructorID = Person.ID
-Where(Person.Name = 'Ricky Ponting' Or Person.Name = 'Darren Lehmann')
-And count(Student.MentorID) >= 5
-Group By Person.Name;
+Update Instructor
+inner join Person on Instructor.InstructorID = Person.ID
+Set Instructor.Salary = CASE
+	WHEN 
+    (
+	Select count(Student.MentorID) as total_ricky
+	From Person
+	left join Student on Person.ID = MentorID
+	Where(Person.Name = 'Darren Lehmann')
+	)
+    >= 5 and Person.Name = 'Darren Lehmann' then Instructor.Salary*1.10
+    ELSE Instructor.Salary
+END;
 
-#Same Selects as before just to verify
+
 Select P.Name, I.Salary
 From Instructor I, Person P
 Where I.InstructorID = P.ID

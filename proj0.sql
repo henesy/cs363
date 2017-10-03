@@ -1,3 +1,6 @@
+# Sean Hinchee
+# Trevor Sanders
+
 # Force being unsafe
 SET SQL_SAFE_UPDATES=0; 
 
@@ -222,12 +225,12 @@ inner join Person on Instructor.InstructorID = Person.ID
 Set Instructor.Salary = CASE
 	WHEN 
     (
-	Select count(Student.MentorID) as total_ricky
-	From Person
-	left join Student on Person.ID = MentorID
-	Where(Person.Name = 'Ricky Ponting')
+		Select count(Student.MentorID) as total_ricky
+		From Person
+		left join Student on Person.ID = MentorID
+		Where(Person.Name = 'Ricky Ponting') and Student.GPA > 3.0
 	)
-    >= 5 and Person.Name = 'Ricky Ponting' then Instructor.Salary*1.10
+	>= 5 and Person.Name = 'Ricky Ponting' then Instructor.Salary*1.10
     ELSE Instructor.Salary
 END;
 
@@ -236,10 +239,10 @@ inner join Person on Instructor.InstructorID = Person.ID
 Set Instructor.Salary = CASE
 	WHEN 
     (
-	Select count(Student.MentorID) as total_ricky
-	From Person
-	left join Student on Person.ID = MentorID
-	Where(Person.Name = 'Darren Lehmann')
+		Select count(Student.MentorID) as total_ricky
+		From Person
+		left join Student on Person.ID = Student.MentorID
+		Where(Person.Name = 'Darren Lehmann') and Student.GPA > 3.0
 	)
     >= 5 and Person.Name = 'Darren Lehmann' then Instructor.Salary*1.10
     ELSE Instructor.Salary

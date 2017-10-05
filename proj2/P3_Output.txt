@@ -1,0 +1,64 @@
+Thu Oct 05 16:59:26 CDT 2017 WARN: Establishing SSL connection without server's identity verification is not recommended. According to MySQL 5.5.45+, 5.6.26+ and 5.7.6+ requirements SSL connection must be established by default if explicit option isn't set. For compliance with existing applications not using SSL the verifyServerCertificate property is set to 'false'. You need either to explicitly disable SSL by setting useSSL=false, or set useSSL=true and provide truststore for server certificate verification.
+*** Connected to the database ***
+
+
+A
+Min Tuyet: 120000
+Seth Carney: 100000
+Chad Moore: 100000
+Darren Lehmann: 80000
+Graeme Dilly: 120000
+John Bracewell: 100000
+Gavin Larson: 80000
+Philip Richards: 80000
+Ricky Ponting: 120000
+Richard Ellison: 100000
+
+Total Salary: 1000000
+
+
+C
+164500920|Senior|3.89|201586985|
+803024290|Sophomore|3.89|997111094|
+785273479|Freshman|3.89|685744439|
+722131306|Senior|3.89|201586985|
+867910658|Junior|3.89|386167477|
+876550324|Freshman|3.89|836826630|
+664353912|Senior|3.89|466388906|
+483727101|Senior|3.89|201586985|
+466094162|Senior|3.89|555010131|
+432180765|Freshman|3.89|201586985|
+419180204|Junior|3.89|466388906|
+315967897|Freshman|3.89|463249547|
+965882492|Junior|3.89|961874958|
+477453864|Freshman|3.9|961874958|
+696302689|Junior|3.9|463249547|
+273277984|Sophomore|3.9|386167477|
+916916939|Junior|3.9|696335701|
+483223789|Sophomore|3.96|555010131|
+328718420|Sophomore|3.96|997111094|
+973071948|Freshman|3.98|466388906|
+712952591|Junior|3.98|463249547|
+812073765|Senior|4|386167477|
+712524758|Freshman|4|555010131|
+907425648|Sophomore|4|555010131|
+212976207|Freshman|4|555010131|
+952145559|Sophomore|4|836826630|
+956234659|Senior|4|997111094|
+191083779|Senior|4|685744439|
+164776911|Junior|4|201586985|
+
+
+E
+Min Tuyet: 132000
+Seth Carney: 110000
+Chad Moore: 108000
+Darren Lehmann: 88000
+Graeme Dilly: 132000
+John Bracewell: 110000
+Gavin Larson: 86400
+Philip Richards: 84800
+Ricky Ponting: 129600
+Richard Ellison: 110000
+
+Total Salary: 1090800

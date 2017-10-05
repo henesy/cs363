@@ -61,32 +61,32 @@ foreign key (CourseCode, SectionNo) references Offering(CourseCode, SectionNo)
 );
 
 # Item 7
-load xml local infile 'U:\\cs363\\UniversityXML\\Person.xml'
+load xml local infile 'Z:\\cs363\\UniversityXML\\Person.xml'
 into table Person
 rows identified by '<Person>';
 
 # Item 8
-load xml local infile 'U:\\cs363\\UniversityXML\\Instructor.xml'
+load xml local infile 'Z:\\cs363\\UniversityXML\\Instructor.xml'
 into table Instructor
 rows identified by '<Instructor>';
 
 # Item 9
-load xml local infile 'U:\\cs363\\UniversityXML\\Student.xml'
+load xml local infile 'Z:\\cs363\\UniversityXML\\Student.xml'
 into table Student
 rows identified by '<Student>';
 
 # Item 10
-load xml local infile 'U:\\cs363\\UniversityXML\\Course.xml'
+load xml local infile 'Z:\\cs363\\UniversityXML\\Course.xml'
 into table Course
 rows identified by '<Course>';
 
 # Item 11
-load xml local infile 'U:\\cs363\\UniversityXML\\Offering.xml'
+load xml local infile 'Z:\\cs363\\UniversityXML\\Offering.xml'
 into table Offering
 rows identified by '<Offering>';
 
 # Item 12
-load xml local infile 'U:\\cs363\\UniversityXML\\Enrollment.xml'
+load xml local infile 'Z:\\cs363\\UniversityXML\\Enrollment.xml'
 into table Enrollment
 rows identified by '<Enrollment>';
 

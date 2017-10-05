@@ -7,8 +7,13 @@ import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 
 public class P3 {
+	private static HashMap<String, Integer> hm;
+	
 	public static void main(String[] args) throws Exception {
 		// Load and register a JDBC driver
 		try {
@@ -19,6 +24,13 @@ public class P3 {
 			E.printStackTrace();
 		}
 		try {
+			//for comparator
+			hm = new HashMap<String, Integer>();
+			hm.put("Freshman", 0);
+			hm.put("Sophomore", 1);
+			hm.put("Junior", 2);
+			hm.put("Senior", 3);
+			
 			// Connect to the database
 			Connection conn1;
 			String dbUrl = "jdbc:mysql://mysql.cs.iastate.edu:3306/db363seh";
@@ -51,7 +63,7 @@ public class P3 {
 			System.out.println("\nTotal Salary: " + totalSalary);
 			
 			//B
-			System.out.println("\n\nB");
+			//System.out.println("\n\nB");
 			
 			//create MeritList table if it doesn't exist
 			DatabaseMetaData dbm = conn1.getMetaData();
@@ -69,9 +81,9 @@ public class P3 {
 			while(rs.next()) {
 				String sid = "";
 				String classi = "";
+				double gpa = -1.0;
 				String mid = "";
 				int ch = -1;
-				double gpa = -1.0;
 				
 				//parse student row
 				sid = rs.getString("StudentID");
@@ -108,17 +120,66 @@ public class P3 {
 			
 			rs = statement.executeQuery("select * from MeritList m order by m.GPA");
 			ResultSetMetaData rsmd = rs.getMetaData();
-			int columnsNumber = rsmd.getColumnCount();
+			int cn = rsmd.getColumnCount();
 
 			while (rs.next()) {
-			    for(int i = 1; i < columnsNumber; i++)
-			        System.out.print(rs.getString(i) + " ");
+			    for(int i = 1; i < cn; i++) {
+			        System.out.print(rs.getString(i) + "|");
+			    }
 			    System.out.println();
 			}
 			
-		    //D TODO
-			System.out.println("\n\nD");
+		    //D
+			//System.out.println("\n\nD");
 			
+			//get meritlist mentors
+			rs = statement.executeQuery("select Classification, MentorID from MeritList order by MentorID");
+			HashMap<String, String> instrs = new HashMap<String, String>();
+			List<String> instrName = new ArrayList<String>();
+			
+			while (rs.next()) {
+			    String id = rs.getString("MentorID");
+			    String cl = rs.getString("Classification");
+			    
+			    if(!instrs.containsKey(id)) {
+			    	//add instructor
+			    	instrs.put(id, cl);
+			    	instrName.add(id);
+			    } else if(instrs.containsKey(id)) {
+			    	//see if we update classification
+			    	if(compClassi(instrs.get(id), cl) < 0) {
+			    		instrs.put(id, cl);
+			    	}
+			    }
+			}
+			
+			//update instructors with raises
+			int j = 0;
+			for(j = 0; j < instrName.size(); j++) {
+				String id = instrName.get(j);
+				double raise = -1;
+				
+				//System.out.println("Entry is: " + id + ", " + instrs.get(id));
+				
+				if(instrs.get(id).equals("Freshman"))
+					raise = 1.04;
+				if(instrs.get(id).equals("Sophomore"))
+					raise = 1.06;
+				if(instrs.get(id).equals("Junior"))
+					raise = 1.08;
+				if(instrs.get(id).equals("Senior"))
+					raise = 1.10;
+				
+				String str0 = "Update Instructor Set Instructor.Salary = CASE WHEN Instructor.InstructorID = \"";
+				//ID here
+				String str1 = "\" then Instructor.Salary*";
+				//raise here
+				String str2 = " ELSE Instructor.Salary END";
+				
+				String update = str0 + id + str1 + raise + str2;
+				//System.out.println("Update is: " + update);
+				statement.executeUpdate(update);
+			}
 		    
 		    //E
 			System.out.println("\n\nE");
@@ -137,8 +198,8 @@ public class P3 {
 			}
 			System.out.println("\nTotal Salary: " + totalSalary);
 		    
-		    //F TODO
-			System.out.println("\n\nF");
+		    //F
+			//System.out.println("\n\nF");
 			statement.executeUpdate("drop table MeritList");
 		
 			/* Close all statements and connections */
@@ -151,5 +212,13 @@ public class P3 {
 			System.out.println("SQLState: " + e.getSQLState());
 			System.out.println("VendorError: " + e.getErrorCode());
 		}
+	}
+	
+	private static int compClassi(String a, String b) {
+		if(hm.get(a) < hm.get(b))
+			return -1;
+		if(hm.get(a) > hm.get(b))
+			return 1;
+		return 0;
 	}
 }

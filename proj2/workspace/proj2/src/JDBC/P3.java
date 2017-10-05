@@ -61,15 +61,64 @@ public class P3 {
 			}
 			
 			//select from students
-			rs = statement.executeQuery("select StudentID, Classification, MentorID, GPA from Student order by GPA desc");
+			Statement statement2 = conn1.createStatement();
+			rs = statement2.executeQuery("select StudentID, Classification, MentorID, GPA, CreditHours from Student order by GPA desc");
+			
+			int s = 0;
+			double lastgpa = -1.0;
+			while(rs.next()) {
+				String sid = "";
+				String classi = "";
+				String mid = "";
+				int ch = -1;
+				double gpa = -1.0;
+				
+				//parse student row
+				sid = rs.getString("StudentID");
+				classi = rs.getString("Classification");
+				mid = rs.getString("MentorID");
+				ch = rs.getInt("CreditHours");
+				gpa = rs.getDouble("GPA");
+				
+				if(s == 19) {
+					//on 20th student
+					lastgpa = gpa;
+				} else if(s > 19) {
+					//after 20th student
+					if(gpa != lastgpa) {
+						break;
+					}
+				}
+				
+				// add student to MeritList
+				String update = "Insert Into MeritList (StudentID, Classification, GPA, MentorID, CreditHours) Values (";
+				update += ("\"" + sid + "\"" + ", ");
+				update += ("\"" + classi + "\"" + ", ");
+				update += (gpa + ",");
+				update += ("\"" + mid + "\"" + ", ");
+				update += (ch + ")");
+				//System.out.println("Update is: " + update);
+				statement.executeUpdate(update);
+				s += 1;
+			}
+			statement2.close();
 			
 			//C TODO
 			System.out.println("\n\nC");
 			
 			rs = statement.executeQuery("select * from MeritList m order by m.GPA");
-		   
+			ResultSetMetaData rsmd = rs.getMetaData();
+			int columnsNumber = rsmd.getColumnCount();
+
+			while (rs.next()) {
+			    for(int i = 1; i < columnsNumber; i++)
+			        System.out.print(rs.getString(i) + " ");
+			    System.out.println();
+			}
+			
 		    //D TODO
 			System.out.println("\n\nD");
+			
 		    
 		    //E TODO
 			System.out.println("\n\nE");

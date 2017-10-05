@@ -29,6 +29,7 @@ Classification char (10),
 GPA double,
 MentorID char(9),
 CreditHours int,
+Primary key (StudentID),
 Foreign key (MentorID) references Instructor(InstructorID)
 );
 
@@ -36,6 +37,7 @@ Foreign key (MentorID) references Instructor(InstructorID)
 create table Course (
 CourseCode char (6) not null,
 CourseName char (50),
+Primary key (CourseName, CourseCode),
 PreReq char (6) # "None" entered for no prerequisites
 );
 

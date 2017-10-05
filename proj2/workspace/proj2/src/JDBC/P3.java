@@ -50,7 +50,7 @@ public class P3 {
 			}
 			System.out.println("\nTotal Salary: " + totalSalary);
 			
-			//B TODO
+			//B
 			System.out.println("\n\nB");
 			
 			//create MeritList table if it doesn't exist
@@ -103,7 +103,7 @@ public class P3 {
 			}
 			statement2.close();
 			
-			//C TODO
+			//C 
 			System.out.println("\n\nC");
 			
 			rs = statement.executeQuery("select * from MeritList m order by m.GPA");
@@ -120,12 +120,26 @@ public class P3 {
 			System.out.println("\n\nD");
 			
 		    
-		    //E TODO
+		    //E
 			System.out.println("\n\nE");
+			rs = statement.executeQuery("Select Person.Name, Instructor.Salary from Person inner join Instructor on Person.ID = Instructor.InstructorID");
+
+			totalSalary = 0;
+			salary = 0;
+			name = "";
+
+			while (rs.next()) {
+				salary = rs.getInt("Salary");
+				name = rs.getString("Name");
+				totalSalary += salary;	
+				
+				System.out.println(name + ": " + salary);
+			}
+			System.out.println("\nTotal Salary: " + totalSalary);
 		    
 		    //F TODO
 			System.out.println("\n\nF");
-
+			statement.executeUpdate("drop table MeritList");
 		
 			/* Close all statements and connections */
 			statement.close();

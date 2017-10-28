@@ -1,0 +1,50 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Language" content="en-us">
+<meta name="GENERATOR" content="Microsoft FrontPage 6.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>Homework</title>
+<meta name="Microsoft Border" content="t, default">
+</head>
+
+<body>
+<p><font face="Arial" size="5">How the datasets are prepared</font><br>
+&nbsp;</p>
+<p>Summary: The dataset for OOXQuery is prepared manually. The rest of the 
+datasets are prepared by executing a batch in CyDIW batch 
+CyDIW_batch_for_creation_of_datasets.txt at a single click in CyDIW. This helps 
+in keeping the datasets internally consistent. The datasets are automatically 
+directed to appropriate files by CyDIW. </p>
+<p>
+<img border="0" src="DatasetsPreparationFlowchart-1.gif" width="499" height="360"></p>
+<p><u><font face="Arial">Loading data in an SQL database</font><font face="Times New Roman">
+</font></u></p>
+<p><font face="Times New Roman">UniversityDataset.xml is loaded in and SQL 
+database. For this there is a load command supported in CyDIW that uses 
+&quot;$MySQL:&quot; prefix. The reason for this is so that it can use MySQL connection. 
+This command should eventually become a &quot;$CyDB:&quot; command. </font></p>
+<p><u><font face="Arial">Loading the data for XQuery </font></u></p>
+<p><font face="Times New Roman">The XML documents </font><span LANG="EN">
+<font FACE="Times New Roman">Peson.xml, Faculty.xml, Student.xml, Course.xml, 
+Offerring.xml, and Enrollment.xml can be used directly from XQuery. </font>
+</span></p>
+<p><u><font face="Arial">Loading the data in OOXQuery </font></u></p>
+<span LANG="EN"><font FACE="Times New Roman">
+<p ALIGN="LEFT">UniversityOODB.xml and UniversityOODB.xsd can be used directly 
+by OOXQuery as well as XQuery. The query engine has to be schema aware. This is 
+true of the Enterprise version of Saxon query engine for which we renew the 
+license every fiscal year (July 1 to June 30). This is done by SSG and Abigail.
+</p>
+</font><font face="Arial">
+<p ALIGN="LEFT"><u>Loading the data in Neo4j </u></p>
+</font><font FACE="Times New Roman">
+<p ALIGN="LEFT">This procedure is being developed. </p>
+</font></span>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+
+</body>
+
+</html>

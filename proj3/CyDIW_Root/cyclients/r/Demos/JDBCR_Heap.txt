@@ -1,0 +1,37 @@
+args=(commandArgs(TRUE))
+
+if(length(args)==0){
+    print("No arguments supplied. Using default values")
+    ##supply default values
+    inputFile = 'JDBCXbenchMark.xml'
+    outputFile = 'CyDIW_Workspace/JXDBC_HS.pdf'
+    title = 'JXDBC Experimental Results_JavaHeap'
+    xlabel = 'Document size'
+    ylabel = 'KB'
+} else {
+    for(i in 1:length(args)){
+         eval(parse(text=args[[i]]))
+    }
+}
+
+pdf(outputFile)
+
+library(XML)
+doc = xmlRoot(xmlTreeParse(inputFile))
+
+function(node) xmlSApply(node, xmlValue)
+tmp = xmlSApply(doc[[1]], function(x) xmlSApply(x, xmlValue))
+tmp = t(tmp)
+
+numLoop1 = xmlSize(doc[[1]])
+performance = as.data.frame(matrix(as.numeric(tmp[,1]), numLoop1))
+
+attrs = function(node) xmlSApply(node, xmlAttrs)
+
+engines = c("Size 1", "Size 10", "Size 100", "Size 1000")
+
+color = c("blue", "red", "green", "yellow", "grey")
+barplot(as.matrix(performance), beside=TRUE, main=title, col=color[1:numLoop1], xlab=xlabel, ylab=ylabel,legend = engines)
+
+
+dev.off()

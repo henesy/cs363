@@ -1,0 +1,257 @@
+
+// FLWOR (for-let-where-Order by-return) EXPRESSIONS;
+ 
+
+/* To view Emp.xml and Dept.xml highlight any of the following commands and click [Run Selected] 
+$CyDB:> DisplayXML ComS363/Demos/Datasets/Emp.xml; 
+$CyDB:> DisplayXML ComS363/Demos/Datasets/Dept.xml; 
+*/
+
+// Example 1. A "for" variable;
+
+<showtext>
+$Saxon:> 
+<root xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"> {
+for $e in doc("ComS363/Demos/Datasets/Emp.xml")/Emps/Entry/Name 
+return <Who> {$e} </Who> 
+}</root>;
+</showtext>
+
+//Example 2. A "let" variable;
+
+<showtext>
+$Saxon:> 
+<root xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"> {
+let $e := doc ("ComS363/Demos/Datasets/Emp.xml")/Emps/Entry/Name 
+return <Who> {$e} </Who>
+} </root>;
+</showtext>
+
+// Example 3. Returning a well formed xml document;
+
+<showtext>
+$Saxon:> 
+<Everyone xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"> 
+{
+   for $e in doc ("ComS363/Demos/Datasets/Emp.xml")// Name 
+   return <Who> {$e} </Who> 
+} 
+</Everyone>;
+</showtext>
+
+// Example 4. Using text() function;
+
+<showtext>
+$Saxon:> 
+<Everyone xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"> 
+{
+   for $e in doc ("ComS363/Demos/Datasets/Emp.xml")// Name 
+   return <Who> {$e/text()} </Who> 
+} 
+</Everyone>;
+</showtext>
+
+// Example 5. An SPJ query: names of employees and their managers;
+
+<showtext>
+$Saxon:> 
+<EmpAndManagers xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"> 
+{
+   for $e in doc ("ComS363/Demos/Datasets/Emp.xml")// Entry 
+   for $m in doc("ComS363/Demos/Datasets/Dept.xml")// Entry
+   where $e/DName = $m/DName 
+   order by $e/Name descending
+   return 
+   <EmpManager> 
+   {
+      $e/Name, 
+      $m/MName 
+   } 
+  </EmpManager> 
+} 
+</EmpAndManagers>; 
+</showtext>
+
+// Example 6. Where clause in path expression;
+
+<showtext>
+$Saxon:> 
+<EmpAndManagers xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"> 
+{
+   for $e in doc ("ComS363/Demos/Datasets/Emp.xml")// Entry 
+   for $m in doc("ComS363/Demos/Datasets/Dept.xml")// Entry[DName = $e/DName]/MName
+   order by $e/Name descending
+   return 
+   <EmpManager> 
+   {
+      $e/Name, 
+      $m 
+   } 
+   </EmpManager> 
+} 
+</EmpAndManagers>;
+</showtext>
+
+// Example 7. Use let clause in path expression;
+
+<showtext>
+$Saxon:> 
+<EmpAndManagers xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"> 
+{
+   for $e in doc ("ComS363/Demos/Datasets/Emp.xml")// Entry 
+   let $m := doc("ComS363/Demos/Datasets/Dept.xml")// Entry[DName = $e/DName]/MName
+   order by $e/Name descending
+   return 
+   <EmpManager> 
+   {
+   $e/Name, 
+   $m 
+   } 
+   </EmpManager> 
+} 
+</EmpAndManagers>; 
+</showtext>
+
+// Example 8. Reorganize emp document by departments;
+
+<showtext>
+$Saxon:> 
+<DeptsAndEmps xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"> {
+   for $d in doc("ComS363/Demos/Datasets/Emp.xml")// DName
+
+   return 
+      <Department> {
+         $d, 
+         <EmpsList> {
+            for $e in doc("ComS363/Demos/Datasets/Emp.xml")// Entry[DName = $d] 
+            return <EmpSal> { $e/Name, $e/Salary } </EmpSal>
+         } </EmpsList> 
+      } </Department> 
+} </DeptsAndEmps>; 
+</showtext>
+
+// Example 9. Report average salaries by departments;
+
+<showtext>
+$Saxon:> 
+<DeptPayrolls xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"> 
+{
+   for $d in distinct-values(doc("ComS363/Demos/Datasets/Emp.xml")// DName
+)
+   let $s := doc("ComS363/Demos/Datasets/Emp.xml")// Entry[DName = $d]/Salary 
+   return 
+   <DeptPayroll> 
+   { 
+      <DName>{$d}</DName>, 
+      <AvgSal> {avg($s)} </AvgSal> } 
+   </DeptPayroll>
+   } 
+</DeptPayrolls>;
+</showtext>
+
+// Example 10. Departments where some employees earns at least 52K;
+
+<showtext>
+$Saxon:> 
+<SpecialDepartments xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"> 
+{
+   for $d in distinct-values( doc("ComS363/Demos/Datasets/Emp.xml")// DName)
+   let $s := doc("ComS363/Demos/Datasets/Emp.xml")// Entry[DName = $d and Salary >= 52000]/Salary 
+   where exists($s)
+   return 
+   <DeptPayroll> 
+   { 
+      <DName>{$d}</DName>, 
+      <AvgSal> {avg($s)} </AvgSal> 
+   } 
+   </DeptPayroll>
+} </SpecialDepartments>; 
+</showtext>
+
+// Example 11. Report proposed salary inctements according to a schedule; 
+// ??? HOW TO SUPRESS xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" ???; 
+
+<showtext>
+$Saxon:> 
+<Report xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"> 
+{
+   for $e in doc("ComS363/Demos/Datasets/Emp.xml")// Entry
+   return 
+   <Entry> 
+   { 
+      <Name>{$e/Name}</Name>, 
+      <NewSal> { if ($e/Salary <= 60000) then 100000 else 200000} </NewSal> 
+   } 
+   </Entry>
+} 
+</Report>;
+ 
+</showtext>
+
+// Example 12. List Names of employees who do not have a manager;
+
+<showtext>
+$Saxon:> 
+<result xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"> 
+{
+   for $e in doc ("ComS363/Demos/Datasets/Emp.xml")// Entry 
+   let $m := doc("ComS363/Demos/Datasets/Dept.xml")// Entry[DName = $e/DName]/MName
+   where not(exists($m)
+)
+   return 
+   <EmpName> 
+{
+$e/Name/text()
+} 
+</EmpName>
+} 
+</result>; 
+</showtext>
+
+// Example 13. How to concatenate strings;
+// ??? WHY IS <A> NOT DISPLAYED ??? ;
+
+$Saxon:> 
+for $d in distinct-values(doc("ComS363/Demos/Datasets/Emp.xml")// DName)
+let $e := doc("ComS363/Demos/Datasets/Emp.xml")// Entry[DName = $d]
+return 
+<A>
+ {
+$d, " department has ", 
+count($e), " employees."}
+ <br/>
+ </A>;
+
+$Saxon:> 
+for $d in distinct-values(doc("ComS363/Demos/Datasets/Emp.xml")// DName)
+let $e := doc("ComS363/Demos/Datasets/Emp.xml")// Entry[DName = $d]
+return 
+<A>
+ {
+$d, " department has ", count($e), " employees."}
+ </A>;
+
+// Plain text output using concat(.) function; 
+
+// ??? HOW TO DISPLAY LINE BY LINE ??? ; 
+
+<showtext>
+$Saxon:> 
+for $d in distinct-values(doc("ComS363/Demos/Datasets/Emp.xml")//DName)
+let $e := doc("ComS363/Demos/Datasets/Emp.xml")// Entry[DName = $d]
+return 
+concat($d, " department has ", count($e), " employee") ;
+</showtext>
+
+// Plain text output using concat(.) function; 
+
+<showtext>
+$Saxon:> 
+for $d in distinct-values(doc("ComS363/Demos/Datasets/Emp.xml")// DName)
+let $e := doc("ComS363/Demos/Datasets/Emp.xml")// Entry[DName = $d]
+return 
+   concat($d, " Department has ", count($e));
+</showtext>
+
+
+// The end of demo; 

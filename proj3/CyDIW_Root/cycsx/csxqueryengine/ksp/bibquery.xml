@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+
+<?xml-stylesheet href="kweelt.xsl" type="text/xsl"?>
+
+<?cocoon-process type="kweelt"?>
+<?cocoon-process type="xslt"?> 
+<!-- <?cocoon-format type="text/xml"?> -->
+
+<top>
+
+<H1>First Query</H1>   
+<kweelt>
+  <kweelt-query><![CDATA[
+<P>
+<UL>
+ LET $items := document("/home/httpd/html/new_bib.xml")/*[@year .>=. {@after}][CONTAINS(author, "{@author}")][count(author)=1]
+ FOR $item IN $items
+ RETURN <LI>$item/title/text(), " ", <U>$item/@year</U></LI> SORTBY (./U DESCENDING)
+</UL>, CONCAT( " ", NUMFORMAT("##", count($items)), " items found.")
+</P>
+]]>
+  </kweelt-query>
+</kweelt>   
+
+<H1>Second Query</H1>
+<kweelt>
+  <kweelt-query><![CDATA[
+<P>
+<UL>
+ LET $items := document("/home/httpd/html/new_bib.xml")/*[@year .>=. {@after}][CONTAINS(author, "{@author}")][count(author)=1]
+ FOR $item IN $items
+ RETURN <LI>$item/title/text(), " ", <U>$item/@year</U></LI> SORTBY (./U DESCENDING)
+</UL>, CONCAT( " ", NUMFORMAT("##", count($items)), " items found.")
+</P>
+]]>
+  </kweelt-query>
+</kweelt>                 
+
+<H1>Third Query</H1>
+<kweelt>
+  <kweelt-query/>
+</kweelt>
+
+</top>
+ 

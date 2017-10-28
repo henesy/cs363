@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSpy v2011 (http://www.altova.com) by Xinyuan Zhao (Iowa State University) -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+	<xs:element name="Depts" type="DeptsType"/>
+	<xs:complexType name="DeptsType">
+		<xs:sequence maxOccurs="unbounded">
+			<xs:element name="Entry" type="EntryType"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="EntryType">
+		<xs:sequence>
+			<xs:element name="DName" type="xs:string"/>
+			<xs:element name="MName" type="xs:string"/>
+		</xs:sequence>
+	</xs:complexType>
+</xs:schema>

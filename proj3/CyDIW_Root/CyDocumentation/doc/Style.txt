@@ -1,0 +1,255 @@
+===================================
+| Coding Style and Best Practices |
+===================================
+
+This could arguably be a document separate from this project, but these are mostly derived from observation about how this project is currently doing things wrong.
+
+Things are listed in rough order of urgency, but not necessarily importance. For example, the first three items (exceptions, documentation, and architecture) are either actively slowing down development or are needed for the coming project. By contrast, having tons of variables be static or public is really bad, but is not immediately a problem.
+
+
+
+==============
+| Exceptions |
+==============
+
+Fail fast and hard, don't fail silently. When you call something which throws a checked exception, and you aren't handling it properly, Eclipse has an option to "Surround with try/catch block." This gives you something like the following:
+
+try {
+  xmlParser.removeXMLNode(storageFile);
+  xmlParser.writeXmlFile(catalogFile, xmlParser.getXMLDocument());
+} catch (Exception e) {
+  // TODO Auto-generated catch block
+  e.printStackTrace();
+}
+
+So, aside from printing the stack trace to standard error (which your users won't look at, and which you might not always be looking at), this also SILENTLY IGNORES ERRORS. At the moment, this is a big drain on the learning curve, both for users and developers, because the system will continue as though nothing is wrong. Instead of the program crashing and giving you a nice, neat stacktrace (thus making it easy to fix the problem), you get random, buggy behavior.
+
+Even worse, there are places where people do this:
+
+try {
+  ...
+} catch (Exception e) {}
+
+Now, there isn't even a stacktrace in a console somewhere. It just silently fails. This can actually be dangerous, since code farther down is generally assuming that previous code worked, so we end up with garbage later on. In the best case, the program data is corrupt enough that we get a crash later on, but it is still more work to debug a crash that happens in this way than to just see the original exception.
+
+And even if we can recover, what business do we have catching _any_ exception? Maybe the exception was OutOfMemoryError, or an unexpected NullPointerException, or something else we weren't expecting.
+
+As critical as this is, and as easy as it looks to fix, I don't feel comfortable applying the best practice everywhere on my own. It's always possible that there's a block of code which always or often fails, and it's being ignored on purpose, but there's no comments one way or another, so I don't know. Also, because this is so widespread, it's possible there are things which work now only because certain exceptions are ignored, and would fail if those exceptions were thrown. If that is true, it's a bug in its own right, but one which should be approached with caution -- fix some catch blocks, then see if the program still works, and repeat.
+
+ == Best Practice ==
+
+Catch specific exceptions, not everything. For example, do this:
+
+  catch (IOException e)
+
+Not this:
+
+  catch (Exception e)
+
+If you don't want to deal with it, rethrow it as a runtime exception of some sort. Ideally something descriptive, but if you're feeling lazy, this is fine:
+
+try {
+  ...
+} catch (IOException e) {
+  throw new RuntimeException(e);
+}
+
+
+
+=================
+| Documentation |
+=================
+
+I am guilty of this, also, and there are some examples of good documentation -- it seems like a lot of the classes at least have a class javadoc. Still, I couldn't help but notice a few things:
+
+ == Javadoc ==
+
+Ideally, every non-private method should either be fully javadoc'd, or have @Override (so the reader knows to look to the parent class for javadoc), or both. However, there is a caveat: Some methods truly are obvious. For example, if I know I'm dealing with something that's supposed to be a list of some sort, I can probably figure out what length() is. Therefore, the javadoc is there to explain anything I need to know that isn't obvious from the name alone.
+
+The reason for this is that Javadoc is natively supported in Eclipse. It is several orders of magnitude faster to hover my mouse over an object or method and get an idea of at least what it is, versus clicking it, using F3 to hop to the source, then reading most of that class to figure out what it actually does, and how this class is meant to be used.
+
+ == Inline ==
+
+If your method fills the entire screen, it may not be obvious how it works. Javadoc is for what it does, and is mainly for users of your interface (though the user may be you, writing another class). Inline comments are for how it works.
+
+One interesting trend I'm seeing in a few places is:
+
+      }//end if else
+    }//end if else
+  }//end of public static NodeHeader createNodeHeader(int);
+
+That's fine, but whenever it's really useful, it might be a symptom of a bigger problem. In this case, that method was almost three hundred lines long. I have to imagine it could've been broken into smaller pieces, and maybe less code duplication.
+
+ == Commenting out ==
+
+Now that we are in version control, commenting stuff out is much less useful. It's fine for a quick test, but checkins should generally not have large blocks of commented-out code, especially because it's often not clear why they are there. A version history is going to be much more useful.
+
+
+
+================
+| Architecture |
+================
+
+High-level functions, exposed as commands, should be implemented as methods in a class somewhere that doesn't know about the GUI. Telling a user that they aren't calling that method correctly should be separate from this. There are several reasons for this, but the biggest two are that the server should be able to run headless, and there should be at least as much scriptability from Java as there is from the given commandline.
+
+As I try to discover more about how the system actually runs, rather than scripting things from the commandline, I connect to our API from JRuby. If I can call it from Java, I can call it from JRuby, and language bindings could probably be created fairly easily for other languages.
+
+From an MVC perspective: Right now, the view and controller are too closely bound, and there are things in the controller which belong in the model.
+
+
+
+=======
+| API |
+=======
+
+The public API should be carefully defined. This does not mean that everything 'public' must be ready for public consumption, but make things private until you have a reason to make them protected or public. And although it requires more typing, use setters and getters, do NOT make attributes public. I even use setters and getters within the same class, but at least if the object is private, any problems are constrained to the class.
+
+As a side effect, making more stuff private means you (hopefully) make more coherent, more loosely-coupled objects.
+
+For example: canstorex.dom.DOMNode has a public attribute called 'disk', as well as a setter and a getter, all public. At least in this case, the attribute never accessed publicly, so it could likely be made private without consequence. But I see exactly this pattern in other places, also -- although PageNode.pageID has a setter and a getter, it is referenced directly throughout the project.
+
+This is also a symptom of a larger problem: Constructors, and objects in general, aren't doing their jobs. Consider the following:
+
+  byte[] pgae = client.readPagewithoutPin(pageId);
+  PageUtil.setPageResult(page);
+  PageHeader ph = PageUtil.getPageHeader();
+  PageNode pn = NodeUtil.createPageNode(ph.nh, PageUtil.getNode(0), 0, ph.pageBitSize);
+
+The byte array that is the page itself already has almost everything I need. So does the PageHeader object I created later. But even this isn't enough:
+
+  pn.pageID = pageID;
+  PageUtil.fillLabel(pn, page);
+
+But in the call to createPageNode, I already gave it most of the same information, and this is exposing a lot of low-level details. PageNodeIterator does a somewhat better job with createPageNode, but even here, a PageNode is created, and things are assigned to it afterwards, in very similar ways. This seems like exactly the sort of implementation detail that should go in constructors.
+
+Putting more of this functionality in PageNode or in PageNodeIterator also makes it less likely that clients reading a PageNode need to see all the individual Ptr ints. The leftmost, rightmost, etc boolean values could instead be methods which check those pointers. Maybe you'd have a getRightNode instead of a getRightPtr.
+
+Incidentally: It's doubtful that there's a performance reason to avoid setters/getters. The JVM is very good at optimizing these days.
+
+
+
+==========
+| Static |
+==========
+
+If a variable is static, it should be final. The only exception to this is something which has a good reason to affect the entire JVM.
+
+Consider this code snippet, which I think is the correct way to get the root element of a document:
+
+  // This could be streamlined, but it is reasonable.
+  CanStoreXUtil csxu = new CanStoreXUtil();
+  int pageId = csxu.getXmlParser().getStartPage("foo.bxml");
+  StorageManagerClient client = csxu.getXmlClient();
+  byte[] page = client.readPagewithoutPin(pageId);
+  
+  // This part is painful.
+  PageUtil.setPageResult(page);
+  PageHeader ph = PageUtil.getPageHeader();
+  PageNode pn = NodeUtil.createPageNode(ph.nh, PageUtil.getNode(0), 0, ph.pageBitSize);
+  pn.pageID = pageId;
+  Pageutil.fillLabel(pn, page);
+
+Quick, does fillLabel work if I haven't called setPageResult? It's clear that getPageHeader() requires something to be set ahead of time, but it's not clear if the other methods here do. This also means that we have to be careful when doing things like recursion, and threading becomes unmanageable.
+
+Basically, the situation here is that if we ever do any threading, those last five lines would have to have a giant lock surrounding them. That is, I can only parse one page at a time in the entire program, even if I had multiple storages opened with multiple CanStoreXUtil objects, even if everything was read-only.
+
+ == Best practice ==
+
+Instead of using static variables for data, either pass the data you want as arguments, maybe something like:
+
+  PageHeader ph = PageUtil.getPageHeader(page);
+
+Or encapsulate the whole thing in an object:
+
+  PageUtil pageUtil = new PageUtil();
+  pageUtil.setPageResult(page);
+  PageHeader ph = pageUtil.getPageHeader();
+
+Also, PageUtil seems like the wrong place for this -- the util classes are getting kind of big, and not very well defined (see below). If PageNode isn't correct, maybe a Page object might make more sense.
+
+Static methods are fine, when they make sense. Static variables are trouble.
+
+
+
+=================================
+| Generics, Warnings, and Types |
+=================================
+
+In general, it's worrying to open a project and see that every single package has at least one warning in it. These warnings can contain useful information.
+
+Specifically, generics. There are very few generic warnings which make any sense. We have this:
+
+public class PageNodeList {
+  public ArrayList list;
+  public PageNodeList()
+  {
+    this.list = new ArrayList();
+  }
+  ...
+}
+
+Every method that accesses this list only deals with PageNodes. Getting the item even explicitly does so:
+
+  public PageNode item(int index)
+  {
+    return (PageNode)list.get(index);
+  }
+
+But because we're using a raw type here, and because it's exposed for the world to see, there's no guarantee that no one won't just stick an Integer in there. So, again, we want this private, but even there, we want to be more careful with our interfaces. I'd suggest:
+
+public class PageNodeList {
+  private List<PageNode> list;
+  public PageNodeList()
+  {
+    this.list = new ArrayList<PageNode>();
+  }
+  ...
+  public PageNode item (int index)
+  {
+    return list.get(item);
+  }
+}
+
+This has an added bonus -- we'd have some confidence we can substitute ArrayList for LinkedList or anything else which implements List. It is generally a good idea to use the strictest interface that makes sense as a client, to minimize the number of assumptions you make about the object. There's a limit -- Collection could technically work here, but we really want List's get() method -- but we really don't need anything from ArrayList.
+
+As it is, I not only don't know if I can substitute ArrayList for LinkedList, but I don't know if there's some code elsewhere in the project which assumes it's an ArrayList.
+
+
+
+================
+| Util classes |
+================
+
+Any class with 'util' in its name should probably be a collection of static methods, without any static variables -- things like CanStoreXUtil.byteArrayToInt(). CanStoreXUtil should probably be broken up into that kind of static method, and into objects (some new, some existing) which represent something -- like, for example, StorageManagerClient.
+
+The main reason for this is that the 'util' classes have grown large and unwieldy. CanStoreXUtil is over three thousand lines. PageUtil weighs it at over 2500. And even though I can get a new instance of CanStoreXUtil, what is that an instance of? What, actually, is the object? For it to actually be object-oriented programming, I should have some insight into that question.
+
+For example: What is a PageNode? A physical node in a page. What's a BufferManager? Probably a manager of the buffer (or buffers) -- this is probably where I'd go to find out what the caching policy is. What's an iterator? Something I use to iterate with, it maintains a position within some data and can move around from that position.
+
+But what's a CanStoreXUtil?
+
+
+
+=================
+| Nulling stuff |
+=================
+
+byte [] B = new byte[pos - addrL];
+B = null; //return to gc
+
+The Java compiler is smart enough that it won't compile things which have certain kinds of easily-discoverable dead code; I would hope it's smart enough to not hold that reference around when nothing touches it until the end of the method.
+
+If the reference itself were going to survive -- maybe if it was an instance variable, or if it was in some other array -- then it would make sense. So, for example:
+
+this.B = null;
+superB[0] = null;
+
+Even here, though, it's pointless to null things out that the GC is going to hit anyway -- for example, far too many COM S 228 linked list projects would null out the next and previous references within a node, when that node was going to be garbage-collected anyway.
+
+
+
+================
+| Main methods |
+================
+
+Why all the main methods everywhere?

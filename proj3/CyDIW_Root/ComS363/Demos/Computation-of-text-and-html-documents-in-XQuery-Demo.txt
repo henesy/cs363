@@ -1,0 +1,104 @@
+// XQuery QUERIES RETURNING HTML REPORTS; 
+
+// Example 1. First display employee info as text - three different forms;
+// I do not know understand how to supress display of tags and force a line break; 
+// The following are ad hoc;
+
+<showtext>
+$Saxon:> 
+<H>{"Name DName Salary"}</H>
+,
+for $e in doc("ComS363/Demos/Datasets/Emp.xml")/Emps/Entry 
+return <R> {$e/Name/text(), " ", $e/DName/text(), " ", $e/Salary/text()} </R>; 
+</showtext>
+
+
+<showtext>
+$Saxon:> 
+"Name DName Salary",
+" ", 
+for $e in doc("ComS363/Demos/Datasets/Emp.xml")/Emps/Entry 
+return <R> {$e/Name/text(), " ", $e/DName/text(), " ", $e/Salary/text()} </R>; 
+</showtext>
+
+
+<showtext>
+$Saxon:> 
+"Name DName Salary",
+" ", 
+for $e in doc("ComS363/Demos/Datasets/Emp.xml")/Emps/Entry 
+return concat($e/Name/text(), " ", $e/DName/text(), " ", $e/Salary/text()); 
+</showtext>
+
+
+// Example 2. Display employee info in a simple html-table;
+
+$Saxon:> 
+<table>      
+   <tr>
+      <td>Name</td>
+      <td >DName</td>
+      <td >Salary</td>
+   </tr>
+{
+for $e in doc ("ComS363/Demos/Datasets/Emp.xml")// Entry 
+return 
+   <tr>
+      <td>{$e/Name/text()}</td>
+      <td>{$e/DName/text()}</td>
+      <td>{$e/Salary/text()}</td>
+   </tr>
+} 
+</table>;
+
+
+// Example 3. A more elaborate html-table;
+
+$Saxon:> 
+<table border="1" cellpadding="0" cellspacing="0" style="border-collapse: collapse" bordercolor="#000000" id="table1">      
+   <tr>
+      <td bgcolor="#C0C0C0"><font size="3" color="#FF0000">Name</font></td>
+      <td bgcolor="#C0C0C0"><font size="3" color="#FF0000">DName</font></td>
+      <td bgcolor="#C0C0C0"><font size="3" color="#FF0000">Salary</font></td>
+   </tr>
+{
+for $e in doc ("ComS363/Demos/Datasets/Emp.xml")// Entry 
+return 
+   <tr>
+      <td>{$e/Name/text()}</td>
+      <td>{$e/DName/text()}</td>
+      <td>{$e/Salary/text()}</td>
+   </tr>
+}
+</table>; 
+
+// Example 4. Compute and display a multiplication table in html;
+// Achnowledgement needed; 
+
+$Saxon:> 
+<table> 
+{
+   for $y in 1 to 10
+   return
+   <tr> 
+   {
+      for $x in 1 to 10
+      return
+      let $bg:= if($x mod 2 + $y mod 2 <= 0) then "lightgreen"
+               else if ($y mod 2 <= 0) then "yellow"
+               else if ($x mod 2 <= 0) then "lightblue"
+               else "white",
+      $prod:=$x*$y
+      return
+      <td align="right" > 
+      {
+         if ($x > 1 and $y > 1) then $prod
+         else <b> {$prod} </b>
+      }
+      </td>
+   } 
+   </tr>
+} 
+</table>; 
+
+

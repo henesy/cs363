@@ -1,0 +1,402 @@
+// Commands here are based on examples from our textbook; 
+
+/*
+Test if Saxon is working; 
+Highligh the following and [Run Selected]  
+$Saxon:> 20 * 5;
+*/
+
+/*
+To display an XML document containing data, highlight appropriately and [Run Selected] ; 
+
+// Display in the output pane on right; 
+
+<showtext>
+$Saxon:> 
+let $e := doc("ComS363/Demos/Datasets/Personnel_Mini.xml")
+return $e 
+; 
+</showtext> 
+
+<showtext>
+$Saxon:> 
+let $e := doc("ComS363/Demos/Datasets/Emp.xml")
+return $e 
+; 
+</showtext>
+
+<showtext>
+$Saxon:> 
+let $e := doc("ComS363/Demos/Datasets/Dept.xml")
+return $e 
+; 
+</showtext>
+
+<showtext>
+$Saxon:> 
+let $e := doc("ComS363/Demos/Datasets/RABC.xml")
+return $e 
+; 
+</showtext>
+
+<showtext>
+$Saxon:> 
+let $e := doc("ComS363/Demos/Datasets/bib.xml")
+return $e 
+; 
+</showtext>
+
+// Display in HTML browser; 
+
+$OS:> ComS363\Datasets\Personnel_Mini.xml; 
+$OS:> ComS363\Datasets\Emp.xml; 
+$OS:> ComS363\Datasets\Dept.xml; 
+$OS:> ComS363\Datasets\RABC.xml; 
+$OS:> ComS363\Datasets\bib.xml; 
+*/ 
+
+
+
+// SECTION B. For and let in RABC.xml; 
+
+
+// B01. Grouping of C elements ; 
+<showtext>
+$Saxon:> 
+for $a in doc("ComS363/Demos/Datasets/RABC.xml")/R/A
+for $b in $a/B
+let $c := $b/C
+return <E> {$c} </E> ; 
+</showtext>
+
+// B02. Aggregation of C-values after coercing;  
+// Note there are no group by and having clauses in XQuery; 
+<showtext>
+$Saxon:> 
+for $a in doc("ComS363/Demos/Datasets/RABC.xml")/R/A
+for $b in $a/B
+let $c := $b/C
+return sum($c); 
+</showtext>
+ 
+
+// B03. Aggregation of C-values after coercing;  
+// Note there are no group by and having clauses in XQuery; 
+<showtext>
+$Saxon:> 
+for $a in doc("ComS363/Demos/Datasets/RABC.xml")/R/A
+for $b in $a/B
+let $c := $b/C
+return <E>{sum($c)}</E>; 
+</showtext>
+ 
+
+
+// SECTION C: Some queries on Emp.xml and Dept.xml ;
+
+
+<showtext>
+$Saxon:> 
+<root xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"> { 
+for $e in doc ("ComS363/Demos/Datasets/Emp.xml")/Emps/Entry 
+where $e/DName = "Toys" 
+return $e/Name 
+} </root>;
+</showtext>
+
+<showtext>
+$Saxon:> 
+<root xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"> { 
+for $e in doc ("ComS363/Demos/Datasets/Emp.xml")/Emps/Entry 
+where $e/DName = "Toys" 
+return <E>{$e/Name, $e/Salary}</E>
+} </root>;
+</showtext>
+
+<showtext>
+$Saxon:> 
+<ToysSalaries xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+{ 
+   for $e in doc ("ComS363/Demos/Datasets/Emp.xml")/Emps/Entry 
+   where $e/DName = "Toys" 
+   return <E>{$e/Name, $e/Salary}</E>
+}
+</ToysSalaries>;
+</showtext>
+
+// ??? WHY >= 20 PRODUCES ERROR. HOW TO FIX IT ??? ; 
+<showtext>
+$Saxon:> 
+for $d in  doc ("ComS363/Demos/Datasets/Emp.xml")/Emps/Entry/DName 
+let $s1 := doc ("ComS363/Demos/Datasets/Emp.xml")/Emps/Entry[DName = $d]/Salary 
+let $s2 := doc ("ComS363/Demos/Datasets/Emp.xml")/Emps/Entry[DName = $d and Salary >= 10000]/Salary 
+where count($s2) >=20
+return <DS> {$d, <SumSal>{sum($s1)} </SumSal>} </DS>;
+</showtext>
+
+
+
+// SECTION D. SEVERAL WAYS OF REPORTING EMPLOYEES AND MANAGERS;
+ 
+
+// D01. Use for-for: employees having no manager not listed; 
+<showtext>
+$Saxon:> 
+<EmpAndManagers xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+{
+   for $e in doc ("ComS363/Demos/Datasets/Emp.xml")//Entry
+   for $d in doc ("ComS363/Demos/Datasets/Dept.xml")//Entry
+   where $e/DName = $d/DName
+   order by $e/Name descending
+   return
+   <EmpManager> 
+   {
+      $e/Name,
+      $d/MName
+   } </EmpManager>
+}
+</EmpAndManagers>
+; 
+</showtext>
+
+// D02. Use for-let: will report empty list of managers; 
+<showtext>
+$Saxon:> 
+<EmpAndManagers xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+{
+   for $e in doc ("ComS363/Demos/Datasets/Emp.xml")//Entry
+   let $m := doc ("ComS363/Demos/Datasets/Dept.xml")//Entry[DName = $e/DName]/MName
+   order by $e/Name descending
+   return
+   <EmpManager> 
+   {
+      $e/Name,
+      $m
+   } </EmpManager>
+}
+</EmpAndManagers>
+; 
+</showtext>
+
+// D03. Use for-let, but exclude employees without managers;
+
+<showtext>
+$Saxon:> 
+<EmpAndManagers xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+{
+   for $e in doc ("ComS363/Demos/Datasets/Emp.xml")//Entry
+   let $m := doc ("ComS363/Demos/Datasets/Dept.xml")//Entry[DName = $e/DName]/MName
+   order by $e/Name descending
+   return 
+   if (exists($m)) then 
+   <EmpManager> 
+   {
+      $e/Name,
+      $m
+   } </EmpManager>
+   else ""
+}
+</EmpAndManagers>
+; 
+</showtext>
+
+
+
+// SECTION E. REORGANIZE EMPLOYYES BY DEPARTMENTS; 
+
+
+// E01. 
+Note the nesting of for for reporting employees for a given department; 
+<showtext>
+$Saxon:> 
+<DeptsAndEmps xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+{
+   for $d in doc ("ComS363/Demos/Datasets/Emp.xml")//DName
+   return
+   <DeptList>
+   {
+      $d,
+      <EmpsList>
+      {
+         for $e in doc ("ComS363/Demos/Datasets/Emp.xml")//Entry[DName=$d]
+         return
+         <NameSal> {$e/Name, $e/Salary} </NameSal>
+      }
+      </EmpsList>
+   }
+   </DeptList>
+}
+</DeptsAndEmps>
+; 
+</showtext>
+
+
+
+// SECTION F. every AND satisfies KEYWORDS; 
+
+
+// F01. Report department names and average salaries; 
+<showtext>
+$Saxon:> 
+<SpecialDepartments xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+{
+   for $d in doc ("ComS363/Demos/Datasets/Emp.xml")//DName
+   where every $s in doc ("ComS363/Demos/Datasets/Emp.xml")//Entry[DName = $d]
+            satisfies ($s/Salary >= 70000)
+   return
+   <DeptAvg>
+   {
+      $d,
+      <AvgSal>
+      {
+         avg(doc ("ComS363/Demos/Datasets/Emp.xml")//Entry[DName = $d]/Salary)
+      }
+      </AvgSal>
+   }
+   </DeptAvg>
+}
+</SpecialDepartments>
+; 
+</showtext>
+
+
+
+// SECTION G. INVOLVING ELEMENT TAGS IN QUERIES USING name(.) FUNCTION; 
+
+// G01. Report everything but salaries of employees; 
+<showtext>
+$Saxon:> 
+<Everyone xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+{
+  for $e in doc ("ComS363/Demos/Datasets/Emp.xml")//Entry
+  return
+  <Entry>
+  {
+     for $f in $e/*
+     return
+     if (name($f) = "Salary") then "" else $f
+  }
+  </Entry>
+}
+</Everyone>; 
+</showtext>
+
+
+// SECTION H. REMINDER OF IMPLICIT ORDERING BY PATH EXPRESSIONS; 
+
+
+// H01. Ordering is a default in XML, XPath, and XQuery; 
+<showtext>
+$Saxon:> 
+for $i in (1, 2),
+    $j in (3, 4)
+return
+    <tuple>
+      <i>{ $i }</i>
+      <j>{ $j }</j>
+    </tuple>
+; 
+</showtext>
+
+
+
+// I. RESTRUCTURING IN bib.xml; 
+
+// I01. Rearrange book titles by authors; 
+<showtext>
+$Saxon:> 
+<AuthorList>
+{
+   let $input := doc ("ComS363/Demos/Datasets/bib.xml")
+   for $a in distinct-values($input//author)
+   return
+      <author>
+         <name> 
+         {
+            $a
+         } </name>,
+         <books> 
+         {
+            for $b in $input//book
+            where $b/author = $a
+            return $b/title
+         } </books>
+      </author>
+}
+</AuthorList>
+; 
+</showtext>
+
+// I02. Alphabetic list of publishers reporting titles by decending descending prices;
+
+<showtext>
+$Saxon:> 
+<PublisherList>
+{
+for $p in distinct-values(doc ("ComS363/Demos/Datasets/bib.xml")//publisher)
+order by $p
+return
+   <publisher> 
+      <name> {$p} </name>
+      {
+      for $b in doc ("ComS363/Demos/Datasets/bib.xml")//book[publisher = $p]
+      order by $b/price descending
+      return
+         <book>
+         {
+            $b/title,
+            $b/price
+         }
+         </book>
+      }
+   </publisher>
+}
+</PublisherList>
+; 
+</showtext>
+
+
+/* The rest of the demo is not in a working condidion. 
+
+// SECTION J. FUNCTIONS IN XQuery; 
+
+
+// Define summary function and use it; 
+// The summary function rturns count and total of salaries for a list of employees; 
+// The function is used to report summaries by departments; 
+$Saxon:> 
+define function summary(element employee* $emps) returns element Dept*
+{
+   for $d in distinct-values($emps/deptno)
+   let $e := $emps[deptno = $d]
+   return
+   <Dept> {
+      {$d}
+      <headcount> {count($e)} </headcount>
+      <payroll> {sum($e/salary)} </payroll>
+   </Dept>
+}
+; 
+
+
+// SECTION K. QUERY OF SEQUENCES; 
+
+// K01. Report nodes between the first and second incisions of the first procedure;
+
+ ??? This example does not work!
+ ??? 
+
+<showtext>
+$Saxon:> 
+<critical-sequence>
+{
+   let $proc := //procedure[1]
+   for $n in $proc//node()
+   where $n follows ($proc//incision)[1]
+      and $n precedes ($proc//incision)[2]
+   return $n
+}
+</critical-sequence>
+; 
+</showtext>
+*/

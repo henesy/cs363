@@ -1,0 +1,69 @@
+// Compile and run a java program from CyDIW - includes documentation of CyDIW scripting issues; 
+
+/* Some OS commands can be included in a CyDIW ecxperiment under the "$OS>:" prefix. 
+
+OS commands can be quite cryptic and require you to be very careful even when 
+they are included in a batch file (with .bat extension) for direct execution in an OS. 
+
+CyDIW poses some additional hurdles. Here are some points specific to CyDIW:
+
+After execution of an OS command CyDIW can forget the environment set by the command. 
+
+For example, the current directory is alway reset to the root of CyDIW after execution 
+of an "OS:" command. This is intentional. Its benefits in CyDIW are extensive as 
+many file names can be made relative to the root of CyDIW. This helps us design good 
+experiments that will ALWAYS work IRRESPECTIVE OF WHERE CyDIW IS INSTALLED. 
+Demos in this course are examples of such experiments. The projects you develop can 
+also benefit from this. 
+
+CyDIW uses ";" to retminate a command. What if an OS command uses one or more ";" 
+characters? This problem is solved by using "<;>" insted of ";" in CyDIW. When CyDIW 
+parser encounters "<;>" it thinks of this as a literal character ";" and does not 
+terminate parsing the command. 
+
+If a sequence of OS commands are needed for setting some environment the OS commands 
+can be included in a single CyDIW command by separating them with "&&". This helps CyDIW 
+to set several variables "at once" 
+without forgetting the "previous" ones.  
+*/
+
+/* <<< INSTRUCTIONS TO USERS 
+>>>
+
+Windows users: Carefully edit the TWO occurences of "C:\Program Files (x86)\Java\jdk1.8.0_31" 
+in the following batch to reflect the correct location of Java JDK on your computer.  
+
+Non-Windows users: In "$CyDB:> set $$osType := Windows;" command, change Windows to Linux or Mac (no quotations) 
+*/ 
+
+$CyDB:> undeclare string $$osType; 
+$CyDB:> declare string $$osType; 
+$CyDB:> set $$osType := Windows;
+$CyDB:> list variables;
+
+// Compile and run your Java program ; 
+
+$CyDB:> if ($$osType=="Windows") {
+
+  $OS:>set PATH=C:\Program Files\Java\jdk1.7.0_10\bin<;>
+            && set CLASSPATH=C:\Program Files\Java\jdk1.7.0_10\lib<;>
+            && javac -d ComS363\Demos\A_Java_Demo ComS363\Demos\A_Java_Demo\Java_Demo.java;
+
+  // Run a JDBC demo, note how jar file for my-sql driver is included ;
+
+  $OS:> java -cp
+ ComS363\Demos\A_Java_Demo
+            Java_Demo
+ > ComS363\Projects\P0\Java_Demo_Output.txt;
+
+  // Print the computed and expected outputs and make sure they are comparable;
+} 
+else {
+  $OS:> javac -d ComS363/Demos/A_Java_Demo ComS363/Demos/A_Java_Demo/Java_Demo.java;
+  $OS:> java -cp ComS363/Demos/A_Java_Demo Java_Demo > ComS363/Demos/A_Java_Demo/Java_Demo_Output.txt;
+}
+
+// Print the computed and expected outputs and make sure they compare; 
+$CyDB:> displaytxt ComS363\Demos\A_Java_Demo\Java_Demo_Output_(Sample).txt; 
+$CyDB:> displaytxt ComS363\Projects\P0\Java_Demo_Output.txt; 
+

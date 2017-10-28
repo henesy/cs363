@@ -1,0 +1,100 @@
+// ISU COURSE CATALOG AS AN XML Database;   
+
+/* To view Personnel_OO_DB xml document and its .xsd schema highlight any of the following and click [Run Selected] 
+$CyDB:> displayxml ComS363\Demos\Datasets\ISU_Course_CatalogDB.xml; 
+$CyDB:> displayxml ComS363\Demos\Datasets\ISU_Course_CatalogDB.xsd; 
+$OS:> ComS363\Demos\Datasets\ISU_Course_CatalogDB.xml; 
+$OS:> ComS363\Demos\Datasets\ISU_Course_CatalogDB.xsd; 
+*/
+
+// 1. Compute catalog for display as an html document;  
+
+$Saxon:>
+<root>
+<a> {
+for $d in doc("ComS363/Demos/Datasets/ISU_Course_CatalogDB.xml")// Front_Material
+return
+<p> 
+   <h1> {$d/Dept_Name/text()} </h1>
+   <b> { if ($d[DeptURL]) 
+       then <a> {$d/DeptURL/text()
+} <br/> </a>
+       else "" } </b>
+   <b> {$d/DeptChair/text()} </b>
+   <p> {
+      for $g in $d/FacultyList/FacultyPosition
+      return <a> <b>{ concat( $g/@Title, ": ") }</b> {$g/text() }<br/></a>
+   } </p>
+
+   <h2> Undergraduate Study </h2> {$d/UgradInfo/text()}
+   <h2> Graduate Study </h2> {$d/GradInfo/text()}
+</p>
+} </a>
+
+<a> {
+for $e in doc("ComS363/Demos/Datasets/ISU_Course_CatalogDB.xml")// Courses/*
+return
+<p>
+   <h2> {$e/ListTitle/text()} </h2>
+   {
+   for $f in $e/CList
+   return
+   <p>
+      <b> {concat( $f/CourseInitial/text(), " ", 
+                  $f/CourseNumber/text(), ". ", 
+                  $f/CourseName/text(), ". " ) 
+      } </b>
+
+      { if ($f[CourseListing]) 
+      then concat( "(", $f/CourseListing/text(), ")" ) 
+      else "" },
+
+      {concat( if ($f[ContactHrs]) 
+              then concat( "(", $f/ContactHrs/text(), "-", 
+                           $f/ContactLabHrs/text(), ") " ) 
+              else "",
+                  
+              if ($f[CreditHrs]) 
+              then concat( "Cr. ", $f/CreditHrs/text(), ". " ) 
+              else "",
+              concat ( (if ($f/SemOffrd[F]) then "F." else ""), 
+                       (if ($f/SemOffrd[S]) then "S." else ""), 
+                       (if ($f/SemOffrd[SS]) then "SS." else "") ) ),
+              <em> { if ($f[Prereq]) 
+                   then concat( "Prereq:", $f/Prereq/text(), "." ) 
+                   else "" 
+              } </em>,
+              concat( $f/CourseBody/text(), ".", 
+                      (if ($f[NMGradCredit]) 
+                       then concat( $f/NMGradCredit/text(), "." )
+                       else "") )
+     }
+   </p>
+   } 
+</p>
+} </a>
+</root>; 
+
+// 2. Query the catalog as a database. List courses offered in Fall semester; 
+//     I do not know why the tag <A> is not displayed in the output - I found it difficult to replicate in other queries; 
+//    <br> </br> creates a line break - I found it difficult to replicate in other queries; 
+
+$Saxon:> 
+for $e in doc("ComS363/Demos/Datasets/ISU_Course_CatalogDB.xml")//CList 
+where $e/SemOffrd[F] 
+return 
+<A>
+{
+   $e/CourseInitial/text(), 
+   " ", 
+   $e/CourseNumber/text(), 
+   ". ", 
+   $e/CourseName/text(), 
+   ". ", 
+   <br> </br>} 
+</A>; 
+
+
+
+
+

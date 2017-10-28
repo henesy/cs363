@@ -1,0 +1,121 @@
+<basefont face=arial size=3>
+  <html>
+      <h1>
+        Computer Science
+      </h1>
+      <b>
+        http://www.cs.iastate.edu<br>
+      </b>
+      <b>
+        Carl K. Chang, Chair of Department
+      </b>
+      <p>
+        <b>Professors:</b> Bergman, C. Chang<br>
+        <b>Associate Professors:</b>Aluru, Chaudhuri, Gadia, Huang<br>
+        <b>Associate Professors (Adjunct):</b>Kendall<br>
+      </p>
+      <h3>
+        Undergraduate Study
+      </h3>
+      The curriculum in Liberal Arts and Sciences leading to a bachelor of science degree with a major in computer science is designed to prepare students for positions as computer scientists with business, industry, or government, or for graduate study in computer science.
+      <h3>
+        Graduate Study
+      </h3>
+      The department offers work for the degrees master of science and doctor of philosophy with a major in Computer Science. The doctor of philosophy may also be earned with computer science as a co-major with some other discipline. Additionally, the department offers minor work to students majoring in other departments.
+    </p>
+    <p>
+      <h4>
+        Courses Primarily for Undergraduate Students
+      </h4>
+      <p>
+        <b>
+          Com S 311. Design and Analysis of Algorithms. 
+        </b>
+
+        (3-1) Cr. 3. F.S.
+        <em>
+          Prereq:228, Math 166, Engl 104, and either 330 or Cpr E 310.
+        </em>
+        Basic techniques for design and analysis of efficient algorithms. Credit may not be applied toward graduation for both 311 and 381.Nonmajor graduate credit.
+      </p>
+      <p>
+        <b>
+          Com S 425. High Performance Computing for Scientific and Engineering Applications. 
+        </b>
+        (Same as Cpr E 425)
+        (3-3) Cr. 3. F.S.SS.
+        <em>
+          Prereq: 311, 330, Engl 105.
+        </em>
+        Introduction to high performance computing.Nonmajor graduate credit.
+      </p>
+      <p>
+        <b>
+          Com S 461. Database Systems Concepts and Internals. 
+        </b>
+
+        (3-3) Cr. 3. F.SS.
+        <em>
+          Prereq:311, Engl 105.
+        </em>
+        Data models.Nonmajor graduate credit.
+      </p>
+      <p>
+        <b>
+          Com S 471. Computational Linear Algebra and Fixed Point Iteration. 
+        </b>
+        (Same as Math 471)
+
+        <em>
+
+        </em>
+        See Mathematics.Nonmajor Graduate Credit.
+      </p>
+    </p>
+    <p>
+      <h4>
+        Courses Primarily for Graduate Students, Open to Qualified Undergraduate Students
+      </h4>
+      <p>
+        <b>
+          Com S 511. Design and Analysis of Algorithms. 
+        </b>
+        (Same as Cpr E 511.)
+        (3-0) Cr. 3. F.
+        <em>
+          Prereq:311.
+        </em>
+        A study of basic algorithm design and analysis techniques. NP-completeness and approximation algorithms..
+      </p>
+      <p>
+        <b>
+          Com S 540. Principles and Practice of Compiling. 
+        </b>
+        (Dual-listed with 440, same as Cpr E 540.)
+        (3-1) Cr. 3. S.
+        <em>
+          Prereq:331, 342, Engl 105, Sp Cm 212.
+        </em>
+        Theory of compiling and implementation issues of programming languages. Programming projects leading to the construction of a compiler. Written reports.
+      </p>
+    </p>
+    <p>
+      <h4>
+        Courses for Graduate Students
+      </h4>
+      <p>
+        <b>
+          Com S 611. Advanced Topics in Analysis of Algorithms. 
+        </b>
+
+        (3-0) Cr. 3. S.
+        <em>
+          Prereq:511, 531.
+        </em>
+        Advanced algorithm analysis and design techniques. Graph algorithms, algebraic algorithms, NP-completeness, probabilistic and parallel algorithms, intractable problems.
+      </p>
+    </p>
+  </html>
+<!-- end of document -->
+
+<A name=1></a>

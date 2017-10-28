@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSpy v2013 sp1 (x64) (http://www.altova.com) by SKG (Iowa State University) -->
+<!-- edited with XMLSPY v5 rel. 3 U (http://www.xmlspy.com) by Shashi K Gadia (Iowa State University, Computer Science) -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:element name="PersonnelDB">
+		<xs:annotation>
+			<xs:documentation>Personnel Object-Oriented Scheme</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="Person" type="PersonType" minOccurs="0" maxOccurs="unbounded"/>
+				<xs:element name="Emp" type="EmpType" minOccurs="0" maxOccurs="unbounded"/>
+				<xs:element name="Dept" type="DeptType" minOccurs="0" maxOccurs="unbounded"/>
+				<xs:element name="Manager" type="ManagerType" minOccurs="0" maxOccurs="unbounded"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:complexType name="PersonScalarType">
+		<xs:sequence>
+			<xs:element name="Name" type="xs:string"/>
+			<xs:element name="DOB" type="xs:date"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="PersonType">
+		<xs:complexContent>
+			<xs:extension base="PersonScalarType">
+				<xs:attribute name="PersonID" type="xs:ID" use="required"/>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="EmpScalarType">
+		<xs:complexContent>
+			<xs:extension base="PersonScalarType">
+				<xs:sequence>
+					<xs:element name="Salary" type="xs:int"/>
+					<xs:element name="WorksIn">
+						<xs:complexType>
+							<xs:attribute name="oType" type="xs:string" use="required" fixed="DeptType"/>
+							<xs:attribute name="oID" type="xs:IDREFS" use="required"/>
+						</xs:complexType>
+					</xs:element>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="EmpType">
+		<xs:complexContent>
+			<xs:extension base="PersonScalarType">
+				<xs:sequence>
+					<xs:element name="Salary" type="xs:int"/>
+					<xs:element name="WorksIn">
+						<xs:complexType>
+							<xs:attribute name="oType" type="xs:string" use="required" fixed="DeptType"/>
+							<xs:attribute name="oID" type="xs:IDREFS" use="required"/>
+						</xs:complexType>
+					</xs:element>
+				</xs:sequence>
+				<xs:attribute name="EmpID" type="xs:ID" use="required"/>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="DeptType">
+		<xs:sequence>
+			<xs:element name="DName" type="xs:string"/>
+			<xs:element name="ManagedBy">
+				<xs:complexType>
+					<xs:attribute name="oType" type="xs:string" use="required" fixed="ManagerType"/>
+					<xs:attribute name="oID" type="xs:IDREF" use="required"/>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+		<xs:attribute name="DeptID" type="xs:ID" use="required"/>
+	</xs:complexType>
+	<xs:complexType name="ManagerScalarType">
+		<xs:complexContent>
+			<xs:extension base="EmpScalarType">
+				<xs:sequence>
+					<xs:element name="Budget" type="xs:decimal"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="ManagerType">
+		<xs:complexContent>
+			<xs:extension base="ManagerScalarType">
+				<xs:attribute name="ManagerID" type="xs:ID" use="required"/>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+</xs:schema>

@@ -1,0 +1,1648 @@
+\section{Tree class}
+
+	The Tree class implements a canvas containing a syntactic tree
+	consisting of Node and AVM objects. The Tree class has a link to
+	the root node, and maintains a list of selected nodes and a
+	selected path. The class defines methods for manipulating the tree
+	and the AVMs, which take the selected node and path as arguments. 
+	Tree and AVM manipulating methods that only apply on one node (the
+	first) will deselect the other nodes on the list. The methods may
+	change the selected node(s).
+
+<<Tree.java>>=
+<<License>>
+
+package visumtree;
+
+import java.awt.*;
+import java.awt.event.*;
+import java.util.*;
+import javax.swing.*;
+
+public class Tree extends JPanel implements Cloneable {
+	<<Tree variables>>
+	<<Tree constructors>>
+	<<Tree events>>
+	<<Tree selection manipulation>>
+	<<Tree node manipulation>>
+	<<Tree avm manipulation>>
+	<<Tree option manipulation>>
+	<<Tree layout and drawing>>
+	<<Tree.TreeMouseAdapter class>>
+	<<Tree.TreeMouseMotionAdapter class>>
+}
+@ %def Tree
+
+\subsection{Variables}
+
+
+<<Tree variables>>=
+// Tree and option variables
+Node root;							// Root node of tree.
+TreeInfo info;						// Global tree options
+
+// Selection variables
+transient Vector selectedNodes;		// Selected nodes 
+transient String selectedPath;		// Selected path of 0th selected.
+
+// Tree listeners
+transient TreeListener[] listeners;	// Registered Tree listeners
+transient boolean fireEvents;		// Fire tree events?
+
+// Layout variables 
+transient Dimension treeSize;		// Actual tree size
+transient Dimension minimumSize;	// Minimum canvas size
+transient int xref, yref; 			// Reference point coordinates
+@ 
+
+\subsection{Constructors}
+
+<<Tree constructors>>=
+public Tree() {
+	// Start super constructor
+	super();
+
+	// Add mouse listeners
+	addMouseListener(new TreeMouseAdapter());
+	addMouseMotionListener(new TreeMouseMotionAdapter());
+
+	// Initialize
+	init();
+}
+<<Tree.init>>
+<<Tree.resetNodes>>
+<<Tree.resetInfo>>
+<<Tree.clone>>
+<<Tree.info>>
+<<Tree.setInfo>>
+<<Tree.setRoot>>
+@ 
+
+	\header{init()} resets the tree to its initial state. 
+	This creates a new empty root node, resets the font to the standard
+	font, resets the tree size, and clears all global options. 
+
+<<Tree.init>>=
+public void init() {
+	// Initialize tree and options
+	root = new Node();
+	info = new TreeInfo();
+
+	// Initialize selection variables
+	selectedNodes = new Vector();
+	selectedPath = null;
+
+	// Initialize tree listeners
+	listeners = new TreeListener[0];
+	fireEvents = true;
+
+	// Initialize layout variables
+	minimumSize = new Dimension(600,400);
+	treeSize = new Dimension(600,400);
+	setOpaque(false);
+}
+@ %def init
+
+	\header{resetNodes()} inserts a new blank root node in the tree and
+	deselects all selected nodes.
+
+<<Tree.resetNodes>>=
+public void resetNodes() {
+	deselectAll(false);
+	root = new Node();
+}
+@ %def resetNodes
+
+	\header{resetInfo()} inserts a new blank TreeInfo object in Tree.
+
+<<Tree.resetInfo>>=
+public void resetInfo() {
+	info = new TreeInfo();
+}
+@ %def resetInfo
+
+	\header{Object clone()} returns a clone of this Tree. 
+
+<<Tree.clone>>=
+public Object clone() {
+	Tree clone;
+	
+	try { 
+		clone = (Tree) super.clone();
+
+		// Clone root and info
+		clone.root = (Node) root.clone();
+		clone.info = (TreeInfo) info.clone();
+
+		// Clone selectedNodes and listeners
+		clone.selectedNodes = new Vector();
+		clone.listeners = null;
+
+		// Clone treeSize and minimumSize
+		clone.treeSize = new Dimension(treeSize);
+		clone.minimumSize = new Dimension(minimumSize);
+	} catch (CloneNotSupportedException cnse) {
+        System.err.println(cnse); 
+        return null;
+    }
+ 
+	// Return clone
+	return clone;
+}
+@ %def clone
+
+	\header{TreeInfo info()} returns the global options from TreeInfo. 
+
+<<Tree.info>>=
+public TreeInfo info() {
+	return info;
+}
+@ %def info
+
+	\header{setInfo(TreeInfo info)} sets the TreeInfo­object with
+	global options to \code{info}, if non-null.
+
+<<Tree.setInfo>>=
+public void setInfo(TreeInfo info) {
+	if (info != null)
+		this.info = info;
+	deselectAll(false);
+	requestRepaintAll();
+}
+@ %def setInfo
+
+	\header{setRoot(Node root)} sets the root in this tree to
+	\code{root}, if non-null.
+
+<<Tree.setRoot>>=
+public void setRoot(Node root) {
+	if (root != null)
+		this.root = root;
+	deselectAll(false);
+	requestRepaintAll();
+} 
+@ %def setRoot
+
+\subsection{Event handling}
+
+<<Tree events>>=
+<<Tree.addTreeListener>>
+<<Tree.removeTreeListener>>
+<<Tree.fireTreeEvent>>
+@ 
+
+	\header{addTreeListener(TreeListener listener)} adds a new
+	TreeListener which should be notified each time an event happens
+	in the tree. 
+
+<<Tree.addTreeListener>>=
+public void addTreeListener(TreeListener listener) {
+	// Create new TreeListener list
+	TreeListener[] newlisteners = new TreeListener[listeners.length + 1];
+
+	// Move listeners to new list 
+	for (int i = 0; i < listeners.length; ++i) {
+		if (listener == listeners[i]) 
+			// return; listener is on old list
+			return;
+		else 
+			// add old listener to new list
+			newlisteners[i] = listeners[i];
+	}
+	newlisteners[listeners.length] = listener;
+
+	// Set listeners to new list
+	listeners = newlisteners;
+}
+@ %def addTreeListener
+
+	\header{removeTreeListener(TreeListener listener)} removes
+	\code{listener} from the TreeListener list. 
+
+<<Tree.removeTreeListener>>=
+public void removeTreeListener(TreeListener listener) {
+	// Find instances of listener on listeners list
+	int i, n;
+	for (i = 0, n = 0; i < listeners.length; ++i)
+		if (listeners[i] == listener) 
+			++n;
+
+	// Create new TreeListener list
+	TreeListener[] newlisteners = new TreeListener[listeners.length - n];
+
+	// Move listeners to newlisteners
+	for (i = 0, n = 0; i < listeners.length; ++i) 
+		if (listeners[i] != listener) 
+			newlisteners[n++] = listeners[i];
+
+	// Set listeners to new list
+	listeners = newlisteners;
+}
+@ %def removeTreeListener
+
+
+	\header{fireTreeEvent(TreeEvent e)} informs all tree
+	listeners that TreeEvent \code{e} took place and requests a
+	repaint, unless Tree event notification has been disabled by
+	setting \code{fireEvents} to \code{false}.
+
+<<Tree.fireTreeEvent>>=
+private void fireTreeEvent(TreeEvent e) {
+	if (fireEvents) {
+		// Inform each listener
+		for (int i = 0; i < listeners.length; ++i) 
+			listeners[i].treeActionPerformed(e);
+
+		// Repaint super
+		requestRepaint();
+	}
+}
+@ %def fireTreeEvent
+
+
+\subsection{Selection manipulation} 
+
+<<Tree selection manipulation>>=
+// Selection manipulation (public)
+<<Tree.select>>
+<<Tree.selectAll>>
+<<Tree.addSelect>>
+<<Tree.toggleSelect>>
+<<Tree.deselect>>
+<<Tree.deselectAll>>
+
+// Returning selected nodes
+<<Tree.root>>
+<<Tree.minroot>>
+<<Tree.selected>>
+<<Tree.subnodes>>
+<<Tree.terminals>>
+<<Tree.allTerminals>>
+<<Tree.maximals>>
+
+// Selection manipulation (low level)
+<<Tree.selectedCount>>
+<<Tree.selectedAt>>
+<<Tree.selectedPath>>
+<<Tree.insertOrderedNode>>
+<<Tree.containsSuper>>
+<<Tree.containsDaughters>>
+@ 
+
+	\header{select(Node node, String path, boolean fireEvents)}
+	selects given node and path, removing old selections.
+	\header{select(Node[] nodes, boolean fireEvents)} selects an array
+	of nodes (first node is selected node, but no path selected),
+	removing old selections. Both methods fire a SELECT event if
+	\code{fireEvents} is true. \header{select(Node node, String
+	path)} assumes \code{fireEvents} true.  \header{select(Node[]
+	nodes)} assumes \code{fireEvents} true.
+
+<<Tree.select>>=
+public void select(Node node, String path) {
+	select(node, path, true);
+}
+
+public void select(Node node, String path, boolean fireEvents) {
+	// Deselect old selected nodes (don't fire events), select new
+	deselectAll(false);
+	addSelect(node, path, fireEvents);
+}
+
+public void select(Node[] nodes) {
+	select(nodes, true);
+}
+
+public void select(Node[] nodes, boolean fireEvents) {
+	// Deselect old selected nodes (don't fire events)
+	deselectAll(false);
+	if (nodes == null)
+		return;
+
+	// Select new nodes
+	for (int i = nodes.length - 1; i >= 0; --i) 
+		if (selectedNodes.indexOf(nodes[i]) == -1 && nodes[i] != null
+				&& nodes[i].mother != null) {
+			selectedNodes.insertElementAt(nodes[i], 0);
+			nodes[i].setOption("@@node.:selectNode", Boolean.TRUE);
+		}
+
+	// Fire Tree event
+	fireTreeEvent(new TreeEvent(TreeEvent.SELECT));
+}
+@ %def select
+
+
+	\header{selectAll()} selects all nodes in the tree. 
+
+<<Tree.selectAll>>=
+public void selectAll() {
+	Node[] nodes = new Node[1];
+	nodes[0] = root;
+	select(subnodes(nodes));
+}
+@ %def selectAll
+
+	\header{addSelect(Node node, String path, boolean fireEvents)}
+	selects given node and path, adding them to the selected list. The
+	method fires a SELECT event if \code{fireEvents} is \code{true}.  
+	\header{addSelect(Node node, String path)} assumes
+	\code{fireEvents} true.
+
+<<Tree.addSelect>>=
+public void addSelect(Node node, String path) {
+	addSelect(node, path, true);
+}
+
+public void addSelect(Node node, String path, boolean fireEvents) {
+	// Return if node is null
+	if (node != null && node.mother != null) {
+		// Unmark path in first selected node
+		if (selectedNodes.size() > 0 && selectedPath != null) 
+			selectedAt(0).removeOption(AVM.optionPath(selectedPath) + ".:selectAV");
+			
+		// Insert node as selected node (removing it first, if necessary)
+		selectedNodes.removeElement(node);
+		selectedNodes.insertElementAt(node, 0);
+		selectedPath = path;
+
+		// Mark new selected node
+		node.setOption("@@node.:selectNode", Boolean.TRUE);
+		if (path != "" && path != null)
+			node.setOption(AVM.optionPath(path) + ".:selectAV", Boolean.TRUE);
+	}
+
+	// Fire Tree Event
+	fireTreeEvent(new TreeEvent(TreeEvent.SELECT));
+}
+@ %def addSelect
+
+	\header{toggleSelect(Node node, String path)} toggle add-selects
+	given node and path.  If the node is already selected, it is
+	deselected; otherwise it is add-selected. The method fires a
+	SELECT event. 
+
+<<Tree.toggleSelect>>=
+public void toggleSelect(Node node, String path) {
+	if (selectedNodes.indexOf(node) == -1)
+		addSelect(node, path);
+	else
+		deselect(node);
+}
+@ %def toggleSelect
+
+
+	\header{deselect(Node node)} deselects the given node and marks it
+	as not selected. The method fires a SELECT event.
+	\pheader{deselect(Node node, boolean fireEvents)} only fires a
+	SELECT event if \code{fireEvents} is \code{true}.
+
+<<Tree.deselect>>=
+public void deselect(Node node) {
+	deselect(node, true);
+}
+
+public void deselect(Node node, boolean fireEvents) {
+	// Return if node is null
+	if (node == null)
+		return;
+
+	// Unmark deselected node
+	node.removeOption("@@node.:selectNode");
+	if (selectedNodes.indexOf(node) == 0 && selectedPath != null)
+		node.removeOption(AVM.optionPath(selectedPath) + ".:selectAV");
+
+	// Remove deselected node from selectedNodes
+	selectedNodes.removeElement(node);
+
+	// Fire Tree event
+	fireTreeEvent(new TreeEvent(TreeEvent.SELECT));
+}
+@ %def deselect
+
+	\header{deselectAll()} deselects all selected nodes and paths.
+	Fires a SELECT event. \pheader{deselectAll(boolean fireEvents)}
+	only fires a SELECT event if \code{fireEvents} is set. 
+
+<<Tree.deselectAll>>=
+public void deselectAll() {
+	deselectAll(true);
+}
+
+public void deselectAll(boolean fireEvents) {
+	// Deselect selected nodes
+	for (int i = selectedNodes.size(); i > 0; --i) 
+		deselect(selectedAt(0), false);
+	selectedPath = null;
+
+	// Fire events
+	fireTreeEvent(new TreeEvent(TreeEvent.SELECT));
+}
+@ %def deselectAll
+
+
+\subsubsection*{Returning selected nodes}
+
+	\header{Node root()} returns the root node of the tree. 
+
+<<Tree.root>>=
+public Node root() {
+	return root;
+}
+@ %def root
+
+	\header{Node minroot(Node[] nodes)} returns the minimal root for
+	the given set of nodes. A node is a \emph{root} of a set of nodes
+	if it contains all the nodes in its subtree. A node is a
+	\emph{minimal root} of a set of nodes if the node itself but none
+	of its daughters is a root for that set. The algorithm ignores
+	nodes that are not in the tree. 
+
+<<Tree.minroot>>=
+Node minroot() {
+	return minroot(selected());
+}
+
+Node minroot(Node[] nodes) {
+	// The root node is the maximal root, so is a root of minroot
+	Node minroot = root, subroot;
+
+	// Descend the tree until no subnode of node is a root
+	boolean nosubroots;
+	do {
+		// A daughter is a candidate as subroot if it contains one of
+		// the nodes; two candidates means no subroots; start with
+		// no subroot. 
+		subroot = null;
+		nosubroots = false;
+
+		// Find subroot candidates among daughters
+		for (int i = 0; i < minroot.daughters.size() && (!nosubroots); ++i) {
+			// Check whether daughter(i) is a candidate
+			Node daughter = minroot.daughterAt(i);
+
+			// Daughter is candidate if supernode of any of nodes
+			for (int j = 0; j < nodes.length && (!nosubroots); ++j) {
+				// Test that nodes[j] has daughter as root
+				if (nodes[j] != null && nodes[j].supernode(daughter)) {
+					// Daughter is a candidate as subroot
+					if (subroot == null || subroot == daughter) 
+						// Only one candidate as subroot
+						subroot = daughter;
+					else 
+						// Two candidates as subroot, so no subroot
+						nosubroots = true;
+				} else if (subroot == daughter) 
+					// Daughter is both a candidate and not a candidate
+					// so no daughter can be a subroot.
+					nosubroots = true;
+			}
+		}
+
+		// Replace minroot with new subroot
+		if (subroot != null && !nosubroots) {
+			minroot = subroot;
+			nosubroots = false;
+		} else 
+			nosubroots = true;
+	} while (!nosubroots);
+
+	// Now minroot contains the minimal subroot
+	return minroot;
+}
+@ %def minroot
+
+
+	\header{Node[] selected} returns an array containing all
+	selected nodes. 
+
+<<Tree.selected>>=
+public Node[] selected() {
+	Node[] result = new Node[selectedNodes.size()];
+	for (int i = 0; i < selectedNodes.size(); ++i) 
+		result[i] = selectedAt(i);
+	return result;
+}
+@ %def selected
+
+	\header{Node[] subnodes(Node[] nodes)} returns all nodes contained
+	in the subtrees given by \code{nodes}. \header{Node[] subnodes()}
+	returns all nodes contained in the subtrees of selected nodes. 
+
+<<Tree.subnodes>>=
+public Node[] subnodes() {
+	return subnodes(selected());
+}
+
+public Node[] subnodes(Node[] roots) {
+	// Create new vector to hold subnodes
+	Vector subs = new Vector();
+	Node[] subtree;
+
+	// Run through nodes, selecting subtrees
+	for (int i = 0; i < roots.length; ++i) {
+		subtree = roots[i].subnodes();
+		for (int j = 0; j < subtree.length; ++j)
+			insertOrderedNode(subs, subtree[j]);
+	}
+	
+	// Create new array
+	Node[] subnodes = new Node[subs.size()];
+	subs.copyInto(subnodes);
+
+	// Return subnodes
+	return subnodes;
+}
+@ %def subnodes
+
+
+	\header{Node[] terminals(Node[] roots)} returns an array
+	containing all terminals of the given array of nodes, in tree
+	order. \header{Node[] terminals()} returns an array containing all
+	terminals of selected nodes in tree order.
+
+<<Tree.terminals>>=
+public Node[] terminals() {
+	Node[] roots = new Node[selectedNodes.size()];
+	for (int i = 0; i < selectedNodes.size(); ++i)
+		roots[i] = (Node) selectedNodes.elementAt(i);
+	return terminals(roots);
+}
+
+public Node[] terminals(Node[] roots) {
+	Vector nodes = new Vector();
+
+	// Transfer roots to nodes vector in order
+	for (int i = 0; i < roots.length; ++i) 
+		insertOrderedNode(nodes, roots[i]);
+
+	// Replace nodes with daughters until only terminals left
+	for (int i = 0; i < nodes.size(); ++i) {
+		// Process daughters in ith node
+		Node node = (Node) nodes.elementAt(i);
+		int daughterSize = node.daughters.size();
+
+		if (daughterSize != 0) {
+			// node is not terminal; replace with its daughters
+			nodes.removeElementAt(i);
+			for (int j = 0; j < daughterSize; ++j) 
+				insertOrderedNode(nodes, node.daughterAt(j));
+			
+			// Go trhough list once more
+			i = -1;
+		}
+	}
+		
+	// Create and initialize new array of terminals
+	Node[] terminals = new Node[nodes.size()];
+	nodes.copyInto(terminals);
+
+	return terminals;
+}
+@ %def terminals
+
+	\header{Node[] allTerminals()} returns an array containing all
+	terminals in the tree, in tree order. 
+
+<<Tree.allTerminals>>=
+public Node[] allTerminals() {
+	Node[] roots = new Node[1];
+	roots[0] = root;
+	return terminals(roots);
+}
+@ %def allTerminals
+
+
+	\header{Node[] maximals(Node[] nodes)} returns the maximal roots
+	of the set of specified nodes. The maximal roots are defined as
+	follows. Let $M$ be the set of nodes in \code{nodes}, and remove
+	all nodes in $M$ that have a super node in $M$.  2) if $M$
+	contains all the daughters of a mother node (different from the
+	tree's root node), the mother node is inserted in $M$ (and the
+	daughters removed by (1)). Eventually, no transformation applies,
+	and the resulting $M$ is the set of maximal roots.  \header{Node[]
+	maximals()} returns the maximal roots of the set of selected
+	nodes. 
+	
+<<Tree.maximals>>=
+public Node[] maximals() {
+	Node[] nodes = selected();
+	return maximals(nodes);
+}
+
+public Node[] maximals(Node[] nodes) {
+	Vector M = new Vector();
+
+	// Let M consist of all nodes in nodes
+	for (int i = 0; i < nodes.length; ++i) 
+		insertOrderedNode(M, nodes[i]);
+	
+	// Remove all nodes which have a super node in M
+	for (int i = 0; i < M.size(); ++i) 
+		if (containsSuper(M, (Node) M.elementAt(i)))
+			M.removeElementAt(i--);
+	
+	// Mothers all of whose daughters are in M replace daughters
+	for (int i = 0; i < M.size(); ++i) {
+		Node node = (Node) M.elementAt(i);
+		Node mother = node.mother;
+
+		// Only look at first daughters of mother
+		if (mother.daughters.indexOf(node) == 0 && mother.mother != null 
+				&& containsDaughters(M, mother)) {
+			// All daughters of mother are in M: insert mother in M
+			insertOrderedNode(M, mother);
+			
+			// Remove daughters of mother
+			for (int j = 0; j < mother.daughters.size(); ++j)
+				M.removeElement(mother.daughterAt(j));
+
+			// Go through list once more
+			i = -1;
+		}
+	}
+
+	// Create list of maximals
+	Node[] maximals = new Node[M.size()];
+	for (int i = 0; i < M.size(); ++i) 
+		maximals[i] = (Node) M.elementAt(i);
+	
+	// Return maximals
+	return maximals;
+}
+@ %def maximals
+
+\subsubsection*{Selection (low level)}
+
+	\header{int selectedCount()} returns the number of selected nodes. 
+
+<<Tree.selectedCount>>=
+public int selectedCount() {
+	return selectedNodes.size();
+}
+@ %def selectedCount
+
+	\header{Node selectedAt(int i)} returns the $i$th selected node;
+	\code{null} if there is none. 
+
+<<Tree.selectedAt>>=
+public Node selectedAt(int i) {
+	return (i < 0 || i >= selectedNodes.size()) 
+		? null
+		: (Node) selectedNodes.elementAt(i);
+}
+@ %def selectedAt
+
+	\header{String selectedPath} returns the selected path (in the
+	first selected AVM); the empty string if there is no selected
+	path. 
+
+<<Tree.selectedPath>>=
+public String selectedPath() {
+	return selectedPath;
+}
+@ %def selectedPath
+
+
+
+	\pheader{insertOrderedNode(Vector nodes, Node node)} inserts the
+	node \code{node} in the node vector \code{nodes}, at the position
+	specified by its \code{order} field. Has no effect if \code{node}
+	is already an element of \code{nodes}.
+
+<<Tree.insertOrderedNode>>=
+private void insertOrderedNode(Vector nodes, Node node) {
+	// Return if node already in nodes
+	if (nodes.indexOf(node) == -1) {
+		// Find index to insert node
+		int index;
+		for (index = 0; index < nodes.size() && node.number
+			< ((Node) nodes.elementAt(index)).number; ++index);
+		
+		// Insert node
+		nodes.insertElementAt(node, index);
+	}
+}
+@ %def insertOrderedNode
+
+	\pheader{boolean containsSuper(Vector M, Node node)} returns
+	\code{true} if M contains any super node of \code{node};
+	\code{false} otherwise.  
+
+<<Tree.containsSuper>>=
+boolean containsSuper(Vector M, Node node) {
+	if (node.mother == null)
+		// node is the root node
+		return false; 
+	else if (M.contains(node.mother))
+		// M contains the mother of node
+		return true;
+	else 
+		// Mother of node knows the answer
+		return containsSuper(M, node.mother);
+}
+@ %def containsSuper
+
+	\pheader{boolean containsDaughters(Vector M, Node mother)} returns
+	\code{true} if all daughters of \code{mother} are contained in
+	$M$, and \code{false} otherwise. 
+
+<<Tree.containsDaughters>>=
+boolean containsDaughters(Vector M, Node mother) {
+	boolean containsAll = true;
+
+	// Check that M contains each daughter of mother
+	for(int i = 0; i < mother.daughters.size() && containsAll; ++i)
+		containsAll = M.contains(mother.daughterAt(i));
+
+	// Return result
+	return containsAll;
+}
+@ %def containsDaughters
+
+
+\subsection{Node manipulation}
+
+<<Tree node manipulation>>=
+// Manipulating nodes
+<<Tree.moveToMother>>
+<<Tree.reorder>>
+<<Tree.remove>>
+<<Tree.newDaughterAt>>
+<<Tree.newDaughter>>
+<<Tree.newMother>>
+<<Tree.abbreviate>>
+<<Tree.bonsai>>
+@ 
+
+	\header{boolean moveToMother(Node mother, boolean subtrees, boolean
+	fireEvents)} moves the selected nodes to the specified mother
+	(with subtrees if \code{subtrees} is \code{true}, without subtrees
+	(as if the moved node was removed first) if \code{subtrees} is
+	\code{false}). If a node cannot be moved with its subtree, an
+	attempt will be made to move the node alone. The selected nodes
+	are inserted in their new mother according to their previous tree
+	order. Each selected node is moved separately, starting with the
+	nodes that are closest to the new mother in the tree order. Each
+	of these single move operations fails if \code{PERMreceive} in the
+	new mother or \code{PERMmove} in the moved node are false, if the
+	moved node is the root node or already a daughter of the new
+	mother, if the moved node is moved with its subtree and the moved
+	node is a super node of the new mother, or if the resulting tree
+	does not satisfy the \code{PERMreorder} and \code{PERMterminal}
+	permissions. The method will move as many of the selected nodes it
+	can, and returns \code{true} if all single move operations were
+	successful, and \code{false} otherwise. The operation fires a MOVE
+	event if \code{fireEvents} is \code{true}. \header{Node
+	moveToMother(Node mother, boolean subtrees)} is equivalent to
+	\code{moveToMother} with \code{fireEvents} set to \code{true}.
+
+<<Tree.moveToMother>>=
+public boolean moveToMother(Node mother, boolean subtrees) {
+	return moveToMother(mother, subtrees, true);
+}
+
+public boolean moveToMother(Node mother, boolean subtrees, boolean fireEvents) {
+	// Return if no selected nodes or mother is null
+	if (selectedNodes.size() == 0 || mother == null) 
+		return false;
+
+	// Unmark selected path
+	if (selectedPath != null)
+		selectedAt(0).removeOption(AVM.optionPath(selectedPath) + ".:selectAV");
+
+	// Move selected nodes
+	boolean success = mother.moveToMother(selected(), subtrees);
+
+	// Select mother
+	select(mother, null, false);
+
+	// Fire Tree event
+	fireTreeEvent(new TreeEvent(TreeEvent.MOVE, success));
+
+	return success;
+} 
+
+public boolean moveToMother(Node[] nodes, Node mother, boolean subtrees, 
+		boolean fireEvents) {
+	// Return if no nodes or mother is null
+	if (nodes.length == 0 || mother == null) 
+		return false;
+
+	// Move selected nodes
+	boolean success = mother.moveToMother(nodes, subtrees);
+
+	// Fire Tree event
+	fireTreeEvent(new TreeEvent(TreeEvent.MOVE, success));
+
+	return success;
+}
+@ %def moveToMother
+
+
+	\header{boolean reorder(Node daughter, int x, int y)} reorders the
+	daughters in a local tree by moving \code{daughter} to the
+	position corresponding to the coordinate (x,y). The operation is
+	illegal if $(x,y)$ is above the mother's bottom handle, or if the
+	resulting tree does not satisfy the \code{PERMreorder} permission.
+	Returns \code{true} if the operation is legal, \code{false}
+	if it is illegal.
+
+<<Tree.reorder>>=
+public boolean reorder(Node daughter, int x, int y) {
+	// Find new and old index
+	int oldindex = daughter.indexInMother();
+	int newindex = daughter.mother.indexAtXY(x, y);
+	if (newindex > oldindex)
+		--newindex;
+
+	// Return if no new index found
+	if (newindex == -1)
+		return false;
+
+	// Insert node at new index and remove at old
+	boolean success = daughter.mother.reorder(oldindex, newindex);
+
+	// Fire tree event
+	fireTreeEvent(new TreeEvent(TreeEvent.REORDER, success));
+
+	// Return result
+	return success;
+}
+@ %def reorder
+
+	\header{boolean remove()} removes the first selected node from the
+	tree, moving its daughters up to its mother at the place where it
+	was removed. The operation is illegal if \code{PERMremove} is
+	\code{false}, if the selected node is the root node, or if the new
+	tree violates the \code{PERMterminal} permission. Returns
+	\code{true} if the operation is legal, \code{false} if it is
+	illegal.
+
+<<Tree.remove>>=
+public boolean remove() {
+	// Return if no selected nodes
+	if (selectedNodes.size() == 0)
+		return false;
+
+	// Deselect and remove first selected node, select mother
+	Node node = selectedAt(0);
+	deselect(node, false);
+	boolean success = node.remove();
+
+	// Fire event and select result if successful
+	fireTreeEvent(new TreeEvent(TreeEvent.REMOVE, success));
+
+	// Return result
+	return success;
+}
+@ %def remove
+
+
+	\header{boolean newDaughterAt(Node node, int index)} inserts
+	\code{node} as daughter at position \code{index} in the first
+	selected node. The operation is illegal if \code{PERMndaughter} is
+	\code{false}, or if \code{index} is negative or greater than the
+	number of daughters in the first selected node. To avoid loops,
+	\code{node} is removed from its old mother, if it is non-null, and
+	is stripped of all its daughters. Returns \code{true} if the
+	operation is legal, \code{false} otherwise. 
+	
+<<Tree.newDaughterAt>>=
+public boolean newDaughterAt(Node node, int index) {
+	// Return if no selected nodes
+	if (selectedNodes.size() == 0)
+		return false;
+	
+	// Insert new daughter
+	boolean success = selectedAt(0).newDaughterAt(node, index);
+
+	// Fire Tree event if successful
+	fireTreeEvent(new TreeEvent(TreeEvent.NEWDAUGHTER, success));
+
+	// Return result
+	return success;
+}
+@ %def newDaughterAt
+
+	\header{boolean newDaughter(Node node)} inserts \code{node} as the
+	last daughter in this node. In all other respects, it is like the
+	\code{newDaughterAt} method. 
+
+<<Tree.newDaughter>>=
+public boolean newDaughter(Node node) {
+	if (selectedNodes.size() == 0)
+		return false;
+	else
+		return newDaughterAt(node, selectedAt(0).daughters.size());
+}
+@ %def newDaughter
+
+	\header{boolean newMother(Node node, boolean subtrees)} inserts
+	\code{node} as the new mother between the first selected node and
+	its old mother; if successful, it then deselects the first
+	selected node and calls \code{moveToMother} to move all other
+	selected nodes to the new mother (with subtrees if \code{subtrees}
+	is \code{true}, as if removed before moved if \code{subtrees} is
+	\code{false}). The operation is illegal if the first selected node
+	is the root node, or if \code{PERMnmother} is \code{false}. The
+	move is successful if \code{moveToMother} is successful. Returns
+	\code{true} if successful, \code{false} if unsuccessful. The new
+	mother is selected.
+
+<<Tree.newMother>>=
+public boolean newMother(Node mother) {
+	return newMother(mother, true);
+}
+
+public boolean newMother(Node mother, boolean subtrees) {
+	// Return null if no selected nodes
+	if (selectedNodes.size() == 0) 
+		return false;
+
+	// Add new mother to first selected node, return null if unsuccessful
+	if (! selectedAt(0).newMother(mother))
+		return false;
+
+	// Deselect first selected node, move selected to new mother
+	deselect(selectedAt(0), false);
+	boolean success = (selectedNodes.size() == 0) 
+		? true : moveToMother(mother, subtrees, false);
+
+	// Select mother if successful, fire Tree event
+	if (success) 
+		select(mother, null, false);
+	fireTreeEvent(new TreeEvent(TreeEvent.NEWMOTHER, success));
+
+	// Return result
+	return success;
+}
+@ %def newMother
+
+	\header{boolean abbreviate(boolean status)} sets the abbreviation
+	status of the selected nodes to \code{status}. The operation is
+	illegal if \code{PERMabbreviate} in each node is \code{false}.
+	Returns \code{true} if the operation is successful, \code{false}
+	otherwise.  Fires a LAYOUT event. \header{boolean abbreviate()}
+	toggles the abbreviation status. 
+
+<<Tree.abbreviate>>=
+public boolean abbreviate() {
+	boolean success = true;
+
+	// Set abbreviation for each node
+	for (int i = 0; i < selectedNodes.size(); ++i)
+		success &= selectedAt(i).abbreviate();
+
+	// Fire LAYOUT event
+	fireTreeEvent(new TreeEvent(TreeEvent.LAYOUT, success));
+
+	// Return result
+	return success;
+}
+
+public boolean abbreviate(boolean status) {
+	boolean success = true;
+
+	// Set abbreviation for each node
+	for (int i = 0; i < selectedNodes.size(); ++i)
+		success &= selectedAt(i).abbreviate(status);
+
+	// Fire LAYOUT event
+	fireTreeEvent(new TreeEvent(TreeEvent.LAYOUT, success));
+
+	// Return result
+	return success;
+}
+@ %def abbreviate
+
+	\header{boolean bonsai(boolean status)} sets the bonsai
+	status of the selected nodes to \code{status}. The operation is
+	illegal if \code{PERMbonsai} in each node is \code{false}.
+	Returns \code{true} if the operation is successful, \code{false}
+	otherwise. Fires a LAYOUT event. \header{boolean bonsai()} toggles
+	the bonsai status. 
+
+<<Tree.bonsai>>=
+public boolean bonsai() {
+	boolean success = true;
+
+	// Set bonsai for each node
+	for (int i = 0; i < selectedNodes.size(); ++i)
+		success &= selectedAt(i).bonsai();
+
+	// Fire LAYOUT event
+	fireTreeEvent(new TreeEvent(TreeEvent.LAYOUT, success));
+
+	// Return result
+	return success;
+}
+
+public boolean bonsai(boolean status) {
+	boolean success = true;
+
+	// Set bonsai for each node
+	for (int i = 0; i < selectedNodes.size(); ++i)
+		success &= selectedAt(i).bonsai(status);
+
+	// Fire LAYOUT event
+	fireTreeEvent(new TreeEvent(TreeEvent.LAYOUT, success));
+
+	// Return result
+	return success;
+}
+@ %def bonsai
+
+\subsection{AVM manipulation}
+
+<<Tree avm manipulation>>=
+<<Tree.setAV>>
+<<Tree.removeAV>>
+<<Tree.getAV>>
+<<Tree.getAVM>>
+@ 
+
+	\header{boolean setAV(String path, Object value)} sets the value of
+	the path \code{path} to \code{value} in the first selected node. If
+	there is more than one selected node, all but the first node are
+	deselected. Returns \code{true} if successful, \code{false} if
+	unsuccessful. Fires a CHANGE event. 
+
+<<Tree.setAV>>=
+public boolean setAV(String path, Object value) {
+	// Return if no selected nodes
+	if (selectedNodes.size() == 0) 
+		return false;
+		
+	// Set AV in first selected node
+	Node node = selectedAt(0);
+	boolean success = node.setAV(path, value);
+	
+	// Select node and fire Tree event
+	select(node, null, false);
+	fireTreeEvent(new TreeEvent(TreeEvent.CHANGE, success));
+
+	// Return
+	return success;
+}
+@ %def setAV
+
+	\header{boolean setAV(String AVpairs)} sets several AV pairs at a
+	time in the first selected node, as specified in \code{AVpairs}
+	which is a string of comma separated path-value assignments (cf.\
+	the general description of the AVM class). Returns \code{true} if
+	the operation was successful, \code{false} otherwise. Fires a
+	CHANGE event. 
+
+<<Tree.setAV>>=
+public boolean setAV(String AVpairs) {
+	// Return if no selected nodes
+	if (selectedNodes.size() == 0) 
+		return false;
+		
+	// Set AV in first selected node
+	Node node = selectedAt(0);
+	boolean success = node.setAV(AVpairs);
+	
+	// Select node and fire Tree event
+	select(node, null, false);
+	fireTreeEvent(new TreeEvent(TreeEvent.CHANGE, success));
+
+	// Return
+	return success;
+}
+@ %def setAV
+
+	\header{boolean removeAV(String path)} deletes the AV pair
+	specified by the path \code{path} in the first selected node.  If
+	there is more than one selected node, all but the first node are
+	deselected.	The call returns \code{true} if there is such a path,
+	and \code{false} if there is no such path or no selected node.
+	Fires a CHANGE event. 
+
+<<Tree.removeAV>>=
+public boolean removeAV(String path) {
+	// Return if no selected nodes
+	if (selectedNodes.size() == 0) 
+		return false;
+		
+	// Set AV in first selected node
+	Node node = selectedAt(0);
+	boolean success = node.removeAV(path);
+	
+	// Select node and fire Tree event
+	select(node, null, false);
+	fireTreeEvent(new TreeEvent(TreeEvent.CHANGE, success));
+
+	// Return
+	return success;
+}
+@ %def removeAV
+
+	\header{Object getAV(String path)} returns the value associated
+	with the path \code{path} in the first selected node.  Returns
+	null if the path does not exist or there is no selected node.
+			   
+<<Tree.getAV>>=
+public Object getAV(String path) {
+	// Return null if no selected node
+	if (selectedNodes.size() == 0) 
+		return null;
+	
+	// Return result of getAV on first selected node
+	return selectedAt(0).getAV(path);
+}
+@ %def getAV
+
+	\header{String[][] getAVM()} returns all attribute-value pairs in
+	the first selected node, as an array of string pairs. The first
+	string in each pair is the attribute, the second is the
+	corresponding value (converted to a string). Returns null if there
+	is no selected node. 
+
+<<Tree.getAVM>>=
+public String[][] getAVM() {
+	// Return null if no selected node
+	if (selectedNodes.size() == 0)
+		return null;
+		
+	// Return getAVM on first selected node
+	return selectedAt(0).getAVM();
+}
+@ %def getAVM
+
+\subsection{Global option manipulation}
+
+<<Tree option manipulation>>=
+<<Tree.setOption>>
+<<Tree.getOption>>
+<<Tree.removeOption>>
+@ 
+
+	\header{boolean setOption(String path, Object value)} sets the global
+	option given by \code{path} to \code{value}. Returns \code{true}
+	if successful, \code{false} otherwise. For example,
+	\begin{quote}
+		\code{setOption("macro.selectNode.nodeFG", Color.yellow)} \\
+		\code{setOption("tree.font", new Font("Helvetica", Font.PLAIN, 10))}
+	\end{quote}
+
+<<Tree.setOption>>=
+public boolean setOption(String path, Object value) {
+	boolean success = info.options.setAV(path, value);
+	fireTreeEvent(new TreeEvent(TreeEvent.LAYOUT));
+	return success;
+}
+@ %def setOption
+
+	\header{boolean removeOption(String path)} removes the global option given
+	by \code{path}. Returns \code{true} if successful, \code{false}
+	otherwise. 
+
+<<Tree.removeOption>>=
+public boolean removeOption(String path) {
+	boolean success = info.options.removeAV(path);
+	fireTreeEvent(new TreeEvent(TreeEvent.LAYOUT));
+	return success;
+}
+@ %def removeOption
+
+	\header{Object getOption(String path)} returns the value of the global
+	option given by \code{path}. 
+
+<<Tree.getOption>>=
+public Object getOption(String path) {
+	return info.options.getAV(path);
+}
+@ %def setOption
+
+
+\subsection{Layout and drawing}
+
+<<Tree layout and drawing>>=
+// Layout and drawing
+<<Tree.paint>>
+<<Tree.layoutTree>>
+<<Tree.positionTree>>
+<<Tree.print>>
+<<Tree.printlayout>>
+
+// Other painting methods
+<<Tree.requestRepaint>>
+<<Tree.requestRepaintAll>>
+<<Tree.getPreferredSize>>
+<<Tree.getMinimumSize>>
+<<Tree.getBBox>>
+<<Tree.drawBBox>>
+@ 
+
+	\header{paint(Graphics g)} draws the tree on the graphics device
+	\code{g}. 
+
+<<Tree.paint>>=
+public void paint(Graphics g) {
+	// Layout tree, calculate origin, post-layout
+	layoutTree(g);
+	positionTree();
+	root.postlayoutNode(xref, yref);
+
+	// Draw background and set foreground color
+	Color oldFG = info.switchColor(g, info.treeBG);
+	if (info.treeBG != null) 
+		g.fillRect(0, 0, treeSize.width, treeSize.height);
+	info.switchColor(g, oldFG);
+	info.switchColor(g, info.treeFG);
+
+	// Calculate postlayout and draw tree
+	root.drawNode(g, info, xref, yref);
+
+	// Restore color
+	info.switchColor(g, oldFG);
+}
+@ %def paint
+
+
+	\header{boolean layoutTree(Graphics g)} calculates the tree layout
+	(including compiling options, calculating layout, etc). Returns
+	\code{true} if the layout changed, \code{false} if the layout was
+	unchanged. 
+
+<<Tree.layoutTree>>=
+public boolean layoutTree(Graphics g) {
+	// Compile TreeInfo options and set font
+	info.compileTreeInfo();
+	info.setFont(g);
+	
+	// Compile tree layout and reset updateAll
+	boolean changed = root.layoutNode(info);
+	info.updateAll = false;
+
+	// Return changed status
+	return changed; 
+}
+@ %def layoutTree
+
+	\header{postlayoutTree(Graphics g, int x, int y)} calculates the
+	post layout of the tree, when the tree is painted with reference
+	point $(x,y)$; that is, it calculates the absolute positions of
+	each node and AVM in the tree, and adjusts the size of the canvas. 
+
+<<Tree.positionTree>>=
+public void positionTree() {
+	// Get viewport's extent size, if possible
+	Component ancestor = getParent();
+	Dimension vrect = (ancestor instanceof JViewport) 
+		? ((JViewport) ancestor).getExtentSize()
+		: null;
+	
+	// New tree size width
+	int newWidth  = root.bbox.width  + 2 * info.treeDW;
+	int newHeight = root.bbox.height + 2 * info.treeDW;
+
+	// Calculate reference point
+	xref = info.treeDW - root.bbox.x 
+		+ (int) (info.treeXR * max(0, vrect.width - newWidth));
+	yref = info.treeDW - root.bbox.y
+		+ (int) (info.treeYR * max(0, vrect.height - newHeight));
+
+	// New tree size width at least extent of view port
+	if (vrect != null) {
+		newWidth  = max(newWidth,  vrect.width);
+		newHeight = max(newHeight, vrect.height);
+	}
+
+	// Adjust canvas size if necessary
+	if (treeSize.width != newWidth || treeSize.height != newHeight) {
+		treeSize.width  = newWidth;
+		treeSize.height = newHeight;
+		
+		setSize(treeSize.width, treeSize.height);
+		if (ancestor != null) {
+			ancestor.invalidate();
+			ancestor.repaint();
+		}
+	}
+}
+
+int max(int a, int b) {
+	return (a > b) ? a : b;
+}
+@ %def positionTree
+
+	\header{print(Graphics g, int x, int y)} prints the tree on
+	printer graphics \code{g}. The tree is positioned so that the
+	upper left corner has coordinate $(x,y)$. The bounding
+	box for the tree resulting from this method can be calculated with
+	\code{printlayout(g, x, y)} followed by \code{getBBox()}. 
+	
+<<Tree.print>>=
+public void print(Graphics g, int x, int y) {
+	// Calculate print layout
+	printlayout(g, x, y);
+
+	// Draw tree
+	Color oldFG = info.switchColor(g, info.treeFG);
+	root.drawNode(g, info, xref, yref);
+	info.switchColor(g, oldFG);
+
+	// Screen layout destroyed, so update all
+	requestRepaintAll();
+}
+@ %def print
+
+	\header{printlayout(Graphics g, int x, int y)} calculates the
+	layout when the upper left corner of the tree is placed at
+	$(x,y)$, but without painting the tree on the graphics. The tree
+	size is proportional to the font's size (or nearly so), since all
+	spacing is defined relative to \code{Font.getFontSize()}. This can
+	be used to scale the tree to any desired size. 
+
+<<Tree.printlayout>>=
+public void printlayout(Graphics g, int x, int y) {
+	// Calculate print layout 
+	info.updateAll = true;
+	layoutTree(g);
+
+	// Position tree so upper left corner at (x,y)
+	xref = x - (root.xrel + root.bbox.x);
+	yref = y - (root.yrel + root.bbox.y);
+	root.postlayoutNode(xref, yref); 
+} 
+@ %def printlayout
+
+\subsubsection*{Other painting methods}
+
+	\header{requestRepaint()} marks the tree component for repainting. 
+
+<<Tree.requestRepaint>>=
+public void requestRepaint() {
+	super.repaint();
+}
+@ %def requestRepaint
+
+	\header{requestRepaintAll()} marks this tree component for
+	complete recalculation of compiled options and layout, and
+	requests a repaint.
+
+<<Tree.requestRepaintAll>>=
+public void requestRepaintAll() {
+	info.updateAll = true;
+	requestRepaint();
+}
+@ %def requestRepaintAll
+
+
+	\header{Dimension getPreferredSize()} returns the preferred size
+	of the canvas. 
+
+<<Tree.getPreferredSize>>=
+public Dimension getPreferredSize() {
+	return new Dimension(treeSize.width, treeSize.height);
+}
+@ %def getPreferredSize
+
+	\header{Dimension getMinimumSize()} returns the minimum size
+	of the canvas. 
+
+<<Tree.getMinimumSize>>=
+public Dimension getMinimumSize() {
+	return new Dimension(minimumSize.width, minimumSize.height);
+}
+@ %def getMinimumSize
+
+	\header{Rectangle getBBox()} returns the bounding box of the
+	tree in the current layout.
+
+<<Tree.getBBox>>=
+public Rectangle getBBox() {
+	return new Rectangle(xref + root.xrel + root.bbox.x, 
+		yref + root.yrel + root.bbox.y, 
+		root.bbox.width,
+		root.bbox.height);
+}
+@ %def getBBox
+
+	\header{drawBBox()} draws the bounding box for the subtree
+	corresponding to the first selected node. 
+	
+<<Tree.drawBBox>>=
+public void drawBBox() {
+	Graphics g = getGraphics();
+	for (int i = 0; i < selectedNodes.size(); ++i) {
+		Node node = selectedAt(0);
+		g.drawRect(node.xabs + node.bbox.x, node.yabs + node.bbox.y,
+			node.bbox.width, node.bbox.height);
+	}
+}
+@ %def drawBBox
+
+\subsection{TreeMouseAdapter class}
+
+<<Tree.TreeMouseAdapter class>>=
+class TreeMouseAdapter extends MouseAdapter {
+	Point downPoint, upPoint;
+	Node downNode, upNode;
+	Cursor cursor;
+
+	<<Tree.TreeMouseAdapter.mousePressed>>
+	<<Tree.TreeMouseAdapter.mouseReleased>>
+	<<Tree.TreeMouseAdapter.mouseClicked>>
+}
+@ %def TreeMouseAdapter
+
+	\header{mousePressed(MouseEvent e)} is called whenever the mouse
+	is pressed. It saves the down point and down node, and sets a
+	MOVE cursor if the mouse was pressed over a node.
+
+<<Tree.TreeMouseAdapter.mousePressed>>=
+public void mousePressed(MouseEvent e) {
+	// Locate down point and corresponding node
+	downPoint = e.getPoint();
+	downNode = root().nodeAtXY(e.getX(), e.getY());
+
+	// Use MOVE cursor if pressed over a node
+	if (downNode != null) {
+		cursor = getCursor();
+		setCursor(Cursor.getPredefinedCursor(Cursor.MOVE_CURSOR));
+	}
+}
+@ %def mousePressed
+
+	\header{mouseReleased(MouseEvent e)} is called whenever the mouse
+	is released. It saves the up point and up node, and sets a
+	MOVE cursor if the mouse was pressed over a node.
+
+
+<<Tree.TreeMouseAdapter.mouseReleased>>=
+public void mouseReleased(MouseEvent e) {
+	// Return if no down-node
+	if (downNode == null)
+		return;
+		
+	// Locate up-point and up-node, and reset cursor
+	upPoint = e.getPoint();
+	upNode = root().nodeAtXY(e.getX(), e.getY());
+	setCursor(cursor);
+
+	// If downNode is not selected, then select it
+	if (downNode != upNode && selectedNodes.indexOf(downNode) == -1) {
+		if (e.isControlDown() || e.isShiftDown() ||
+				 (e.getModifiers() & MouseEvent.BUTTON3_MASK)!=0) 
+			addSelect(downNode, null);
+		else 
+			select(downNode, null);
+	}
+
+	// Handle events
+	if (upNode == null) {
+		// Reorder node
+		reorder(downNode, upPoint.x, upPoint.y);
+	} else if (upNode != downNode && selectedNodes.contains(downNode)) {
+		// Move selected nodes to mother
+		moveToMother(upNode, true, true);
+	}
+}
+@ %def mouseReleased
+
+<<Tree.TreeMouseAdapter.mouseClicked>>=
+public void mouseClicked(MouseEvent e) {
+	// Find clicked node and number of clicks
+	upNode = root().nodeAtXY(e.getX(), e.getY());
+	int clicks = e.getClickCount();
+
+	// Deslect all and return if no clicked node
+	if (upNode == null) {
+		deselectAll();
+		return;
+	}
+		
+	// Selected path
+	String spath = upNode.avm.pathAtXY(info, e.getX(), e.getY());
+
+	if (clicks == 1) {
+		// Single click: select nodes
+		if (e.isControlDown() || e.isShiftDown() ||
+				 (e.getModifiers() & MouseEvent.BUTTON3_MASK)!=0) {
+			// Node add-selected
+			toggleSelect(upNode, spath);
+		} else {
+			// Node selected
+			select(upNode, spath);
+		}
+	} else if (clicks == 2) {
+		// Double click: toggle abbreviation
+		addSelect(upNode, spath, false);
+		abbreviate();
+	}
+}
+@ %def mouseClicked
+
+
+\subsection{TreeMouseMotionAdapter class}
+
+<<Tree.TreeMouseMotionAdapter class>>=
+class TreeMouseMotionAdapter extends MouseMotionAdapter {
+	<<Tree.TreeMouseMotionAdapter.mouseMoved>>
+}
+@ %def TreeMouseMotionAdapter
+
+<<Tree.TreeMouseMotionAdapter.mouseMoved>>=
+public void mouseMoved(MouseEvent e) {
+	// Default is no tooltip text
+	setToolTipText(null);
+
+	// Return if !PERMtooltip
+	if (! info.PERMtooltip) 
+		return;
+		
+	// Find node corresponding to mouse position; return if null
+	Node node = root().nodeAtXY(e.getX(), e.getY());
+	if (node == null)
+		return;
+
+	// Find path corresponding to mouse position; return if null
+	String path = node.avm.pathAtXY(info, e.getX(), e.getY());
+	if (path == "" || path == null) 
+		return; 
+
+	// Find tooltip corresponding to path and set if string
+	Value value = node.avm.getValue(path);
+	if (value != null) 
+		setToolTipText(value.tooltipString);
+}
+@ %def mouseMoved
+
+\subsection{Deprecated}
+
+<<Tree.selected>>=
+public Node[] getSelectedNodes() {
+	return selected();
+}
+public Node[] selectedNodes() {
+	return selected();
+}
+@ %def getSelectedNodes
+
+<<Tree.terminals>>=
+public Node[] getTerminalNodes(Node[] nodes) {
+	return terminals(nodes);
+}
+@ %def getTerminalNodes
+
+<<Tree.maximals>>=
+public Node[] maxRoots(Node[] nodes) {
+	return maximals(nodes);
+}
+@ %def maxRoots
+
+<<Tree.newDaughter>>=
+public Node addDaughter(String AVMstring, int index) {
+	Node node = new Node(AVMstring);
+	if (index >= 0) 
+		newDaughterAt(node, index);
+	else
+		newDaughter(node);
+	return node;
+}
+@ %def addDaughter
+
+<<Tree.newMother>>=
+public Node addMother(String AVMstring) {
+	Node node = new Node(AVMstring);
+	newMother(node);
+	return node;
+}
+
+public Node addMother() {
+	Node node = new Node();
+	newMother(node);
+	return node;
+}
+@ %def addMother
+
+\subsubsection*{Option manipulation} 
+
+<<Tree option manipulation>>=
+<<Tree.setLayoutStyle>>
+<<Tree.setTreeFont>>
+@ 
+
+	\header{setLayoutStyle(int layoutStyle)} sets the layoutstyle to
+	either 0 (bottom-up drawing) or 1 (top-down drawing).
+
+<<Tree.setLayoutStyle>>=
+public void setLayoutStyle(int layoutStyle) {
+	setOption("tree.layoutStyle", new Integer(layoutStyle));
+}
+@ %def setLayoutStyle
+
+
+	\header{setTreeFont(Font font)} sets the font with which the tree
+	is drawn to \code{font} and marks the whole tree for repainting. 
+
+<<Tree.setTreeFont>>=
+public void setTreeFont(Font font) {
+	setOption("tree.font", font);
+}
+@ %def setTreeFont
+

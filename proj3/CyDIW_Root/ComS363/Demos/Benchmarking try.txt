@@ -1,0 +1,182 @@
+/* 
+This experiment demonstrates benchmarking services in CyDIW.  
+The script was originally created by Xinyuan Zhao, on March 2011; 
+
+The experiment measures performance of three XQuery engines (designated as A, B, and C here) on some 
+XQuery queries. 
+The queries and input documen (auctions.xml) are drawn from XMark, a famous benchmarking 
+suite for 
+XQuery engines. For a quick demo, only a few queries from XMark have been included in this experiment. 
+Also, the XMark document auctions.xml, used here, is small (1 MB). 
+
+Engines and queries are stored in string array variables for invoking them via array indices from inside a 
+nested loop (for engines and queries).  For each engine, a query is executed multiple times, and execution 
+times are collected in XML-based log. A collated subset of the log is extracted using Saxon - an XQuery 
+engine included in CyDIW as a utility. Then the famous Project R is invoked to compute a plot and display 
+a performance graph. 
+
+The files output by queries can be large. They are redirected to a location prespecified location so that the 
+output pane is not cluttered. 
+
+If R is not installed, a fake graph is displayed - still salvaging most of the experiment. The experiment works 
+in Windows, Mac, and Linux operating systems. The experiment can be repeated with [Run All] once per session. 
+It cannot be repeated multiple times in the same session because curretly a log file previpously created in the same 
+session can not be removed. This may be rectified in future. 
+
+Experiment can be expanded for benchmarking varying size of the XMark document, adding a level of nesting 
+for loops. Also all XMark queries can be included. 
+
+--------------------------------------  INSTRUCTIONS TO USERS --------------------------------------  
+1. Non-Windows users: In "set $$osType := Windows", change Windows to Linux or Mac (no quotations 
+and retain the semicolon at the end of the command). 
+
+2. All users: If Project R is not installed, in "set $$Project_R_Is_Installed := Yes", change Yes to No (no quotations 
+and retain the semicolon at the end of the command). If R is installed and the configuration entry for R in 
+SystemConfig.xml is correct and enabled, a fresh benchmark graph will be computed and displayed - otherwise, 
+a fake sample graph will be shown. 
+--------------------------------------  END OF INSTRUCTIONS --------------------------------------  
+*/ 
+
+// The implementation of the following command is proposed for future inclusion in CyDIW to make benchmarking 
+repeatable multiple times in the same session; 
+// $CyDB:> remove CyWorkspace\benchmarkQ.xml;
+
+// Clean up the environment from previous execution in the same session;  
+
+$CyDB:> undeclare string $$osType; 
+
+$CyDB:> declare string $$osType; 
+$CyDB:> set $$osType := Windows;
+
+$OS:> del CyWorkspace\benchmarkSubset.xml;
+$CyDB:> undeclare string $$Project_R_Is_Installed;
+$CyDB:> undeclare string[] $$prefix;
+$CyDB:> undeclare string[] $$query;
+$CyDB:> undeclare string $$xmldoc;
+$CyDB:> undeclare int $$i;
+$CyDB:> undeclare int $$j;
+$CyDB:> undeclare int $$k;
+$CyDB:> if ( $$osType=="Windows") {
+$OS:> del CyWorkspace\Plot.pdf; 
+} 
+else { 
+$OS:> rm CyWorkspace\Plot.pdf;
+ }
+ 
+
+$CyDB:> list variables;
+
+
+// Set the operating system being used; 
+
+
+// Indicate if Project R has been installed; 
+
+$CyDB:> declare string $$Project_R_Is_Installed;
+$CyDB:> set $$Project_R_Is_Installed := Yes;
+
+// Step 1. Create variables;
+$CyDB:> declare string[4] $$prefix;
+$CyDB:> declare string[21] $$query;
+
+$CyDB:> declare string $$xmldoc;
+$CyDB:> declare int $$i;
+$CyDB:> declare int $$j;
+$CyDB:> declare int $$k;
+
+// Create an XML-based log file to gather performance statistics;
+$CyDB:> createLog <root> benchmarkQ.xml;
+
+// Assign queries to array variables;
+$CyDB:> set $$prefix[1] := $MySQL;
+$CyDB:> set $$prefix[2] := $MySQL;
+$CyDB:> set $$prefix[3] := $MySQL;
+
+$CyDB:> set $$xmldoc := doc("ComS363/Demos/Datasets/auctions.xml");
+
+// This document only consists of 1 MB; 
+
+// $MySQL:> select * from Emp;
+
+
+
+$CyDB:> set $$query[1] := 
+select * from Emp;
+
+$CyDB:> set $$query[2] := 
+select * from Emp;
+
+$CyDB:> set $$query[3] := 
+select * from Emp;
+
+$CyDB:> set $$query[4] := 
+select * from Emp;
+
+$CyDB:> set $$query[5] := 
+select * from Emp;
+
+$CyDB:> list variables; 
+
+$MySQL:> connect; 
+// $MySQL:> disconnect; 
+
+
+$CyDB:> run $$prefix[1] $$query[1];
+
+
+// Step 2. Query execution and logging of benchmark statistics;
+$CyDB:> foreach $$i in (1, 2, 3) log time >> <loop1 var="($$prefix[$$i])"> benchmarkQ.xml
+{
+             // Inner loop to iterate through XMark queries;
+             $CyDB:> foreach $$j in [1, 5] log time >> <loop2 var="Q($$j)"> benchmarkQ.xml
+             {
+                          //warm up 3 times;
+                          $CyDB:> foreach $$k in [1,3]
+                          {
+                                        $CyDB:> run $$prefix[$$i] $$query[$$j];
+                          }
+
+                          // execute each query 10 times and log performance;
+                          $CyDB:> foreach $$k in [1,3]
+                          {
+                                       // $CyDB:> run $$prefix[$$i] $$query[$$j] out>> ($$prefix[$$i])_query($$j).xml log time >> <query> benchmarkQ.xml;
+                                      $CyDB:> run $$prefix[$$i] $$query[$$j] ;
+                          }
+             }
+}
+
+// Step 3. Display full contents of log file; 
+$CyDB:> displayFile CyWorkspace/benchmarkQ.xml;
+
+
+// Step 4. Calculate and display benchmarkSubset.xml for recording the average execution time for each engine and query;
+$Saxon:> for $e in doc("CyWorkspace/benchmarkQ.xml")//loop1
+return <loop1> {
+   $e/@var, 
+   for $f in $e/loop2
+   return <loop2> {
+      $f/@var,
+      let $g :=  $f/query/text()
+         return <avg> {avg($g)} </avg>
+   } </loop2>
+} </loop1> 
+out >> benchmarkSubset.xml;
+
+
+$CyDB:> displayFile CyWorkspace/benchmarkSubset.xml;
+
+
+// Step 5. If Project R has been installed, compute and display the performance graph 
+othewise display a sample graph; 
+
+$CyDB:> if ($$Project_R_Is_Installed == "Yes") {
+//  $CyDB:> displayFile cyclients/r/workspace/R_code.txt; 
+$R:> CMD BATCH cyclients/r/workspace/R_code.txt;
+// Display sample and computed plots. The computed plot Plot.pdf is mentioned in the R_code;
+$CyDB:> displayPDF CyWorkspace/Plot.pdf;
+ 
+
+} else {
+// Display sample and computed plots. The computed plot Plot.pdf is mentioned in the R_code;
+$CyDB:> displayPDF ComS363\Demos\Datasets\SamplePlot.pdf;
+}

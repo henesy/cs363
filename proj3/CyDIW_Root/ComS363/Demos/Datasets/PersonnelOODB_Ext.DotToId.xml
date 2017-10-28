@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Map name="PersonnelOODB">
+  <ContextObjectType name="EmpType">
+    <DottedIdentifier name="@EmpID" transitionCode="local"/>
+    <DottedIdentifier name="@PersonID" transitionCode="isa PersonType "/>
+    <DottedIdentifier name="Name" transitionCode="isa PersonType "/>
+    <DottedIdentifier name="DOB" transitionCode="isa PersonType "/>
+    <DottedIdentifier name="Salary" transitionCode="local"/>
+    <DottedIdentifier name="WorksIn" transitionCode="ref DeptType "/>
+  </ContextObjectType>
+  <ContextObjectType name="PersonType">
+    <DottedIdentifier name="@PersonID" transitionCode="local"/>
+    <DottedIdentifier name="Name" transitionCode="local"/>
+    <DottedIdentifier name="DOB" transitionCode="local"/>
+  </ContextObjectType>
+  <ContextObjectType name="ManagerType">
+    <DottedIdentifier name="@ManagerID" transitionCode="local"/>
+    <DottedIdentifier name="@EmpID" transitionCode="isa EmpType "/>
+    <DottedIdentifier name="@PersonID" transitionCode="isa EmpType isa PersonType "/>
+    <DottedIdentifier name="Name" transitionCode="isa EmpType isa PersonType "/>
+    <DottedIdentifier name="DOB" transitionCode="isa EmpType isa PersonType "/>
+    <DottedIdentifier name="Salary" transitionCode="isa EmpType "/>
+    <DottedIdentifier name="WorksIn" transitionCode="isa EmpType ref DeptType "/>
+    <DottedIdentifier name="Budget" transitionCode="local"/>
+  </ContextObjectType>
+  <ContextObjectType name="DeptType">
+    <DottedIdentifier name="@DeptID" transitionCode="local"/>
+    <DottedIdentifier name="DName" transitionCode="local"/>
+    <DottedIdentifier name="ManagedBy" transitionCode="ref ManagerType "/>
+  </ContextObjectType>
+</Map>

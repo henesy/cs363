@@ -1,0 +1,65 @@
+
+
+The repository for the new project DIW_v0.0 is created on lincoln server on Jan 18, 2010
+
+The current directory structure of the project is as follows:
+
+DIW_v0.0 : the root folder
+    diwGUI : the package for DIW GUI
+    storagemanager : previously inside canstorex
+    buffermanager : previously inside canstorex
+    canstorex : includes pagination utilities, dom api, iterators, jni
+    common : some packages used by the DIW GUI and other systems
+    lib : the library files used by two or more subsystems
+    
+    workspace : the default output or tmp path for all the subsystems
+    demos : the demo commands for different subsystems.
+
+Subsystem folders :
+    quilt : the Quilt language (Kweelt engine)
+    sql : MS Access SQL engine
+    xacute : our own XQuery engine
+    nc94
+    tdb
+    btree
+
+Configuration files :
+    SystemConfig.xml : It records all the registered systems and workspaces.
+    StorageConfig.xml : It contains all the storage configuration parameters.
+    StartDIW.bat : The windows batch file to start the DIW system.
+    DIW Documentation.txt : The documentation that describes the directory structure of the DIW project.
+    
+--Note: Please update this document, whenever any important updates to the directory structure of the project are made.
+
+--------------------------------------------------
+
+--updated by Xinyuan, Jan 18, 2010
+
+1. implemented "gui:>displayWindowsFile" command in the GUIParser. (The nc94 command "nc94:>displayXML is still available.)
+
+2. The previous class nc94.paradb.parasqlgui.dialog.XMLViewTreeDlg is renamed and moved to: diwGUI.gui.FileDisplayDlg,
+   since the class is used by several different subsystems including the main GUI.
+
+3. The classes storagemanager.XMLStorage and storagemanager.XMLStorageClient are renamed to:
+   storagemanager.StorageManager and storagemanager.StorageManagerClient
+
+4. The class buffermanager.XMLBufferManager is renamed to buffermanager.BufferManager
+
+5. The previous class canstorex.csxparser.CSXParser is renamed to:
+   storagemanager.StorageManagerParser
+
+6. Several redundant counters in storagemanager.StorageManager and storagemanager.StorageManagerClient are removed.
+   Note: After the modification, most of the counters are managed in StorageManagerClient, only the DiskAccessCounter will be managed in StorageManager.
+
+7. The related files in nc94, tdb and btree packages have been updated according to the above changes.
+   Please make sure you are using the latest code from the repository for those packages.
+
+--------------------------------------------------
+
+--updated by Xinyuan, Jan 21, 2010
+
+1. added SystemConfig.xml
+2. renamed Canstorex.bat to StartDIW.bat
+3. renamed demo to demos
+
+--------------------------------------------------

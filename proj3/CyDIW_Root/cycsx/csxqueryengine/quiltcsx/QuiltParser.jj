@@ -1,0 +1,1909 @@
+/* Kweelt - a framework to query XML documents
+* Copyright (C) 2000,  Arnaud Sahuguet (Arnaud.Sahuguet@polytechnique.org)
+*
+* This program is free software; you can redistribute it and/or
+* modify it under the terms of the GNU General Public License
+* as published by the Free Software Foundation; either version 2
+* of the License, or (at your option) any later version.
+*
+* This program is distributed in the hope that it will be useful,
+* but WITHOUT ANY WARRANTY; without even the implied warranty of
+* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+* GNU General Public License for more details.
+*
+* You should have received a copy of the GNU General Public
+* License
+* along with this program; if not, write to the Free Software
+* Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA
+* 02111-1307, USA.
+*/                 
+
+options
+{
+  STATIC = false ;
+  USER_CHAR_STREAM = true;
+  FORCE_LA_CHECK = true;
+  LOOKAHEAD = 3;
+
+  DEBUG_PARSER = false;
+  DEBUG_TOKEN_MANAGER = false;
+  OPTIMIZE_TOKEN_MANAGER = true; 
+}
+
+PARSER_BEGIN(QuiltParser)
+
+package cycsx.csxqueryengine.quiltcsx;
+
+
+import cycsx.csxqueryengine.common.Constants;
+
+import java.io.*;
+import java.util.Hashtable;
+import java.util.Vector;
+
+import cycsx.csxpagination.util.CanStoreXUtil;
+
+public final class QuiltParser
+{
+
+    private Hashtable funDefNames = new Hashtable();
+    private Hashtable funImportNames = new Hashtable();
+    public static boolean hasIter = false;
+    private CanStoreXUtil canUtil;
+
+    public QuiltParser(CanStoreXUtil cu)
+    {
+	this(new ASCII_CharStream(new StringReader(""), 0, 0));
+	canUtil = cu;
+    }
+    
+    /**
+     * Returns the <code>Query</code>
+     * object representing a Quilt query.
+     * @param s the <code>String</code>
+     *          representation of the
+     *          Quilt query
+     */
+    public QuiltQuery parseQuery(String s) throws Exception
+    {
+	QuiltQuery q;
+	this.funImportNames.clear();
+	this.funDefNames.clear();
+	this.ReInit(new ASCII_CharStream(new StringReader(s), 0, 0));
+	long start = System.currentTimeMillis();
+	q = quilt_query();
+	System.err.println(System.currentTimeMillis() - start);
+	return q;
+    }
+    
+    /**
+     * Auxiliary function removing
+     * the first character at the beginning 
+     * of a string.
+     */
+    private static String chop(String s)
+    {
+	return s.substring(1);
+    }
+
+    private static String butLast(String s)
+    {
+	return s.substring(0, s.length()-1);
+    }
+    
+    /**
+     * Auxiliary function removing the quotes
+     * around a string definition.
+     */
+    private static String unquote(String quoted)
+    {
+	try {
+	    String unquoted = quoted.substring(1, quoted.length() - 1);
+	    return unquoted;
+	} catch (Exception e) {
+	    throw new RuntimeException(
+	       "Syntax error in a string definition : " + quoted
+	     );
+	}
+    }
+    
+    /**
+     * Auxiliary function that
+     * handles tag creation 
+     * with QName or variables.
+     **/
+    private TagNameable getTagName(String tagName)
+    {
+	//	String s = chop(tagName);
+	String s = tagName;
+	if (s.startsWith("$")) 
+	    return new Var(chop(s));
+	else 
+	    return new QName(s);
+    }
+    
+    /**
+     * Auxiliary function removing the
+     * first and last character
+     * around a <code>String</code>
+     */
+    private static String trim(String s)
+    {
+	return s.substring(1, s.length() - 1);
+    }
+
+}
+
+PARSER_END(QuiltParser)
+
+/**
+ * The top production. The string representing
+ * the xquery query is a quilt_query
+ */
+QuiltQuery quilt_query() :
+{
+    Vector funDefs = new Vector();
+    QuiltExpression queryBody;
+}
+{
+	/**
+	 * Import definitions are not properly supported
+	 */
+    [ import_def_list()]
+	/* just like Java imports, they are just used at parsing time */
+
+	/**
+	 * Function definitions are not properly supported.
+	 * The syntax conforms to the quilt specification, and
+	 * not the xquery specification
+	 */	
+    [ funDefs=fun_def_list() ]
+    queryBody=expr()
+
+	<EOF>	
+	/* just to make sure that we parse everything */
+    { return new QuiltQuery( funDefs, queryBody, canUtil ); }
+}
+
+/**
+ * S - Rule [8] - Import
+ * This is an unsupported feature
+ */
+void import_def_list() :
+{
+    Token nameT, classT;
+}
+{
+    (
+    <IMPORT> nameT=<NAME> <AS> (classT=<CLASSNAME>|classT=<NAME>) <SEMICOLON>
+     { 
+	 funImportNames.put(nameT.image, classT.image);
+     }
+     )+
+}
+ 
+/**
+ * S - Rule [26] - FunctionDecl
+ *     Not properly supported.
+ *     Kweelt legacy code
+ */
+Vector fun_def_list() :
+{
+    Token funName;
+    Vector args = null;
+    Vector funDefList = new Vector();
+    QuiltExpression funBody = null;
+}
+{
+    (
+    <DECLARE>  <FUNCTION> funName=<NAME> <LPAREN> [ args=fun_args() ] <RPAREN>
+      { 
+	  // System.err.println("Putting >" + funName + "< in the HT");
+	  funDefNames.put( funName.image, Boolean.TRUE );
+      }
+      /* functions can be empty */
+      [ funBody=enclosed_expr() ]
+      {
+	  funDefList.addElement( new FunDef( funName.image,
+					     args,
+					     funBody
+					     ) 
+			       );
+      }
+    )+
+	{ return funDefList; }
+}
+
+/**
+ * S - Rule [27] - ParamList
+ * Not used!
+ */
+Vector fun_args() :
+{
+    Token argName;
+    Vector args = new Vector();
+}
+{
+    argName=<VARNAME>		
+    { args.addElement(new Var(chop(argName.image))); }
+    (
+     <COMMA> argName=<VARNAME>
+     { args.addElement(new Var(chop(argName.image))); }
+     )* 
+	{ return args; }
+}
+
+/**
+ * S - Rule [31]
+ * Partially supported. Should return a sequence of expressions
+ * as a single expression.
+ * It does not work if one of the expressions is iterator based
+ */
+QuiltExpression expr() :
+{
+    Vector v = new Vector();
+    QuiltExpression e;
+    boolean flag = false;
+}
+{
+    e = expr_single() { v.addElement(e); }
+    (
+     <COMMA>
+     e =  expr_single() 
+     { 
+      flag = true;
+      v.addElement(e); 
+  
+     }
+    )*
+    { 
+    if(flag)
+	    System.err.println("Multiple Expressions not supported");
+    return flag ? new QuiltExpressionList(v): e; }
+}
+
+/**
+ * S - Rule [32] 
+ */
+QuiltExpression expr_single() :
+{
+    QuiltExpression e;
+}
+{  
+  ( 
+   e = flwor_expression()     
+    /*|
+    e = quantified_expression() {return e;} 
+    | 
+    e = typeswitch_expression() {return e;}
+    */
+    |   
+    e = if_expr()
+    |
+    e = or_expression()
+/**
+ * Add Xquery Update operations here
+ */
+    |
+    e = rename_expression()
+    |
+    e = delete_expression()
+  )
+  {return e;}
+}
+
+/**
+ * S - Rule [33]
+ */
+QuiltExpression flwor_expression() :
+{
+    QuiltExpression e;
+    Vector sort = new Vector();
+    QuiltExpression where = null;
+    Binding b;
+    Vector bindings = new Vector();
+}
+{  
+   (
+    (
+     (<FOR> b = for_binding(true) {bindings.addElement(b);}
+     (
+      <COMMA> b = for_binding(false){bindings.addElement(b);}
+     )*)
+     |
+     (<LET> b = let_binding(true) {bindings.addElement(b);}
+     (
+      <COMMA> b = let_binding(false) {bindings.addElement(b);}
+     )*)
+    )+
+
+    [<WHERE> where = where_clause()]
+
+    [ sort = order_by_clause()]
+ 
+    <RETURN> e = expr_single()
+   )
+    {return new FLWRExpression(bindings,where,e,sort);}
+}
+
+/**
+ * -- S - Rule [34] - ForClause
+ * Not used!
+ */
+ForBinding for_clause(boolean isFirst) :
+{
+   Token t;
+   boolean isDistinct = false;
+   QuiltExpression e;
+}
+{
+   t = <VARNAME>
+   /* [  type_declaration() ] */
+   [ positional_var() ] 
+   /* Satyadev -  Change - June 17, 2004 */
+    <IN> e = expr_single()
+   { return new ForBinding(isFirst, chop(t.image), false, e); }
+}
+
+/**
+ * -- S - Rule [35] - PositionalVar
+ * Not used!
+ */
+void positional_var() :
+{
+	Token t;
+}
+{
+	<ATALPHA> t =<VARNAME>
+	{System.err.println("Positional Variables not supported");}
+}
+
+/**
+ * -- S - Rule [36] - LetClause
+ * Not used!
+ */
+LetBinding let_clause(boolean isFirst) :
+{
+    Token t;
+    QuiltExpression e;
+}
+{
+    t = <VARNAME>
+    /* [ type_declaration() ] */
+    <DEF>
+    e = expr_single()
+    { return new LetBinding(isFirst, chop(t.image), false, e); }
+}
+
+/**
+ * S - Rule [37] - WhereClause
+ */
+QuiltExpression where_clause() :
+{
+    QuiltExpression e;
+}
+{
+    e = expr()
+    { return e; }
+}
+
+/**
+ * S - Rule [38] - OrderByClause
+ */
+Vector order_by_clause() :
+{
+  Vector v = new Vector();
+  SortClause s;
+}
+{
+ (
+   <ORDER> <BY>
+  (
+   s = order_spec() { v.addElement(s); }
+   (
+     <COMMA>
+     s = order_spec() { v.addElement(s); }
+   )*
+  )
+ )
+ {return v;}
+}
+
+/**
+ * S -  Rule [40] - OrderSpec
+ */
+SortClause order_spec() :
+{
+    QuiltExpression e;
+    boolean descOrder = false;
+}
+{
+    e = expr_single()
+    [<DESC> {return new SortClause(e, true);}]
+    {return new SortClause(e, false);}
+}
+
+
+/**
+ * -- S - Rule [41] - OrderModifier
+ */
+
+/**
+ * S - Rule [42] - QuantifiedExpr
+ */
+QuiltExpression quantified_expr() : 
+{
+    int op;
+    Token t;
+    QuiltExpression e,cond,e_discard;
+}
+{
+    (
+     (<SOME_TOK> {op = Constants.SOME;}
+      |
+      <EVERY_TOK> {op = Constants.EVERY;}
+     )
+     t = <VARNAME>
+     /* [ type_declaration() ] */
+     <IN>
+     e = expr_single()
+     (
+      <COMMA>
+      e_discard = expr_single()
+	 { System.err.print("Multiple variables in quantified expression");
+           System.err.println("not supported");
+         }
+     )*
+     <SATISFIES>
+     cond = expr_single()
+    )
+     {return new Quantifier(op, chop(t.image), e, cond);}
+}
+
+/**
+ * S - Rule [45] - If Expr
+ */
+
+QuiltExpression if_expr() :
+{
+   QuiltExpression __if, __then, __else;
+}
+{
+   <IF> __if = expr()
+   <THEN> __then = expr_single()
+   <ELSE> __else = expr_single()
+   { return new IfThenElse(__if, __then, __else);}
+}
+
+
+/**
+ * S - Rule [46] - OrExpr
+ */
+QuiltExpression or_expression() :
+{
+    QuiltExpression e, _e;
+    Vector v = new Vector();
+    boolean branch = false;
+}
+{
+    e=and_expression()
+   (
+    { branch = true; }
+    <OR> _e=and_expression()
+    { v.addElement(_e); }
+    )*
+    { return branch ? new BinOpOR(e,v) : e; }
+}
+
+
+/**
+ * S - Rule [47] - AndExpr
+ */
+QuiltExpression and_expression() :
+{
+    QuiltExpression e, _e;
+    Vector v = new Vector();
+    boolean branch = false;
+}
+{
+   /* Unsupported - Should have been instance_of_expr() */
+   e=comparison_expr()
+   (
+    { branch = true; }
+    <AND>
+     _e=comparison_expr()
+    { v.addElement(_e); }
+    )*
+    { return branch ? new BinOpAND(e,v) : e; }
+}
+
+/**
+ * -- S - Rule [54] - InstanceOfExpr
+ * Unsupported
+ */
+void instance_of_expr() : 
+{
+  QuiltExpression e;
+}
+{
+  treat_expr()
+  [ <INSTANCE> <OF> /* sequence_type() */ ]
+  {System.err.println("Instance of Expression not supported");}
+}
+
+/**
+ * -- S - Rule [55] - TreatExpr
+ * Unsupported
+ */
+void treat_expr() : 
+{
+  QuiltExpression e;
+}
+{
+  castable_expr() 
+  [ <TREAT> <AS> /* sequence_type() */ ]
+  {System.err.println("Treat Expression not supported");}
+}
+
+/**
+ * -- S - Rule [56] - CastableExpr
+ * Unsupported
+ */
+void castable_expr() :
+{
+  QuiltExpression e;
+}
+{ 
+  cast_expr()
+  [<CASTABLE> <AS> /* single_type() */ ]
+  {System.err.println("Castable Expression not supported");}
+}
+
+
+/**
+ * -- S - Rule [57] - CastExpr
+ * Unsupported
+ */
+void cast_expr() :
+{
+  QuiltExpression e;
+}
+{
+  e = comparison_expr()
+  [ <CAST> <AS> /* single_type() */ ]
+  {System.err.println("Cast Expression not supported"); }
+}
+
+/**
+ * S - Rule [48] - ComparisonExpr
+ * used by AndExpr
+ */
+QuiltExpression comparison_expr() :
+{
+  QuiltExpression e;
+  QuiltExpression _e = null;
+  int op = -1;
+  boolean branch = false;
+}
+{
+ e = range_expr()
+ [
+  /* Whew! */
+  {branch = true;}
+  (
+      op = value_comp() 
+    |
+      op = node_comp()
+  )
+  _e = range_expr()
+ ]
+ { return branch ? new BinOpCOMP(op,e,_e) : e; }
+}
+
+/**
+ * S - Rule [49] - RangeExpr
+ */
+QuiltExpression range_expr() :
+{
+  QuiltExpression e, e_discard;
+}
+{
+  e = additive_expr() 
+  [ <TO> 
+    e_discard = additive_expr() 
+    {
+     System.err.println("Range Expressions not supported");
+    }
+  ]
+  { return e; }
+}
+
+/**
+ * S - Rule [50] - AdditiveExpr
+ */
+QuiltExpression additive_expr() :
+{
+  QuiltExpression e,_e;
+  Vector v = new Vector();
+  boolean branch = false;
+}
+{
+  /* Shift as far as possible in all arithmetic operations */
+  e = subtractive_expression()
+  (
+   {branch = true;}
+   <PLUS> _e = subtractive_expression()
+   {v.addElement(_e);}
+  )*
+  { return branch ? new BinOpArith('+',e,v) : e; }
+}
+
+QuiltExpression subtractive_expression() :
+{
+  QuiltExpression e, _e;
+  Vector v = new Vector();
+  boolean branch = false;
+}
+{ 
+  e = multiplicative_expr()
+  (
+   {branch = true;}
+   <MINUS> _e = multiplicative_expr()
+   {v.addElement(e);}
+  )*
+  { return branch ? new BinOpArith('-',e,v) : e; }
+}
+
+
+/**
+ * S - Rule [51] - MultiplicativeExpr
+ */
+QuiltExpression multiplicative_expr() :
+{
+  QuiltExpression e,_e;
+  Vector v = new Vector();
+  int op = -1;
+  boolean branch = false;
+}
+{
+  e = div_expr()
+  (
+   {branch = true;}
+   <STAR> _e = div_expr() 
+   { v.addElement(_e); }
+  )*
+  { return branch? new BinOpArith('*',e,v) : e; }
+}
+
+
+QuiltExpression div_expr() :
+{
+  QuiltExpression e,_e;
+  Vector v = new Vector();
+  int op = -1;
+  boolean branch = false;
+}
+{
+  e = mod_expr()
+  (
+   {branch = true;}
+   <DIV> _e = mod_expr() 
+   { v.addElement(_e); }
+  )*
+  { return branch? new BinOpArith('/',e,v) : e; }
+}
+
+QuiltExpression mod_expr() :
+{
+  QuiltExpression e,_e;
+  Vector v = new Vector();
+  int op = -1;
+  boolean branch = false;
+}
+{
+  e = unary_expr()
+  (
+   {branch = true;}
+   <MOD> _e = unary_expr() 
+   { v.addElement(_e); }
+  )*
+  { return branch? new BinOpArith('/',e,v) : e; }
+}
+
+
+
+/**
+ * S - Rule [58] - UnaryExpr
+ * Significant changes from the Kweelt grammar 
+ */
+QuiltExpression unary_expr() : 
+{
+   QuiltExpression e;
+   Vector v = new Vector();
+   boolean toggle = true;
+}
+{  
+   /* Significant changes from the Kweelt grammar starts here */ 
+   (
+     <MINUS>  
+     {  if (toggle == true) {
+         toggle = false;
+       }else{
+         toggle = true; 
+       }   
+     }
+    |
+    <PLUS> 
+   )*
+   e = union_expr()
+   {
+    if (toggle == true){
+      return e;
+    }else{
+      return new UnOpMinus(e);
+    }
+   }
+}
+
+/**
+ * S - Rule [52] - UnionExpr
+ */
+QuiltExpression union_expr() :
+{
+  QuiltExpression e,_e;
+  Vector v = new Vector();
+  boolean branch = false;
+}
+{
+  e = intersect_except_expr() 
+  (
+   {branch = true;}
+   (<UNION> |  <PIPE>)
+   _e = intersect_except_expr()
+   { v.addElement(e); }
+  )*
+  { return branch ? new BinOpUnion(e,v) : e; }
+}
+
+
+/**
+ * S - Rule [53] - IntersectExceptExpr
+ */
+QuiltExpression intersect_except_expr() :
+{
+  QuiltExpression e,_e;
+  Vector v = new Vector();
+  boolean branch = false;
+}
+{
+  e = value_expr()
+  (
+   (<INTERSECT> 
+    {branch = true;}
+    _e = value_expr()
+    { v.addElement(_e); }
+   )
+   |
+   (
+    <EXCEPT> 
+    _e = value_expr()
+    { System.err.println("Except expression not supported"); }
+   )
+  )*
+  {return branch ? new BinOpIntersection(e,v) : e; }
+}
+
+/**
+ * S - Rule [59] - ValueExpr
+ * Supported -- Unsupported
+ */
+QuiltExpression value_expr() :
+{
+  QuiltExpression e;
+}
+{
+  e = path_expr() 
+  {return e;}
+}
+
+/**
+ * S - Rule [68] - PathExpr
+ * Absolute Path Expressions not supported
+ * Significant Simplifications have been made.
+ * The grammar of the steps allowed in this version of 
+ * Kweelt is:
+ * Further modification expected in the spirit of XPath 2.0
+ * The path expression grammar supported is described in
+ * the documentation shipped with the source code. See 
+ *  PathExpr.txt
+ */
+QuiltExpression path_expr() :
+{
+  QuiltExpression e;                  //Expressions for the node
+  QuiltExpression e1;                 //Expressions for the node
+  boolean isInput = false;            //Is the path expression from an input document?
+  Vector v = new Vector();            //Vector of predicates for each step
+  Vector nav = new Vector();          //A vector of steps in the expression
+  Step dstep;  						  //A single step for a primary expression
+  Step lstep;                         //A single step in the string of steps
+  int axis;                           //Axis Step
+  NodeTest nt;                        //Test for the node in the axis step
+}
+{
+ (
+
+  /****************************************************
+   * 1. The first element can be a 
+   * primary expression etc.
+   ***************************************************/
+  (
+   (<SLASH>|<SLASH2> {System.err.println("Absolute Path Expression");})
+   {axis = Constants.CHILD_AXIS; /* default */}
+   [ axis = forward_axis() | <AT> {axis = Constants.ATTRIBUTE_AXIS;}
+    |axis = reverse_axis() | <DOT><DOT> {axis = Constants.PARENT_AXIS;}]
+
+   nt = node_test()
+   v = predicates()
+   {
+    e1 = new CurrentNode();
+    lstep = new LocationStep(axis,nt,v); 
+    nav.addElement(lstep);
+   }
+  )
+  
+  | 
+
+  (
+   e1 = primary_expr()
+   v = predicates()
+   {
+    /*********************************************
+     * Can be null from parenthesized Expression 
+     ********************************************/
+      e1 = new FilterExpression(e1,v);
+   }
+  )
+
+  /*********************************************************** 
+   * 2. Followed by 
+   * Normal Steps
+   ************************************************************/
+  (
+   (
+    (
+     ( 
+      (
+     	<SLASH> {axis = Constants.CHILD_AXIS; /* default */}
+	      [ axis = forward_axis() | <AT> {axis = Constants.ATTRIBUTE_AXIS;}
+    	  |axis = reverse_axis() | <DOT><DOT> {axis = Constants.PARENT_AXIS;}]
+      )
+      |
+      (
+     	<SLASH2> 
+     	{axis = Constants.DESCENDANT_SELF_AXIS; /*Verify*/}
+      )
+     ) 
+
+     (
+      ( 
+       e1 = function_call() /*kludge - should be kind-test; this handles text()*/
+       v = predicates()
+       {
+         e1 = new FilterExpression(e1,v);
+		 /*kludge*/
+		 //nav.addElement(e);
+       }
+      )
+      | 
+      (
+       nt = node_test()
+	   v  = predicates()
+       {
+        if(v.size() == 0){
+    	 /**
+    	  * Satyadev - Jan 31 07
+    	  *
+    	 if(hasIter)
+	        lstep = new DiskLocationStep(axis,nt);
+	     else*/
+		 	lstep = new LocationStep(axis,nt);
+        }else{
+	 	 /**
+	 	  * Satyadev - Jan 31 07
+	 	  *
+	 	 if(hasIter)
+       	 	lstep = new DiskLocationStep(axis,nt,v);
+	 	 else*/
+		 	lstep = new LocationStep(axis,nt,v);
+        }
+        nav.addElement(lstep);
+       }
+      )
+     )
+     |
+     ( dstep = deref_step() {nav.addElement(dstep);} )
+    )*
+   )
+  )
+ )
+ { /**
+    * Satyadev - Jan 31 07
+    *removed hasIter
+    */
+ return hasIter ? new Nav(e1, nav) : new Nav(e1,nav); }
+}
+
+
+  
+
+
+/*  (
+   (<SLASH2> {e = new CurrentNode();}[ v = relative_path_expr() 
+    {
+     throw new ParseException("Absolute Path Expression");
+    } 
+   ])
+  |(<SLASH> v = relative_path_expr() {
+      e = new CurrentNode();
+      throw new ParseException("Absolute Path Expression");
+   }) 
+  |(v = relative_path_expr() {e = new CurrentNode();})
+  )
+  { return new Nav(e,v); }
+}
+*/
+
+/**
+ * S - Rule [69] - RelativePathExpr
+ */
+
+/**
+ * S - Rule [70] - StepExpr
+ */
+
+/**
+ * S - Rule [71] - AxisStep
+ */
+
+/** 
+ * S - Rule [81] - FilterStep
+ */
+
+/**
+ * S - Rule [90] - ContextItemExpr
+ */
+QuiltExpression context_item_expr() :
+{
+  QuiltExpression e;
+}
+{
+  <DOT> {e = new CurrentNode(); return e;}
+}
+
+/**
+ * S - Rule [84] - PrimaryExpr
+ */
+QuiltExpression primary_expr() :
+{
+  QuiltExpression e;
+}
+{
+( e = literal() 
+  | e = var_ref() 
+  | e = parenthesized_expr()
+  | 
+  ( e = context_item_expr () 
+    { e = new CurrentNode(); }
+  ) 
+  | e = function_call() 
+  | e = constructor()
+)
+  { return e; }
+}
+
+/**
+ * S - Rule [87] - VarRef
+ */
+QuiltExpression var_ref() :
+{ 
+  QuiltExpression e;
+}
+{
+  e = variable()
+  { return e; }
+}
+
+/**
+ * S - Rule [83] - Predicates
+ */
+Vector predicates() :
+{
+  QuiltExpression e;
+  Vector v = new Vector();
+}
+{
+  (<LBRACKET>
+      e = expr() { v.addElement(e); }
+   <RBRACKET>
+  )*
+  { return v; }
+}
+  
+/**
+ * S - Rule [63] - ValidateExpr
+ */
+
+/**
+ * S - Rule [] - SchemaContext 
+ */
+
+/**
+ * S - Rule [94] - Constructor
+ */
+QuiltExpression constructor() : 
+{
+   QuiltExpression e;
+}
+{
+  (e = dir_elem_constructor() | e = computed_constructor())
+  {return e; }
+}
+/*| e = xml_comment() | e = xml_p_i() | e = cdata_section () */
+
+/**
+ * S - Rule [109] - ComputedConstructor
+ */
+QuiltExpression computed_constructor() :
+{
+  QuiltExpression e;
+}
+{
+  e = comp_elem_constructor() 
+  /* |  e = comp_attr_constructor() | e = comp_doc_constructor() 
+     |  e = comp_text_constructor() | e = comp_xml_p_i() 
+     |  e = comp_xml_comment()      | e = comp_ns_constructor() */
+  { return e; }
+}
+
+     
+/**
+ * S - Rule [60] - GeneralComp
+ */
+int general_comp() :
+{
+  int op;
+}
+{ 
+ ( <EQUAL>  {op = Constants.EQ;} 
+ | <NEQUAL> {op = Constants.NEQ;}
+ | <LTHAN>  {op = Constants.LT;}
+ | <LEQUAL> {op = Constants.LEQ;}
+ | <GTHAN>  {op = Constants.GT;}
+ | <GEQUAL> {op = Constants.GEQ;}
+ )
+ { return op; } 
+}
+
+/**
+ * S - Rule [61] - ValueComp
+ */
+int value_comp() :
+{
+  int op;
+}
+{ 
+  (
+    <EQUAL> {op = Constants.EQ;}
+  | <NEQUAL>{op = Constants.NEQ;}
+  | <LTHAN> {op = Constants.LT;}
+  | <LEQUAL>{op = Constants.LEQ;}
+  | <GTHAN> {op = Constants.GT;}
+  | <GEQUAL>{op = Constants.GEQ;}
+  )
+  { return op; }
+}
+
+/**
+ * S - Rule [62] - NodeComp
+ */
+int node_comp() :
+{
+  int op;
+}
+{
+  (
+    <IS>    {op = Constants.IS;}
+  | <COUT>  {op = Constants.COUT;}
+  | <CIN>   {op = Constants.CIN;}
+  )
+  { return op; }
+}
+
+/**
+ * S - Rule [72] - ForwardStep - [74]
+ */
+Step forward_step() :
+{
+  int axis;
+  NodeTest nt;
+}
+{
+  (
+    (axis = forward_axis() nt = node_test() 
+     { return new LocationStep(axis,nt); })
+  | (<AT> nt = node_test() 
+     { return new LocationStep(Constants.ATTRIBUTE_AXIS, nt); }
+    )
+  | ( nt = node_test() 
+     { return new LocationStep(Constants.CHILD_AXIS, nt); }
+    )
+  )
+}
+
+/**
+ * S - Rule [75] - ReverseStep
+ */
+Step reverse_step() :
+{
+  int axis;
+  NodeTest nt;
+}
+{
+  /* Verify */
+  (axis = reverse_axis() nt = node_test() 
+   {return new LocationStep(axis,nt);})
+  | <DOT><DOT> 
+   {return new LocationStep(Constants.PARENT_AXIS,null,null);}
+}
+
+/**
+ * S - Rule [74] - AbbrevForwardStep
+ */
+
+/**
+ * S - Rule [77] - AbbrevReverseStep
+ */
+
+/**
+ * S - Rule [73] - ForwardAxis
+ */
+int forward_axis() :
+{
+  int a;
+}
+{
+  (
+   <CHILD>             {a = Constants.CHILD_AXIS;}
+  |<DESCENDANT>        {a = Constants.DESCENDANT_AXIS;}
+  |<DESCENDANT_SELF>   {a = Constants.DESCENDANT_SELF_AXIS;}
+  |<FOLLOWING>         {a = Constants.FOLLOWING_AXIS;}
+  |<FOLLOWING_SIBLING> {a = Constants.FOLLOWING_SIBLING_AXIS;}
+  |<SELF>              {a = Constants.SELF_AXIS;}
+  )
+  {return a;}
+}
+
+/**
+ * S - Rule [76] - ReverseAxis
+ */
+int reverse_axis() :
+{
+  int a;
+}
+{
+  (
+   <PARENT>            {a = Constants.PARENT_AXIS;}
+  |<ANCESTOR>          {a = Constants.ANCESTOR_AXIS;}
+  |<PRECEDING_SIBLING> {a = Constants.PRECEDING_SIBLING_AXIS;}
+  |<ANCESTOR_SELF>     {a = Constants.ANCESTOR_SELF_AXIS;}
+  )
+  {return a;}
+}
+
+/**
+ * S - Rule [78] - NodeTest
+ */
+NodeTest node_test() :
+{
+  NodeTest nt;
+}
+{
+ (
+  nt = name_test()
+ |
+  nt = kind_test()
+ |
+  (<STAR> {nt = new NameTest(); /*matches all*/})
+ )
+  {return nt;}
+}
+
+/**
+ * S - Rule [79] - NameTest
+ */
+NodeTest name_test() :
+{
+  Token t;
+  /* WildCard not supported */
+}
+{
+  t = <NAME>
+  { return new NameTest(t.image);}
+}
+
+/**
+ * S - Rule [93] - WildCard
+ */
+
+/**
+ * S - Rule [85] - Literal
+ */
+QuiltExpression literal() :
+{
+  QuiltExpression e;
+}
+{
+ (  e = numeric_literal() 
+ |e = string_literal() )
+  {return e;}
+}
+
+/**
+ * S - Rule [86] - NumericLiteral
+ */
+QuiltExpression numeric_literal() :
+{
+  Token t;
+}
+{
+  /* e = integer_literal() 
+   | e = decimal_literal() 
+   | e = double_literal() */
+  t = <NUMBER>
+  {return new ValueNum(t.image);}
+}
+
+
+QuiltExpression string_literal() :
+{
+  Token t;
+}
+{
+  t =  <STRING>
+  {return new ValueString(unquote(t.image));}
+}
+
+/**
+ * S - Rule [89] - ParenthesizedExpr
+ */
+QuiltExpression parenthesized_expr() :
+{
+  QuiltExpression e = null;
+}
+{
+  <LPAREN>
+    [e = expr()]
+  <RPAREN>
+  {return e;}
+}
+
+/**
+ * S - Rule [93] - FunctionCall
+ */
+QuiltExpression function_call() :
+{
+   FunCall f;                           //function call object
+   Token t;                             //function name
+   Vector v = new Vector();             //arguments
+   QuiltExpression exp;                 //argument expression
+}
+{
+   (
+    /* First, Lookup the function name */
+    (t = <NAME> <LPAREN>
+    { 
+      String funName = t.image;
+      if (funDefNames.containsKey(funName)){
+        f = new FunUserDefined(funName);
+      }else{
+        try{
+          if(funImportNames.containsKey(funName)){
+            f = (FunCall) Class.forName( 
+                           (String) funImportNames.get(funName)
+                          ).newInstance();
+          }else{
+            f = (FunCall) Class.forName(
+                           (String) 
+                           "cycsx.csxqueryengine.quiltcsx.Fun"+
+                           funName.toUpperCase()
+                          ).newInstance();
+	    if(funName.equals("documentiter")){
+		/*
+		 *Satyadev - DEBUG
+		 */
+		hasIter = true;
+		/* System.err.println("Parsed Here"); */
+	    }
+          }
+        }catch(Exception e){
+          e.printStackTrace();
+          throw new ParseException("Unable to Instantiate" + funName);
+        }
+      }
+     }
+     )
+     /* Optional - Arguments */
+     [
+        exp = expr_single() { v.addElement(exp); }
+        (exp = expr_single() {v.addElement(exp);})*
+     ]
+     <RPAREN>
+    )
+    { 
+        f.pushArgs(v);
+        return f;
+    }
+}
+
+/**
+ * S - Rule [96] - DirElemConstructor
+ */
+QuiltExpression dir_elem_constructor() :
+{
+  Token           t;                        //Element Name
+  QuiltExpression e;                        //Element Name Expression
+  Vector       atts;                        //Attributes
+  Vector    content = new Vector();         //Element Content
+}
+{
+  (
+   <TAG1> t=<NAME> 
+    atts = attribute_list() 
+   (
+    <TAG3>
+    |
+    (
+      <TAG2>
+       ( e = element_content() { content.addElement(e); } )*
+      <TAG4>
+        <NAME>
+      <TAG2>
+    )
+   )
+  )
+  { 
+    return  new ElementConstruct (
+               getTagName(t.image),
+               atts,
+               content,
+               canUtil
+              );
+  }
+}
+
+/**
+ * S - Rule [110] - CompDocConstructor
+ */
+
+/**
+ * S - Rule [111] - CompElemConstructor
+ */
+
+/**
+ * S - Rule [] - CompNSConstructor
+ */
+
+/**
+ * S - Rule [113] - CompAttrConstructor
+ */
+
+/**
+ * S - Rule [] - CompXMLPI
+ */
+
+/**
+ * S - Rule [] - CompXMLComment
+ */
+
+/**
+ * S - Rule [114] - CompTextConstructor
+ */
+
+/**
+ * S - Rule [107] - CdataSection
+ */
+
+/**
+ * S - Rule [] - XmlPI
+ */
+
+/**
+ * S - Rule [] - XmlComment
+ */
+
+/**
+ * S - Rule [] - ElementContent
+ */
+QuiltExpression element_content() :
+{
+  QuiltExpression e;
+}
+{
+  /*e = element_content_char() | <DLBRACE> | <DRBRACE> |*/
+  (e = dir_elem_constructor() | e = enclosed_expr()) /*| e = char_ref() |
+  e = predefined_entity_ref() | e = cdata_section() | e = xml_comment() |
+  e = xml_p_i ()*/
+  {return e;}
+}
+
+
+/**
+ * S - Rule [] - AttributeList
+ */
+Vector attribute_list() :
+{
+  Token            t;              //Attribute Name
+  QuiltExpression e;
+  Vector v = new Vector();
+}
+{
+  (t = <NAME> <EQUAL> 
+   e = attribute_value() 
+   { v.addElement(new AttributeExpression(t.image,e)); }
+  )*
+  {return v;}
+}
+
+QuiltExpression comp_elem_constructor() :
+{
+  Token t;
+  QuiltExpression e;
+  QuiltExpression name_expr;
+  Vector atts = null;
+  Vector contents = new Vector();
+  boolean branch = false;
+}
+{
+ <ELEMENT_NODE_TOK>
+ (
+   (t=<NAME> {branch=true;} <LBRACE> 
+    [ e = expr() {contents.addElement(e);}]
+    { return new ElementConstruct(getTagName(t.image),atts,contents,canUtil); }
+   )
+  |
+   (<LBRACE> name_expr = expr() <RBRACE> <LBRACE> 
+    [ e = expr() {contents.addElement(e);} ]
+    {
+     System.err.println("Computed Element Names not supported"); 
+     return new ElementConstruct(getTagName("Junk"),atts,contents,canUtil); 
+    }
+   )
+ )
+}
+
+
+/**
+ * Unsupported
+ */
+QuiltExpression attribute_value() :
+{
+  QuiltExpression e;
+  Token t;
+}
+{
+  (
+    (
+     t = <STRING> {return new ValueString(unquote(t.image));}
+    )
+    |
+    (
+     e = enclosed_expr() {return e;}
+    )
+  )
+}
+
+QuiltExpression enclosed_expr() :
+{ 
+  QuiltExpression e;
+}
+{
+  <LBRACE>
+    e = expr()
+  <RBRACE>
+  {return e;}
+}
+
+  
+/**
+ * S - Rule [123]
+ * Partially Supported
+ */
+NodeTest kind_test() :
+{
+  int type;
+}
+{
+	(
+		<TEXT_NODE_TOK> {type = Constants.TEXT_NODE;}
+		| <PAGEID_NODE_TOK> {type = Constants.PAGEID_NODE;}
+		| <PAGEOFFSET_NODE_TOK> {type = Constants.PAGEOFFSET_NODE;}
+	)
+	<LPAREN> <RPAREN>
+		{return new NodeType(type);}
+}
+ 
+/** should I distinguish between fun variable and quilt variables ? **/
+
+/**
+ * S - Rule [34] - ForClause
+ * 
+ */
+ForBinding for_binding(boolean isFirst) :
+{
+    Token t;
+    boolean isDistinct = false;
+    QuiltExpression e;
+}
+{
+    t=<VARNAME> <IN>
+    [ <DISTINCT> { isDistinct = true; } ]
+    e=expr_single()
+    { return new ForBinding(isFirst, chop(t.image), isDistinct, e); }
+}
+
+/**
+ * S - Rule [36] - LetClause
+ * 
+ */
+LetBinding let_binding(boolean isFirst) :
+{
+    Token t;
+    boolean isDistinct = false;
+    QuiltExpression  e;
+}
+{
+    t=<VARNAME> <DEF>
+    [ <DISTINCT> { isDistinct = true; } ]
+    e=expr_single()	
+    { return new LetBinding(isFirst, chop(t.image), isDistinct, e); }
+}
+
+/**
+ * Xquery update operations begins here
+ * S - Rule [146]
+ */
+QuiltExpression rename_expression() :
+{
+    QuiltExpression e;
+    String newname;
+}
+{  
+    <RENAME> <NODE> e = expr_single() <AS> newname = qname()
+    {return e;}
+    //{return new Expression(bindings,where,e,sort);}
+}
+
+/**
+ * Xquery update operations begins here
+ * S - Rule [144]
+ */
+QuiltExpression delete_expression() :
+{
+    QuiltExpression e;
+    String newname;
+}
+{  
+    <DELETE> [<NODE>] e = expr_single()
+    {return e;}
+    //{return new Expression(bindings,where,e,sort);}
+}
+
+QuiltExpression variable() :
+{
+    QuiltExpression e;
+    Token t;
+    Vector v = new Vector();
+    Var var;
+    boolean branch = false;
+}
+{
+    /** Verify */
+    /*t=<VARNAME> [ e=expr_single() {branch = true;v.addElement(e);} ]*/
+    t=<VARNAME> 
+    { 
+	var = new Var(chop(t.image));
+	if (branch == false)
+        {
+	  return var;
+        }
+	else 
+        {
+	  return new FilterExpression(var, v);
+        }
+    }
+}
+
+String qname() :
+{
+    Token t;
+}
+{
+    t=<NAME> { return t.image; }
+}
+
+
+
+/**
+ * S - Rule 
+ */
+
+void finito() :
+{
+}
+{
+    <FINITO>
+}
+
+/**
+ * ISU-specific extensions - Dereferencing Step
+ */
+Step deref_step() :
+{
+	Token t;
+	DerefStep s = new DerefStep();
+	Vector hints;
+	Vector predicates = new Vector();
+	QuiltExpression e;
+}
+{
+	<ARROW>
+	[ <LBRACE> hints = hints() {s.setHints (hints); } <RBRACE> ]
+	(
+		<LBRACKET> e = expr() <RBRACKET>
+		{predicates.addElement(e);}
+	)*
+	{
+		s.setPredicates(predicates);
+		return s;
+	}
+}
+
+/**
+ * ISU-specific extensions - hints
+ */
+Vector hints() : 
+{
+	String elementName, idName;
+	Vector v = new Vector();
+}
+{
+	elementName = qname() <AT> idName = qname()
+	{ v.addElement( new DerefPair(elementName, idName)); }
+	(
+		<COMMA>	elementName = qname() <AT> idName = qname()
+		{ v.addElement( new DerefPair(elementName, idName)); }
+	)*
+	{
+		return v;
+	}
+}
+
+
+/* -------------------- TOKENS -------------------- */
+
+SKIP [IGNORE_CASE] :
+{
+	< ( " " | "\t" | "\n" | "\r" )+		>
+|	< "/*"  ( ~["*"] | "*" ~["/"] )* ("*")+ "/"   >
+}
+
+/* The handling of comments is a bit adhoc.
+   Try to fix it using MORE.
+   Check some JavaCC grammars for inspiration.
+*/
+
+<IN_XML> TOKEN :
+{
+    <XML_END:      "]]"	>
+	{
+	    int i = matchedToken.image.length();
+	    matchedToken.image = image.toString().substring(0,i-2);
+	} : DEFAULT
+}
+
+<IN_XML> MORE:
+{
+ < ~[]		        > : IN_XML		       
+}
+
+TOKEN [IGNORE_CASE] :
+{
+		    /* CONTAINERS */
+  <LPAREN:	"("			   >
+| <RPAREN:	")"			   >
+| <LBRACE:	"{"			   >
+| <RBRACE:	"}"			   >
+| <LBRACKET:	"["			   >
+| <RBRACKET:	"]"			   >
+
+| <XML_START:   "[["			   > : IN_XML
+		    
+		    
+| <VARNAME:	 "$"(<ALPHA>(<ALPHA>|<NUM>)*) >
+		    
+		    /* NODE TYPE */
+| <NODE:              "node"                     >
+| <ELEMENT_NODE_TOK:  "element"                  >
+| <TEXT_NODE_TOK:     "text"                     > /*kludge*/
+| <PAGEID_NODE_TOK:     "pageid"				>
+| <PAGEOFFSET_NODE_TOK:     "pageoffset"		>
+| <COMMENT_NODE_TOK:  "comment"                  >
+| <PROCESS_NODE:      "processing-instruction"   >
+
+| <TRUE:              "true"                     >
+| <FALSE:             "false"                    >
+
+		    
+		    /* AXIS */		    
+| <ANCESTOR:          "ancestor"           <DCOLON> >
+| <ANCESTOR_SELF:     "ancestor-or-self"   <DCOLON> >
+| <ATTRIBUTE:         "attribute" 	   <DCOLON> >
+| <CHILD:             "child"              <DCOLON> >
+| <DESCENDANT:        "descendant"         <DCOLON> >
+| <DESCENDANT_SELF:   "descendant-or-self" <DCOLON> >
+| <FOLLOWING:         "following"          <DCOLON> >
+| <FOLLOWING_SIBLING: "following-sibling"  <DCOLON> >
+| <NAMESPACE:         "namespace"          <DCOLON> >
+| <PARENT:            "parent"             <DCOLON> >
+| <PRECEDING:         "preceding"          <DCOLON> >
+| <PRECEDING_SIBLING: "preceding-sibling"  <DCOLON> >
+| <SELF:              "self"               <DCOLON> >
+
+		    /* OPERATORS */
+| <LTHAN:       (".<."|"lt")			   >
+| <LEQUAL:	(".<=."|"leq")			   >
+| <GEQUAL:	(".>=."|"geq")			   >
+| <GTHAN:	(".>."|"gt")			   >
+| <NEQUAL:      ("!="|"ne"|"neq")                       >	
+| <EQUAL:       ("="|"eq")                        >
+		    
+| <NOT:         "not"                      >
+| <OR:          "or"                       >
+| <AND:         "and"                      >
+
+| <MINUS:    	"-"			   >		    
+| <PLUS:    	"+"			   >
+| <STAR:    	"*"			   >
+| <SLASH2:      "//"                       >
+| <SLASH:       "/"                        >
+| <MULT:	"x"	                   >		    		    
+| <DIV:		"div"	         	   >		    
+| <MOD:		"%"			   >
+
+| <AT: 		"@"			   >
+| <ATALPHA: 	"at"			   >
+		    
+| <PIPE:  	"|"			   >
+| <UNION:	"UNION"		  	   >
+| <BEFORE:	"BEFORE"		   >
+| <AFTER:	"AFTER" 		   >
+| <INTERSECT:	"INTERSECT"		   >
+| <EXCEPT:	"EXCEPT"		   >
+| <FILTER:      "filter"                   >
+		    
+| <DOT:    	 "."			   >
+| <SEMICOLON:    ";"			   >		    
+| <ARROW:        "->"                      >
+
+		    		    
+		    /* KEYWORDS */
+| <DECLARE:     "declare"                  >
+| <FUNCTION:	"function"		   >
+| <WHERE:	"where"			   >
+| <RETURN:	"return"		   >
+| <SORTBY:	"sortby"		   >
+| <ORDER:	"order"                    >
+| <BY:          "by"                       >
+| <FOR:         "for"                      >
+| <LET:         "let"                      >
+| <IN:          "in"                       >
+| <DISTINCT:    "distinct"                 >
+| <ASC:         "ascending"                >
+| <DESC:        "descending"               >
+| <IMPORT:      "import"                   >		    
+| <AS:          "as"                       >
+| <STABLE:      "stable"                   >
+| <INSTANCE:    "instance"                 >
+| <OF:          "of"                       >
+| <TREAT:       "treat"                    >
+| <CASTABLE:    "castable"                 >
+| <CAST:        "cast"                     >
+| <TO:          "to"                       >
+| <IS:          "is"                       >
+| <CIN:         ">>"                       >
+| <COUT:        "<<"                       >
+
+		    
+		    /* QUANTIFIERS */
+| <SOME_TOK:	"some"			   >		    
+| <EVERY_TOK:	"every"			   >
+| <SATISFIES:	"satisfies"		   >
+		
+| <IF:          "if"                       >
+| <THEN:        "then"                     >
+| <ELSE:        "else"                     >
+
+| <RENAME:          "rename"                       >
+| <DELETE:          "delete"                       >
+| <INSERT:          "insert"                       >
+| <REPLACE:          "replace"                       >
+
+
+/*
+| <NAME:        (<NAME2> ( "." <NAME2> )*)  >
+modified by Arnaud: 23-Aug-2000
+*/
+| <NAME:        ( <Name> ([":",".","-"] <Name>)* )    >
+/* end of modification */
+| <#NAME2:        (<ALPHA>(<ALPHA>|<NUM>)*) >
+| <CLASSNAME:  ( <NAME> ( "." <NAME>)+ )    >		    
+
+		    
+		    
+| <EXISTS:      "exists"                 >			
+		    
+| <TAG1:        "<" >
+| <TAG2:        ">" >
+| <TAG3:        "/>" >		    		    
+| <TAG4:        "</" >	
+| <DLBRACE:     "{{"                       >
+| <DRBRACE:     "}}"                       >
+		    
+		    
+		    /* PRIVATE TOKENS */
+| <#SQUOTE:     "\'"                       >
+| <#DQUOTE:     "\""                       >
+| <#DCOLON:     "::"                       >
+| <#SPACE:	 " " | "\t" | "\n" | "\r"  >
+| <#ALPHA:	["a"-"z","A"-"Z","_"]	   >
+| <#NUM:	["0"-"9"]		   >
+| <#ALPHANUM:	(<ALPHA> | <NUM>)	   > 		    
+| <#URL:	~["$"] (~["\""])+  >	// should not start with $
+
+/*
+  added 23-Aug-2000 to comply with the spec
+  pb with ":". ancestor::b can be both a name and a navigation
+  pb with "-". name->
+  Solution: fancy characters are OK, but not as final characters.
+*/
+| <#Letter:     ["a"-"z","A"-"Z"]                >
+| <#Name:       ((<Letter>|"_") (<NameChar>)*) >
+| <#MiscName:   ["_"]                >  		    
+| <#NameChar:   (<Letter>|<Digit>|<MiscName>)    >
+| <#Digit:      ["0"-"9"]                        >
+
+		    /* CHARACTERS */
+| <DEF:         ":="                       >
+| <COLON:       ":"                        >
+| <COMMA:       ","                        >
+		    
+
+| <STRING:     (
+		(<SQUOTE> (~["'"])* <SQUOTE>) 
+                |
+		(<DQUOTE> (~["\""])* <DQUOTE>)
+		)                          > 
+| <NUMBER:	(<NUM>)+		   >
+
+
+		    
+| <FINITO:	"^^:-)"			    >
+
+
+
+}
+
+
+
+
+

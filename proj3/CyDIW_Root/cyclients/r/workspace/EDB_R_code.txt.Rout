@@ -1,0 +1,64 @@
+
+R version 3.0.0 (2013-04-03) -- "Masked Marvel"
+Copyright (C) 2013 The R Foundation for Statistical Computing
+Platform: i386-w64-mingw32/i386 (32-bit)
+
+R is free software and comes with ABSOLUTELY NO WARRANTY.
+You are welcome to redistribute it under certain conditions.
+Type 'license()' or 'licence()' for distribution details.
+
+R is a collaborative project with many contributors.
+Type 'contributors()' for more information and
+'citation()' on how to cite R or R packages in publications.
+
+Type 'demo()' for some demos, 'help()' for on-line help, or
+'help.start()' for an HTML browser interface to help.
+Type 'q()' to quit R.
+
+[Previously saved workspace restored]
+
+> args=(commandArgs(TRUE))
+> 
+> if(length(args)==0){
++     print("No arguments supplied. Using default values")
++     ##supply default values
++     inputFile = 'CyWorkspace/Edblog.xml'
++     outputFile = 'CyDemos/Edb_plots.pdf'
++     title = 'EDB Page Access Results'
++     xlabel = 'five Queries'
++     ylabel = 'Num of Page access'
++ } else {
++     for(i in 1:length(args)){
++          eval(parse(text=args[[i]]))
++     }
++ }
+[1] "No arguments supplied. Using default values"
+> 
+> pdf(outputFile)
+> 
+> library(XML)
+> doc = xmlRoot(xmlTreeParse(inputFile))
+> 
+> function(node) xmlSApply(node, xmlValue)
+function (node) 
+xmlSApply(node, xmlValue)
+> tmp = xmlSApply(doc, function(x) xmlSApply(x, xmlValue))
+> tmp = t(tmp)
+> 
+> numLoop1 = xmlSize(doc)
+> performance = as.data.frame(matrix(as.numeric(tmp), numLoop1))
+> 
+> attrs = function(node) xmlSApply(node, xmlAttrs)
+> names(performance) = attrs(doc[[1]])
+> engines = c("Emp ", "Join(Dept outer)", "Join(Emp outer)", "Join with another condition(Emp outer)","Join with complex condition(Emp outer)")
+> 
+> color = c("blue", "red", "green", "yellow", "grey")
+> barplot(as.matrix(performance), beside=TRUE, main=title, col=color[1:numLoop1], xlab=xlabel, ylab=ylabel,legend=engines)
+> 
+> dev.off()
+null device 
+          1 
+> 
+> proc.time()
+   user  system elapsed 
+   1.06    0.07    1.60 

@@ -1,0 +1,1 @@
+javac -d ../../../ -cp ../../../;../lib/dom4j-2.0.0-ALPHA-2.jar;../lib/neo4j-jdbc-2.0.1-SNAPSHOT-jar-with-dependencies.jar *.java

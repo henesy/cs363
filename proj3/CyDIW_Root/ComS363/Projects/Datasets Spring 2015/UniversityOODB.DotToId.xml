@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Map name="UniversityOODB">
+  <ContextObjectType name="PersonType">
+    <DottedIdentifier name="@PersonID" transitionCode="local"/>
+    <DottedIdentifier name="Name" transitionCode="local"/>
+    <DottedIdentifier name="Address" transitionCode="local"/>
+    <DottedIdentifier name="DOB" transitionCode="local"/>
+  </ContextObjectType>
+  <ContextObjectType name="FacultyType">
+    <DottedIdentifier name="@FacultyID" transitionCode="local"/>
+    <DottedIdentifier name="@PersonID" transitionCode="isa PersonType "/>
+    <DottedIdentifier name="Name" transitionCode="isa PersonType "/>
+    <DottedIdentifier name="Address" transitionCode="isa PersonType "/>
+    <DottedIdentifier name="DOB" transitionCode="isa PersonType "/>
+    <DottedIdentifier name="Salary" transitionCode="local"/>
+    <DottedIdentifier name="Rank" transitionCode="local"/>
+  </ContextObjectType>
+  <ContextObjectType name="StudentType">
+    <DottedIdentifier name="@StudentID" transitionCode="local"/>
+    <DottedIdentifier name="@PersonID" transitionCode="isa PersonType "/>
+    <DottedIdentifier name="Name" transitionCode="isa PersonType "/>
+    <DottedIdentifier name="Address" transitionCode="isa PersonType "/>
+    <DottedIdentifier name="DOB" transitionCode="isa PersonType "/>
+    <DottedIdentifier name="Classification" transitionCode="local"/>
+    <DottedIdentifier name="CreditHours" transitionCode="local"/>
+    <DottedIdentifier name="GPA" transitionCode="local"/>
+    <DottedIdentifier name="Mentor" transitionCode="ref FacultyType "/>
+  </ContextObjectType>
+  <ContextObjectType name="CourseType">
+    <DottedIdentifier name="@CourseID" transitionCode="local"/>
+    <DottedIdentifier name="CourseCode" transitionCode="local"/>
+    <DottedIdentifier name="CourseName" transitionCode="local"/>
+    <DottedIdentifier name="PreReq" transitionCode="ref CourseType "/>
+  </ContextObjectType>
+  <ContextObjectType name="OfferingType">
+    <DottedIdentifier name="@OfferingID" transitionCode="local"/>
+    <DottedIdentifier name="CourseInfo" transitionCode="ref CourseType "/>
+    <DottedIdentifier name="Section" transitionCode="local"/>
+    <DottedIdentifier name="Instructor" transitionCode="ref FacultyType "/>
+  </ContextObjectType>
+  <ContextObjectType name="EnrollmentType">
+    <DottedIdentifier name="@EnrollmentID" transitionCode="local"/>
+    <DottedIdentifier name="OfferingInfo" transitionCode="ref OfferingType "/>
+    <DottedIdentifier name="StudentInfo" transitionCode="ref StudentType "/>
+    <DottedIdentifier name="Grade" transitionCode="local"/>
+  </ContextObjectType>
+</Map>

@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSpy v2015 sp2 (x64) (http://www.altova.com) by Ying Wei (Iowa State University) -->
+<!-- edited with XMLSPY v5 rel. 3 U (http://www.xmlspy.com) by Shihe Ma (Iowa State University, Computer Science) -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:element name="University">
+		<xs:annotation>
+			<xs:documentation>University Object-Oriented Scheme</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="Person" type="PersonType" minOccurs="0" maxOccurs="unbounded"/>
+				<xs:element name="Faculty" type="FacultyType" minOccurs="0" maxOccurs="unbounded"/>
+				<xs:element name="Student" type="StudentType" minOccurs="0" maxOccurs="unbounded"/>
+				<xs:element name="Course" type="CourseType" minOccurs="0" maxOccurs="unbounded"/>
+				<xs:element name="Offering" type="OfferingType" minOccurs="0" maxOccurs="unbounded"/>
+				<xs:element name="Enrollment" type="EnrollmentType" minOccurs="0" maxOccurs="unbounded"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:complexType name="PersonType">
+		<xs:sequence>
+			<xs:element name="Name" type="xs:string"/>
+			<xs:element name="Address" type="xs:string"/>
+			<xs:element name="DOB" type="xs:date"/>
+		</xs:sequence>
+		<xs:attribute name="PersonID" type="xs:ID" use="required"/>
+	</xs:complexType>
+	<xs:complexType name="FacultyType">
+		<xs:sequence>
+			<xs:element name="ISA">
+				<xs:complexType>
+					<xs:attribute name="oType" type="xs:string" use="required" fixed="PersonType"/>
+					<xs:attribute name="oID" type="xs:IDREF" use="required"/>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="Salary" type="xs:int"/>
+			<xs:element name="Rank" type="xs:string"/>
+			<xs:element name="Mentoring">
+				<xs:complexType>
+					<xs:attribute name="oType" type="xs:string" use="required" fixed="StudentType"/>
+					<xs:attribute name="oID" type="xs:IDREFS" use="required"/>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="Instructing">
+				<xs:complexType>
+					<xs:attribute name="oType" type="xs:string" use="required" fixed="OfferingType"/>
+					<xs:attribute name="oID" type="xs:IDREFS" use="optional"/>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+		<xs:attribute name="FacultyID" type="xs:ID" use="required"/>
+	</xs:complexType>
+	<xs:complexType name="StudentType">
+		<xs:sequence>
+			<xs:element name="ISA">
+				<xs:complexType>
+					<xs:attribute name="oType" type="xs:string" use="required" fixed="PersonType"/>
+					<xs:attribute name="oID" type="xs:IDREF" use="required"/>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="Classification" type="xs:string"/>
+			<xs:element name="CreditHours" type="xs:int"/>
+			<xs:element name="GPA" type="xs:decimal"/>
+			<xs:element name="Mentor">
+				<xs:complexType>
+					<xs:attribute name="oType" type="xs:string" use="required" fixed="FacultyType"/>
+					<xs:attribute name="oID" type="xs:IDREF" use="required"/>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="EnrolledIn">
+				<xs:complexType>
+					<xs:attribute name="oType" type="xs:string" use="required" fixed="EnrollmentType"/>
+					<xs:attribute name="oID" type="xs:IDREFS" use="required"/>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+		<xs:attribute name="StudentID" type="xs:ID" use="required"/>
+	</xs:complexType>
+	<xs:complexType name="CourseType">
+		<xs:sequence>
+			<xs:element name="CourseCode" type="xs:string"/>
+			<xs:element name="CourseName" type="xs:string"/>
+			<xs:element name="PreReqs">
+				<xs:annotation>
+					<xs:documentation>Reference to Course</xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:attribute name="oType" type="xs:string" use="required" fixed="CourseType"/>
+					<xs:attribute name="oID" type="xs:IDREFS" use="optional"/>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="OfferedAs">
+				<xs:complexType>
+					<xs:attribute name="oType" type="xs:normalizedString" use="required" fixed="OfferingType"/>
+					<xs:attribute name="oID" type="xs:IDREFS" use="required"/>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+		<xs:attribute name="CourseID" type="xs:ID" use="required"/>
+	</xs:complexType>
+	<xs:complexType name="OfferingType">
+		<xs:sequence>
+			<xs:element name="CourseInfo">
+				<xs:complexType>
+					<xs:attribute name="oType" type="xs:string" use="required" fixed="CourseType"/>
+					<xs:attribute name="oID" type="xs:IDREF" use="required"/>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="Section" type="xs:int"/>
+			<xs:element name="Instructor">
+				<xs:complexType>
+					<xs:attribute name="oType" type="xs:string" use="required" fixed="FacultyType"/>
+					<xs:attribute name="oID" type="xs:IDREF" use="required"/>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="Enrollments">
+				<xs:complexType>
+					<xs:attribute name="oType" type="xs:string" use="required" fixed="EnrollmentType"/>
+					<xs:attribute name="oID" type="xs:IDREFS" use="required"/>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+		<xs:attribute name="OfferingID" type="xs:ID" use="required"/>
+	</xs:complexType>
+	<xs:complexType name="EnrollmentType">
+		<xs:sequence>
+			<xs:element name="OfferingInfo">
+				<xs:complexType>
+					<xs:attribute name="oType" type="xs:string" use="required" fixed="OfferingType"/>
+					<xs:attribute name="oID" type="xs:IDREF" use="required"/>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="StudentInfo">
+				<xs:complexType>
+					<xs:attribute name="oType" type="xs:string" use="required" fixed="StudentType"/>
+					<xs:attribute name="oID" type="xs:IDREF" use="required"/>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="Grade" type="xs:string"/>
+		</xs:sequence>
+		<xs:attribute name="EnrollmentID" type="xs:ID" use="required"/>
+	</xs:complexType>
+</xs:schema>

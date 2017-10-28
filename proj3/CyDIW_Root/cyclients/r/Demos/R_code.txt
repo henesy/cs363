@@ -1,0 +1,36 @@
+args=(commandArgs(TRUE))
+
+if(length(args)==0){
+    print("No arguments supplied. Using default values")
+    ##supply default values
+    inputFile = 'CyDIW_Workspace/experimentData.xml'
+    outputFile = 'CyDIW_Workspace/plots.pdf'
+    title = 'CyDIW Experimental Results'
+    xlabel = '20 XMark Queries'
+    ylabel = 'Execution Time (in Milliseconds)'
+} else {
+    for(i in 1:length(args)){
+         eval(parse(text=args[[i]]))
+    }
+}
+
+pdf(outputFile)
+
+library(XML)
+doc = xmlRoot(xmlTreeParse(inputFile))
+
+function(node) xmlSApply(node, xmlValue)
+tmp = xmlSApply(doc, function(x) xmlSApply(x, xmlValue))
+tmp = t(tmp)
+
+numLoop1 = xmlSize(doc)
+performance = as.data.frame(matrix(as.numeric(tmp), numLoop1))
+
+attrs = function(node) xmlSApply(node, xmlAttrs)
+names(performance) = attrs(doc[[1]])
+engines = c("Engine A", "Engine B", "Engine C")
+
+color = c("blue", "red", "green", "yellow", "grey")
+barplot(as.matrix(performance), beside=TRUE, main=title, col=color[1:numLoop1], xlab=xlabel, ylab=ylabel, legend=engines)
+
+dev.off()

@@ -1,0 +1,75 @@
+// JDBC Demo including loading MySQL databaset when necessary; 
+
+/* <<< INSTRUCTIONS TO USERS 
+>>>
+
+Windows users: Carefully edit the TWO occurences of "C:\Program Files (x86)\Java\jdk1.8.0_31" 
+in the following batch to reflect the correct location of Java JDK on your computer.  
+
+Non-Windows users: In "$CyDB:> set $$osType := Windows;" command, change Windows to Linux or Mac (no quotations) 
+
+*/ 
+
+/* ---------------------------------------------------------------------
+DATA LOADING: Select this section and [Run Selected] if necessary; 
+ 
+$MySQL:> connect;
+$MySQL:> drop table Dept;
+$MySQL:> drop table Emp;
+$MySQL:> create table Emp (
+   Name char(15) not null,
+   DName char(10),
+   Salary integer,
+   primary key (Name));
+
+$MySQL:> create table Dept (
+   DName char(10),
+   MName char(15),
+   primary key (DName) );
+
+// View the data you are about to load; 
+$CyDB:> DisplayXML ComS363/Demos/Datasets/Personnel_Dataset.xml; 
+
+// Now load; 
+$MySQL:> load | Emp | ComS363/Demos/Datasets/Personnel_Dataset.xml;
+$MySQL:> load | Dept | ComS363/Demos/Datasets/Personnel_Dataset.xml;  
+ 
+// Section 3. Check loaded tables; 
+$MySQL:> select * from Emp;
+$MySQL:> select * from Dept; 
+
+$MySQL:> disconnect;
+
+END OF DATA LOADING 
+----------------------------------------------------------------- */
+
+$CyDB:> undeclare string $$osType; 
+$CyDB:> declare string $$osType; 
+
+$CyDB:> set $$osType := Windows;
+$CyDB:> list variables;
+
+// Compile and run your Java program ; 
+
+$CyDB:> if ($$osType=="Windows") {
+
+  $OS:>set PATH=C:\Program Files (x86)\Java\jdk1.8.0_31\bin<;>
+            && set CLASSPATH=C:\Program Files (x86)\Java\jdk1.8.0_31\lib<;>
+            && javac -d ComS363\Demos\A_JDBC_Demo ComS363\Demos\A_JDBC_Demo\JDBC_Demo.java;
+
+  // Run a JDBC demo, note how jar file for my-sql driver is included ;
+
+  $OS:> java -cp
+            "ComS363\Demos\A_JDBC_Demo\mysql-connector-java-5.0.5.jar<;>ComS363\Demos\A_JDBC_Demo"
+            JDBC_Demo
+
+ > ComS363\Projects\P0\JDBC_Demo_Output.txt;
+  // Print the computed and expected outputs and make sure they are comparable;
+} else {
+  $OS:> javac -d ComS363/Demos/A_JDBC_Demo ComS363/Demos/A_JDBC_Demo/JDBC_Demo.java; 
+  $OS:> java -cp ComS363/Demos/A_JDBC_Demo:ComS363/Demos/A_JDBC_Demo/mysql-connector-java-5.0.5.jar:$CLASSPATH JDBC_Demo > ComS363/Demos/A_JDBC_Demo/JDBC_Demo_Output.txt;  
+}
+
+// Print the computed and expected outputs and make sure they compare; 
+$CyDB:> displaytxt ComS363\Demos\A_JDBC_Demo\JDBC_Demo_Output_(Sample).txt; 
+$CyDB:> displaytxt ComS363\Projects\P0\JDBC_Demo_Output.txt; 

@@ -1,0 +1,35 @@
+args=(commandArgs(TRUE))
+
+if(length(args)==0){
+    print("No arguments supplied. Using default values")
+    ##supply default values
+    inputFile = 'JDBCXbenchMark_Time.xml'
+    outputFile = 'CyDIW_Workspace/JDBCX_Time_2.pdf'
+   } else {
+    for(i in 1:length(args)){
+         eval(parse(text=args[[i]]))
+    }
+}
+
+pdf(outputFile)
+
+library(XML)
+doc = xmlRoot(xmlTreeParse(inputFile))
+
+function(node) xmlSApply(node, xmlValue)
+tmp = xmlSApply(doc[[1]], function(x) xmlSApply(x, xmlValue))
+tmp = t(tmp)
+
+numLoop1 = xmlSize(doc[[1]])
+performance = as.data.frame(matrix(as.numeric(tmp), numLoop1))
+
+attrs = function(node) xmlSApply(node, xmlAttrs)
+
+engines = c("1 MB", "10 MB", "100 MB", "1 GB")
+
+#color = c("blue", "red", "green", "yellow", "grey")
+color = c("grey", "grey", "grey","grey")
+barplot(as.matrix(performance), beside=TRUE, col=color[1:3], width=c(0.1,0.1,0.1),names.arg=engines)
+#legend("topleft",engines)
+
+dev.off()

@@ -1,0 +1,30 @@
+//Create Person Create Faculty Create Student Create Course Create Offering;
+
+$Ooquery:> 
+2+3, 3=4;
+
+
+
+
+<showtext>
+$Ooquery:> 
+<Item xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"> {
+for $p in doc("C:/Users/yingw/Desktop/newFiles/UniversityOODB(ODMG).3.xml")//Person
+return <E> {concat("create (",substring($p.@PersonID, 1), ":Person { ID:", substring($p.@PersonID, 2),", Name: '", $p.Name, "', Address: '", $p.Address, "', DOB: '", $p.DOB,"' })")} </E>
+,
+for $f in doc("C:/Users/yingw/Desktop/newFiles/UniversityOODB(ODMG).3.xml")//Faculty
+return <E> {concat("create (",substring($f.@FacultyID, 1), ":Faculty { ID:", substring($f.@FacultyID, 2),", Salary: ", $f.Salary, ", Rank: '", $f.Rank, "' })")} </E>
+,
+for $s in doc("C:/Users/yingw/Desktop/newFiles/UniversityOODB(ODMG).3.xml")//Student
+return <E> {concat("create (",substring($s.@StudentID, 1), ":Student { ID:", substring($s.@StudentID, 2),", Classification: '", $s.Classification, "', CreditHours: ", $s.CreditHours, ", GPA: ", $s.GPA," })")} </E>
+,
+for $c in doc("C:/Users/yingw/Desktop/newFiles/UniversityOODB(ODMG).3.xml")//Course
+return <E> {concat("create (",substring($c.@CourseID, 1), ":Course { ID:", substring($c.@CourseID, 3),", CourseCode: '", $c.CourseCode, "', CourseName: '", $c.CourseName,"'})")} </E>
+,
+for $d in doc("C:/Users/yingw/Desktop/newFiles/UniversityOODB(ODMG).3.xml")//Offering
+return <E> {concat("create (",substring($d.@OfferingID, 1), ":Offering { ID:", substring($d.@OfferingID, 10),", Section: ", $d.Section, "})")} </E>
+} </Item>;
+</showtext>
+
+
+

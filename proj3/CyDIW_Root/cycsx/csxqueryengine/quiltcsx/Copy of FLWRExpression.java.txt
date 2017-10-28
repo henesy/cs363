@@ -1,0 +1,364 @@
+/* Kweelt - a framework to query XML documents
+ * Copyright (C) 2000,  Arnaud Sahuguet (Arnaud.Sahuguet@polytechnique.org)
+ *
+ * This program is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU General Public License
+ * as published by the Free Software Foundation; either version 2
+ * of the License, or (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program; if not, write to the Free Software
+ * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
+ */
+
+package xacute.quilt;
+
+import xacute.common.Constants;
+import xacute.common.NodeList;
+import xacute.common.Node;
+import xacute.common.QuiltException;
+import xacute.impl.csx.LetClauseManager;
+import xacute.impl.csx.NodeImpl;
+import xacute.util.QuiltElementNode;
+
+import java.io.PrintWriter;
+import java.util.Vector;
+import java.util.TreeMap;
+
+import org.w3c.dom.DOMException;
+
+import canstorex.dom.DOMNode;
+import canstorex.iterators.DOMNodeIterator;
+import canstorex.iterators.SequentialDOMNodeIterator;
+import canstorex.pagedata.PageNode;
+import canstorex.util.CanStoreXUtil;
+
+/**
+ * This class implements <i>Quilt</i>'s <b>FOR</b> / <b>LET</b> / <b>WHERE</b> /
+ * <b>RETURN</b> expressions.
+ */
+public class FLWRExpression extends QuiltExpression {
+
+	private Binding[] bindings;
+
+	private QuiltExpression where;
+
+	private QuiltExpression e;
+
+	private SortClause[] sort;
+
+	FLWRExpression(Vector bindings, QuiltExpression where, QuiltExpression e,
+			Vector sort) {
+		this.bindings = new Binding[bindings.size()];
+		bindings.toArray(this.bindings);
+		this.where = where;
+		this.e = e;
+		if (sort != null) {
+			this.sort = new SortClause[sort.size()];
+			sort.toArray(this.sort);
+		} else
+			this.sort = new SortClause[0];
+	}
+
+	public Value eval(EvalContext con) throws QuiltException {
+		if (con.getNode() != null)
+			throw new RuntimeException(
+					"xacute.quilt.FLWRExpression.eval() with a non-null node");
+
+		Vector result = new Vector();
+
+		BindingTree.buildTreeAndPaths(this.bindings, con, this.where,
+				this.sort, this.e, result);
+
+		LetClauseManager.getInstance().clearHashMap();
+		// return this.evalInOrder(result, con);
+		// return null;
+		Value v = null;
+
+		BindingTreePath[] paths = new BindingTreePath[result.size()];
+		result.toArray(paths);
+
+		ValueCompared valComp = new ValueCompared();
+
+		for (int k = 0; k < paths.length; k++) {
+			try {
+				con.getEnv().setBindings(this.bindings, paths[k]);
+				Value nl = this.e.eval(con);
+
+				valComp.add(nl);
+				// evalAux(nl, con);
+			} catch (Exception e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+		}
+
+		if (this.sort.length == 0) {
+			v = valComp;
+		} else {
+			NodeListTreeMap sortMap = new NodeListTreeMap(new MyCompare(
+					this.sort));
+			Vector vec = valComp.getValues();
+			for (int k = 0; k < vec.size(); k++) {
+				Object obj = vec.get(k);
+				Value v1 = null;
+				if (obj instanceof ValueNodeList) {
+					v1 = (ValueNodeList) obj;
+				} else if (obj instanceof ValueNodeIterator) {
+					v1 = (ValueNodeIterator) obj;
+				} else if (obj instanceof ValueNode) {
+					v1 = (ValueNode) obj;
+				} else if (obj instanceof ValueNum) {
+					v1 = (ValueNum) obj;
+				} else if (obj instanceof ValueString) {
+					v1 = (ValueString) obj;
+				} else if (obj instanceof ValueBool) {
+					v1 = (ValueBool) obj;
+				} else if (obj instanceof ValueCompared) {
+					v1 = (ValueCompared) obj;
+				} else {
+					v1 = (Value) obj;
+				}
+
+				if (v1 != null) {
+					// Node n = this.e.eval(con).toNode(con);
+					Node n = v1.toNodeList(con).get(0);
+					EvalContext newCon = new EvalContext(n, -1, -1, con.getEnv(), con.getSemantics(), con.getNodeFactory());
+					String[] multiKey = new String[this.sort.length];
+					for (int j = 0; j < this.sort.length; j++) {
+						multiKey[j] = this.sort[j].eval(newCon).toString(newCon);
+						// multiKey[j] = this.sort[j].eval(con).toString(con);
+					}
+					sortMap.put(multiKey, v1);
+				}
+			}
+
+			Vector sortedResult = sortMap.values();
+			if (sortedResult.isEmpty()) {
+				v = null;
+			} else {
+				ValueCompared vc = new ValueCompared();
+				for (int k = 0; k < sortedResult.size(); k++) {
+					Object sortNode = sortedResult.elementAt(k);
+					if (sortNode instanceof ValueNodeList) {
+						vc.add((ValueNodeList) sortNode);
+					} else if (sortNode instanceof ValueNodeIterator) {
+						vc.add((ValueNodeIterator) sortNode);
+					} else if (sortNode instanceof ValueNode) {
+						vc.add((ValueNode) sortNode);
+					} else if (sortNode instanceof ValueNum) {
+						vc.add((ValueNum) sortNode);
+					} else if (sortNode instanceof ValueString) {
+						vc.add((ValueString) sortNode);
+					} else if (sortNode instanceof ValueBool) {
+						vc.add((ValueBool) sortNode);
+					} else if (sortNode instanceof ValueCompared) {
+						vc.add((ValueCompared) sortNode);
+					} else {
+						vc.add((Value) sortNode);
+					}
+				}
+				v = vc;
+			}
+			
+		}
+
+		if (paths.length > 0) {
+			// System.err.println("in FLWR");
+			con.getEnv().rmBindings(this.bindings);
+		}
+
+		return v;
+	}
+
+	public void evalAux(Value nl, EvalContext con) throws QuiltException {
+		PrintWriter pr = new PrintWriter(System.out, true);
+
+		try {
+			if (nl instanceof ValueCompared) {
+				Vector vec = ((ValueCompared) nl).getValues();
+				String tagName = ((ValueCompared) nl).getTagName();
+
+				if (tagName != null) {
+					pr.write("<" + tagName + ">" + "\n");
+					pr.flush();
+				}
+
+				for (int i = 0; i < vec.size(); i++) {
+					Object v = vec.get(i);
+					if (v == null)
+						continue;
+
+					if (v instanceof ValueCompared) {
+						evalAux(((ValueCompared) v), con);
+					}
+
+					if (v instanceof ValueNodeList) {
+						NodeList nl1 = ((ValueNodeList) v).toNodeList(con);
+						if (nl1 != null) {
+							for (int j = 0; j < nl1.size(); j++) {
+								// children.addElement(nl.get(j));
+								org.w3c.dom.Node domNode = ((NodeImpl) nl1
+										.get(j)).getDOMNode();
+								if (domNode != null) {
+									PageNode pNode = ((DOMNode) domNode).page;
+									CanStoreXUtil.getInstance()
+											.dePaginateXMLDoc(pNode.pageID,
+													pNode.nodeOffset);
+									pr.flush();
+								}
+							}
+						}
+
+					} else if (v instanceof ValueNodeIterator) {
+						DOMNodeIterator domItr = ((ValueNodeIterator) v)
+								.getIterator();
+						domItr.open();
+
+						boolean flag = false;
+						/*
+						 * if (domItr.hasNext()) { flag = true; pr.write("<" +
+						 * s + ">" + "\n"); pr.flush(); }
+						 */
+						while (domItr.hasNext()) {
+							org.w3c.dom.Node domNode = domItr.getNext();
+							// pr.write(domNode.getNodeName() + "\n");
+							if (domNode != null) {
+								PageNode pNode = ((DOMNode) domNode).page;
+								CanStoreXUtil.getInstance().dePaginateXMLDoc(
+										pNode.pageID, pNode.nodeOffset);
+								pr.flush();
+							}
+						}
+						/*
+						 * if (flag) { pr.write("</" + s + ">" + "\n");
+						 * pr.flush(); }
+						 */
+					} else if (v instanceof ValueNode) {
+						ValueNode vNode = (ValueNode) v;
+						if (vNode.getNode() instanceof QuiltElementNode) {
+
+							Node[] childNodes = ((QuiltElementNode) vNode
+									.getNode()).getChildNodes();
+
+							if (childNodes != null && childNodes.length > 0) {
+								if (((QuiltElementNode) vNode.getNode())
+										.getTagName() != null) {
+									pr.write("<"
+											+ ((QuiltElementNode) vNode
+													.getNode()).getTagName()
+											+ ">" + "\n");
+									pr.flush();
+								}
+
+								for (int j = 0; j < childNodes.length; j++) {
+									// pr.write(childNodes[i].stringValue());
+									if (childNodes[j] instanceof NodeImpl) {
+										NodeImpl nodeImpl = (NodeImpl) childNodes[j];
+										DOMNode domNode = (DOMNode) nodeImpl
+												.getDOMNode();
+										PageNode pNode = domNode.page;
+										CanStoreXUtil.getInstance()
+												.dePaginateXMLDoc(pNode.pageID,
+														pNode.nodeOffset);
+									}
+								}
+
+								if (((QuiltElementNode) vNode.getNode())
+										.getTagName() != null) {
+									pr.write("</"
+											+ ((QuiltElementNode) vNode
+													.getNode()).getTagName()
+											+ ">" + "\n");
+									pr.flush();
+								}
+							}
+						}
+					} else if (v instanceof ValueNum) {
+						pr.write(Float.toString(((ValueNum) v).toNum(con)));
+						pr.flush();
+					} else if (v != null) {
+						pr.write(v.toString());
+						pr.flush();
+					}
+
+				}
+				if (tagName != null) {
+					pr.write("</" + tagName + ">" + "\n");
+					pr.flush();
+				}
+			}
+		} catch (Exception e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+
+	}
+
+	public String pprint() {
+		StringBuffer buf = new StringBuffer();
+		buf.append("( ");
+		for (int i = 0; i < this.bindings.length; ++i)
+			buf.append(this.bindings[i].pprint() + "\n");
+		if (where != null)
+			buf.append("WHERE " + this.where.pprint() + "\n");
+		buf.append("RETURN " + this.e.pprint());
+		for (int i = 0; i < this.sort.length; i++)
+			buf.append(" " + this.sort[i].pprint());
+		buf.append(" )");
+		return buf.toString();
+	}
+
+	private Value evalInOrder(Vector tm, EvalContext con) throws QuiltException {
+		// The call returns sorted results.
+		// Depending on the nature of the sort, the result will be returned
+		// forward or backward.
+		BindingTreePath[] paths = new BindingTreePath[tm.size()];
+		tm.toArray(paths);
+
+		NodeList nll = con.getNodeFactory().makeEmptyNodeList();
+
+		if (this.sort.length == 0) {
+			for (int k = 0; k < paths.length; k++) {
+				con.getEnv().setBindings(this.bindings, paths[k]);
+				// nl = nl.APPEND( this.e.eval(con).toNodeList(con) );
+
+				Value nl = this.e.eval(con);
+			}
+			if (paths.length > 0) {
+				// System.err.println("in FLWR");
+				con.getEnv().rmBindings(this.bindings);
+			}
+			return new ValueNodeList(nll);
+		} else {
+			NodeListTreeMap sortMap = new NodeListTreeMap(new MyCompare(
+					this.sort));
+			for (int k = 0; k < paths.length; k++) {
+				con.getEnv().setBindings(this.bindings, paths[k]);
+				Node n = this.e.eval(con).toNode(con);
+				con.getEnv().rmBindings(this.bindings);
+				EvalContext newCon = new EvalContext(n, -1, -1, con.getEnv());
+				newCon.setNodeFactory(con.getNodeFactory());
+				String[] multiKey = new String[this.sort.length];
+				for (int j = 0; j < this.sort.length; j++)
+					multiKey[j] = this.sort[j].eval(newCon).toString(con);
+				sortMap.put(multiKey, n);
+			}
+			Vector sortedResult = sortMap.values();
+			for (int k = 0; k < sortedResult.size(); k++)
+				nll = nll.APPEND((Node) sortedResult.elementAt(k));
+
+			return new ValueNodeList(nll);
+		}
+	}
+
+	public QuiltExpression getE() {
+		return e;
+	}
+
+}

@@ -1,0 +1,7 @@
+  
+    <Client Name="Neo4j Graph Database" Prefix="Neo4j" Enabled="yes"
+      WorkspacePath="cyclients\Neo4j\workspace" 
+      ClassPath="" 
+      LibraryPath="cyclients\Neo4j\lib" 
+      ClientAdapter="cyclients.Neo4j.adapter.Neo4jAdapter" />
+

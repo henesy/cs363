@@ -1,0 +1,9 @@
+<ChainConfig>
+	<Item type="Integer" itemlength="4" unit="Byte" NumOfItems="10000"/>
+	<PageCapacity NumOfBytes="1024"/>
+	<PageHeader length="12" unit="Byte">
+		<HeaderField length="4" Name="NumOfTuples" offset="0"/>
+		<HeaderField length="4" Name="NumOfBytesUsed" offset="4"/>
+		<HeaderField length="4" Name="NextPageID" offset="8"/>
+	</PageHeader>
+</ChainConfig>

@@ -1,0 +1,64 @@
+/*
+This Commands Pane is for creating, editing, and executing batches of commands. To get started, use the [Open] button to load a batch of commands from the Demo folder. 
+
+The Output Pane on the right is the default area where the output of a command is displayed. The pane is an html browser where text, html documents, and images can be displayed. Alternatively, in some cases the outputs can be saved to files or displayed in popup windows. 
+*/
+
+$CyDB:> list commands;
+
+
+// Item 1;
+
+<showtext>
+$Saxon:> 
+<Item1 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+{
+   for $e in doc("U:/cs363/proj3/Student.xml")/Students/Student
+   for $f in doc("U:/cs363/proj3/Instructor.xml")/Instructors/Instructor
+
+   let $s := doc("U:/cs363/proj3/Person.xml")/Persons/Person[ID = $e/StudentID]/Name
+   let $m := doc("U:/cs363/proj3/Person.xml")/Persons/Person[ID = $f/InstructorID]/Name
+
+   where $e/MentorID = $f/InstructorID
+   return
+   <E> { $s, $m } </E>
+}
+</Item1>; 
+</showtext>
+
+// Item 2;
+
+
+
+// Item 3;
+
+
+
+// Item 4;
+
+
+
+// Item 5;
+
+
+
+// Item 6;
+
+
+
+// Item 7;
+
+
+
+// Item 8;
+
+
+
+// Item 9;
+
+
+
+// Item 10;
+
+
+

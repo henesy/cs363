@@ -1,0 +1,5 @@
+      <Client Name = "A client to split a chain of pages" Prefix = "SplitChain" Enabled = "yes"
+         ClassPath="" 
+         LibraryPath="" 
+         WorkspacePath="" 
+         ClientAdapter="cyclients.split.adapter.SplitAdapter" />  

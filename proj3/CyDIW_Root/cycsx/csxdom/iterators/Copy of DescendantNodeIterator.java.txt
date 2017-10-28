@@ -1,0 +1,88 @@
+/*
+ * Created on Mar 7, 2004
+ *
+ */
+package canstorex.iterators;
+
+import java.util.*;
+
+import org.w3c.dom.Element;
+import org.w3c.dom.NodeList;
+
+import canstorex.storagemanager.XMLStorageClient;
+import canstorex.dom.CSXNodeList;
+import canstorex.dom.DOMNode;
+import canstorex.pagedata.PageNode;
+import canstorex.pagedata.PageNodeList;
+import canstorex.util.Constant;
+
+
+/**
+ * @author sma
+ *
+ * Contains all nodes in the subtree, but does not include the root (itself) and text nodes
+ */
+public class DescendantNodeIterator implements DOMNodeIterator
+{
+	
+	public Vector path =null;
+	// public DOMNodeIterator curIter=null;
+	DOMNode curNode = null;
+	
+	public DescendantNodeIterator (DOMNode root) throws Exception
+	{
+		path = new Vector();
+		if (curNode.getFirstChild() != null) {
+			curNode = (DOMNode) curNode.getFirstChild();
+		}
+		
+		/*
+		CSXNodeList dnl = new CSXNodeList(root, root.disk);
+		curIter = new PageNodeListIterator(dnl);
+		path.addElement(curIter);
+		getNext();
+		*/
+	}
+	
+	public boolean hasNext()
+	{
+		return (path.size()!=0);
+	}
+	
+	public DOMNode getNext() throws Exception
+	{
+		DOMNode result=curIter.getNext();
+		if (!curIter.hasNext())
+		{	
+			path.remove(curIter);
+			if (path.size()==0)
+				curIter =null;
+			else
+				curIter = (DOMNodeIterator)path.elementAt(0);
+		}
+		
+		while (result.getNodeName().equals(Constant.childFonyTag)
+			|| result.getNodeName().equals(Constant.rootFonyTag))
+		{
+			if (result.getNodeName().equals(Constant.childFonyTag))
+			{
+				// int childPageId = Integer.parseInt(diskItr.getFirstChild(result).getNodeValue());
+				DOMNode root = new DOMNode(result.disk.checkChildFony(result.page), result.disk);
+				
+				CSXNodeList dnl = new CSXNodeList(root, root.disk);
+				curIter = new PageNodeListIterator(dnl);
+				path.insertElementAt(curIter, 0);
+			}
+			result = curIter.getNext();
+			if (!curIter.hasNext())
+			{	
+				path.remove(curIter);
+				if (path.size()==0)
+					curIter =null;
+				else
+					curIter = (DOMNodeIterator)path.elementAt(0);
+			}
+		}
+		return result;
+	}
+}

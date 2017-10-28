@@ -1,0 +1,120 @@
+package xacute.quilt;
+
+import xacute.common.Node;
+import xacute.common.QuiltException;
+import java.util.Vector;
+
+/**
+ * This class implements a function
+ * defined in the preamble of
+ * a <i>Quilt</i> expression.
+ */
+public class FunDef
+{
+    
+    /**
+     * The name of the function.
+     */
+    private String funName;
+
+    /**
+     * A <code>Vector</code>
+     * containing <code>Var</code> 
+     * objects identifiying the
+     * arguments of the function.
+     */
+    private Var[] argList;
+
+    /**
+     * The body of the function.
+     */
+    private QuiltExpression body;
+
+    /**
+     * The unique constructor
+     * in this class.
+     */
+    FunDef( String funName, Vector argList, QuiltExpression body)
+    {
+	System.out.println(argList + " " + argList.size() );
+	this.funName = funName;
+	this.argList = new Var[ argList.size() ];
+	argList.toArray( this.argList );
+	this.body = body;
+    }
+
+    /**
+     * Returns the name of the function.
+     */
+    String getName() {  return this.funName; }
+
+    /**
+     * Prints the definition of the function.
+     */
+    public String pprint()
+    {
+	StringBuffer buf = new StringBuffer();
+	buf.append("FUNCTION " + this.funName + "(");
+	int s = this.argList.length;
+	for (int k=0; k < s; k++)
+	    buf.append( this.argList[k].pprint() + ((k == s - 1) ? "" : ", "));
+	buf.append(") {\n" + this.body.pprint() + "\n}");
+	return buf.toString();
+    }
+    
+    /**
+     * Prints the name of the function.
+     */
+    public String printResult()
+    { // might implement Value ?
+	return this.funName + "()";
+    }
+    
+    Value evalFun(Value[] argValues, EvalContext con)
+	throws QuiltException
+    {
+	if (argValues.length != this.argList.length)
+	    throw new QuiltWrongArgNumberException
+		(
+		 this.funName
+		 + "() requires " + this.argList.length
+		 + " arguments and not " + argValues.length
+		 );
+	else
+	    {
+		this.findFreshVars(con.getEnv());
+		for (int k=0; k < this.argList.length; k++)
+		    con.getEnv().setValue( this.argList[k].getName(), argValues[k]);
+		Value val = this.body.eval(con);
+		System.out.println( ">>" + val.toString(con) + "<<");
+		for (int k=0; k < this.argList.length; k++)
+		    con.getEnv().rmBinding(this.argList[k].getName());
+		return val;
+	    }
+    }
+    
+    /**
+     * This method finds fresh variables
+     * for the arguments of this function, 
+     * i.e. variables unbound in a given
+     * environment, and substitutes the
+     * bound variables in the body of the
+     * function.
+     * @param env the <code>Environment</code> of the function call
+     */
+    private void findFreshVars(Environment env)
+    {
+	for (int k=0; k < this.argList.length; k++) {
+	    String name = this.argList[k].getName();
+	    if (env.isBoundVar(name))
+		{
+		    int count = 0;
+		    while (env.isBoundVar(name + count))
+			++count;
+		    this.argList[k] = new Var(name + count);
+		    this.body.substVar(name, name + count);
+		}
+	}
+    }
+    
+}

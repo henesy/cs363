@@ -1,0 +1,69 @@
+<?xml version="1.0"?>
+<!-- edited with XMLSPY v5 rel. 3 U (http://www.xmlspy.com) by Shashi K Gadia (Iowa State University, Computer Science) -->
+<PersonnelDB xsi:noNamespaceSchemaLocation="PersonnelOODB.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<Person PersonID="Person001">
+		<Name>Mark Allen</Name>
+		<DOB>1960-05-07</DOB>
+	</Person>
+	<Person PersonID="Person002">
+		<Name>Lisa Borman</Name>
+		<DOB>1954-09-12</DOB>
+	</Person>
+	<Person PersonID="Person003">
+		<Name>Eric Martin</Name>
+		<DOB>1970-04-22</DOB>
+	</Person>
+	<Person PersonID="Person004">
+		<Name>James Robe</Name>
+		<DOB>1973-02-18</DOB>
+	</Person>
+	<Person PersonID="Person005">
+		<Name>Matt Simon</Name>
+		<DOB>1976-01-09</DOB>
+	</Person>
+	<Person PersonID="Person006">
+		<Name>John Doe</Name>
+		<DOB>1978-11-21</DOB>
+	</Person>
+	<Emp EmpID="Emp001">
+		<ISA oType="PersonType" oID="Person001"/>
+		<Salary>80000</Salary>
+		<WorksIn oType="DeptType" oID="Dept001"/>
+	</Emp>
+	<Emp EmpID="Emp002">
+		<ISA oType="PersonType" oID="Person002"/>
+		<Salary>75000</Salary>
+		<WorksIn oType="DeptType" oID="Dept002"/>
+	</Emp>
+	<Emp EmpID="Emp003">
+		<ISA oType="PersonType" oID="Person003"/>
+		<Salary>50000</Salary>
+		<WorksIn oType="DeptType" oID="Dept001"/>
+	</Emp>
+	<Emp EmpID="Emp004">
+		<ISA oType="PersonType" oID="Person005"/>
+		<Salary>45000</Salary>
+		<WorksIn oType="DeptType" oID="Dept002"/>
+	</Emp>
+	<Emp EmpID="Emp005">
+		<ISA oType="PersonType" oID="Person006"/>
+		<Salary>40000</Salary>
+		<WorksIn oType="DeptType" oID="Dept001 Dept002"/>
+	</Emp>
+	<Dept DeptID="Dept001">
+		<DName>Information Service</DName>
+		<ManagedBy oType="ManagerType" oID="Manager001"/>
+	</Dept>
+	<Dept DeptID="Dept002">
+		<DName>Sales</DName>
+		<ManagedBy oType="ManagerType" oID="Manager002"/>
+	</Dept>
+	<Manager ManagerID="Manager001">
+		<ISA oType="EmpType" oID="Emp001"/>
+		<Budget>1000000</Budget>
+	</Manager>
+	<Manager ManagerID="Manager002">
+		<ISA oType="EmpType" oID="Emp002"/>
+		<Budget>400000</Budget>
+	</Manager>
+</PersonnelDB>

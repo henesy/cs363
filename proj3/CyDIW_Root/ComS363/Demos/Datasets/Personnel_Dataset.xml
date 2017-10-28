@@ -1,0 +1,54 @@
+<?xml version="1.0" standalone="yes"?>
+<DataBase name="Personnel">
+  <Relation name="Emp">
+    <Columns>
+      <Column name="Name" type="Text" />
+      <Column name="DName" type="Text" />
+      <Column name="Salary" type="Number" />
+    </Columns>
+    <Entry>
+      <Name>Hari</Name>
+      <DName>Credit</DName>
+      <Salary>55000</Salary>
+    </Entry>
+    <Entry>
+      <Name>John</Name>
+      <DName>Toys</DName>
+      <Salary>50000</Salary>
+    </Entry>
+    <Entry>
+      <Name>Leu</Name>
+      <DName>Shoes</DName>
+      <Salary>70000</Salary>
+    </Entry>
+    <Entry>
+      <Name>Mary</Name>
+      <DName>Toys</DName>
+      <Salary>60000</Salary>
+    </Entry>
+    <Entry>
+      <Name>Superman</Name>
+      <DName>Audit</DName>
+      <Salary>100000</Salary>
+    </Entry>
+    <Entry>
+      <Name>Jane</Name>
+      <DName>Credit</DName>
+      <Salary>65000</Salary>
+    </Entry>
+  </Relation>
+  <Relation name="Dept">
+    <Columns>
+      <Column name="DName" type="Text" />
+      <Column name="MName" type="Text" />
+    </Columns>
+    <Entry>
+      <DName>Credit</DName>
+      <MName>CC</MName>
+    </Entry>
+    <Entry>
+      <DName>Shoes</DName>
+      <MName>SS</MName>
+    </Entry>
+  </Relation>
+</DataBase>

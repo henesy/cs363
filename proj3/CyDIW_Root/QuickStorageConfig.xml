@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?><RawStorageParameters>
+  <SmallestRawGranule Size="16" Unit="MBytes"/>
+  <JavaRandomAccessFileSize NofRawGranules="1"/>
+  <StoragePaths Unit="MBytes">
+	<Path Location="QuickStorage" Size="64" Volume="A"/>
+  </StoragePaths>
+  <PageSize Unit="KBytes" Value="1"/>
+  <BufferNumber Value="20"/>
+</RawStorageParameters>

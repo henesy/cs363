@@ -1,0 +1,10 @@
+*** Connected to the database ***
+
+Name           Salary
+----           ------
+John   50000.0
+Mary   60000.0
+
+
+Number of employees in Toys Department: 2
+Total payroll for Toys Department: 110000.0

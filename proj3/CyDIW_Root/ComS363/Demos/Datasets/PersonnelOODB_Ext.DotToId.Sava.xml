@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Map name="PersonnelOODB_Ext">
+  <ContextObjectType name="DeptType">
+    <DottedIdentifier name="@DeptID" transitionCode="local"/>
+    <DottedIdentifier name="DName" transitionCode="local"/>
+    <DottedIdentifier name="ManagedBy" transitionCode="ref ManagerType "/>
+  </ContextObjectType>
+  <ContextObjectType name="PersonScalarType">
+    <DottedIdentifier name="Name" transitionCode="local"/>
+    <DottedIdentifier name="DOB" transitionCode="local"/>
+  </ContextObjectType>
+</Map>

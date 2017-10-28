@@ -1,0 +1,13 @@
+// Give date of birth of managers of employees earning more than 70,000; 
+
+<showtext>
+$OOXQuery:> 
+<Item xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"> {
+   for $e in doc("ComS363/Demos/Datasets/PersonnelOODB.xml")//Emp
+   where $e.Salary > 70000
+   return <MDOB> { $e.WorksIn.ManagedBy.Name, $e.WorksIn.ManagedBy.DOB } </MDOB>
+} </Item>;
+</showtext> 
+
+// Note in this query $e.Salary has been used - $e/Salary would also work ;  
+

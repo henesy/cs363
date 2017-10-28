@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bib>
+  <book>
+    <title>TCP/IP Illustrated</title>
+    <author>W. Stevens</author>
+    <publisher>Addison-Wesley</publisher>
+  </book>
+  <book>
+    <title>Advanced Unix</title>
+    <author>W. Stevens</author>
+    <publisher>Addison-Wesley</publisher>
+  </book>
+</bib>

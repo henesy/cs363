@@ -1,0 +1,179 @@
+package xacute.impl.csx;
+
+import java.util.Hashtable;
+
+import canstorex.dom.CSXNodeList;
+import xacute.common.Node;
+import xacute.common.NodeList;
+import xacute.util.NodeHelper;
+import xacute.util.NodeListDefaultImpl;
+
+
+/**
+ * The CanStoreX implementation of the NodeList class.
+ * <br>
+ * TODO - remove super() or manual list instantiation, 
+ * depending on which one works
+ * 
+ * @author Bob Stark
+ * @since 2006-02-23
+ */
+public class NodeListImpl extends NodeListDefaultImpl {
+	
+	CSXNodeList csxList = null;
+	
+	/**
+	 * Constructs an empty kweelt NodeList.
+	 */
+	public NodeListImpl()
+	{
+		// maybe super instantiates the list
+		super();
+		csxList = null;
+	}
+	
+	/**
+	 * Constructs a kweelt NodeList from a kweelt node.
+	 * 
+	 * @param n The source kweelt node
+	 */
+	public NodeListImpl(xacute.common.Node n)
+	{
+		// maybe super instantiates the list
+		this();
+		
+		// after list is created, add n to it
+		add(n);
+	}
+	
+	/**
+	 * Constructs a kweelt NodeList from a w3c dom node.
+	 * 
+	 * @param n The w3c dom source node
+	 */
+	public NodeListImpl(org.w3c.dom.Node n)
+	{
+		// maybe super instantiates the list
+		this();
+
+		// after list is created, add n to it
+		add(new NodeImpl(n));
+	}
+	
+	/**
+	 * Constructs a kweelt NodeList from a w3c dom NodeList.
+	 * 
+	 * TODO redo this function taking advantage of NodeList caching
+	 * 
+	 * @param nl The source w3c dom NodeList
+	 */
+	public NodeListImpl(org.w3c.dom.NodeList nl)
+	{
+		// maybe super instantiates the list
+		// this();
+		
+		// after list is created, go through nl and add nodes
+		// to OUR list
+        // for(int i = 0; i < nl.getLength(); i++)
+           // add(new NodeImpl(nl.item(i)));
+		
+		if (nl instanceof CSXNodeList) {
+			csxList = (CSXNodeList)nl;
+		}
+		else {
+			// maybe super instantiates the list
+			new NodeListImpl();
+			
+			
+			// after list is created, go through nl and add nodes
+			// to OUR list
+	         for(int i = 0; i < nl.getLength(); i++)
+	            add(new NodeImpl(nl.item(i)));
+		}
+		
+	}
+	
+	
+	public Node get(int k)
+    {
+		if (csxList == null) {
+			return super.get(k);
+		}
+		else {
+			return new NodeImpl(csxList.item(k));
+		}
+    }
+
+    public boolean isEmpty()
+    {
+        if (csxList == null) {
+        	return super.isEmpty();
+        }
+        else {
+        	return csxList.hasNext();
+        }
+    }
+    
+    public int size()
+    {
+    	if (csxList == null) {
+    		return super.size();
+    	}
+    	else {
+    		return csxList.getLength();
+    	}
+    }
+
+	public CSXNodeList getCsxList() {
+		return csxList;
+	}
+	
+	public boolean isEqualTo(NodeList nl)
+    {
+		if (csxList == null || !(nl instanceof NodeListImpl) || ((NodeListImpl)nl).getCsxList() == null) {
+			return super.isEqualTo(nl);
+		}
+		else {
+			if(size() == 0 || nl.size() == 0)
+	            return false;
+	        
+	        for(int i = 0; i < this.size(); i++) {
+	        	String itemInList1 = get(i).stringValue();
+	        	for (int j=0;j < nl.size(); j++) {
+	        		if (itemInList1.equals(nl.get(j).stringValue())) {
+	        			return true;
+	        		}
+	        	}
+	        }
+	        return false;
+		}
+    }
+	
+	public boolean isDifferentFrom(NodeList nl)
+    {
+		if (csxList == null || !(nl instanceof NodeListImpl) || ((NodeListImpl)nl).getCsxList() == null) {
+			return super.isEqualTo(nl);
+		}
+		else {
+			if(size() != nl.size())
+	            return true;
+	        
+	        for(int i = 0; i < this.size(); i++) {
+	        	String itemInList1 = get(i).stringValue();
+	        	boolean flag = false;
+	        	for (int j=0;j < nl.size(); j++) {
+	        		if (itemInList1.equals(nl.get(j).stringValue())) {
+	        			flag = true;
+	        			break;
+	        		}
+	        	}
+	        	if (!(flag)) {
+	        		return true;
+	        	}
+	        }
+	        return false;
+		}
+    }
+    
+	
+}

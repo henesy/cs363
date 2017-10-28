@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+
+<RegistrationRoot>
+
+  <DefaultSystemRegistration>
+    <Element Name="CyDIW" Prefix="CyDB" 
+       ClassPath="" 
+       LibraryPath="lib" 
+       WorkspacePath="CyWorkspace" />
+  </DefaultSystemRegistration>
+
+  <ExternalSystemRegistration>
+  <!--
+    The "$OS" prefix is reserved for the OS command client adapter, 
+    and is always loaded into CyDIW by default.
+
+    <Client Name="OS" Prefix="OS" Enabled="yes"
+       ClassPath="" LibraryPath="" 
+       ClientAdapter="cysystem.clientsmanager.clients.OSAdapter" />
+  -->
+    <Client Name="MySQL" Prefix="$MySQL" Enabled="yes"
+      ClassPath="" 
+      LibraryPath="cyclients\sql\drivers" 
+      ClientAdapter="cyclients.sql.adapter.SQLClientAdapter" DriverClass="com.mysql.jdbc.Driver" 
+      ConnectionString="jdbc:mysql://csdb.cs.iastate.edu:3306/db363demo" 
+      Username="dbu363demo" Password="demo-89" />
+ 
+    <Client Name="Saxon" Prefix="$Saxon" Enabled="yes"
+      ClassPath="" 
+      LibraryPath="lib\saxon" 
+      WorkspacePath="CyWorkspace"
+      ClientAdapter="cyclients.saxon.adapter.SaxonAdapter" /> 
+
+	<Client Name="JBCX" Prefix="$JBCX" Enabled="no"
+      ClassPath="" 
+      LibraryPath="" 
+      WorkspacePath="" 
+      ClientAdapter="cyjbcx.adapter.JDBCXAdapter" 
+      Hostname="localhost" PortNum = "4360" /> 
+
+
+    <Client Name="OOXQquery" Prefix="OOXQuery" Enabled="yes"
+      ClassPath="" 
+      LibraryPath="cyclients\ooquery\lib" 
+      WorkspacePath="" 
+      ClientAdapter="cyclients.ooquery.adapter.OoqueryAdapter" /> 
+
+
+    <Client Name="EngineA" Prefix="EngineA" Enabled="yes"
+      ClassPath="" 
+      LibraryPath="cyclients\saxon\lib" 
+      WorkspacePath="CyWorkspace"
+      ClientAdapter="cyclients.saxon.adapter.SaxonXQJAdapter" />
+
+    <Client Name="EngineB" Prefix="EngineB" Enabled="yes"
+      ClassPath="" 
+      LibraryPath="cyclients\mxquery\lib"  
+	  WorkspacePath="CyWorkspace" 
+      ClientAdapter="cyclients.mxquery.adapter.MXQueryAdapter" />
+      
+    <Client Name="EngineC" Prefix="EngineC" Enabled="yes"
+      ClassPath="" 
+      LibraryPath="cyclients\xbird\lib" 
+	  WorkspacePath="CyWorkspace" 
+      ClientAdapter="cyclients.xbird.adapter.XBirdAdapter" />
+
+	<Client Name="R" Prefix="R" Enabled="yes"
+      ClassPath="C:\Program Files\R\R-3.0.0\bin\R" 
+      LibraryPath="" 
+      WorkspacePath=""
+      ClientAdapter="cyclients.r.adapter.RAdapter" />
+
+
+  </ExternalSystemRegistration>
+
+</RegistrationRoot>

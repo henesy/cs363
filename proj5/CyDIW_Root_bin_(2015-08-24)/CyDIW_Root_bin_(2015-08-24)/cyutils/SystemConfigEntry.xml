@@ -1,0 +1,5 @@
+      <Client Name="CyUtils" Prefix="CyUtils" Enabled="yes"
+      ClassPath="" 
+      LibraryPath="" 
+	  WorkspacePath="" 
+      ClientAdapter="cyutils.parser.CyUtilsAdapter" />

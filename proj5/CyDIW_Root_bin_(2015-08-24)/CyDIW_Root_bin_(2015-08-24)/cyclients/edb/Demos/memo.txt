@@ -1,0 +1,16 @@
+1  when the condition is empty, it can not work.
+
+2 AST tree has problem: It does not allow "<"
+
+3 validate (Not totally finish) ---- Need to add more utilization (call that function)
+
+
+// Change the number of tuples (The following one is orignal one)
+4  <Emp  spaceUtilization = "80"  numOfTuples = "25" />
+		<Dept spaceUtilization = "80"  numOfTuples = "25" />
+		
+		
+5 benchmarking,  var = "($$j)", it can not find out the value of $$j...Need to revise. 
+
+
+6 Execute again can not work

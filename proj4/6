@@ -1,0 +1,4 @@
+MATCH (faculty:Faculty)-[:F2P]->(person)
+WHERE faculty.Salary>=100000
+RETURN faculty.Rank, person.Name
+

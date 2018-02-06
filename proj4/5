@@ -1,0 +1,4 @@
+MATCH (prereq:Course)-[:PreReq]->(course311)
+WHERE course311.CourseCode='CS311'
+RETURN prereq.CourseCode
+

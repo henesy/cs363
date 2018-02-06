@@ -1,0 +1,1111 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="yes" ?>
+<IdeTreeController>
+
+<!-- ======================================================================= -->
+<!-- ===================== Standard Button (de)-Activation ================= -->
+ <ButtonEnablings>
+  <KnownEnableItems>
+   <!-- ideFileMenu components -->
+   <newProjectMit/>
+   <editProjectMit/>
+   <openProjectMit/>
+   <saveProjectMit/>
+   <closeProjectMit/>
+   <exitIdeMit/>
+   <!-- ideEditMenu components -->
+   <editComponentMit/>
+   <!-- Edit Project Toolbar -->
+   <newProjectBtn/>
+   <editProjectBtn/>
+   <openProjectBtn/>
+   <saveProjectBtn/>
+   <closeProjectBtn/>
+   <!-- Edit Selected Component Toolbar -->
+   <editComponentBtn/>
+   <!-- ideSourceMenu components -->
+   <checkComponentMit/>
+   <viewSourceMit/>
+   <controllerSourceMit/>
+   <xmlSourceMit/>
+   <!-- Check selected Components Toolbar -->
+   <checkComponentBtn/>
+   <generateSourceCodeBtn/>
+   <generateControllerCodeBtn/>
+   <generateXmlCodeBtn/>
+   <!-- new Containers Toolbar -->
+   <newJFrameBtn/>
+   <newJDialogBtn/>
+   <newJDesktopPaneBtn/>
+   <newJInternalFrameBtn/>
+   <newJMenuBarBtn/>
+   <newJMenuBtn/>
+   <newJMenuItemBtn/>
+   <newJSeparatorBtn/>
+   <newJMenuItemRadioBtn/>
+   <newJMenuItemCheckBtn/>
+   <newJPopupMenuBtn/>
+   <newJToolBarBtn/>
+   <newJToolBarSeparatorBtn/>
+   <newJPanelBtn/>
+   <newJSplitPaneBtn/>
+   <newJTabbedPaneBtn/>
+   <newJScrollPaneBtn/>
+   <!-- new Components Toolbar -->
+   <newBoxBtn/>
+   <newJButtonBtn/>
+   <newJToggleButtonBtn/>
+   <newJRadioButtonBtn/>
+   <newJCheckBoxBtn/>
+   <newJLabelBtn/>
+   <newJTextFieldBtn/>
+   <newJFormattedTextFieldBtn/>
+   <newJPasswordFieldBtn/>
+   <newJTextAreaBtn/>
+   <newJEditorPaneBtn/>
+   <newJComboBoxBtn/>
+   <newJSpinnerBtn/>
+   <newJListBtn/>
+   <newJTableBtn/>
+   <newJTreeBtn/>
+   <newJSliderBtn/>
+   <newJProgressBarBtn/>
+  </KnownEnableItems>
+   
+  <SpeedJG>
+   <!-- ideFileMenu components -->
+   <newProjectMit/>
+   <openProjectMit/>
+   <exitIdeMit/>
+   <!-- ideEditMenu components -->
+   <!-- Edit Project Toolbar -->
+   <newProjectBtn/>
+   <openProjectBtn/>
+   <!-- Edit Selected Component Toolbar -->
+   <!-- ideSourceMenu components -->
+   <!-- Check selected Components Toolbar -->
+   <!-- new Containers Toolbar -->
+   <!-- new Components Toolbar -->
+  </SpeedJG>
+   
+  <!-- btn-attribute needed for paste component veto and for editor(mode new) enabling -->
+  <GUIProject>
+   <!-- ideFileMenu components -->
+   <editProjectMit/>
+   <saveProjectMit/>
+   <closeProjectMit/>
+   <exitIdeMit/>
+   <!-- ideEditMenu components -->
+   <!-- Edit Project Toolbar -->
+   <editProjectBtn/>
+   <saveProjectBtn/>
+   <closeProjectBtn/>
+   <!-- Edit Selected Component Toolbar -->
+   <!-- ideSourceMenu components -->
+   <xmlSourceMit/>
+   <!-- Check selected Components Toolbar -->
+   <generateXmlCodeBtn/>
+   <!-- new Containers Toolbar -->
+   <newJFrameBtn/>
+   <newJDialogBtn/>
+   <newJDesktopPaneBtn/>
+   <!-- newJInternalFrameBtn/ -->
+   <newJMenuBarBtn/>
+   <newJPopupMenuBtn/>
+   <newJToolBarBtn/>
+   <newJPanelBtn/>
+   <newJSplitPaneBtn/>
+   <newJTabbedPaneBtn/>
+   <newJScrollPaneBtn/>
+   <!-- new Components Toolbar -->
+  </GUIProject>
+  
+  <JFrame btn="newJFrameBtn">
+   <!-- ideFileMenu components -->
+   <exitIdeMit/>
+   <!-- ideEditMenu components -->
+   <editComponentMit/>
+   <!-- Edit Project Toolbar -->
+   <!-- Edit Selected Component Toolbar -->
+   <editComponentBtn/>
+   <!-- ideSourceMenu components -->
+   <checkComponentMit/>
+   <viewSourceMit/>
+   <controllerSourceMit/>
+   <xmlSourceMit/>
+   <!-- Check selected Components Toolbar -->
+   <checkComponentBtn/>
+   <generateSourceCodeBtn/>
+   <generateControllerCodeBtn/>
+   <generateXmlCodeBtn/>
+   <!-- new Containers Toolbar -->
+   <newJDesktopPaneBtn/>
+   <newJMenuBarBtn/>
+   <newJPopupMenuBtn/>
+   <newJToolBarBtn/>
+   <newJPanelBtn/>
+   <newJSplitPaneBtn/>
+   <newJTabbedPaneBtn/>
+   <newJScrollPaneBtn/>
+   <!-- new Components Toolbar -->
+   <newBoxBtn/>
+   <newJButtonBtn/>
+   <newJToggleButtonBtn/>
+   <newJRadioButtonBtn/>
+   <newJCheckBoxBtn/>
+   <newJLabelBtn/>
+   <newJTextFieldBtn/>
+   <newJFormattedTextFieldBtn/>
+   <newJPasswordFieldBtn/>
+   <newJTextAreaBtn/>
+   <newJEditorPaneBtn/>
+   <newJComboBoxBtn/>
+   <newJSpinnerBtn/>
+   <newJListBtn/>
+   <newJTableBtn/>
+   <newJTreeBtn/>
+   <newJSliderBtn/>
+   <newJProgressBarBtn/>
+  </JFrame>
+   
+  <JDialog btn="newJDialogBtn">
+   <!-- ideFileMenu components -->
+   <exitIdeMit/>
+   <!-- ideEditMenu components -->
+   <editComponentMit/>
+   <!-- Edit Project Toolbar -->
+   <!-- Edit Selected Component Toolbar -->
+   <editComponentBtn/>
+   <!-- ideSourceMenu components -->
+   <checkComponentMit/>
+   <viewSourceMit/>
+   <controllerSourceMit/>
+   <xmlSourceMit/>
+   <!-- Check selected Components Toolbar -->
+   <checkComponentBtn/>
+   <generateSourceCodeBtn/>
+   <generateControllerCodeBtn/>
+   <generateXmlCodeBtn/>
+   <!-- new Containers Toolbar -->
+   <newJDesktopPaneBtn/>
+   <newJMenuBarBtn/>
+   <newJPopupMenuBtn/>
+   <newJToolBarBtn/>
+   <newJPanelBtn/>
+   <newJSplitPaneBtn/>
+   <newJTabbedPaneBtn/>
+   <newJScrollPaneBtn/>
+   <!-- new Components Toolbar -->
+   <newBoxBtn/>
+   <newJButtonBtn/>
+   <newJToggleButtonBtn/>
+   <newJRadioButtonBtn/>
+   <newJCheckBoxBtn/>
+   <newJLabelBtn/>
+   <newJTextFieldBtn/>
+   <newJFormattedTextFieldBtn/>
+   <newJPasswordFieldBtn/>
+   <newJTextAreaBtn/>
+   <newJEditorPaneBtn/>
+   <newJComboBoxBtn/>
+   <newJSpinnerBtn/>
+   <newJListBtn/>
+   <newJTableBtn/>
+   <newJTreeBtn/>
+   <newJSliderBtn/>
+   <newJProgressBarBtn/>
+  </JDialog>
+   
+  <JDesktopPane btn="newJDesktopPaneBtn">
+   <!-- ideFileMenu components -->
+   <exitIdeMit/>
+   <!-- ideEditMenu components -->
+   <editComponentMit/>
+   <!-- Edit Project Toolbar -->
+   <!-- Edit Selected Component Toolbar -->
+   <editComponentBtn/>
+   <!-- ideSourceMenu components -->
+   <checkComponentMit/>
+   <viewSourceMit/>
+   <controllerSourceMit/>
+   <xmlSourceMit/>
+   <!-- Check selected Components Toolbar -->
+   <checkComponentBtn/>
+   <generateSourceCodeBtn/>
+   <generateControllerCodeBtn/>
+   <generateXmlCodeBtn/>
+   <!-- new Containers Toolbar -->
+   <newJInternalFrameBtn/>
+   <!-- new Components Toolbar -->
+  </JDesktopPane>
+   
+  <JInternalFrame btn="newJInternalFrameBtn">
+   <!-- ideFileMenu components -->
+   <exitIdeMit/>
+   <!-- ideEditMenu components -->
+   <editComponentMit/>
+   <!-- Edit Project Toolbar -->
+   <!-- Edit Selected Component Toolbar -->
+   <editComponentBtn/>
+   <!-- ideSourceMenu components -->
+   <checkComponentMit/>
+   <viewSourceMit/>
+   <controllerSourceMit/>
+   <xmlSourceMit/>
+   <!-- Check selected Components Toolbar -->
+   <checkComponentBtn/>
+   <generateSourceCodeBtn/>
+   <generateControllerCodeBtn/>
+   <generateXmlCodeBtn/>
+   <!-- new Containers Toolbar -->
+   <newJMenuBarBtn/>
+   <newJPopupMenuBtn/>
+   <newJToolBarBtn/>
+   <newJPanelBtn/>
+   <newJSplitPaneBtn/>
+   <newJTabbedPaneBtn/>
+   <newJScrollPaneBtn/>
+   <!-- new Components Toolbar -->
+   <newBoxBtn/>
+   <newJButtonBtn/>
+   <newJToggleButtonBtn/>
+   <newJRadioButtonBtn/>
+   <newJCheckBoxBtn/>
+   <newJLabelBtn/>
+   <newJTextFieldBtn/>
+   <newJFormattedTextFieldBtn/>
+   <newJPasswordFieldBtn/>
+   <newJTextAreaBtn/>
+   <newJEditorPaneBtn/>
+   <newJComboBoxBtn/>
+   <newJSpinnerBtn/>
+   <newJListBtn/>
+   <newJTableBtn/>
+   <newJTreeBtn/>
+   <newJSliderBtn/>
+   <newJProgressBarBtn/>
+  </JInternalFrame>
+   
+  <JMenuBar btn="newJMenuBarBtn">
+   <!-- ideFileMenu components -->
+   <exitIdeMit/>
+   <!-- ideEditMenu components -->
+   <editComponentMit/>
+   <!-- Edit Project Toolbar -->
+   <!-- Edit Selected Component Toolbar -->
+   <editComponentBtn/>
+   <!-- ideSourceMenu components -->
+   <viewSourceMit/>
+   <controllerSourceMit/>
+   <xmlSourceMit/>
+   <!-- Check selected Components Toolbar -->
+   <generateSourceCodeBtn/>
+   <generateControllerCodeBtn/>
+   <generateXmlCodeBtn/>
+   <!-- new Containers Toolbar -->
+   <newJMenuBtn/>
+   <newJMenuItemBtn/>
+   <newJMenuItemRadioBtn/>
+   <newJMenuItemCheckBtn/>
+   <!-- new Components Toolbar -->
+   <newBoxBtn/>
+  </JMenuBar>
+   
+  <JMenu btn="newJMenuBtn">
+   <!-- ideFileMenu components -->
+   <exitIdeMit/>
+   <!-- ideEditMenu components -->
+   <editComponentMit/>
+   <!-- Edit Project Toolbar -->
+   <!-- Edit Selected Component Toolbar -->
+   <editComponentBtn/>
+   <!-- ideSourceMenu components -->
+   <checkComponentMit/>
+   <viewSourceMit/>
+   <controllerSourceMit/>
+   <xmlSourceMit/>
+   <!-- Check selected Components Toolbar -->
+   <checkComponentBtn/>
+   <generateSourceCodeBtn/>
+   <generateControllerCodeBtn/>
+   <generateXmlCodeBtn/>
+   <!-- new Containers Toolbar -->
+   <newJMenuBtn/>
+   <newJMenuItemBtn/>
+   <newJMenuItemRadioBtn/>
+   <newJMenuItemCheckBtn/>
+   <newJSeparatorBtn/>
+   <!-- new Components Toolbar -->
+  </JMenu>
+   
+  <JMenuItem btn="newJMenuItemBtn">
+   <!-- ideFileMenu components -->
+   <exitIdeMit/>
+   <!-- ideEditMenu components -->
+   <editComponentMit/>
+   <!-- Edit Project Toolbar -->
+   <!-- Edit Selected Component Toolbar -->
+   <editComponentBtn/>
+   <!-- ideSourceMenu components -->
+   <checkComponentMit/>
+   <viewSourceMit/>
+   <controllerSourceMit/>
+   <xmlSourceMit/>
+   <!-- Check selected Components Toolbar -->
+   <checkComponentBtn/>
+   <generateSourceCodeBtn/>
+   <generateControllerCodeBtn/>
+   <generateXmlCodeBtn/>
+   <!-- new Containers Toolbar -->
+   <!-- new Components Toolbar -->
+  </JMenuItem>
+   
+  <JCheckBoxMenuItem btn="newJMenuItemCheckBtn">
+   <!-- ideFileMenu components -->
+   <exitIdeMit/>
+   <!-- ideEditMenu components -->
+   <editComponentMit/>
+   <!-- Edit Project Toolbar -->
+   <!-- Edit Selected Component Toolbar -->
+   <editComponentBtn/>
+   <!-- ideSourceMenu components -->
+   <checkComponentMit/>
+   <viewSourceMit/>
+   <controllerSourceMit/>
+   <xmlSourceMit/>
+   <!-- Check selected Components Toolbar -->
+   <checkComponentBtn/>
+   <generateSourceCodeBtn/>
+   <generateControllerCodeBtn/>
+   <generateXmlCodeBtn/>
+   <!-- new Containers Toolbar -->
+   <!-- new Components Toolbar -->
+  </JCheckBoxMenuItem>
+   
+  <JRadioButtonMenuItem btn="newJMenuItemRadioBtn">
+   <!-- ideFileMenu components -->
+   <exitIdeMit/>
+   <!-- ideEditMenu components -->
+   <editComponentMit/>
+   <!-- Edit Project Toolbar -->
+   <!-- Edit Selected Component Toolbar -->
+   <editComponentBtn/>
+   <!-- ideSourceMenu components -->
+   <checkComponentMit/>
+   <viewSourceMit/>
+   <controllerSourceMit/>
+   <xmlSourceMit/>
+   <!-- Check selected Components Toolbar -->
+   <checkComponentBtn/>
+   <generateSourceCodeBtn/>
+   <generateControllerCodeBtn/>
+   <generateXmlCodeBtn/>
+   <!-- new Containers Toolbar -->
+   <!-- new Components Toolbar -->
+  </JRadioButtonMenuItem>
+  
+  <JSeparator btn="newJSeparatorBtn">
+   <!-- ideFileMenu components -->
+   <exitIdeMit/>
+   <!-- ideEditMenu components -->
+   <editComponentMit/>
+   <!-- Edit Project Toolbar -->
+   <!-- Edit Selected Component Toolbar -->
+   <editComponentBtn/>
+   <!-- ideSourceMenu components -->
+   <viewSourceMit/>
+   <xmlSourceMit/>
+   <!-- Check selected Components Toolbar -->
+   <generateSourceCodeBtn/>
+   <generateXmlCodeBtn/>
+   <!-- new Containers Toolbar -->
+   <!-- new Components Toolbar -->
+  </JSeparator>
+   
+  <JPopupMenu btn="newJPopupMenuBtn">
+   <!-- ideFileMenu components -->
+   <exitIdeMit/>
+   <!-- ideEditMenu components -->
+   <editComponentMit/>
+   <!-- Edit Project Toolbar -->
+   <!-- Edit Selected Component Toolbar -->
+   <editComponentBtn/>
+   <!-- ideSourceMenu components -->
+   <checkComponentMit/>
+   <viewSourceMit/>
+   <controllerSourceMit/>
+   <xmlSourceMit/>
+   <!-- Check selected Components Toolbar -->
+   <checkComponentBtn/>
+   <generateSourceCodeBtn/>
+   <generateControllerCodeBtn/>
+   <generateXmlCodeBtn/>
+   <!-- new Containers Toolbar -->
+   <newJMenuBtn/>
+   <newJMenuItemBtn/>
+   <newJMenuItemRadioBtn/>
+   <newJMenuItemCheckBtn/>
+   <newJPanelBtn/>
+   <newJSeparatorBtn/>
+   <!-- new Components Toolbar -->
+   <newJLabelBtn/>
+  </JPopupMenu>
+   
+  <JToolBar btn="newJToolBarBtn">
+   <!-- ideFileMenu components -->
+   <exitIdeMit/>
+   <!-- ideEditMenu components -->
+   <editComponentMit/>
+   <!-- Edit Project Toolbar -->
+   <!-- Edit Selected Component Toolbar -->
+   <editComponentBtn/>
+   <!-- ideSourceMenu components -->
+   <checkComponentMit/>
+   <viewSourceMit/>
+   <controllerSourceMit/>
+   <xmlSourceMit/>
+   <!-- Check selected Components Toolbar -->
+   <checkComponentBtn/>
+   <generateSourceCodeBtn/>
+   <generateControllerCodeBtn/>
+   <generateXmlCodeBtn/>
+   <!-- new Containers Toolbar -->
+   <newJToolBarSeparatorBtn/>
+   <!-- new Components Toolbar -->
+   <newBoxBtn/>
+   <newJButtonBtn/>
+   <newJToggleButtonBtn/>
+   <newJRadioButtonBtn/>
+   <newJCheckBoxBtn/>
+   <newJLabelBtn/>
+   <newJComboBoxBtn/>
+   <newJSpinnerBtn/>
+   <newJSliderBtn/>
+   <newJProgressBarBtn/>
+  </JToolBar>
+   
+  <JToolBarSeparator btn="newJToolBarSeparatorBtn">
+   <!-- ideFileMenu components -->
+   <exitIdeMit/>
+   <!-- ideEditMenu components -->
+   <editComponentMit/>
+   <!-- Edit Project Toolbar -->
+   <!-- Edit Selected Component Toolbar -->
+   <editComponentBtn/>
+   <!-- ideSourceMenu components -->
+   <checkComponentMit/>
+   <viewSourceMit/>
+   <controllerSourceMit/>
+   <xmlSourceMit/>
+   <!-- Check selected Components Toolbar -->
+   <checkComponentBtn/>
+   <generateSourceCodeBtn/>
+   <generateControllerCodeBtn/>
+   <generateXmlCodeBtn/>
+   <!-- new Containers Toolbar -->
+   <!-- new Components Toolbar -->
+  </JToolBarSeparator>
+   
+  <JPanel btn="newJPanelBtn">
+   <!-- ideFileMenu components -->
+   <exitIdeMit/>
+   <!-- ideEditMenu components -->
+   <editComponentMit/>
+   <!-- Edit Project Toolbar -->
+   <!-- Edit Selected Component Toolbar -->
+   <editComponentBtn/>
+   <!-- ideSourceMenu components -->
+   <checkComponentMit/>
+   <viewSourceMit/>
+   <controllerSourceMit/>
+   <xmlSourceMit/>
+   <!-- Check selected Components Toolbar -->
+   <checkComponentBtn/>
+   <generateSourceCodeBtn/>
+   <generateControllerCodeBtn/>
+   <generateXmlCodeBtn/>
+   <!-- new Containers Toolbar -->
+   <newJDesktopPaneBtn/>
+   <newJSeparatorBtn/>
+   <newJPopupMenuBtn/>
+   <newJToolBarBtn/>
+   <newJPanelBtn/>
+   <newJSplitPaneBtn/>
+   <newJTabbedPaneBtn/>
+   <newJScrollPaneBtn/>
+   <!-- new Components Toolbar -->
+   <newBoxBtn/>
+   <newJButtonBtn/>
+   <newJToggleButtonBtn/>
+   <newJRadioButtonBtn/>
+   <newJCheckBoxBtn/>
+   <newJLabelBtn/>
+   <newJTextFieldBtn/>
+   <newJFormattedTextFieldBtn/>
+   <newJPasswordFieldBtn/>
+   <newJTextAreaBtn/>
+   <newJEditorPaneBtn/>
+   <newJComboBoxBtn/>
+   <newJSpinnerBtn/>
+   <newJListBtn/>
+   <newJTableBtn/>
+   <newJTreeBtn/>
+   <newJSliderBtn/>
+   <newJProgressBarBtn/>
+  </JPanel>
+   
+  <JSplitPane btn="newJSplitPaneBtn">
+   <!-- ideFileMenu components -->
+   <exitIdeMit/>
+   <!-- ideEditMenu components -->
+   <editComponentMit/>
+   <!-- Edit Project Toolbar -->
+   <!-- Edit Selected Component Toolbar -->
+   <editComponentBtn/>
+   <!-- ideSourceMenu components -->
+   <checkComponentMit/>
+   <viewSourceMit/>
+   <controllerSourceMit/>
+   <xmlSourceMit/>
+   <!-- Check selected Components Toolbar -->
+   <checkComponentBtn/>
+   <generateSourceCodeBtn/>
+   <generateControllerCodeBtn/>
+   <generateXmlCodeBtn/>
+   <!-- new Containers Toolbar -->
+   <newJSeparatorBtn/>
+   <newJDesktopPaneBtn/>
+   <newJPanelBtn/>
+   <newJSplitPaneBtn/>
+   <newJTabbedPaneBtn/>
+   <newJScrollPaneBtn/>
+   <!-- new Components Toolbar -->
+   <newBoxBtn/>
+   <newJButtonBtn/>
+   <newJToggleButtonBtn/>
+   <newJRadioButtonBtn/>
+   <newJCheckBoxBtn/>
+   <newJLabelBtn/>
+   <newJTextFieldBtn/>
+   <newJFormattedTextFieldBtn/>
+   <newJPasswordFieldBtn/>
+   <newJTextAreaBtn/>
+   <newJEditorPaneBtn/>
+   <newJComboBoxBtn/>
+   <newJSpinnerBtn/>
+   <newJListBtn/>
+   <newJTableBtn/>
+   <newJTreeBtn/>
+   <newJSliderBtn/>
+   <newJProgressBarBtn/>
+  </JSplitPane>
+   
+  <JTabbedPane btn="newJTabbedPaneBtn">
+   <!-- ideFileMenu components -->
+   <exitIdeMit/>
+   <!-- ideEditMenu components -->
+   <editComponentMit/>
+   <!-- Edit Project Toolbar -->
+   <!-- Edit Selected Component Toolbar -->
+   <editComponentBtn/>
+   <!-- ideSourceMenu components -->
+   <checkComponentMit/>
+   <viewSourceMit/>
+   <controllerSourceMit/>
+   <xmlSourceMit/>
+   <!-- Check selected Components Toolbar -->
+   <checkComponentBtn/>
+   <generateSourceCodeBtn/>
+   <generateControllerCodeBtn/>
+   <generateXmlCodeBtn/>
+   <!-- new Containers Toolbar -->
+   <newJDesktopPaneBtn/>
+   <newJSeparatorBtn/>
+   <newJPanelBtn/>
+   <newJSplitPaneBtn/>
+   <newJTabbedPaneBtn/>
+   <newJScrollPaneBtn/>
+   <!-- new Components Toolbar -->
+   <newBoxBtn/>
+   <newJButtonBtn/>
+   <newJToggleButtonBtn/>
+   <newJRadioButtonBtn/>
+   <newJCheckBoxBtn/>
+   <newJLabelBtn/>
+   <newJTextFieldBtn/>
+   <newJFormattedTextFieldBtn/>
+   <newJPasswordFieldBtn/>
+   <newJTextAreaBtn/>
+   <newJEditorPaneBtn/>
+   <newJComboBoxBtn/>
+   <newJSpinnerBtn/>
+   <newJListBtn/>
+   <newJTableBtn/>
+   <newJTreeBtn/>
+   <newJSliderBtn/>
+   <newJProgressBarBtn/>
+  </JTabbedPane>
+   
+  <JScrollPane btn="newJScrollPaneBtn">
+   <!-- ideFileMenu components -->
+   <exitIdeMit/>
+   <!-- ideEditMenu components -->
+   <editComponentMit/>
+   <!-- Edit Project Toolbar -->
+   <!-- Edit Selected Component Toolbar -->
+   <editComponentBtn/>
+   <!-- ideSourceMenu components -->
+   <checkComponentMit/>
+   <viewSourceMit/>
+   <controllerSourceMit/>
+   <xmlSourceMit/>
+   <!-- Check selected Components Toolbar -->
+   <checkComponentBtn/>
+   <generateSourceCodeBtn/>
+   <generateControllerCodeBtn/>
+   <generateXmlCodeBtn/>
+   <!-- new Containers Toolbar -->
+   <newJDesktopPaneBtn/>
+   <newJSeparatorBtn/>
+   <newJPanelBtn/>
+   <newJSplitPaneBtn/>
+   <newJTabbedPaneBtn/>
+   <newJScrollPaneBtn/>
+   <!-- new Components Toolbar -->
+   <newBoxBtn/>
+   <newJButtonBtn/>
+   <newJToggleButtonBtn/>
+   <newJRadioButtonBtn/>
+   <newJCheckBoxBtn/>
+   <newJLabelBtn/>
+   <newJTextFieldBtn/>
+   <newJFormattedTextFieldBtn/>
+   <newJPasswordFieldBtn/>
+   <newJTextAreaBtn/>
+   <newJEditorPaneBtn/>
+   <newJComboBoxBtn/>
+   <newJSpinnerBtn/>
+   <newJListBtn/>
+   <newJTableBtn/>
+   <newJTreeBtn/>
+   <newJSliderBtn/>
+   <newJProgressBarBtn/>
+  </JScrollPane>
+   
+  <Box btn="newBoxBtn">
+   <!-- ideFileMenu components -->
+   <exitIdeMit/>
+   <!-- ideEditMenu components -->
+   <editComponentMit/>
+   <!-- Edit Project Toolbar -->
+   <!-- Edit Selected Component Toolbar -->
+   <editComponentBtn/>
+   <!-- ideSourceMenu components -->
+   <checkComponentMit/>
+   <viewSourceMit/>
+   <controllerSourceMit/>
+   <xmlSourceMit/>
+   <!-- Check selected Components Toolbar -->
+   <checkComponentBtn/>
+   <generateSourceCodeBtn/>
+   <generateControllerCodeBtn/>
+   <generateXmlCodeBtn/>
+   <!-- new Containers Toolbar -->
+   <!-- new Components Toolbar -->
+  </Box>
+   
+  <JButton btn="newJButtonBtn">
+   <!-- ideFileMenu components -->
+   <exitIdeMit/>
+   <!-- ideEditMenu components -->
+   <editComponentMit/>
+   <!-- Edit Project Toolbar -->
+   <!-- Edit Selected Component Toolbar -->
+   <editComponentBtn/>
+   <!-- ideSourceMenu components -->
+   <checkComponentMit/>
+   <viewSourceMit/>
+   <controllerSourceMit/>
+   <xmlSourceMit/>
+   <!-- Check selected Components Toolbar -->
+   <checkComponentBtn/>
+   <generateSourceCodeBtn/>
+   <generateControllerCodeBtn/>
+   <generateXmlCodeBtn/>
+   <!-- new Containers Toolbar -->
+   <newJPopupMenuBtn/>
+   <!-- new Components Toolbar -->
+  </JButton>
+   
+  <JToggleButton btn="newJToggleButtonBtn">
+   <!-- ideFileMenu components -->
+   <exitIdeMit/>
+   <!-- ideEditMenu components -->
+   <editComponentMit/>
+   <!-- Edit Project Toolbar -->
+   <!-- Edit Selected Component Toolbar -->
+   <editComponentBtn/>
+   <!-- ideSourceMenu components -->
+   <checkComponentMit/>
+   <viewSourceMit/>
+   <controllerSourceMit/>
+   <xmlSourceMit/>
+   <!-- Check selected Components Toolbar -->
+   <checkComponentBtn/>
+   <generateSourceCodeBtn/>
+   <generateControllerCodeBtn/>
+   <generateXmlCodeBtn/>
+   <!-- new Containers Toolbar -->
+   <newJPopupMenuBtn/>
+   <!-- new Components Toolbar -->
+  </JToggleButton>
+   
+  <JRadioButton btn="newJRadioButtonBtn">
+   <!-- ideFileMenu components -->
+   <exitIdeMit/>
+   <!-- ideEditMenu components -->
+   <editComponentMit/>
+   <!-- Edit Project Toolbar -->
+   <!-- Edit Selected Component Toolbar -->
+   <editComponentBtn/>
+   <!-- ideSourceMenu components -->
+   <checkComponentMit/>
+   <viewSourceMit/>
+   <controllerSourceMit/>
+   <xmlSourceMit/>
+   <!-- Check selected Components Toolbar -->
+   <checkComponentBtn/>
+   <generateSourceCodeBtn/>
+   <generateControllerCodeBtn/>
+   <generateXmlCodeBtn/>
+   <!-- new Containers Toolbar -->
+   <newJPopupMenuBtn/>
+   <!-- new Components Toolbar -->
+  </JRadioButton>
+   
+  <JCheckBox btn="newJCheckBoxBtn">
+   <!-- ideFileMenu components -->
+   <exitIdeMit/>
+   <!-- ideEditMenu components -->
+   <editComponentMit/>
+   <!-- Edit Project Toolbar -->
+   <!-- Edit Selected Component Toolbar -->
+   <editComponentBtn/>
+   <!-- ideSourceMenu components -->
+   <checkComponentMit/>
+   <viewSourceMit/>
+   <controllerSourceMit/>
+   <xmlSourceMit/>
+   <!-- Check selected Components Toolbar -->
+   <checkComponentBtn/>
+   <generateSourceCodeBtn/>
+   <generateControllerCodeBtn/>
+   <generateXmlCodeBtn/>
+   <!-- new Containers Toolbar -->
+   <newJPopupMenuBtn/>
+   <!-- new Components Toolbar -->
+  </JCheckBox>
+   
+  <JLabel btn="newJLabelBtn">
+   <!-- ideFileMenu components -->
+   <exitIdeMit/>
+   <!-- ideEditMenu components -->
+   <editComponentMit/>
+   <!-- Edit Project Toolbar -->
+   <!-- Edit Selected Component Toolbar -->
+   <editComponentBtn/>
+   <!-- ideSourceMenu components -->
+   <checkComponentMit/>
+   <viewSourceMit/>
+   <controllerSourceMit/>
+   <xmlSourceMit/>
+   <!-- Check selected Components Toolbar -->
+   <checkComponentBtn/>
+   <generateSourceCodeBtn/>
+   <generateControllerCodeBtn/>
+   <generateXmlCodeBtn/>
+   <!-- new Containers Toolbar -->
+   <newJPopupMenuBtn/>
+   <!-- new Components Toolbar -->
+  </JLabel>
+   
+  <JTextField btn="newJTextFieldBtn">
+   <!-- ideFileMenu components -->
+   <exitIdeMit/>
+   <!-- ideEditMenu components -->
+   <editComponentMit/>
+   <!-- Edit Project Toolbar -->
+   <!-- Edit Selected Component Toolbar -->
+   <editComponentBtn/>
+   <!-- ideSourceMenu components -->
+   <checkComponentMit/>
+   <viewSourceMit/>
+   <controllerSourceMit/>
+   <xmlSourceMit/>
+   <!-- Check selected Components Toolbar -->
+   <checkComponentBtn/>
+   <generateSourceCodeBtn/>
+   <generateControllerCodeBtn/>
+   <generateXmlCodeBtn/>
+   <!-- new Containers Toolbar -->
+   <newJPopupMenuBtn/>
+   <!-- new Components Toolbar -->
+  </JTextField>
+   
+  <JFormattedTextField btn="newJFormattedTextFieldBtn">
+   <!-- ideFileMenu components -->
+   <exitIdeMit/>
+   <!-- ideEditMenu components -->
+   <editComponentMit/>
+   <!-- Edit Project Toolbar -->
+   <!-- Edit Selected Component Toolbar -->
+   <editComponentBtn/>
+   <!-- ideSourceMenu components -->
+   <checkComponentMit/>
+   <viewSourceMit/>
+   <controllerSourceMit/>
+   <xmlSourceMit/>
+   <!-- Check selected Components Toolbar -->
+   <checkComponentBtn/>
+   <generateSourceCodeBtn/>
+   <generateControllerCodeBtn/>
+   <generateXmlCodeBtn/>
+   <!-- new Containers Toolbar -->
+   <newJPopupMenuBtn/>
+   <!-- new Components Toolbar -->
+  </JFormattedTextField>
+   
+  <JPasswordField btn="newJPasswordFieldBtn">
+   <!-- ideFileMenu components -->
+   <exitIdeMit/>
+   <!-- ideEditMenu components -->
+   <editComponentMit/>
+   <!-- Edit Project Toolbar -->
+   <!-- Edit Selected Component Toolbar -->
+   <editComponentBtn/>
+   <!-- ideSourceMenu components -->
+   <checkComponentMit/>
+   <viewSourceMit/>
+   <controllerSourceMit/>
+   <xmlSourceMit/>
+   <!-- Check selected Components Toolbar -->
+   <checkComponentBtn/>
+   <generateSourceCodeBtn/>
+   <generateControllerCodeBtn/>
+   <generateXmlCodeBtn/>
+   <!-- new Containers Toolbar -->
+   <newJPopupMenuBtn/>
+   <!-- new Components Toolbar -->
+  </JPasswordField>
+   
+  <JTextArea btn="newJTextAreaBtn">
+   <!-- ideFileMenu components -->
+   <exitIdeMit/>
+   <!-- ideEditMenu components -->
+   <editComponentMit/>
+   <!-- Edit Project Toolbar -->
+   <!-- Edit Selected Component Toolbar -->
+   <editComponentBtn/>
+   <!-- ideSourceMenu components -->
+   <checkComponentMit/>
+   <viewSourceMit/>
+   <controllerSourceMit/>
+   <xmlSourceMit/>
+   <!-- Check selected Components Toolbar -->
+   <checkComponentBtn/>
+   <generateSourceCodeBtn/>
+   <generateControllerCodeBtn/>
+   <generateXmlCodeBtn/>
+   <!-- new Containers Toolbar -->
+   <newJPopupMenuBtn/>
+   <!-- new Components Toolbar -->
+  </JTextArea>
+   
+  <JEditorPane btn="newJEditorPaneBtn">
+   <!-- ideFileMenu components -->
+   <exitIdeMit/>
+   <!-- ideEditMenu components -->
+   <editComponentMit/>
+   <!-- Edit Project Toolbar -->
+   <!-- Edit Selected Component Toolbar -->
+   <editComponentBtn/>
+   <!-- ideSourceMenu components -->
+   <checkComponentMit/>
+   <viewSourceMit/>
+   <controllerSourceMit/>
+   <xmlSourceMit/>
+   <!-- Check selected Components Toolbar -->
+   <checkComponentBtn/>
+   <generateSourceCodeBtn/>
+   <generateControllerCodeBtn/>
+   <generateXmlCodeBtn/>
+   <!-- new Containers Toolbar -->
+   <newJPopupMenuBtn/>
+   <!-- new Components Toolbar -->
+  </JEditorPane>
+   
+  <JComboBox btn="newJComboBoxBtn">
+   <!-- ideFileMenu components -->
+   <exitIdeMit/>
+   <!-- ideEditMenu components -->
+   <editComponentMit/>
+   <!-- Edit Project Toolbar -->
+   <!-- Edit Selected Component Toolbar -->
+   <editComponentBtn/>
+   <!-- ideSourceMenu components -->
+   <checkComponentMit/>
+   <viewSourceMit/>
+   <controllerSourceMit/>
+   <xmlSourceMit/>
+   <!-- Check selected Components Toolbar -->
+   <checkComponentBtn/>
+   <generateSourceCodeBtn/>
+   <generateControllerCodeBtn/>
+   <generateXmlCodeBtn/>
+   <!-- new Containers Toolbar -->
+   <newJPopupMenuBtn/>
+   <!-- new Components Toolbar -->
+  </JComboBox>
+   
+  <JSpinner btn="newJSpinnerBtn">
+   <!-- ideFileMenu components -->
+   <exitIdeMit/>
+   <!-- ideEditMenu components -->
+   <editComponentMit/>
+   <!-- Edit Project Toolbar -->
+   <!-- Edit Selected Component Toolbar -->
+   <editComponentBtn/>
+   <!-- ideSourceMenu components -->
+   <checkComponentMit/>
+   <viewSourceMit/>
+   <controllerSourceMit/>
+   <xmlSourceMit/>
+   <!-- Check selected Components Toolbar -->
+   <checkComponentBtn/>
+   <generateSourceCodeBtn/>
+   <generateControllerCodeBtn/>
+   <generateXmlCodeBtn/>
+   <!-- new Containers Toolbar -->
+   <newJPopupMenuBtn/>
+   <!-- new Components Toolbar -->
+  </JSpinner>
+   
+  <JList btn="newJListBtn">
+   <!-- ideFileMenu components -->
+   <exitIdeMit/>
+   <!-- ideEditMenu components -->
+   <editComponentMit/>
+   <!-- Edit Project Toolbar -->
+   <!-- Edit Selected Component Toolbar -->
+   <editComponentBtn/>
+   <!-- ideSourceMenu components -->
+   <checkComponentMit/>
+   <viewSourceMit/>
+   <controllerSourceMit/>
+   <xmlSourceMit/>
+   <!-- Check selected Components Toolbar -->
+   <checkComponentBtn/>
+   <generateSourceCodeBtn/>
+   <generateControllerCodeBtn/>
+   <generateXmlCodeBtn/>
+   <!-- new Containers Toolbar -->
+   <newJPopupMenuBtn/>
+   <!-- new Components Toolbar -->
+  </JList>
+   
+  <JTable btn="newJTableBtn">
+   <!-- ideFileMenu components -->
+   <exitIdeMit/>
+   <!-- ideEditMenu components -->
+   <editComponentMit/>
+   <!-- Edit Project Toolbar -->
+   <!-- Edit Selected Component Toolbar -->
+   <editComponentBtn/>
+   <!-- ideSourceMenu components -->
+   <checkComponentMit/>
+   <viewSourceMit/>
+   <controllerSourceMit/>
+   <xmlSourceMit/>
+   <!-- Check selected Components Toolbar -->
+   <checkComponentBtn/>
+   <generateSourceCodeBtn/>
+   <generateControllerCodeBtn/>
+   <generateXmlCodeBtn/>
+   <!-- new Containers Toolbar -->
+   <newJPopupMenuBtn/>
+   <!-- new Components Toolbar -->
+  </JTable>
+   
+  <JTree btn="newJTreeBtn">
+   <!-- ideFileMenu components -->
+   <exitIdeMit/>
+   <!-- ideEditMenu components -->
+   <editComponentMit/>
+   <!-- Edit Project Toolbar -->
+   <!-- Edit Selected Component Toolbar -->
+   <editComponentBtn/>
+   <!-- ideSourceMenu components -->
+   <checkComponentMit/>
+   <viewSourceMit/>
+   <controllerSourceMit/>
+   <xmlSourceMit/>
+   <!-- Check selected Components Toolbar -->
+   <checkComponentBtn/>
+   <generateSourceCodeBtn/>
+   <generateControllerCodeBtn/>
+   <generateXmlCodeBtn/>
+   <!-- new Containers Toolbar -->
+   <newJPopupMenuBtn/>
+   <!-- new Components Toolbar -->
+  </JTree>
+   
+  <JSlider btn="newJSliderBtn">
+   <!-- ideFileMenu components -->
+   <exitIdeMit/>
+   <!-- ideEditMenu components -->
+   <editComponentMit/>
+   <!-- Edit Project Toolbar -->
+   <!-- Edit Selected Component Toolbar -->
+   <editComponentBtn/>
+   <!-- ideSourceMenu components -->
+   <checkComponentMit/>
+   <viewSourceMit/>
+   <controllerSourceMit/>
+   <xmlSourceMit/>
+   <!-- Check selected Components Toolbar -->
+   <checkComponentBtn/>
+   <generateSourceCodeBtn/>
+   <generateControllerCodeBtn/>
+   <generateXmlCodeBtn/>
+   <!-- new Containers Toolbar -->
+   <newJPopupMenuBtn/>
+   <!-- new Components Toolbar -->
+  </JSlider>
+   
+  <JProgressBar btn="newJProgressBarBtn">
+   <!-- ideFileMenu components -->
+   <exitIdeMit/>
+   <!-- ideEditMenu components -->
+   <editComponentMit/>
+   <!-- Edit Project Toolbar -->
+   <!-- Edit Selected Component Toolbar -->
+   <editComponentBtn/>
+   <!-- ideSourceMenu components -->
+   <checkComponentMit/>
+   <viewSourceMit/>
+   <controllerSourceMit/>
+   <xmlSourceMit/>
+   <!-- Check selected Components Toolbar -->
+   <checkComponentBtn/>
+   <generateSourceCodeBtn/>
+   <generateControllerCodeBtn/>
+   <generateXmlCodeBtn/>
+   <!-- new Containers Toolbar -->
+   <newJPopupMenuBtn/>
+   <!-- new Components Toolbar -->
+  </JProgressBar>
+   
+ </ButtonEnablings>
+<!-- ================= End of Standard Button (de)-Activation ============== -->
+<!-- ======================================================================= -->
+
+</IdeTreeController>

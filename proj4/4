@@ -1,0 +1,4 @@
+MATCH (person)<-[:S2P]-(student:Student)-[r:Taking]->(enrollment)
+WHERE r.Grade ='A'
+RETURN DISTINCT person.Name
+

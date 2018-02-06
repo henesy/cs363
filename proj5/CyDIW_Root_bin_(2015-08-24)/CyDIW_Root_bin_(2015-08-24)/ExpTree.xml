@@ -1,0 +1,49 @@
+<dbQuery>
+   <dbSFWStatement>
+      <dbSelectClause>
+          <dbAttr>
+              <dbRelVar> <dbRelAliasName Token="e" />  </dbRelVar>
+              <dbAttrName Token="Name" /> 
+          </dbAttr>
+          <dbAttr>
+              <dbRelVar>  <dbRelAliasName Token="d" />  </dbRelVar>
+              <dbAttrName Token="MName" /> 
+          </dbAttr>
+      </dbSelectClause>
+      <dbFromClause>
+          <dbRelVar>
+              <dbRelName Token="Emp" />
+              <dbRelAliasName Token="e" /> 
+          </dbRelVar>
+          <dbRelVar>
+              <dbRelName Token="Dept" />
+              <dbRelAliasName Token="d" /> 
+          </dbRelVar>
+      </dbFromClause>
+      <dbWhereClause>
+          <BooleanExp>
+              <BooleanFactor>
+                  <dbAttr>
+                      <dbRelVar>  <dbRelAliasName Token="e" />  </dbRelVar>
+                      <dbAttrName Token="DName" /> 
+                  </dbAttr>
+                  <comparisonOp Token="=" /> 
+                  <dbAttr>
+                      <dbRelVar>  <dbRelAliasName Token="d" />  </dbRelVar>
+                      <dbAttrName Token="DName" /> 
+                  </dbAttr>
+              </BooleanFactor>
+              <BooleanFactor>
+                  <dbAttr>
+                      <dbRelVar>  <dbRelAliasName Token="e" />  </dbRelVar>
+                      <dbAttrName Token="Salary" /> 
+                  </dbAttr>
+                  <comparisonOp Token=">" /> 
+                  <dbConstValue>
+                      <INTEGERLITERAL Token="70000" />
+                  </dbConstValue>
+              </BooleanFactor>
+          </BooleanExp>
+      </dbWhereClause>
+   </dbSFWStatement>
+</dbQuery>

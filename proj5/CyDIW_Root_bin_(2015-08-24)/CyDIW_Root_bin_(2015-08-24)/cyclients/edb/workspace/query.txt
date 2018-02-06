@@ -1,0 +1,27 @@
+sm:>createRawStorage StorageConfig.xml;
+// To start the storagemanager and format the storage with the specified pag size;
+sm:>useStorage StorageConfig.xml;
+sm:>formatStorage 1;
+// To start the buffer manager with the specified number of buffers;
+sm:>startBufferManager 100;
+
+proj1:>test;
+
+proj1:>createDB datageneration/catalog.xml;
+proj2:>test;
+proj1:>open Emp 1 C;
+proj1:>hasNext Emp;
+proj1:>hasPage Emp;
+proj1:>getNext Emp;
+proj1:>reloadBuffers Emp;
+proj1:>getNext Emp;
+proj1:>getNext Emp;
+proj1:>getRemaining Emp;
+proj1:>close Emp;
+
+proj1:>open Dept 3 C;
+proj1:>getNext Dept;
+proj1:>getNext Dept;
+proj1:>close Dept;
+
+proj2:>open 5 3 C;

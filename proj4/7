@@ -1,0 +1,3 @@
+MATCH (student)<-[:Mentors]-(faculty:Faculty)-[:F2P]->(person)
+RETURN person.Name, student.Classification, student.GPA
+

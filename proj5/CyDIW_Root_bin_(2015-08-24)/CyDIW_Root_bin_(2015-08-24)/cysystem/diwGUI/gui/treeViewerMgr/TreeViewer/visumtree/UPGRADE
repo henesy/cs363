@@ -1,0 +1,48 @@
+
+OLD VISUMTREE COMPATIBILITY
+
+	[*] TreePanel.repaint()
+	[*] TreePanel.scrollSelectedToVisible()
+	[*] TreePanel.setBorder(null)
+	[*] TreePanel.tree()
+	[*] TreePanel.validate()
+
+	[#] Tree.addDaughter(attribute +"="+ value, insertionIndex)
+			NOW: Tree.newDaughterAt(new Node(attr + "=" + val), index)
+			NOW: Tree.newDaughter(new Node(attr + "=" + val)) // INDEX=LAST
+	[#] Tree.addMother()
+			NOW: Tree.newMother(new Node())
+	[#] Tree.addMother(attribute + "=" + value)
+			NOW: Tree.newMother(new Node(attr + "=" + val))
+	[*] Tree.deselect(tree.root())
+	[*] Tree.deselectAll()
+	[#] Tree.getSelectedNodes()
+			NOW: Tree.selectedNodes()
+	[#] Tree.getTerminalNodes(selectedNodes)
+			NOW: Tree.terminals(selectedNodes)
+	[*] Tree.init()
+	[#] Tree.maxRoots(nodeList)
+			NOW: Tree.maximals(nodeList)
+	[*] Tree.remove()
+	[*] Tree.root()
+	[*] Tree.select(selectedNodes)
+	[*] Tree.setAV(attribute + "=" + value)
+	[#] Tree.setTreeFont(font)
+			NOW: Tree.setOption("tree.font", font);
+
+	[#] Node.addDaughter(-1)
+			NOW: Node.newDaughter(new Node())
+			NOW: Node.newDaughterAt(new Node(), index)
+	[*] Node.daughterAt(i)
+	[*] Node.daughterCount()
+	[*] Node.getAVM()
+			NOW: does not return option attributes (starting with @)
+	[#] Node.getMother()
+			NOW: Node.mother()
+	[*] Node.remove()
+	[*] Node.removeAV(attribute)
+	[*] Node.setAV("lex", terminals[textSelections[0]].word)
+	[*] Node.setAV(source.avm[i][0] + "=" + source.avm[i][1])
+			BETTER: Node.setAV(source.avm[i][0], source.avm[i][1])
+				Use only AVMstring for > 1 assignments
+

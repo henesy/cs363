@@ -1,0 +1,33 @@
+
+<Emps xsi:noNamespaceSchemaLocation="Emp.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <Entry>
+      <Name>Hari</Name>
+      <DName>Credit</DName>
+      <Salary>55000</Salary>
+    </Entry>
+    <Entry>
+      <Name>John</Name>
+      <DName>Toys</DName>
+      <Salary>50000</Salary>
+    </Entry>
+    <Entry>
+      <Name>Leu</Name>
+      <DName>Shoes</DName>
+      <Salary>70000</Salary>
+    </Entry>
+    <Entry>
+      <Name>Mary</Name>
+      <DName>Toys</DName>
+      <Salary>60000</Salary>
+    </Entry>
+    <Entry>
+      <Name>Superman</Name>
+      <DName>Audit</DName>
+      <Salary>100000</Salary>
+    </Entry>
+    <Entry>
+      <Name>Jane</Name>
+      <DName>TV</DName>
+      <Salary>65000</Salary>
+    </Entry>
+</Emps>

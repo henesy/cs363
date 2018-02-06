@@ -1,0 +1,27 @@
+\section{License}
+
+<<License>>=
+/*
+	LICENSE
+	Copyright (c) 1998 Matthias T. Kromann.
+
+	The code in this package is licensed for commercial use and
+	distribution in the VISUM project coordinated by the University of
+	Copenhagen and the Copenhagen Business School. There are no
+	restrictions on its use within this project and its descendants. 
+
+	With this exception, this package is free software: You can
+	redistribute it and/or modify it under the terms of the GNU
+	General Public License as published by the Free Software
+	Foundation. This package is distributed in the hope that it will
+	be useful, but WITHOUT ANY WARRANTY or any implied warranty of
+	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
+	General Public License for more details. 
+
+	Matthias T. Kromann 
+	mtkromann@ieee.org
+*/
+
+// This file was generated automatically from the corresponding
+// noweb file. Please edit the noweb file, not this file. 
+@

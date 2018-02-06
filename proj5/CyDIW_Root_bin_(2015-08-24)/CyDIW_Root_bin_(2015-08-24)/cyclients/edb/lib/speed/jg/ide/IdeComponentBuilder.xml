@@ -1,0 +1,349 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="yes" ?>
+<IdeComponentBuilder>
+
+<!-- ====================================================================== -->
+<!-- == Defining the Listeners and what classes possibly implement them === -->
+
+<ControllerCodeDialog>
+<ImplementedListeners>
+ <ActionListener Import="java.awt.event.*" Event="ActionEvent">
+  <Implements>actionPerformed</Implements>
+ </ActionListener>
+ <CaretListener Import="javax.swing.event.*" Event="CaretEvent">
+  <Implements>caretUpdate</Implements>
+ </CaretListener>
+ <ChangeListener Import="javax.swing.event.*" Event="ChangeEvent">
+  <Implements>stateChanged</Implements>
+ </ChangeListener>
+ <ComponentListener Import="java.awt.event.*" Event="ComponentEvent">
+  <Implements>componentHidden</Implements>
+  <Implements>componentMoved</Implements>
+  <Implements>componentResized</Implements>
+  <Implements>componentShown</Implements>
+ </ComponentListener>
+ <FocusListener Import="java.awt.event.*" Event="FocusEvent">
+  <Implements>focusGained</Implements>
+  <Implements>focusLost</Implements>
+ </FocusListener>
+ <HyperlinkListener Import="javax.swing.event.*" Event="HyperlinkEvent">
+  <Implements>hyperlinkUpdate</Implements>
+ </HyperlinkListener>
+ <InternalFrameListener Import="javax.swing.event.*" Event="InternalFrameEvent">
+  <Implements>internalFrameOpened</Implements>
+  <Implements>internalFrameActivated</Implements>
+  <Implements>internalFrameDeactivated</Implements>
+  <Implements>internalFrameClosing</Implements>
+  <Implements>internalFrameClosed</Implements>
+  <Implements>internalFrameIconified</Implements>
+  <Implements>internalFrameDeiconified</Implements>
+ </InternalFrameListener>
+ <ItemListener Import="java.awt.event.*" Event="ItemEvent">
+  <Implements>itemStateChanged</Implements>
+ </ItemListener>
+ <KeyListener Import="java.awt.event.*" Event="KeyEvent">
+  <Implements>keyTyped</Implements>
+  <Implements>keyPressed</Implements>
+  <Implements>keyReleased</Implements>
+ </KeyListener>
+ <ListSelectionListener Import="javax.swing.event.*" Event="ListSelectionEvent">
+  <Implements>valueChanged</Implements>
+ </ListSelectionListener>
+ <MenuListener Import="javax.swing.event.*" Event="MenuEvent">
+  <Implements>menuSelected</Implements>
+  <Implements>menuDeselected</Implements>
+  <Implements>menuCanceled</Implements>
+ </MenuListener>
+ <MouseListener Import="java.awt.event.*" Event="MouseEvent">
+  <Implements>mouseClicked</Implements>
+  <Implements>mousePressed</Implements>
+  <Implements>mouseReleased</Implements>
+  <Implements>mouseEntered</Implements>
+  <Implements>mouseExited</Implements>
+ </MouseListener>
+ <MouseMotionListener Import="java.awt.event.*" Event="MouseEvent">
+  <Implements>mouseDragged</Implements>
+  <Implements>mouseMoved</Implements>
+ </MouseMotionListener>
+ <PopupMenuListener Import="javax.swing.event.*" Event="PopupMenuEvent">
+  <Implements>popupMenuWillBecomeVisible</Implements>
+  <Implements>popupMenuWillBecomeInvisible</Implements>
+  <Implements>popupMenuCanceled</Implements>
+ </PopupMenuListener>
+ <TreeExpansionListener Import="javax.swing.event.*" Event="TreeExpansionEvent">
+  <Implements>treeCollapsed</Implements>
+  <Implements>treeExpanded</Implements>
+ </TreeExpansionListener>
+ <TreeSelectionListener Import="javax.swing.event.*" Event="TreeSelectionEvent">
+  <Implements>valueChanged</Implements>
+ </TreeSelectionListener>
+ <TreeWillExpandListener Import="javax.swing.event.*" Event="TreeExpansionEvent">
+  <Implements>treeWillCollapse</Implements>
+  <Implements>treeWillExpand</Implements>
+ </TreeWillExpandListener>
+ <WindowListener Import="java.awt.event.*" Event="WindowEvent">
+  <Implements>windowOpened</Implements>
+  <Implements>windowActivated</Implements>
+  <Implements>windowDeactivated</Implements>
+  <Implements>windowClosing</Implements>
+  <Implements>windowClosed</Implements>
+  <Implements>windowIconified</Implements>
+  <Implements>windowDeiconified</Implements>
+ </WindowListener>
+</ImplementedListeners>
+
+<ListenerMappings>
+ <Box Import="javax.swing.*">
+  <!-- Box only has static Component creation methods in SpeedJG -->
+ </Box>
+ <JButton Import="javax.swing.*">
+  <ActionListener Default="true"/>
+  <ChangeListener/>
+  <ComponentListener/>
+  <FocusListener/>
+  <ItemListener/>
+  <KeyListener/>
+  <MouseListener/>
+  <MouseMotionListener/>
+ </JButton>
+ <JCheckBox Import="javax.swing.*">
+  <ActionListener/>
+  <ChangeListener/>
+  <ComponentListener/>
+  <FocusListener/>
+  <ItemListener Default="true"/>
+  <KeyListener/>
+  <MouseListener/>
+  <MouseMotionListener/>
+ </JCheckBox>
+ <JCheckBoxMenuItem Import="javax.swing.*">
+  <ActionListener/>
+  <ChangeListener/>
+  <ItemListener Default="true"/>
+  <MouseListener/>
+  <MouseMotionListener/>
+ </JCheckBoxMenuItem>
+ <JComboBox Import="javax.swing.*">
+  <ActionListener/>
+  <ComponentListener/>
+  <FocusListener/>
+  <ItemListener Default="true"/>
+  <KeyListener/>
+  <PopupMenuListener/>
+ </JComboBox>
+ <JDesktopPane Import="javax.swing.*">
+  <ComponentListener/>
+  <MouseListener/>
+  <MouseMotionListener/>
+ </JDesktopPane>
+ <JDialog Import="javax.swing.*">
+  <ComponentListener/>
+  <FocusListener/>
+  <KeyListener/>
+  <MouseListener/>
+  <MouseMotionListener/>
+  <WindowListener Default="true"/>
+ </JDialog>
+ <JEditorPane Import="javax.swing.*">
+  <CaretListener/>
+  <ComponentListener/>
+  <FocusListener/>
+  <HyperlinkListener Default="true"/>
+  <KeyListener/>
+  <MouseListener/>
+  <MouseMotionListener/>
+ </JEditorPane>
+ <JFormattedTextField Import="javax.swing.*">
+  <ActionListener/>
+  <CaretListener/>
+  <ComponentListener/>
+  <FocusListener/>
+  <KeyListener Default="true"/>
+  <MouseListener/>
+  <MouseMotionListener/>
+ </JFormattedTextField>
+ <JFrame Import="javax.swing.*">
+  <ComponentListener/>
+  <FocusListener/>
+  <KeyListener/>
+  <MouseListener/>
+  <MouseMotionListener/>
+  <WindowListener Default="true"/>
+ </JFrame>
+ <JInternalFrame Import="javax.swing.*">
+  <ComponentListener/>
+  <InternalFrameListener Default="true"/>
+  <MouseListener/>
+  <MouseMotionListener/>
+ </JInternalFrame>
+ <JLabel Import="javax.swing.*">
+  <ComponentListener/>
+  <MouseListener/>
+  <MouseMotionListener/>
+ </JLabel>
+ <JList Import="javax.swing.*">
+  <ComponentListener/>
+  <FocusListener/>
+  <ListSelectionListener Default="true"/>
+  <KeyListener/>
+  <MouseListener/>
+  <MouseMotionListener/>
+ </JList>
+ <JMenu Import="javax.swing.*">
+  <ActionListener/>
+  <ChangeListener/>
+  <ItemListener/>
+  <MenuListener Default="true"/>
+  <MouseListener/>
+  <MouseMotionListener/>
+ </JMenu>
+ <JMenuBar Import="javax.swing.*">
+  <MouseListener/>
+  <MouseMotionListener/>
+ </JMenuBar>
+ <JMenuItem Import="javax.swing.*">
+  <ActionListener Default="true"/>
+  <ChangeListener/>
+  <MouseListener/>
+  <MouseMotionListener/>
+ </JMenuItem>
+ <JPanel Import="javax.swing.*">
+  <ComponentListener/>
+  <MouseListener/>
+  <MouseMotionListener/>
+ </JPanel>
+ <JPasswordField Import="javax.swing.*">
+  <ActionListener/>
+  <CaretListener/>
+  <ComponentListener/>
+  <FocusListener/>
+  <KeyListener Default="true"/>
+  <MouseListener/>
+  <MouseMotionListener/>
+ </JPasswordField>
+ <JPopupMenu Import="javax.swing.*">
+  <ComponentListener/>
+  <FocusListener/>
+  <KeyListener/>
+  <MouseListener/>
+  <MouseMotionListener/>
+  <PopupMenuListener Default="true"/>
+ </JPopupMenu>
+ <JProgressBar Import="javax.swing.*">
+  <ChangeListener Default="true"/>
+  <ComponentListener/>
+  <MouseListener/>
+  <MouseMotionListener/>
+ </JProgressBar>
+ <JRadioButton Import="javax.swing.*">
+  <ActionListener/>
+  <ChangeListener/>
+  <ComponentListener/>
+  <FocusListener/>
+  <ItemListener Default="true"/>
+  <KeyListener/>
+  <MouseListener/>
+  <MouseMotionListener/>
+ </JRadioButton>
+ <JRadioButtonMenuItem Import="javax.swing.*">
+  <ActionListener/>
+  <ChangeListener/>
+  <ItemListener Default="true"/>
+  <MouseListener/>
+  <MouseMotionListener/>
+ </JRadioButtonMenuItem>
+ <JScrollPane Import="javax.swing.*">
+  <ComponentListener/>
+  <MouseListener/>
+  <MouseMotionListener/>
+ </JScrollPane>
+ <JSeparator Import="javax.swing.*">
+  <MouseListener/>
+  <MouseMotionListener/>
+ </JSeparator>
+ <JSlider Import="javax.swing.*">
+  <ChangeListener Default="true"/>
+  <ComponentListener/>
+  <FocusListener/>
+  <KeyListener/>
+  <MouseListener/>
+  <MouseMotionListener/>
+ </JSlider>
+ <JSpinner Import="javax.swing.*">
+  <ChangeListener Default="true"/>
+  <ComponentListener/>
+  <MouseListener/>
+  <MouseMotionListener/>
+ </JSpinner>
+ <JSplitPane Import="javax.swing.*">
+  <ComponentListener/>
+  <MouseListener/>
+  <MouseMotionListener/>
+ </JSplitPane>
+ <JTabbedPane Import="javax.swing.*">
+  <ChangeListener Default="true"/>
+  <ComponentListener/>
+  <FocusListener/>
+  <KeyListener/>
+  <MouseListener/>
+  <MouseMotionListener/>
+ </JTabbedPane>
+ <JTable Import="javax.swing.*">
+  <ComponentListener/>
+  <FocusListener/>
+  <KeyListener/>
+  <MouseListener/>
+  <MouseMotionListener/>
+ </JTable>
+ <JTextArea Import="javax.swing.*">
+  <CaretListener/>
+  <ComponentListener/>
+  <FocusListener/>
+  <KeyListener Default="true"/>
+  <MouseListener/>
+  <MouseMotionListener/>
+ </JTextArea>
+ <JTextField Import="javax.swing.*">
+  <ActionListener/>
+  <CaretListener/>
+  <ComponentListener/>
+  <FocusListener/>
+  <KeyListener Default="true"/>
+  <MouseListener/>
+  <MouseMotionListener/>
+ </JTextField>
+ <JToggleButton Import="javax.swing.*">
+  <ActionListener/>
+  <ChangeListener/>
+  <ComponentListener/>
+  <FocusListener/>
+  <ItemListener Default="true"/>
+  <KeyListener/>
+  <MouseListener/>
+  <MouseMotionListener/>
+ </JToggleButton>
+ <JToolBar Import="javax.swing.*">
+  <ComponentListener/>
+  <FocusListener/>
+  <KeyListener/>
+  <MouseListener/>
+  <MouseMotionListener/>
+ </JToolBar>
+ <JToolBarSeparator Import="javax.swing.*">
+  <ComponentListener/>
+  <MouseListener/>
+  <MouseMotionListener/>
+ </JToolBarSeparator>
+ <JTree Import="javax.swing.*">
+  <ComponentListener/>
+  <FocusListener/>
+  <KeyListener/>
+  <MouseListener/>
+  <MouseMotionListener/>
+  <TreeExpansionListener/>
+  <TreeSelectionListener Default="true"/>
+  <TreeWillExpandListener/>
+ </JTree>
+</ListenerMappings>
+</ControllerCodeDialog>
+<!-- ====================================================================== -->
+</IdeComponentBuilder>

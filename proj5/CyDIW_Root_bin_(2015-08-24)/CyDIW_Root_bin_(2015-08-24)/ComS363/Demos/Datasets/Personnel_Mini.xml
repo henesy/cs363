@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?> 
+<!--  A small XML document showing most relevant features of XML --> 
+<PersonnelDB Office = "Western"> 
+   <Emp EmpID = "E01"> 
+      <Name>John</Name> 
+      <DName>Toys</DName> 
+   </Emp> 
+   <Emp EmpID = "E02"> 
+      <Name> <First>Mary</First> <Last>Jones</Last> </Name> 
+      <DName>Toys</DName> 
+   </Emp> 
+   <Dept Location = "San Jose" Level = "3"> 
+       <DName>Toys</DName> 
+       <MName>Mary</MName> 
+   </Dept> 
+   <Dept Location = "Ames"> 
+    </Dept> 
+</PersonnelDB> 

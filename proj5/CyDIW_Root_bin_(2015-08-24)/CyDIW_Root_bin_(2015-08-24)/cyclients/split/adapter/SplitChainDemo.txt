@@ -1,0 +1,51 @@
+// Li Zhang; 
+
+
+// $CyDB:> list commands;
+// $SplitChain:> list commands;
+
+// Create new storage;   
+// $CyDB:> createstorage QuickStorageConfig.xml;
+
+// Load storage 
+$CyDB:> loadstorage QuickStorageConfig.xml;
+
+// If necessary, reformat a loaded storage and reload it; 
+// $CyDB:> reformatstorage QuickStorageConfig.xml 16;
+// $CyDB:> loadstorage QuickStorageConfig.xml;
+
+$CyDB:> declare string $$chain := InitialList;
+$CyDB:> declare string $$chain1 := OddPageList;
+$CyDB:> declare string $$chain2 := EvenPageList;
+$CyDB:> list variables;
+
+// Monitor storage counters; 
+$CyDB:> getPageAccessCount;
+$CyDB:> getPageAllocatedCount;
+$CyDB:> getPageDeallocatedCount;
+
+// Create a chain; 
+$SplitChain:> CreateChain cyclients\split\ChainConfig.xml $$chain; 
+
+// Confirm that the chain been created and registered as a file in storage directory; 
+$CyDB:> showdirectory;
+
+// Monitor storage counters again; 
+$CyDB:> getPageAccessCount;
+$CyDB:> getPageAllocatedCount;
+$CyDB:> getPageDeallocatedCount;
+
+// Split the chain; 
+$SplitChain:> SplitChain cyclients\split\ChainConfig.xml $$chain $$chain1 $$chain2;
+
+// See all files in the storage directory; 
+$CyDB:> showdirectory;
+
+// Monitor storage counters, yet again; 
+$CyDB:> getPageAccessCount;
+$CyDB:> getPageAllocatedCount;
+$CyDB:> getPageDeallocatedCount; 
+
+// The following command does not yet exist; 
+// $CyDB:> unloadstorage QuickStorageConfig.xml;
+

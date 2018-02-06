@@ -1,0 +1,124 @@
+
+$CyDB:> list commands;
+$CyDB:>useStorage StorageConfig.xml;
+/* $CyDB:>createRawStorage  StorageConfig.xml;
+$CyDB:> formatstorage 16;  */
+
+
+$CyDB:> declare string $$b;
+
+$CyDB:>set $$b := edb\workspace\catalog.xml;
+$EDB:>CreateData b;
+$EDB:>InitializedEDB b ;
+
+
+$CyDB:> declare string $$a;
+
+// single relation;
+$CyDB:>set $$a := $EDB:>select e.Name, e.Salary, e.DName
+from Emp e
+where e.Salary > 0;
+
+
+// naturaljoin;
+$CyDB:>set $$a := $EDB:>select d.DName, e.Salary, d.MName
+from Emp e, Dept d
+where  e.DName = d.DName ;
+
+// "AND";
+
+
+$CyDB:>set $$a := $EDB:>select d.DName, e.Salary
+from Emp e, Dept d
+where  (e.DName = d.DName and e.Salary > 3);
+
+
+// "OR";
+$CyDB:>set $$a := $EDB:>select e.Name, e.Salary, e.DName
+from Emp e
+where (e.Salary > 6 or  e.Salary > 3)   ;
+
+
+// "NOT";
+$CyDB:>set $$a:= $EDB:>select d.DName, d.MName
+from Dept d
+where not(d.DName = 'Dept1') ;
+
+
+
+
+$CyDB:>set $$a := $EDB:>select d.DName, e.Salary
+from Emp e, Dept d
+where  ((e.DName = d.DName and e.Salary > 3) and (d.DName = 'Dept0' and e.Salary > 6) ) ;
+
+
+$CyDB:>set $$a := $EDB:>select d.DName, e.Salary
+from Emp e, Dept d
+where  ((e.DName = d.DName and e.Salary > 3) and (d.DName = 'Dept0' or e.Salary > 6) ) ;
+
+
+
+$CyDB:>set $$a := $EDB:>select d.DName, e.Salary, d.MName, e.Name, e.Dname
+from Emp e, Dept d
+where  (((e.DName = d.DName and e.Salary > 3) and (d.DName = 'Dept0' or e.Salary > 6) ) and (e.Name = 'Name0' or e.Name = 'Name2'))  ;
+
+
+$CyDB:>set $$a := $EDB:>select d.DName, e.Salary, d.MName, e.Name, e.Dname
+from Emp e, Dept d
+where  (((e.DName = d.DName and e.Salary > 3) or (d.DName = 'Dept0' or e.Salary > 6) ) and (e.Name = 'Name0' or e.Name = 'Name2'))  ;
+
+
+
+// "NOT";
+$CyDB:>set $$a:= $EDB:>select d.DName, d.MName, e.DName
+from Dept d, Emp e
+where not(d.DName = 'Dept1') ;
+
+
+
+// "NOT";
+$CyDB:>set $$a:= $EDB:>select e.DName, d.MName
+from Dept d, Emp e
+where not(d.DName = 'Dept1') ;
+
+
+// "NOT";
+$CyDB:>set $$a:= $EDB:>select e.DName, d.MName
+from Dept d, Emp e
+where (not(d.DName = 'Dept1') and  e.Salary >1) ;
+
+
+
+$CyDB:> declare string $$c;
+$CyDB:>set $$c := edb\workspace\ASTree.xml;
+$CyDB:> declare string $$d;
+$CyDB:>set $$d := edb\workspace\InitalExpTree.xml;
+$CyDB:> declare string $$e;
+$CyDB:>set $$e := edb\workspace\OptimalExpTree.xml;
+
+
+$EDB:>BuildParseTree a c;
+
+$EDB:>BuildInitalExpressionTree c d  ;
+  
+$EDB:>BuildOptimalExpressionTree d e;
+
+$EDB:>DisplayParseTree c graphicalview; 
+
+$EDB:>DisplayExpressionTree d graphicalview; 
+$EDB:>DisplayExpressionTree e graphicalview; 
+
+$EDB:>DisplayExpressionTree d xmlview; 
+$EDB:>DisplayExpressionTree e hybridview; 
+
+$EDB:>Execute d;
+$EDB:>Execute e;
+
+
+// Expression Tree Iterator;
+$EDB:>OpenIterator d;
+$EDB:>HasNextTuple;
+$EDB:>GetNextTuple;
+$EDB:>GetRemainingTuples;
+$EDB:>
+CloseIterator;

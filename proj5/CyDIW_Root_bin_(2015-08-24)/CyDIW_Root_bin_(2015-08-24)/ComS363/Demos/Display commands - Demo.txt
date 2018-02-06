@@ -1,0 +1,6 @@
+// Display commands in CyDIW: CyDIW supports commands to display contents of text, XML, and PDF files; 
+
+$CyDB:> displayxml StorageConfig.xml; 
+$CyDB:> displaytxt ComS363/Demos/XQuery-Saxon-Demo.txt; 
+$CyDB:> displaypdf ComS363/Demos/Datasets/plots.pdf; 
+

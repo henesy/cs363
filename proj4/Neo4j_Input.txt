@@ -1,0 +1,42 @@
+// Sean Hinchee
+// Item 1
+MATCH (sp:Person)<-[:S2P]-(s)<-[:Mentors]-(m)-[M2P]-(mp)
+WHERE exists(mp.Name) AND exists(sp.Name) 
+RETURN sp.Name, mp.Name
+
+// Item 2
+MATCH (s:Student)
+WHERE s.Classification='Sophomore'
+RETURN s.Classification, AVG(s.GPA)
+
+// Item 3
+MATCH (sp)<-[:S2P]-(s2)-[:Taking]->(e)<-[:Taking]-(s1:Student)<-[:Mentors]-(m)-[:F2P]->(fp)
+RETURN sp.Name, fp.Name
+
+// Item 4
+MATCH (p)<-[:S2P]-(s:Student)-[t:Taking]->(e)
+WHERE t.Grade ='A'
+RETURN DISTINCT p.Name
+
+
+// Item 5
+MATCH (pr:Course)-[:PreReq]->(c)
+WHERE c.CourseCode='CS311'
+RETURN pr.CourseCode
+
+
+// Item 6
+MATCH (f:Faculty)-[:F2P]->(p)
+WHERE f.Salary>=100000
+RETURN p.Name, f.Rank
+
+
+// Item 7
+MATCH (s)<-[:Mentors]-(f:Faculty)-[:F2P]->(p)
+RETURN p.Name, s.Classification, s.GPA
+
+
+// Item 8
+MATCH (e)<-[:Covers]-(o)-[tr:Taking]-(s)-[:Mentors]-(f)-[:F2P]-(p)
+RETURN e.CourseName, collect(DISTINCT o.Section), collect(DISTINCT p.Name), collect(DISTINCT tr.EnrollmentID)
+

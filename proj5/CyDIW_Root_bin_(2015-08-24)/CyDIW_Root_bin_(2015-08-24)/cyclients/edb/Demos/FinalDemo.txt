@@ -1,0 +1,130 @@
+
+$CyDB:> list commands;
+// If storage does not exist, use createStorage first;
+$CyDB:>createStorage  QuickStorageConfig.xml;
+
+
+$CyDB:>loadStorage QuickStorageConfig.xml;
+
+
+$CyDB:> declare string $$b;
+
+$CyDB:>set $$b := cyclients\edb\workspace\catalog.xml;
+
+// >>>>>>>>>>>>>>>>>>>>>> The following gave java null point exception solved; 
+$EDB:>CreateData $$b;
+ 
+
+
+// >>>>>>>>>>>>>>>>>>>>>> The following did NOT report any error; 
+$EDB:>LoadDB $$b 5 ;
+
+$CyDB:> declare string[6] $$a;
+
+// single relation;
+$CyDB:>set $$a[1] := $EDB:>select e.Name, e.Salary, e.DName
+from Emp e
+where e.Salary > 5;
+
+$CyDB:>set $$a[2] := $EDB:>select d.DName, e.Salary, d.MName
+from Dept d, Emp e 
+where  e.DName = d.DName ;
+
+$CyDB:>set $$a[3] := $EDB:>select d.DName, e.Salary, d.MName
+from Emp e, Dept d
+where  e.DName = d.DName ;
+
+
+
+$CyDB:>set $$a[4] := $EDB:>select d.DName, e.Salary, d.MName
+from Emp e , Dept d 
+where (e.DName = d.DName and e.Salary > 5) ;
+
+$CyDB:>set $$a[5] := $EDB:>select d.DName, e.Salary
+from Emp e, Dept d
+where  ((e.DName = d.DName and e.Salary > 3) and (d.DName = 'Dept0' and e.Salary > 6) ) ;
+
+
+$CyDB:> declare string[6] $$c;
+$CyDB:>set $$c[1] :=cyclients\edb\workspace\ASTree1.xml;
+$CyDB:>set $$c[2] :=cyclients\edb\workspace\ASTree2.xml;
+$CyDB:>set $$c[3] :=cyclients\edb\workspace\ASTree3.xml;
+$CyDB:>set $$c[4] :=cyclients\edb\workspace\ASTree4.xml;
+$CyDB:>set $$c[5] :=cyclients\edb\workspace\ASTree5.xml;
+$CyDB:> declare string[6] $$d;
+$CyDB:>set $$d[1] :=cyclients\edb\workspace\InitalExpTree1.xml;
+$CyDB:>set $$d[2] :=cyclients\edb\workspace\InitalExpTree2.xml;
+$CyDB:>set $$d[3] :=cyclients\edb\workspace\InitalExpTree3.xml;
+$CyDB:>set $$d[4] :=cyclients\edb\workspace\InitalExpTree4.xml;
+$CyDB:>set $$d[5] :=cyclients\edb\workspace\InitalExpTree5.xml;
+$CyDB:> declare string[6] $$e;
+$CyDB:>set $$e[1] :=cyclients\edb\workspace\OptimalExpTree1.xml;
+$CyDB:>set $$e[2] :=cyclients\edb\workspace\OptimalExpTree2.xml;
+$CyDB:>set $$e[3] :=cyclients\edb\workspace\OptimalExpTree3.xml;
+$CyDB:>set $$e[4] :=cyclients\edb\workspace\OptimalExpTree4.xml;
+$CyDB:>set $$e[5] :=cyclients\edb\workspace\OptimalExpTree5.xml;
+
+
+
+
+$CyDB:> createLog <root> Edblog.xml;
+
+$CyDB:> showdirectory;
+
+$CyDB:> list variables;
+$CyDB:> declare int $$i;
+ $CyDB:>foreach $$i in [1,5]
+{
+$EDB:>BuildAST $$a[$$i] $$c[$$i];
+$EDB:>BuildInitalExpressionTree $$c[$$i] $$d[$$i] ;  
+$EDB:>BuildOptimalExpressionTree $$d[$$i] $$e[$$i]
+}
+
+
+// >>>>>>>>>>>>>>>>>>>>>> The following did not seem to result in any display: solved; 
+// $EDB:>DisplayExpressionTree $$d[4] hybridview; 
+// $EDB:>DisplayExpressionTree $$d[4] graphicalview; 
+
+
+
+$CyDB:> declare int $$j;
+ 
+
+// >>>>>>>>>>>>>>>>>>>>>> The following loop reported java null point exception solved; 
+
+
+ 
+
+ $CyDB:> foreach $$j in [1,5] log time >><loop1  var ="Query($$j)">  Edblog.xml
+{
+
+ $CyDB:>loadStorage QuickStorageConfig.xml;
+
+$CyDB:> resetPageAccessRelativeCount;
+$EDB:> Execute $$d[$$j] 3 2  log custom >><loop2 >  Edblog.xml;  
+ $CyDB:> getPageAccessRelativeCount;
+
+
+
+}
+
+
+// >>>>>>>>>>>>>>>>>>>>>> The following gave java null point exception Solved; 
+$EDB:>OpenIterator $$d[2] 5 5;
+$EDB:>HasNextTuple $$d[2];
+$EDB:>GetNextTuple $$d[2];
+$EDB:>GetRemainingTuples $$d[2];
+$EDB:>
+CloseIterator $$d[2];
+
+
+$CyDB:>DisplayXml  cyclients\edb\workspace\InitalExpTree4.xml;
+
+//$CyDB:> getPageAccessRelativeCount;
+
+$CyDB:>DisplayXml CyWorkspace/Edblog.xml;
+$CyDB:>DisplayTxt cyclients/r/workspace/EDB_R_code.txt;
+$R:> CMD BATCH cyclients/r/workspace/EDB_R_code.txt;
+
+// >>>>>>>>>>>>>>>>>>>>>> The following did not succeed; 
+$CyDB:>DisplayPdf CyDemos/Edb_plots.pdf;

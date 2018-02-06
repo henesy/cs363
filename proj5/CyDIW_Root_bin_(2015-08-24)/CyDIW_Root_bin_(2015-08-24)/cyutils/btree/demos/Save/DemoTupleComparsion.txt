@@ -1,0 +1,16 @@
+/*
+Step 1. display TupleConfigComparsion
+*/
+$CyDB:> displayXML .\cyutils\btree\workspace\TupleConfigComparison.xml;
+
+/*
+Step 2. Declare variables for btree and tuple configuration file names
+*/
+$CyDB:> declare string $$TupleConfigComparsion := .\cyutils\btree\workspace\TupleConfigComparison.xml;
+
+/*
+Step 3. Compare two tuples
+*/
+$CyUtils:> CompareTuple [1,Jack,COMS,Tom,50000] [2,Tom,COMS,Harry,80000] $$TupleConfigComparsion;
+$CyUtils:> CompareTuple [2,Tom,COMS,Harry,80000] [1,Jack,COMS,Tom,50000] $$TupleConfigComparsion;
+$CyUtils:> CompareTuple [1,Jack,COMS,Tom,50000] [1,Jack,COMS,Tom,50000] $$TupleConfigComparsion;

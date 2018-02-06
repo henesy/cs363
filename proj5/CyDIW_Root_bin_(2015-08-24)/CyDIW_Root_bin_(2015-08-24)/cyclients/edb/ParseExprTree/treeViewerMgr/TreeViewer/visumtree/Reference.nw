@@ -1,0 +1,866 @@
+
+\def\methods#1{\bigskip\par
+	\noindent{\small\begin{tabular}{|l|p{40mm}|l|p{60mm}|}\hline
+		\textbf{Class} & \textbf{Method} &  \textbf{Return} & 
+			\textbf{Description} \\ \hline\hline
+			#1
+		\end{tabular}}\bigskip}
+
+
+\section{Reference}
+
+	The Tree component is used for drawing and manipulating syntax
+	trees in Java programs. It is written in Java 1.1 and documented
+	in \LaTeXe{} with the literary programming tool
+	\code{Noweb}.\footnote{See the \code{Noweb} homepage at
+	\code{http://www.cs.purdue.edu/homes/nr/noweb}.} It supports
+	classical Chomskyan syntax trees, HPSG-trees, IESA-trees,
+	dependency trees, and most other syntax trees. Each tree consists
+	of a hierarchy of nodes connected with lines, and each node contains
+	an attribute-value matrix (AVM) which can be drawn either as an
+	AVM, or as an abbreviation calculated from the AVM.  The HPSG tree
+	on the front page was created with the Tree component, with terminal nodes
+	shown as abbreviations and all other nodes shown as AVMs.
+
+	The package consists of the classes below. Each class contains
+	data variables, layout variables, compiled options, and
+	methods for manipulating class instances.
+		\begin{quote}\small\begin{tabular}{ll}
+			\textbf{Value} & Value in AVM \\
+			\textbf{AVM} & Attribute-value matrix \\
+			\textbf{Node} & Node in syntactic tree \\
+			\textbf{Tree} & JPanel on which all nodes are painted \\
+			\textbf{TreePanel}& JScrollPane containing Tree within scrollbars \\
+			\textbf{TreeInfo} & Global options for Tree \\
+			\textbf{TreeEvent}&  Encapsulation of Tree event\\
+			\textbf{TreeListener} & Interface for listening to Tree events \\ 
+			\textbf{TreeDemo} & Demo program for testing the Tree
+			component package 
+		\end{tabular}\end{quote} 
+	The classes \code{TreePanel}, \code{Tree} and \code{Node} are the
+	most important classes for an application programmer.
+	\code{TreePanel} is normally used once, when inserting the
+	scrollpane in the application. \code{Tree} takes care of
+	high-level operations in the tree. \code{Node} takes care of
+	low-level node and AVM manipulation.  Each tree has a link to a
+	root node. Each node has links to its mother, its daughters and an
+	AVM. Each AVM contains a list of attributes and corresponding
+	values (possibly AVMs).
+	
+	It is recommended to always choose the most abstract method, that
+	is, prefer \code{Tree}-methods over \code{Node}-methods, and
+	\code{Node}-methods over \code{AVM}-methods. Please take a
+	closer look at the \code{TreeDemo} class, which demonstrates how
+	the Tree component is incorporated into an application; it is also useful
+	for testing the various methods in the Tree component package. 
+	
+	The Tree component maintains a list of selected nodes in the tree on which
+	it operates, and automatically updates itself on the screen when
+	needed.  The mouse is used to select, abbreviate and move nodes.
+	The package also provides methods for selecting nodes,
+	manipulating nodes and AVMs (restricted by access permissions),
+	setting and reading access permissions and layout options, and
+	informing registered listeners about events in the tree. The
+	following sections give an overview of the most important
+	tree methods and options. 
+
+\subsection{Selecting nodes and paths}
+
+	The Tree-class maintains a list of selected nodes, as well as a
+	selected path in the most recently selected node. These are used
+	as operands for many Tree methods (moving nodes, creating new
+	daughters, changing AVMs, etc.). Methods that only affect one node
+	always operate on the most recently selected node and its selected
+	path. The selected path is set to \code{null} when no path is
+	selected. 
+	
+	The \code{select}-operation selects one or more nodes, deselecting
+	all other nodes; \code{add-select} selects nodes without
+	deselecting already selected nodes; \code{toggle-select} reverses
+	a node's selection status so that selected nodes are unselected, and
+	vice versa, without deselecting any other nodes; \code{deselect}
+	marks a node as unselected, without deselecting any other nodes.
+
+	Some of these operations are linked to mouse events: clicking on a
+	node selects, while shift-, ctrl- or right-button clicking
+	toggle-selects.  Clicking on the background deselects all nodes.
+	\methods{
+		Tree & select(Node node, String path) & void & Select given node
+			and path \\
+		Tree & select(Node[] nodes) & void & Select given nodes \\
+		Tree & selectAll() & void & Select all nodes \\ 
+		Tree & addSelect(Node node, String path) & void & Add-select given 
+			node and path \\
+		Tree & toggleSelect(Node node, String path)	& void & Toggle-select 
+			given node and path \\ 
+		Tree & deselect(Node node) & void & Deselect given node \\
+		Tree & deselectAll() & void & Deselect all nodes \\ \hline
+	}
+	The following methods give low level access to the list of
+	selected nodes. 
+	\methods{
+		Tree & selectedPath() & String & Return selected path in
+			most recently selected node \\
+		Tree & selectedCount() & int & Return number of selected nodes \\
+		Tree & selectedAt(int i) & Node & Return $i$th selected node \\
+		Tree & selected() & Node[] & Return all selected nodes \\ \hline
+	}
+
+\subsection{Node manipulation}
+
+	The following methods are used to manipulate the tree structure in
+	various ways: moving nodes and their subtrees to another node,
+	reordering the daughters in a local tree, removing nodes,
+	inserting new mothers and daughters in the tree, abbreviating
+	nodes, and setting bonsai mode (in bonsai mode, a small triangle
+	is shown below the node instead of its daughter subtrees). Each
+	node has a set of permissions that control which operations are
+	allowed on the node; operations that would violate those
+	permissions always fail. The section on options describes how to
+	set permissions.
+
+	The permissions impose the following restrictions on tree
+	operations. A node cannot be removed from the tree unless
+	\code{PERMremove} is true in that node. A node cannot be moved
+	from one place in the tree to another unless \code{PERMmove} is
+	true in the moved node and \code{PERMreceive} is true in its new
+	mother. A new mother cannot be inserted between a node and its old
+	mother unless \code{PERMnmother} is true in that node.  Similarly,
+	a new daughter cannot be inserted in a node unless
+	\code{PERMndaughter} is true in that node. The abbreviation status
+	of a node cannot be changed unless \code{PERMabbreviate} is true,
+	and the bonsai status cannot be changed unless \code{PERMbonsai}
+	is true. An operation is only legal if all terminal nodes in the
+	resulting tree have \code{PERMterminal} set to true. 
+	
+	Finally, no operation is allowed to change the order of nodes with
+	\code{PERMreorder} set to \code{false}. This requires some
+	explanation. The order defined on the tree is top-down,
+	left-to-right and depth-first: that is, the root node is visited
+	first, then the first daughter subtree is visited recursively,
+	then the second daughter subtree, and so on. The ordering is shown
+	in the left tree in the diagram below. 
+		\[	
+			\includegraphics{order.ps}\qquad
+			\includegraphics{reorder1.ps}\qquad
+			\includegraphics{reorder2.ps}
+		\]
+	Suppose nodes in boldface have \code{PERMreorder} set to false.
+	Then the operation that moves 5 and its subtree from 1 to 2
+	(middle) is legal, since the tree order of boldface nodes is
+	unchanged. But moving 8 and its subtree to 2 (right) is illegal
+	since this changes the tree order of 6--7 and 9.  
+
+	Some of these operations are linked to mouse events:
+	double-clicking on a node toggles its abbreviation status;
+	dragging a node onto another node moves the dragged node and its
+	subtree to the drop node (when shift-dragging, all other
+	selected nodes are moved to the drop node as well); dragging a
+	node to one of the spaces between its sister subtrees reorders the
+	sisters so that the dragged node occupies the position
+	corresponding to the drop-point among the sisters. 
+
+	\methods{
+		Tree & moveToMother(Node mother, boolean subtrees) & boolean & 
+			Move selected nodes to given mother, with subtrees if
+			\code{subtrees}\\
+		Tree & reorder(Node daughter, int x, int y) & boolean & 
+			Reorder local tree by moving \code{daughter} to index
+			specified by point $(x,y)$ \\
+		Tree & remove() & boolean & Remove most recently selected node \\
+		Tree & newDaughterAt(Node node, int i) & boolean & Insert
+			new $i$th daughter in most recently selected node\\
+		Tree & newDaughter(Node node) & boolean & Insert new last 
+			daughter in most recently selected node \\
+		Tree & newMother(Node node) & boolean &
+			Insert new mother between most recently selected node and its old
+			mother, and move all other selected nodes and their
+			subtrees to new mother \\
+		Tree & newMother(Node node, boolean subtrees) & boolean &
+			Insert new mother between most recently selected node and its old
+			mother, and move all other selected nodes (and their
+			subtrees if \code{subtrees}) to new mother \\
+		Tree & abbreviate(boolean status) & boolean & Set abbreviation-mode
+			in this node \\
+		Tree & abbreviate() & boolean & Toggle abbreviation-mode in
+			this node \\
+		Tree & bonsai(boolean status) & boolean & Set bonsai-mode in this node\\
+		Tree & bonsai() & boolean & Toggle bonsai-mode in this node \\
+			\hline
+	}
+
+	\noindent The Tree-methods above are implemented on the basis of
+	the following medium-level methods in the Node class; they all 
+	return \code{true} if successful, \code{false} otherwise.
+	Where possible, Tree-methods should be preferred over
+	Node-methods.
+
+	\methods{
+ 		Node & moveToMother(Node[] nodes, boolean subtrees) & boolean
+			& Move given nodes to this node, with subtrees 
+			if \code{subtrees} \\
+		Node & reorder(int i, int j) & boolean &
+			Move daughter with index $i$ to index $j$ in this node \\
+		Node & remove() & boolean & 
+			Remove this node from tree, moving its daughters up to
+			its old mother \\
+		Node & newDaughterAt(Node node, int index) & 
+			boolean & Insert given node as new daughter in this node
+			at given index \\
+		Node & newDaughter(Node node) & boolean & 
+			Insert given node as new last daughter in this node \\
+		Node & newMother(Node node) & boolean &
+			Insert given node as new mother between this node and its
+			old mother \\
+		Node & abbreviate(boolean status) & boolean & Set abbreviation-mode
+			in this node \\
+		Node & abbreviate() & boolean & Toggle abbreviation-mode in
+			this node \\
+		Node & bonsai(boolean status) & boolean & Set bonsai-mode in this node\\
+		Node & bonsai() & boolean & Toggle bonsai-mode in this node \\
+ 			\hline
+	}
+
+	\noindent Finally, the Node-class contains low-level node
+	manipulation methods that return the node's mother, its
+	predecessor and successor node in the tree order, the root node of
+	the tree, its daughters, and its associated AVM. The
+	\code{invalidate}-method is used whenever this node and all its
+	super nodes need to be updated (typically after the node or its
+	AVM have changed).
+
+	\methods{
+		Node & mother() & Node & Return mother of this node \\
+		Node & prev() & Node & Return previous node in tree order \\
+		Node & next() & Node & Return next node in tree order \\
+		Node & root() & Node & Return root node of this node \\
+		Node & daughters() & Node[] & Return daughters of
+			this node \\
+		Node & daughterAt(int i) & Node & Return $i$th daughter of
+			this node \\
+		Node & size() & int & Return number of daughters in this node\\
+		Node & indexInMother() & int & Return index of this node in
+			mother \\ 
+		Node & invalidate() & void & Mark this node and super nodes
+			for update \\
+		Node & avm() & AVM & Return root AVM of this node \\
+		\hline
+	}
+
+\subsection{Retrieving nodes}
+
+	The following methods are used to retrieve roots, minimal roots,
+	maximals, subnodes, and terminals in the tree. The \code{root} 
+	is the unique node in the tree with no mother.\footnote{The
+	root node in Tree is never drawn, though, so that Tree 
+	will display root's daughter subtrees as what seems to be several
+	separate trees.} A node, its daughters, granddaughters, etc.\ are
+	called \code{subnodes} of that node.  In particular, all nodes are
+	subnodes of the root. The \code{subnodes} of a given set of nodes
+	consists of all nodes that are subnodes of at least one of the
+	given nodes. A node is \code{terminal} if it has no daughters. The
+	\code{terminals} of a given set of nodes consists of all terminal
+	subnodes of that set. 
+
+	The \code{minimal root} of a set of nodes is the unique node with
+	the property that (1) it dominates all nodes in the set, and (2)
+	none of its daughters has this property.\footnote{Some
+	applications show the terminal roots in a special window and let
+	the user select a sequence of terminal roots. If this set of nodes
+	must be translated into a unique non-terminal node higher up in
+	the tree, the minimal root is the most intuitive choice.} A node
+	which is not root is called \code{maximal} with respect to a given
+	set of nodes if (1) all of its terminals are also terminals of the
+	given set, and (2) its mother does not have this property. The
+	\code{maximals} of a given set is the collection of all maximal
+	nodes of that set. 
+	\methods{
+		Tree & root() & Node & Return root node \\
+		Tree & minroot(Node[] nodes) & Node & Return minimal root of given 
+			nodes \\
+		Tree & minroot() & Node & Return minimal root of selected nodes \\
+		Tree & maximals(Node[] nodes) & Node[] & Return all maximals of given 
+			nodes\\
+		Tree & maximals() & Node[] & Return all maximals of selected nodes \\
+		Tree & subnodes(Node[] nodess) & Node[] & Return all subnodes of 
+			given nodes \\
+		Tree & subnodes() & Node[] & Return all subnodes of selected nodes \\
+		Tree & terminals(Node[] nodes) & Node[] & Return all terminals of given
+			nodes\\
+		Tree & terminals() & Node[] & Return all terminals of selected nodes \\
+		Tree & allTerminals() & Node[] & Return all terminals in tree \\
+		\hline
+	}
+		
+\subsection{AVM manipulation}
+	
+	The following methods are used to manipulate AVMs. Here TNA means
+	that the methods exists both in the Tree-, Node- and AVM-classes.
+	There are som slight differences: in the Tree-class, the methods
+	operate on the AVM associated with the most recently selected
+	node; in the Node-class, they operate on the node on which they
+	are called; in the AVM-class, they operate on the AVM on which
+	they are called. It is recommended to choose the most abstract
+	method (that is, prefer Tree over Node, and Node over AVM).  In
+	the Tree- and Node-versions, \code{setAV} and \code{removeAV} are
+	illegal unless the permission \code{PERMchange} is true. 
+	
+	An \code{AVlist} is used to specify several attribute-value pairs
+	at a time. It has the form
+		\[
+			\text{"attr$_1$=val$_1$ $\mid$ attr$_2$=val$_2$ $\mid$
+			attr$_3$=val$_3$ $\mid$ $\ldots$"}
+		\]
+	specifying that attribute \code{attr}$_1$ should be set to value
+	\code{val}$_1$ (type String), etc. 
+	\methods{
+		TNA & setAV(String path, Object value) & boolean & 
+			Set given path to given value \\
+		TNA & setAV(String AVlist) & boolean & 
+			Set given list of AV pairs \\
+		TNA & removeAV(String path) & boolean & 
+			Remove AV pair with given path \\
+		TNA & getAV(String path) & Object & 
+			Get value for given path \\
+		TNA & getAVM() & String[][] & 
+			Get AVM as matrix of strings \\ \hline
+	}
+
+	\noindent The following methods give low-level access to
+	attributes and values in the AVM. 
+
+	\methods{
+		AVM & size() & int & Return number of AV pairs in AVM \\
+		AVM & attributeAt(int i) & String & Return attribute of 
+			$i$th AV pair.  \\
+		AVM & valueAt(int i) & Object & Return value of $i$th AV
+			pair \\ 
+		\hline
+	}
+
+\subsection{Layout}
+
+	The following methods are used for layout and printing: returning
+	an absolute bounding box for the whole tree or a single node and
+	its subtree, requesting repaints and recalculation of the layout,
+	painting the tree on a graphics, laying out tree for printing or
+	printing it on a print-graphics with a specified offset, and
+	scrolling TreePanel so that selected nodes become visible. The
+	many options controlling the tree's graphical appearance (colors,
+	spacing and tooltips) are described in the section on options. 
+
+	\methods{
+		Node & getBBox() & Rectangle & Return absolute bounding box
+			for this node and its subtree \\
+		Tree & getBBox() & Rectangle & Return absolute bounding box
+			for this tree \\
+		Tree & requestRepaint() & void & Request repaint \\
+		Tree & requestRepaintAll() & void & Request repaint and recalculation 
+			of layout \\
+		Tree & paint(Graphics g) & void & Paint tree on graphics \code{g} \\
+		Tree & print(Graphics g, int x, int y) & void & Print tree on
+			printer graphics \code{g}, with upper left corner at $(x,y)$ \\
+		Tree & printlayout(Graphics g, int x, int y) & void & Layout tree on
+			printing graphics \code{g}, with upper left corner at $(x,y)$ \\
+		TreePanel & scrollSelectedToVisible() & void & Scroll to make
+			selected nodes visible \\ \hline
+	}
+
+\subsection{Events}
+
+	The Tree component can notify listener objects in an application every time
+	an operation is performed on the tree. This is achieved as
+	follows: the listener object implements the TreeListener interface
+	by including the \code{implements TreeListener} keyword in its
+	class definition and implementing the
+	\code{treeActionPerformed}-method; it must then register itself as
+	a tree-listener in the Tree component, using the
+	\code{addTreeListener}-method. There is no upper limit on the
+	number of registered tree-listeners.
+	
+	Each time an event takes place in the tree, the tree calls each
+	listener object's \code{treeActionPerformed(TreeEvent e)}-method.
+	The TreeEvent-object is used to describe the event that took
+	place, by the type of the event (which operation was performed)
+	and its return status (whether the operation failed or succeeded).
+	The following event types and return status codes are defined as
+	constants in TreeEvent:
+		\begin{quote}\small
+			\textbf{Event types}: \textsc{select},
+			\textsc{newdaughter}, \textsc{newmother}, \textsc{move},
+			\textsc{reorder}, \textsc{remove}, \textsc{change},
+			\textsc{layout} 
+	
+			\textbf{Return status}: \textsc{success}, \textsc{fail}
+		\end{quote}
+	These correspond to all selection and deselection operations in the
+	tree, adding new daughters and new mothers to the tree, moving
+	nodes in the tree, reordering the daughters in a local tree,
+	removing nodes, changing a node's AVM, and changing the layout
+	(abbreviate-mode, bonsai-mode, or global options).
+	\methods{
+		Tree & addTreeListener(Tree\-Listener listener) & void & 
+			Register new TreeListener \\
+		Tree & removeTreeListener(Tree\-Listener listener) & void & 
+			Unregister TreeListener \\
+		TreeListener & treeActionPerformed(Tree\-Event e) & void &
+			Method invoked by Tree in each registered TreeListener when firing 
+			event \\ 
+		TreeEvent & type() & int & Type of tree event \\ 
+		TreeEvent & status() & int & Return status code for tree event \\ \hline
+	}
+
+\subsection{Initialization}
+
+	The most important Tree component constructors are listed below.
+	\methods{
+		TreePanel & TreePanel() & TreePanel & TreePanel constructor \\
+		Tree & Tree() & Tree & Tree constructor \\
+		Node & Node() & Node & Node constructor\\
+		Node & Node(String AVlist) & Node& Node constructor
+			initialized with given list of AV pairs \\
+		AVM & AVM() & AVM & AVM constructor \\
+		\hline
+	}
+
+	The following methods are used to initialize the Tree component in
+	different ways. The \code{setRoot}- and \code{setInfo}-methods may
+	be used to shift between any number of trees, since the visual
+	tree in a Tree-object is determined entirely by its root node and
+	its global option object. 
+	\methods{
+		TreePanel & tree() & Tree & Return associated Tree \\ 
+		Tree & init() & void & Reset Tree to initial state \\
+		Tree & resetNodes() & void & Reset root node, removing all nodes \\
+		Tree & resetInfo() & void & Reset all global options \\
+		Tree & setRoot(Node root) & void & Set root to given node \\
+		Tree & setInfo(TreeInfo info) & void & Set global options to given
+			TreeInfo object \\
+		Tree & clone() & Tree & Return clone of this Tree \\
+		Node & clone() & Node & Return clone of this node and its subtree \\
+		AVM & clone() & AVM & Return clone of this AVM and its sub-AVMs \\ 
+		\hline
+	}
+
+\subsection{Options}
+
+	The Tree component is highly configurable, and implements a simple
+	option system. The options control colors, visibility, tooltip
+	text, abbreviation and bonsai mode, and access permissions for
+	each tree operation. The options can be set globally as well as
+	locally. Global options are accessed from the Tree class, local
+	options are accessed from the Node class. 
+
+	\methods{
+		Tree & setOption(String path, Object value) & boolean & 
+			Set global option with given path to given value \\
+		Tree & removeOption(String path) & boolean & 
+			Remove global option with given path \\
+		Tree & getOption(String path) & Object & 
+			Return value for global option with given path \\
+		\hline
+		Node & setOption(String path, Object value)&boolean&
+			Set local option with given path to given value \\
+		Node & removeOption(String path) & boolean & 
+			Remove local option with given path \\
+		Node & getOption(String path) & Object & 
+			Get value for local option with given path \\ 
+		\hline
+		AVM & optionPath(String path) & String & 
+			Return option path for path \code{path}; eg.,  
+			\code{"syn.cat.func"} gives \code{"syn.cat.@func"}, and 
+			\code{""} gives \code{"@@node"} \\
+		\hline
+	}
+
+	\noindent The option system uses simple macros. When compiling the options
+	in an option AVM, each attribute of the form \code{:macro\-name}
+	(with any non-null value) causes the options in the global option
+	AVM with path \code{macro.macroname} to be processed as if they
+	had been present in the AVM.  
+
+	Options are searched for in the places shown below; the paths at
+	the top have the most global scope, the paths at the bottom have
+	the most local scope. Local scope always takes precedence over
+	global scope, if the option occurs more than once. 
+
+	\begin{center}\small\begin{tabular}{|p{25mm}|p{25mm}|p{50mm}|}\hline
+		\textbf{Object} 	& \textbf{Path}	& 	\textbf{Description} \\ 
+		\hline\hline
+
+		Tree & tree & Global tree options \\ \hline 
+		Tree & node			
+			& Global node options \\ 
+		Node & @@node	
+			& Local node options  \\ \hline
+		Tree & avm 			
+			& Global AV options (all attributes) \\
+		Tree & avm.@attr 	
+			& Global AV options for attribute \emph{attr} \\
+		Tree & avm.@attr=val	
+			& Global AV options for attribute \emph{attr} with string value 
+				\emph{val} \\ 
+		Node & @attr			
+			& Local AV options for attribute \emph{attr} \\ 
+		Node & @attr=val		
+			& Local AV options for attribute \emph{attr} with string value
+				\emph{val}	\\ \hline 
+	\end{tabular}\end{center}
+
+	\noindent The options can be divided into AV options, node options and tree
+	options. The option values can be divided into the following data
+	types:
+
+	\def\bool{$_{\textit{bool}}$}
+	\def\macro{$_{\textit{macro}}$}
+	\def\num{$_{\textit{num}}$}
+	\begin{center}\small\begin{tabular}{|p{25mm}|p{80mm}|}
+		\hline
+		\textbf{Data type} 	& \textbf{Description} \\ \hline\hline
+		Color			&	Color object; ignored when \code{null} \\
+		String			&	String object; ignored when \code{null}
+							\\
+		Boolean			&	Boolean object; either TRUE or FALSE \\
+		String\macro	&	Macro String object; ignored when
+							\code{null}; when expanded all
+							instances of \code{\$\{attr\}} are
+							replaced by the string value of attribute
+							\code{attr} in AVM; all instances of
+							\code{[[\]]n} are replaced by line breaks;
+							in tooltip macros all instances of \$\{\}
+							are replaced by the attribute name for
+							which the tooltip is defined \\ \hline
+	\end{tabular}\end{center}
+
+	The AV options (compiled into class \code{Value}) control the
+	appearance of single AV pairs: the foreground and background color
+	of the attribute and its value, whether the AV pair is visible
+	when drawing, and the tooltip text for the AV pair. The options
+	are searched for in the \code{avm}, \code{avm.@attribute}, and
+	\code{avm.@attribute=value} paths of the global option AVM, and in
+	the \code{@attribute} and \code{@attribute=value} paths of the
+	node's AVM.  To set AV options in a node, use
+	\code{node.setOption(path, value)}. For example, use
+	\code{node.setOption("@cat.tooltip", "This is the tooltip")} to
+	set the tooltip for attribute \code{cat} in \code{node} to
+	\code{"This is the tooltip"}. 
+
+	\begin{center}\small
+	\begin{tabular}{|p{25mm}|p{15mm}|p{15mm}|p{50mm}|}
+		\hline \textbf{AV option} &	\textbf{Type} & \textbf{Default} & 
+			\textbf{Description} \\ \hline \hline
+
+		attrFG 	&	Color	&	null &	Attribute's foreground color \\
+		attrBG 	&	Color	&	null &	Attribute's background color \\
+		valFG 	&	Color	&	null &	Value's foreground color \\
+		valBG 	&	Color	&	null &	Value's background color \\
+		visible &	Boolean	&	TRUE &	AV pair visible? \\ 
+		tooltip &	String\macro&	null &	Tooltip text for AV pair \\ \hline
+	\end{tabular}
+	\end{center}
+
+	\noindent The node options (compiled into class \code{Node})
+	control the appearance of nodes: the default foreground color for
+	the node's subtree, the color of the line connecting the node to
+	its mother, the node's foreground and background color, its
+	abbreviation macro and abbreviation status, its bonsai status, and
+	the access permissions which determine whether a specific tree
+	operation is allowed or not. The options are searched for in the
+	\code{node} path in the global options AVM, and in the node's
+	\code{@@node} path.  To set node options, use
+	\code{node.setOption(path, value)}. For example, to set the
+	background color to yellow, use
+	\code{node.setOption("@@node.nodeBG", Color.yellow)}. 
+
+	\begin{center}\small
+	\begin{tabular}{|p{25mm}|p{15mm}|p{15mm}|p{50mm}|}
+ 		\hline \textbf{Node option} &	\textbf{Type} & \textbf{Default} & 
+			\textbf{Description} \\ \hline \hline
+
+			treeFG			& Color	  & null & Subtree foreground color\\
+			lineColor		& Color	  & null & Color of line to mother \\
+			nodeFG			& Color	  & null & Node foreground color \\
+			nodeBG			& Color	  & null & Node background color \\
+			abbrMacro 		& String\macro& null & Abbreviation macro \\
+			abbreviate		& Boolean & FALSE& Abbreviate AVM?  \\
+			bonsai			& Boolean & FALSE& Hide daughters\\ 
+			PERMchange		& Boolean & TRUE & Permission to change AVM\\
+			PERMremove		& Boolean & TRUE & Permission to remove node\\
+			PERMmove		& Boolean & TRUE & Permission to move node \\
+			PERMreceive		& Boolean & TRUE & Permission to receive 
+													moved nodes\\
+			PERMnmother		& Boolean & TRUE & Permission to add new mother\\
+			PERMndaughter	& Boolean & TRUE & Permission to add new daughter\\
+			PERMreorder		& Boolean & TRUE & Permission to change order 
+				of node \\ 
+			PERMterminal	& Boolean & TRUE & Permission to be terminal \\
+			PERMabbreviate	& Boolean & TRUE & Permission to toggle 
+													abbrev status\\
+			PERMbonsai		& Boolean & TRUE &Permission to toggle bonsai 
+													status\\
+			\hline
+	\end{tabular}
+	\end{center}
+
+	\noindent The tree options (compiled into class \code{TreeInfo})
+	control the tree layout: font, colors, spacing, placement, layout
+	style. The options are searched for in the \code{tree} path in the
+	global options AVM.  To set tree options in a node, use
+	\code{tree.setOption(option, value)}. For example, to set the font
+	to \code{myfont}, use \code{tree.setOption("tree.font", myfont)}. 
+
+	\begin{center}\small
+	\begin{tabular}{|p{25mm}|p{15mm}|p{15mm}|p{60mm}|}
+ 		\hline \textbf{Tree option} &	\textbf{Type} & \textbf{Default} & 
+			\textbf{Description} \\ \hline \hline
+		PERMtooltip& Boolean& TRUE	& Allow tooltip texts \\ 
+		font 	& Font		& Helv 10 & Font used for text in tree \\ 
+    	treeFG& Color		& null	& Tree foreground color \\ 
+		treeBG& Color		& null	& Tree background color \\
+    	bonsaiFG& Color		& null	& Bonsai triangle foreground color \\
+		bonsaiBG& Color		& null	& Bonsai triangle background color\\
+		layoutStyle& Integer& \textsc{topdown} & Layout style
+							(either TreeInfo.\textsc{bottomup} or 
+							TreeInfo.\textsc{topdown})\\
+		treeXR	& Double	& 0.5	& Horizontal placement of small trees on
+			canvas (0.0 is left, 1.0 is right) \\
+		treeYR	& Double	& 0.5	& Vertical placement of small trees on 
+			canvas (0.0 is top, 1.0 is down)\\ \hline
+	\end{tabular} \end{center}
+	
+	\noindent The Tree component supports two layout styles:
+	\code{top-down} where the daughter subtrees in a local tree are
+	aligned at the top, and \code{bottom-up} where the daughter
+	subtrees in a local tree are aligned at the bottom. The figure
+	below shows top-down layout (left) and bottom-up layout (right). 
+		\[
+			\includegraphics{dependency.epsi}\qquad
+			\includegraphics{dep-bup.epsi}
+		\]
+	The spacing in the tree is given by the following tree
+	options, which are all defined relative to the font height in the
+	tree. That is, the absolute size in points is the relative value
+	times the font height. 
+
+	\begin{center}\small
+	\begin{tabular}{|p{25mm}|p{15mm}|p{15mm}|p{60mm}|}
+ 		\hline \textbf{Tree option} &	\textbf{Type} & \textbf{Default} & 
+			\textbf{Description} \\ \hline \hline
+		treeDW	& Double	& 5.0	& Margin around the tree \\ 
+    	nodeDX	& Double	& 3.0	& Horizontal space between daughters \\
+		nodeDY	& Double	& 3.0	& Vertical space between nodes \\
+		bonsaiDX& Double 	& 10.0	& Width of bonsai triangle \\
+		bonsaiDY& Double 	& 3.0	& Height of bonsai triangle \\ 
+    	nodeHNDL& Double	& 0.4	& Extra y-space for Node handles \\
+		nodeCDX & Double	& 0.4	& Horizontal space around corners \\
+		nodeCDY & Double	& 0.4	& Vertical space around corners\\
+		nodeMDX & Double	& 0.6	& Horizontal space around midHandle \\
+		avmBW	& Double	& 0.25	& Horizontal bracket width in AVM \\ 
+		avmDX	& Double	& 0.25	& Horizontal space btw.\ bracket/attr/val \\
+		avmDAVM & Double 	& 0.2	& Extra vertical space above AVM values \\ \hline
+	\end{tabular} \end{center}
+	
+	\noindent The meaning of node spacing parameters is shown in the diagram
+	below: 
+		\[
+			\includegraphics{node-layout.ps}
+		\]
+	The meaning of AVM spacing parameters is shown in the diagram below: 
+		\[
+			\includegraphics{avm-layout.ps}
+		\]
+
+\subsection{Option examples}
+
+	The following examples illustrate the use of options for
+	selection, abbreviation, terminal nodes, marking of errors,
+	visibility of AV pairs, tooltip text, linear order of terminal
+	nodes, dependency graphs, and HPSG graphs.  \medskip
+
+	\def\exam#1{\noindent\textbf{#1}. }
+	\def\tabs{\hskip10mm\=\+\hskip10mm\=\hskip10mm\=\kill}
+
+	\exam{Selection} The user can select a node and an AV pair by
+	clicking in the tree, and the Tree component will indicate the
+	selection by changing its colors. The precise behaviour is
+	controlled by the macros \code{selectAV} and \code{selectNode}:
+	upon selection, the selected node's \code{@@node.:selectNode} and
+	\code{path.@attr.:selectAV} are set to \code{TRUE}, so that the
+	options in \code{selectNode} and \code{selectAV} are included
+	whenever the options for the selected node and AV pair are read.
+
+	The following global options ensure that the selected node is
+	yellow on black background, the selected attribute is black on
+	yellow background, and the selected value is red on black
+	background. 
+
+		{\small\begin{tabbing}\tabs
+			macro.selectNode \+ \\
+				nodeFG := Color.yellow \\
+				nodeBG := Color.black \-\\
+			macro.selectAV \+ \\
+				attrFG := Color.black \\
+				attrBG := Color.yellow \\
+				valFG := Color.red \\
+				valBG := Color.black 
+		\end{tabbing}}
+
+	\noindent These macros are set with method calls like
+
+		{\small\begin{tabbing}\tabs
+			Tree.setOption("macro.selectNode.nodeFG", Color.yellow);
+		\end{tabbing}}
+	
+	\exam{Abbreviation} The user can abbreviate a node by double
+	clicking on it. This causes the Tree component to add the option
+	\code{abbreviate := TRUE} to the node's \code{@@node} options,
+	indicating that the Tree component must draw an abbreviated form of
+	the node, instead of drawing the full AVM. The exact abbreviation
+	is determined by the \code{abbrMacro} option, which is used to
+	compute the abbreviation: when expanded, all instances of
+	\code{\$\{attr\}} are replaced by the string value of attribute
+	\code{attr} in the AVM, and all instances of \code{[[\]]n} are
+	replaced by a line break. 
+	
+	The following global options ensure that all nodes are abbreviated
+	by default as two lines with \code{cat:func} at the top and
+	\code{lex} at the bottom (where \code{cat}, \code{func} and
+	\code{lex} denote the values of the corresponding attributes).
+
+		{\small\begin{tabbing}\tabs
+			node.abbrMacro := "\$\{cat\}:\$\{func\}[[\]]n\$\{lex\}" 
+		\end{tabbing}}
+
+	\noindent For terminal nodes it is often desirable to show only the
+	associated word, omitting the \code{cat:func} line; this is
+	achieved by overriding the default by setting
+	\code{@@node.abbrMacro} to "\$\{lex\}" in all terminal nodes.
+	\medskip
+	
+	\exam{Terminal nodes} Macros give an elegant way of handling
+	terminal nodes. For example, HPSG graphs require that terminal
+	nodes are always abbreviated by the corresponding word, that they
+	cannot be removed or changed, that they can never have any
+	daughters, and that their relative linear order is unchanged.  These
+	demands translate into the \code{terminal} macro below.  Thus, to
+	force a terminal node to satisfy these demands, we simply set
+	\code{@@node.:terminal := TRUE} in the node's AVM, and set the
+	following global options:
+
+		{\small\begin{tabbing}\tabs
+			macro.terminal \+\\
+				abbrMacro := "\$\{lex\}" \\
+				abbreviate := TRUE \\
+				PERMchange := FALSE \\
+				PERMremove := FALSE \\
+				PERMreceive := FALSE \\
+				PERMndaughter := FALSE \\
+				PERMabbreviate := FALSE \\
+				PERMreorder := FALSE \\
+		\end{tabbing}}
+
+	\exam{Marking errors} Macros can also be used to mark errors in
+	the tree. One can define many different levels of errors, but
+	suppose we use black letters on red background to indicate errors
+	in nodes and AV pairs. We define the macros \code{AVError} and
+	\code{nodeError} as below, and set \code{@attr.:AVError := TRUE}
+	for each erroneous AV pair, and \code{@@node.:nodeError := TRUE}
+	for each erroneous node. When the error is corrected, we simply
+	remove the macro call. To make all errors invisible in the tree,
+	it then suffices to remove the macro definition or set all colors
+	in the macro to \code{null}. 
+
+		{\small\begin{tabbing}\tabs
+			macro.AVError \+\\
+				attrFG := Color.black \\
+				attrBG := Color.red \\
+				valFG := Color.black \\
+				valBG := Color.red \-\\
+			macro.nodeError \+\\
+				nodeFG := Color.black \\
+				nodeBG := Color.red\
+		\end{tabbing}}
+
+	\exam{Hidden attributes} The Tree component does not show all
+	attributes when it draws an AVM. AV pairs whose attribute starts
+	with the character \code{"@"} are never drawn, and neither are AV
+	pairs with the \code{@attr.visible} option set to \code{FALSE}.
+	This makes it very easy to hide individual AV pairs. To hide a
+	specific attribute by default, one can set \code{avm.attr.visible}
+	to \code{FALSE} in \code{TreeInfo.options}. \medskip
+
+	\exam{Tooltip text} Tooltips can be used to provide context
+	sensitive help. When the mouse lingers over an AV pair, the Tree
+	component displays the text generated by the 
+	\code{tooltip} string, using the same format as \code{abbrMacro}. 
+	For example
+
+		{\small\begin{tabbing}\tabs
+			avm.tooltip := "The mouse is pointing at \$\{\}"
+		\end{tabbing}}
+
+	\noindent will show the name of the attribute the mouse is pointing at,
+	since \$\{\} expands to that.  We might also save the correct
+	value for each attribute in an AVM by setting the hidden attribute
+	\code{@attr= := value}. Then the setting below shows the correct
+	value for an attribute when the mouse lingers over it. 
+
+		{\small\begin{tabbing}\tabs
+			avm.tooltip := "The correct value for \$\{\} is
+				\$\{@\$\{\}=\}" 
+		\end{tabbing}}
+	
+	\exam{Option layers} In fact, the hierarchy of option layers makes
+	it easy to set up global filters for hiding attributes, error
+	marking, or tooltip handling.  
+	
+	a) To always hide \code{lex} and \code{sem} we would set global
+	options \code{avm.lex.visible} and \code{avm.sem.visible} to
+	\code{FALSE}.  b) To show only \code{cat} and \code{func} in all
+	nodes we would set the global option \code{avm.visible} to
+	\code{FALSE}, and the global options \code{avm.cat.visible} and
+	\code{avm.func.visible} to \code{TRUE}. c) The correctness of
+	values in the tree can be reflected in the tooltip. For example,
+	if \code{cat} must have the value \code{np}, we can set local
+	options \code{@cat.tooltip := "Incorrect"} and
+	\code{@cat=np.tooltip := "Correct"}. \medskip
+	
+	\exam{Linear order}	In HPSG graphs, tree operations are illegal if
+	they change the linear order of terminal nodes. To handle this
+	problem, the Tree component defines an ordering on the tree and
+	rejects a tree operation if the operation changes the order of any
+	nodes with \code{PERMreorder} set to \code{FALSE}, relative to
+	each other. In a HPSG graph, it then suffices to set
+	\code{@@node.PERMreorder} to \code{FALSE} in all terminal nodes. 
+	\medskip
+
+	\exam{Tree types} The settings of permissions, abbreviations and
+	abbreviation macros are unique to each tree type. The list below
+	defines some common tree types (we only need to restrict
+	permissions, since they are always true by default). 
+    \begin{quote}
+        \textbf{Free trees}.
+            No restrictions at all.
+
+        \textbf{HPSG trees}.
+            Terminals are always abbreviated by word (the lex-feature)
+            and cannot be changed, removed, reordered, receive moved
+            nodes and new daughters, or toggle abbreviation; all other
+            nodes are abbreviated by category (the cat-feature), and
+            can neither take new daughters or become terminals.
+
+        \textbf{IESA trees}.
+            Like HPSG trees, except that all non-terminal nodes
+            (except the sentence-node?) are always abbreviated by
+            \code{cat:func}.
+   
+        \textbf{Chomsky trees}.
+            Like HPSG trees, except that all non-terminal nodes are
+            always abbreviated by \code{cat}.
+
+        \textbf{Dependency trees}.
+			All nodes are always abbreviated by word (the lex-feature)
+			and cannot be changed, removed, or take new mothers or new
+			daughters.
+    \end{quote}
+

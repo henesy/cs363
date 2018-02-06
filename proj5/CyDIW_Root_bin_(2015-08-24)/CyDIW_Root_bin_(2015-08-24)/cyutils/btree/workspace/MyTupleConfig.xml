@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TupleConfig Name="EmpTuple">
+	<Attribute id="1" name="Id" type="Integer" length="4" keyorder="1"></Attribute>
+	<Attribute id="2" name="Name" type="String" length="22" keyorder="-1"></Attribute>
+	<Attribute id="3" name="DName" type="String" length="5" keyorder="-1"></Attribute>
+	<Attribute id="4" name="Salary" type="Integer" length="4" keyorder="-1"></Attribute>
+</TupleConfig>

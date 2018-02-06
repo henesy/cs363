@@ -1,0 +1,227 @@
+/*
+ * Created on Mar 9, 2004
+ *
+ */
+package canstorex.iterators;
+
+import canstorex.dom.CSXNodeList;
+import canstorex.dom.DOMNode;
+import canstorex.pagedata.PageNode;
+import canstorex.pagedata.PageNodeList;
+import canstorex.quilt.Step;
+import xacute.impl.xdom.NodeImpl;
+import xacute.quilt.EvalContext;
+
+/**
+ * @author sma
+ *
+ */
+public class StepPageNodeIterator implements PageIterator
+	{
+		public PageIterator pIter=null;
+		public PageIterator cIter=null;
+		public Step step;
+		public DOMNode curNode =null;
+		public EvalContext con;
+		
+		public StepPageNodeIterator(PageIterator pIter, Step step, EvalContext con)
+		   throws Exception
+		{
+			this.con = con;
+			this.StepPageNodeIteratorHelper(pIter,step);
+		}
+			
+		public StepPageNodeIterator (PageIterator pIter, Step step) throws Exception
+		{
+			/**
+			 * TODO - Change 1,1 to more meaningful values
+			 */
+			this.pIter = pIter;
+			this.step = step;
+							
+			boolean stop = false;
+			while (pIter!=null && pIter.hasNext() && !stop)
+			{	
+				DOMNode anode = pIter.getNext();
+				if (step.type==Step.CHILD)
+					cIter = new ChildPageNodeIterator(anode);
+				else if (step.type==Step.DESCENDANT)
+					cIter = new DescendantPageNodeIterator(anode);
+				else if (step.type==Step.CURRENT)
+					cIter = new PageNodeListIterator(new CSXNodeList((DOMNode) anode.getParentNode(), anode.disk));
+				else if (step.type==Step.PARENT)
+					cIter = new PageNodeListIterator(new CSXNodeList( (DOMNode) ((DOMNode) anode.getParentNode()).getParentNode(), anode.disk));
+				else if (step.type==Step.ATTRIBUTE)
+					cIter = new PageNodeListIterator(new CSXNodeList(new DOMNode(((DOMNode) anode.getAttributes().getNamedItem(step.tagname)).page, anode.disk), anode.disk));
+				else if (step.type==Step.TEXT) {
+					// cIter = new PageNodeListIterator(new CSXNodeList(new DOMNode(anode.getText())));
+				}
+				else
+					cIter = null;
+				
+				while (cIter!=null && cIter.hasNext())
+				{
+					curNode = cIter.getNext();
+					NodeImpl n = new NodeImpl(curNode);
+					xacute.quilt.Predicate p = new xacute.quilt.Predicate(step.predicate,con);
+					if (((step.type==Step.CHILD  && curNode.getNodeType()==DOMNode.ELEMENT_NODE 
+							&& (step.tagname.equals("*") || curNode.getNodeName().equals(step.tagname)))
+					||(step.type==Step.DESCENDANT  && curNode.getNodeType()==DOMNode.ELEMENT_NODE 
+									&& curNode.getNodeName().equals(step.tagname))
+					||(step.type==Step.CURRENT)
+				    ||(step.type==Step.PARENT)
+				    ||(step.type==Step.TEXT)
+					||(step.type==Step.ATTRIBUTE)
+					) && (p==null || p.isTrue(n,1,1)))
+					{
+						stop = true;
+						break;
+					}
+				}	
+			}
+			if (!stop)
+				curNode =null;
+		}
+
+		public void StepPageNodeIteratorHelper (PageIterator pIter, Step step) throws Exception
+		{
+			/**
+			 * TODO - Change 1,1 to more meaningful values
+			 */
+			this.pIter = pIter;
+			this.step = step;
+							
+			boolean stop = false;
+			while (pIter!=null && pIter.hasNext() && !stop)
+			{	
+				DOMNode anode = pIter.getNext();
+				if (step.type==Step.CHILD)
+					cIter = new ChildPageNodeIterator(anode);
+				else if (step.type==Step.DESCENDANT)
+					cIter = new DescendantPageNodeIterator(anode);
+				else if (step.type==Step.CURRENT)
+					cIter = new PageNodeListIterator(new CSXNodeList((DOMNode) anode.getParentNode(), anode.disk));
+				else if (step.type==Step.PARENT)
+					cIter = new PageNodeListIterator(new CSXNodeList( (DOMNode) ((DOMNode) anode.getParentNode()).getParentNode(), anode.disk));
+				else if (step.type==Step.ATTRIBUTE)
+					cIter = new PageNodeListIterator(new CSXNodeList(new DOMNode(((DOMNode) anode.getAttributes().getNamedItem(step.tagname)).page, anode.disk), anode.disk));
+				else if (step.type==Step.TEXT) {
+					// cIter = new PageNodeListIterator(new CSXNodeList(new DOMNode(anode.getText())));
+				}
+				else
+					cIter = null;
+				
+				while (cIter!=null && cIter.hasNext())
+				{
+					curNode = cIter.getNext();
+					NodeImpl n = new NodeImpl(curNode);
+					xacute.quilt.Predicate p = new xacute.quilt.Predicate(step.predicate,con);
+					if(step.predicate == null){
+						p = null;
+					}
+					if (((step.type==Step.CHILD  && curNode.getNodeType()==DOMNode.ELEMENT_NODE 
+							&& (step.tagname.equals("*") || curNode.getNodeName().equals(step.tagname)))
+					||(step.type==Step.DESCENDANT  && curNode.getNodeType()==DOMNode.ELEMENT_NODE 
+									&& curNode.getNodeName().equals(step.tagname))
+					||(step.type==Step.CURRENT)
+				    ||(step.type==Step.PARENT)
+				    ||(step.type==Step.TEXT)
+					||(step.type==Step.ATTRIBUTE)
+					) && (p==null || p.isTrue(n,1,1)))
+					{
+						stop = true;
+						break;
+					}
+				}	
+			}
+			if (!stop)
+				curNode =null;
+		}
+		
+		public boolean hasNext()
+		{
+			if (curNode==null)
+				return false;
+			else
+				return true;
+		}
+		
+		public DOMNode getNext() throws Exception
+		{
+			/* TODO - Change 1,1 to more meaningful values */
+			DOMNode result= curNode;
+			curNode = null;
+			boolean stop = false;
+			
+			while (cIter!=null && cIter.hasNext())
+			{
+				curNode = cIter.getNext();
+				NodeImpl n = new NodeImpl(curNode);
+				xacute.quilt.Predicate p = new  xacute.quilt.Predicate(step.predicate,con);
+				if(step.predicate == null){
+					p = null;
+				}
+				if (((step.type==Step.CHILD  && curNode.getNodeType()==DOMNode.ELEMENT_NODE 
+						&& (step.tagname.equals("*") || curNode.getNodeName().equals(step.tagname)))
+						||(step.type==Step.DESCENDANT  && curNode.getNodeType()==DOMNode.ELEMENT_NODE 
+								&& curNode.getNodeName().equals(step.tagname))
+						||(step.type==Step.CURRENT)
+						||(step.type==Step.PARENT)
+						||(step.type==Step.TEXT)
+						||(step.type==Step.ATTRIBUTE)
+				) && (p==null || p.isTrue(n,1,1)))
+				{
+					stop = true;
+					break;
+				}
+			}	
+			
+			while (pIter!=null && pIter.hasNext() && !stop)
+			{	
+				DOMNode anode = pIter.getNext();
+				if (step.type==Step.CHILD)
+					cIter = new ChildPageNodeIterator(anode);
+				else if (step.type==Step.DESCENDANT)
+					cIter = new DescendantPageNodeIterator(anode);
+				else if (step.type==Step.CURRENT)
+					cIter = new PageNodeListIterator(new CSXNodeList((DOMNode) anode.getParentNode(), anode.disk));
+				else if (step.type==Step.PARENT)
+					cIter = new PageNodeListIterator(new CSXNodeList( (DOMNode) ((DOMNode) anode.getParentNode()).getParentNode(), anode.disk));
+				else if (step.type==Step.ATTRIBUTE)
+					cIter = new PageNodeListIterator(new CSXNodeList(new DOMNode(((DOMNode) anode.getAttributes().getNamedItem(step.tagname)).page, anode.disk), anode.disk));
+				else if (step.type==Step.TEXT) {
+					// cIter = new PageNodeListIterator(new CSXNodeList(new DOMNode(anode.getText())));
+				}
+				else
+					cIter = null;
+				
+				while (cIter!=null && cIter.hasNext())
+				{
+					curNode = cIter.getNext();
+					NodeImpl n = new NodeImpl(curNode);
+					xacute.quilt.Predicate p = new xacute.quilt.Predicate(step.predicate,con);
+					if(step.predicate == null ){
+						p = null;
+					}
+					if (((step.type==Step.CHILD  && curNode.getNodeType()==DOMNode.ELEMENT_NODE 
+							&& (step.tagname.equals("*") || curNode.getNodeName().equals(step.tagname)))
+							||(step.type==Step.DESCENDANT  && curNode.getNodeType()==DOMNode.ELEMENT_NODE 
+									&& curNode.getNodeName().equals(step.tagname))
+							||(step.type==Step.CURRENT)
+							||(step.type==Step.PARENT)
+							||(step.type==Step.TEXT)
+							||(step.type==Step.ATTRIBUTE)
+					) && (p==null || p.isTrue(n,1,1)))
+					{
+						stop = true;
+						break;
+					}
+				}	
+			}
+			
+			if(!stop)
+				curNode =null;
+			return result;
+		}
+	}
+	

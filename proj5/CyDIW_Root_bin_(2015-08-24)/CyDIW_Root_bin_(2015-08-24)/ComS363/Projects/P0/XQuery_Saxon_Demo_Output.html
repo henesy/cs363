@@ -1,0 +1,80 @@
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <pre><span><font color="blue" size="3pt">$CyDB:&gt; DisplayXML ComS363\Demos\Datasets\Emp.xml;</font></span><br><br><span><font color="blue" size="3pt">// Example 1: ARITHMATIC AND BOOLEAN EXPRESSIONS;</font></span><br><span><font color="blue" size="3pt">$Saxon:&gt; 10 * 5;</font></span><br></pre>
+    50<br>
+
+    <pre><br>
+<span><font color="blue" size="3pt">$Saxon:&gt; if (10 * 5 = 50) then 55 else 56;</font></span><br></pre>
+    55<br>
+
+    <pre><br>
+<span><font color="blue" size="3pt">// Example 2A: A simple FLWOR expression;</font></span><br><span><font color="blue" size="3pt">$Saxon:&gt; 
+&lt;NS&gt; {
+   for $e in doc(&quot;ComS363/Demos/Datasets/Emp.xml&quot;)//Entry
+   where $e/DName/text() = &quot;Toys&quot; 
+   return &lt;E&gt; { $e/Name, $e/Salary } &lt;/E&gt;
+} &lt;/NS&gt;;</font></span><br>&lt;NS&gt;
+   &lt;E&gt;
+      &lt;Name xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;&gt;John&lt;/Name&gt;
+      &lt;Salary xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;&gt;50000&lt;/Salary&gt;
+   &lt;/E&gt;
+   &lt;E&gt;
+      &lt;Name xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;&gt;Mary&lt;/Name&gt;
+      &lt;Salary xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;&gt;60000&lt;/Salary&gt;
+   &lt;/E&gt;
+&lt;/NS&gt;<br><br><span><font color="blue" size="3pt">// Example 2B: Same as 2A but supresses repeatition of namespaces from output;</font></span><br><span><font color="blue" size="3pt">$Saxon:&gt; 
+&lt;NS xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;&gt; {
+   for $e in doc(&quot;ComS363/Demos/Datasets/Emp.xml&quot;)//Entry
+   where $e/DName/text() = &quot;Toys&quot; 
+   return &lt;E&gt; { $e/Name, $e/Salary } &lt;/E&gt;
+} &lt;/NS&gt;;</font></span><br>&lt;NS xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;&gt;
+   &lt;E&gt;
+      &lt;Name&gt;John&lt;/Name&gt;
+      &lt;Salary&gt;50000&lt;/Salary&gt;
+   &lt;/E&gt;
+   &lt;E&gt;
+      &lt;Name&gt;Mary&lt;/Name&gt;
+      &lt;Salary&gt;60000&lt;/Salary&gt;
+   &lt;/E&gt;
+&lt;/NS&gt;<br><br><span><font color="blue" size="3pt">// Example 3. The following XQuery computes and displays an html document;</font></span><br><span><font color="blue" size="3pt">$Saxon:&gt; 
+&lt;table border=&quot;1&quot; &gt; 
+   &lt;tr&gt; &lt;td&gt;Name&lt;/td&gt; &lt;td &gt;Salary&lt;/td&gt; &lt;/tr&gt;
+   {
+   for $e in doc(&quot;ComS363/Demos/Datasets/Emp.xml&quot;)//Entry
+   where $e/DName/text() = &quot;Toys&quot; 
+   return &lt;tr&gt; &lt;td&gt;{$e/Name/text()}&lt;/td&gt; &lt;td&gt;{$e/Salary/text()}&lt;/td&gt; &lt;/tr&gt;
+   }
+&lt;/table&gt; ;</font></span><br></pre>
+    <table border="1">
+      <tr>
+        <td>
+          Name
+        </td>
+        <td>
+          Salary
+        </td>
+      </tr>
+      <tr>
+        <td>
+          John
+        </td>
+        <td>
+          50000
+        </td>
+      </tr>
+      <tr>
+        <td>
+          Mary
+        </td>
+        <td>
+          60000
+        </td>
+      </tr>
+    </table>
+    <br>
+    
+  </body>
+</html>

@@ -1,0 +1,12 @@
+<guiSettings>
+   <title>CyDIW (Version 0)</title>
+   <inputPaneInitialString>This Commands Pane is for creating, editing, and executing batches of commands. To get started, use the [Open] button to load a batch of commands from the Demo folder. </inputPaneInitialString>
+   <outputPaneInitialString>The Output Pane on the right is the default area where the output of a command is displayed. The pane is an html browser where text, html documents, and images can be displayed. Alternatively, in some cases the outputs can be saved to files or displayed in popup windows. </outputPaneInitialString>
+   <mainX>0</mainX>
+   <mainY>0</mainY>
+   <mainWidth>1024</mainWidth>
+   <mainHeight>738</mainHeight>
+   <mainSplitWeight>1.0</mainSplitWeight>
+   <northSplitWeight>0.35</northSplitWeight>
+   <southSplitWeight>0.0</southSplitWeight>
+</guiSettings>

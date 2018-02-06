@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<BTreeConfig Name="CreateBTreeAndInsert">
+	<RootPageId>2159</RootPageId>
+	<SequencePageId>2095</SequencePageId>
+	<PageSizeUsed>512</PageSizeUsed>
+	<BTreeName>MyBTree512</BTreeName>
+	<BTreeHeight>3</BTreeHeight>
+</BTreeConfig>

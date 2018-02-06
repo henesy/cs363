@@ -1,0 +1,105 @@
+\section{TreePanel class}
+
+	The TreePanel class implements a Scroll pane containing a tree
+	canvas. This is the class used to insert the tree component from
+	the main program. No tree methods are defined on this class, so to
+	manipulate the tree the main program should work directly on the
+	Tree object returned by \code{tree()}. 
+
+<<TreePanel.java>>=
+<<License>>
+
+package visumtree;
+
+import java.awt.*;
+import java.util.*;
+import javax.swing.*;
+
+public class TreePanel extends JScrollPane {
+	<<TreePanel variables>>
+	<<TreePanel constructors>>
+	<<TreePanel methods>>
+}
+@ %def TreePanel
+
+\subsection{Variables}
+
+<<TreePanel variables>>=
+// Copyright
+private String copyright = 
+	"VisumTree 1.1 (Sep 9 1998) is freeware. Please read the license.\n"+
+	"Copyright (c) 1998 Matthias T. Kromann <mtkromann@member.ams.org>.\n";
+
+// Tree
+private Tree tree;
+@
+
+\subsection{Constructors}
+
+	TreePanel constructor creates a new TreePanel. 
+
+<<TreePanel constructors>>=
+public TreePanel() {
+	super(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS,
+		ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);
+	setBackground(Color.white);
+	tree = new Tree();
+	getViewport().add(tree);
+}
+@
+
+\subsection{Methods}
+
+<<TreePanel methods>>=
+<<TreePanel.tree>>
+<<TreePanel.scrollSelectedToVisible>>
+@
+
+	\header{Tree tree()} returns reference to the panel's tree canvas.
+
+<<TreePanel.tree>>=
+public Tree tree() {
+	return tree;
+}
+@ %def tree
+
+	\header{scrollSelectedToVisible()} positions 
+	the scrollbars, i.e. the viewport, so that the selections,
+	if any, are visible . 
+
+<<TreePanel.scrollSelectedToVisible>>=
+public void scrollSelectedToVisible() {
+	Node[] selections = tree.getSelectedNodes();
+	if (selections != null && selections.length > 0) {
+		// Update tree layout
+		if (tree.getGraphics() != null) 
+			tree.layoutTree(tree.getGraphics());
+
+		// Find the smallest bounding box containing all selections
+		Rectangle selBox = selections[0].getBBox();
+		for (int i = 1, max = selections.length; i < max; i++)
+			selBox = selBox.union(selections[i].getBBox());
+
+		// Find viewport
+		JViewport vp = getViewport();
+		Rectangle viewRect = vp.getViewRect();
+		Point maxPoint = new Point(selBox.x+selBox.width, 
+			selBox.y+selBox.height);
+
+		// check to see if scrolling is needed,
+		// i.e. if selBox is contained in the current view rectangle
+		if (!viewRect.contains(selBox.getLocation())  ||
+				!viewRect.contains(maxPoint)) {
+			// scroll to make selections visible
+			// first scroll to position 0 if left-scroll or up-scroll
+			// is needed; otherwise the scrolling doesn't work well
+			int xPos = (selBox.x<viewRect.x) ? 0 : viewRect.x;
+			int yPos = (selBox.y<viewRect.y) ? 0 : viewRect.y;
+			if (xPos==0  ||  yPos==0)
+				vp.setViewPosition(new Point(xPos,yPos));
+
+			vp.scrollRectToVisible(selBox);
+		}
+	}
+}
+@ %def scrollSelectedToVisible

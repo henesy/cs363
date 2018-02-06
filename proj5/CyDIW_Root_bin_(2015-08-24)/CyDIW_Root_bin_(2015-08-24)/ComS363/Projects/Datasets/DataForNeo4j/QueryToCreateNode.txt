@@ -1,0 +1,95 @@
+//Create Person
+<showtext>
+$Saxon:> 
+for $d in doc("C:/Users/yingw/Desktop/newFiles/DataForXQuery/NewPerson.xml")//Person
+return 
+<E>{
+concat("create (p", $d/ID, ":Person { ID:", $d/ID, ", Name: '", $d/Name, "', Address: '", $d/Address, "', DOB: '", $d/DOB,"' })") 
+}</E>;
+</showtext>
+
+<showtext>
+$Ooquery:> 
+<Item xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"> {
+for $d in doc("C:/Users/yingw/Desktop/newFiles/UniversityOODB(ODMG).3.xml")//Person
+return <E> {concat("create (",substring($d.@PersonID, 1), ":Person { ID:", substring($d.@PersonID, 2),", Name: '", $d.Name, "', Address: '", $d.Address, "', DOB: '", $d.DOB,"' })")} </E>
+} </Item>;
+</showtext>
+
+create (p115423723:Person { ID: 115423723, Name: 'Wee Fletcher', Address: '1234 Hayward Avenue', DOB: '1974-09-23' });
+
+
+//Create Faculty
+<showtext>
+$Saxon:> 
+for $d in doc("C:/Users/yingw/Desktop/newFiles/DataForXQuery/NewFaculty.xml")//Faculty
+return 
+<E>{
+concat("create (f", $d/InstructorID, ":Faculty { ID:", $d/InstructorID, ", Salary: ", $d/Salary, ", Rank: '", $d/Rank,"' })") 
+}</E>;
+</showtext>
+
+<showtext>
+$Ooquery:> 
+<Item xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"> {
+for $d in doc("C:/Users/yingw/Desktop/newFiles/UniversityOODB(ODMG).3.xml")//Faculty
+return <E> {concat("create (",substring($d.@FacultyID, 1), ":Faculty { ID:", substring($d.@FacultyID, 2),", Salary: ", $d.Salary, ", Rank: '", $d.Rank, "' })")} </E>
+} </Item>;
+</showtext>
+
+create (f201586985:Faculty { ID: 201586985, Salary: 120000, Rank: 'Professor' });
+
+
+//Create Student
+<showtext>
+$Saxon:> 
+for $d in doc("C:/Users/yingw/Desktop/newFiles/DataForXQuery/NewStudent.xml")//Student
+return 
+<E>{
+concat("create (s", $d/StudentID, ":Student { ID:", $d/StudentID, ", Classification: ", $d/Classification, ", CreditHours: ", $d/CreditHours,",GPA: ",$d/GPA," })") 
+}</E>;
+</showtext>
+
+<showtext>
+$Ooquery:> 
+<Item xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"> {
+for $d in doc("C:/Users/yingw/Desktop/newFiles/UniversityOODB(ODMG).3.xml")//Student
+return <E> {concat("create (",substring($d.@StudentID, 1), ":Student { ID:", substring($d.@StudentID, 2),", Classification: '", $d.Classification, "', CreditHours: ", $d.CreditHours, ", GPA: ", $d.GPA," })")} </E>
+} </Item>;
+</showtext>
+
+create (s118784412:Student { ID: 118784412, Classification: 'Sophomore', CreditHours: 39, GPA: 3.19});
+
+
+//Create Course
+<showtext>
+$Saxon:> 
+for $d in doc("C:/Users/yingw/Desktop/newFiles/DataForXQuery/NewCourse.xml")//Course
+return 
+<E>{
+concat("create (s", $d/StudentID, ":Student { ID:", $d/StudentID, ", Classification: ", $d/Classification, ", CreditHours: ", $d/CreditHours,",GPA: ",$d/GPA," })") 
+}</E>;
+</showtext>
+
+<showtext>
+$Ooquery:> 
+<Item xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"> {
+for $d in doc("C:/Users/yingw/Desktop/newFiles/UniversityOODB(ODMG).3.xml")//Course
+return <E> {concat("create (",substring($d.@CourseID, 1), ":Course { ID:", substring($d.@CourseID, 2),", CourseCode: '", $d.CourseCode, "', CourseName: '", $d.CourseName,"'})")} </E>
+} </Item>;
+</showtext>
+
+create (c0722:Course { ID: 722, CourseCode: 'CS227', CourseName: 'Introduction to C++'});
+
+//Create Offering
+
+<showtext>
+$Ooquery:> 
+<Item xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"> {
+for $d in doc("C:/Users/yingw/Desktop/newFiles/UniversityOODB(ODMG).3.xml")//Offering
+return <E> {concat("create (",substring($d.@OfferingID, 1), ":Offering { ID:", substring($d.@OfferingID, 9),", Section: ", $d.Section, "})")} </E>
+} </Item>;
+</showtext>
+
+create (Offering001:Offering { ID: 1, Section: 1});
+

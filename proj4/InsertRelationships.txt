@@ -1,0 +1,575 @@
+match (a:Student), (b:Person) where a.ID = 118784412 and b.ID = 118784412 create (a) - [r:S2P]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Person) where a.ID = 124208644 and b.ID = 124208644 create (a) - [r:S2P]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Person) where a.ID = 131838016 and b.ID = 131838016 create (a) - [r:S2P]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Person) where a.ID = 143293833 and b.ID = 143293833 create (a) - [r:S2P]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Person) where a.ID = 163728111 and b.ID = 163728111 create (a) - [r:S2P]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Person) where a.ID = 164500920 and b.ID = 164500920 create (a) - [r:S2P]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Person) where a.ID = 164776911 and b.ID = 164776911 create (a) - [r:S2P]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Person) where a.ID = 170815037 and b.ID = 170815037 create (a) - [r:S2P]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Person) where a.ID = 185141262 and b.ID = 185141262 create (a) - [r:S2P]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Person) where a.ID = 191083779 and b.ID = 191083779 create (a) - [r:S2P]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Person) where a.ID = 203745018 and b.ID = 203745018 create (a) - [r:S2P]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Person) where a.ID = 212976207 and b.ID = 212976207 create (a) - [r:S2P]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Person) where a.ID = 222105935 and b.ID = 222105935 create (a) - [r:S2P]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Person) where a.ID = 224620876 and b.ID = 224620876 create (a) - [r:S2P]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Person) where a.ID = 232820149 and b.ID = 232820149 create (a) - [r:S2P]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Person) where a.ID = 252533260 and b.ID = 252533260 create (a) - [r:S2P]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Person) where a.ID = 260369148 and b.ID = 260369148 create (a) - [r:S2P]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Person) where a.ID = 261812056 and b.ID = 261812056 create (a) - [r:S2P]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Person) where a.ID = 262891588 and b.ID = 262891588 create (a) - [r:S2P]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Person) where a.ID = 271978135 and b.ID = 271978135 create (a) - [r:S2P]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Person) where a.ID = 273277984 and b.ID = 273277984 create (a) - [r:S2P]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Person) where a.ID = 279702622 and b.ID = 279702622 create (a) - [r:S2P]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Person) where a.ID = 285719425 and b.ID = 285719425 create (a) - [r:S2P]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Person) where a.ID = 290986112 and b.ID = 290986112 create (a) - [r:S2P]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Person) where a.ID = 296669559 and b.ID = 296669559 create (a) - [r:S2P]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Person) where a.ID = 302335678 and b.ID = 302335678 create (a) - [r:S2P]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Person) where a.ID = 308635036 and b.ID = 308635036 create (a) - [r:S2P]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Person) where a.ID = 315967897 and b.ID = 315967897 create (a) - [r:S2P]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Person) where a.ID = 328718420 and b.ID = 328718420 create (a) - [r:S2P]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Person) where a.ID = 332012037 and b.ID = 332012037 create (a) - [r:S2P]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Person) where a.ID = 340502961 and b.ID = 340502961 create (a) - [r:S2P]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Person) where a.ID = 363200537 and b.ID = 363200537 create (a) - [r:S2P]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Person) where a.ID = 365774792 and b.ID = 365774792 create (a) - [r:S2P]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Person) where a.ID = 382109560 and b.ID = 382109560 create (a) - [r:S2P]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Person) where a.ID = 387215322 and b.ID = 387215322 create (a) - [r:S2P]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Person) where a.ID = 391910519 and b.ID = 391910519 create (a) - [r:S2P]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Person) where a.ID = 406746417 and b.ID = 406746417 create (a) - [r:S2P]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Person) where a.ID = 409508678 and b.ID = 409508678 create (a) - [r:S2P]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Person) where a.ID = 419180204 and b.ID = 419180204 create (a) - [r:S2P]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Person) where a.ID = 432180765 and b.ID = 432180765 create (a) - [r:S2P]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Person) where a.ID = 449976666 and b.ID = 449976666 create (a) - [r:S2P]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Person) where a.ID = 466094162 and b.ID = 466094162 create (a) - [r:S2P]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Person) where a.ID = 467545237 and b.ID = 467545237 create (a) - [r:S2P]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Person) where a.ID = 477453864 and b.ID = 477453864 create (a) - [r:S2P]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Person) where a.ID = 483223789 and b.ID = 483223789 create (a) - [r:S2P]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Person) where a.ID = 483727101 and b.ID = 483727101 create (a) - [r:S2P]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Person) where a.ID = 485619193 and b.ID = 485619193 create (a) - [r:S2P]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Person) where a.ID = 490649143 and b.ID = 490649143 create (a) - [r:S2P]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Person) where a.ID = 495490053 and b.ID = 495490053 create (a) - [r:S2P]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Person) where a.ID = 500094214 and b.ID = 500094214 create (a) - [r:S2P]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Person) where a.ID = 501674545 and b.ID = 501674545 create (a) - [r:S2P]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Person) where a.ID = 504013895 and b.ID = 504013895 create (a) - [r:S2P]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Person) where a.ID = 513110141 and b.ID = 513110141 create (a) - [r:S2P]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Person) where a.ID = 513729696 and b.ID = 513729696 create (a) - [r:S2P]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Person) where a.ID = 550658107 and b.ID = 550658107 create (a) - [r:S2P]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Person) where a.ID = 587735656 and b.ID = 587735656 create (a) - [r:S2P]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Person) where a.ID = 590987789 and b.ID = 590987789 create (a) - [r:S2P]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Person) where a.ID = 601496044 and b.ID = 601496044 create (a) - [r:S2P]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Person) where a.ID = 644488789 and b.ID = 644488789 create (a) - [r:S2P]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Person) where a.ID = 658579865 and b.ID = 658579865 create (a) - [r:S2P]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Person) where a.ID = 664353912 and b.ID = 664353912 create (a) - [r:S2P]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Person) where a.ID = 696302689 and b.ID = 696302689 create (a) - [r:S2P]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Person) where a.ID = 712524758 and b.ID = 712524758 create (a) - [r:S2P]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Person) where a.ID = 712952591 and b.ID = 712952591 create (a) - [r:S2P]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Person) where a.ID = 722131306 and b.ID = 722131306 create (a) - [r:S2P]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Person) where a.ID = 737972250 and b.ID = 737972250 create (a) - [r:S2P]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Person) where a.ID = 743991555 and b.ID = 743991555 create (a) - [r:S2P]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Person) where a.ID = 750913239 and b.ID = 750913239 create (a) - [r:S2P]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Person) where a.ID = 774885901 and b.ID = 774885901 create (a) - [r:S2P]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Person) where a.ID = 785103478 and b.ID = 785103478 create (a) - [r:S2P]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Person) where a.ID = 785273479 and b.ID = 785273479 create (a) - [r:S2P]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Person) where a.ID = 785811329 and b.ID = 785811329 create (a) - [r:S2P]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Person) where a.ID = 787422802 and b.ID = 787422802 create (a) - [r:S2P]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Person) where a.ID = 793034333 and b.ID = 793034333 create (a) - [r:S2P]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Person) where a.ID = 801166066 and b.ID = 801166066 create (a) - [r:S2P]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Person) where a.ID = 803024290 and b.ID = 803024290 create (a) - [r:S2P]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Person) where a.ID = 812073765 and b.ID = 812073765 create (a) - [r:S2P]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Person) where a.ID = 831142613 and b.ID = 831142613 create (a) - [r:S2P]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Person) where a.ID = 845037919 and b.ID = 845037919 create (a) - [r:S2P]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Person) where a.ID = 850631208 and b.ID = 850631208 create (a) - [r:S2P]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Person) where a.ID = 862952924 and b.ID = 862952924 create (a) - [r:S2P]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Person) where a.ID = 867910658 and b.ID = 867910658 create (a) - [r:S2P]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Person) where a.ID = 876550324 and b.ID = 876550324 create (a) - [r:S2P]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Person) where a.ID = 885469446 and b.ID = 885469446 create (a) - [r:S2P]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Person) where a.ID = 895255243 and b.ID = 895255243 create (a) - [r:S2P]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Person) where a.ID = 901511548 and b.ID = 901511548 create (a) - [r:S2P]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Person) where a.ID = 905922853 and b.ID = 905922853 create (a) - [r:S2P]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Person) where a.ID = 907425648 and b.ID = 907425648 create (a) - [r:S2P]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Person) where a.ID = 909334701 and b.ID = 909334701 create (a) - [r:S2P]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Person) where a.ID = 916916939 and b.ID = 916916939 create (a) - [r:S2P]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Person) where a.ID = 930231660 and b.ID = 930231660 create (a) - [r:S2P]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Person) where a.ID = 952145559 and b.ID = 952145559 create (a) - [r:S2P]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Person) where a.ID = 956234659 and b.ID = 956234659 create (a) - [r:S2P]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Person) where a.ID = 965882492 and b.ID = 965882492 create (a) - [r:S2P]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Person) where a.ID = 973071948 and b.ID = 973071948 create (a) - [r:S2P]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Person) where a.ID = 980102825 and b.ID = 980102825 create (a) - [r:S2P]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Person) where a.ID = 480293439 and b.ID = 480293439 create (a) - [r:S2P]-> (b) WITH count(*) as dummy
+
+match (a:Faculty), (b:Person) where a.ID = 201586985 and b.ID = 201586985 create (a) - [r:F2P]-> (b) WITH count(*) as dummy
+match (a:Faculty), (b:Person) where a.ID = 386167477 and b.ID = 386167477 create (a) - [r:F2P]-> (b) WITH count(*) as dummy
+match (a:Faculty), (b:Person) where a.ID = 463249547 and b.ID = 463249547 create (a) - [r:F2P]-> (b) WITH count(*) as dummy
+match (a:Faculty), (b:Person) where a.ID = 466388906 and b.ID = 466388906 create (a) - [r:F2P]-> (b) WITH count(*) as dummy
+match (a:Faculty), (b:Person) where a.ID = 555010131 and b.ID = 555010131 create (a) - [r:F2P]-> (b) WITH count(*) as dummy
+match (a:Faculty), (b:Person) where a.ID = 685744439 and b.ID = 685744439 create (a) - [r:F2P]-> (b) WITH count(*) as dummy
+match (a:Faculty), (b:Person) where a.ID = 696335701 and b.ID = 696335701 create (a) - [r:F2P]-> (b) WITH count(*) as dummy
+match (a:Faculty), (b:Person) where a.ID = 836826630 and b.ID = 836826630 create (a) - [r:F2P]-> (b) WITH count(*) as dummy
+match (a:Faculty), (b:Person) where a.ID = 961874958 and b.ID = 961874958 create (a) - [r:F2P]-> (b) WITH count(*) as dummy
+match (a:Faculty), (b:Person) where a.ID = 997111094 and b.ID = 997111094 create (a) - [r:F2P]-> (b) WITH count(*) as dummy
+
+match (a:Faculty), (b:Student) where a.ID = 201586985 and b.ID = 118784412 create (a) - [r:Mentors]-> (b) WITH count(*) as dummy
+match (a:Faculty), (b:Student) where a.ID = 997111094 and b.ID = 124208644 create (a) - [r:Mentors]-> (b) WITH count(*) as dummy
+match (a:Faculty), (b:Student) where a.ID = 386167477 and b.ID = 131838016 create (a) - [r:Mentors]-> (b) WITH count(*) as dummy
+match (a:Faculty), (b:Student) where a.ID = 463249547 and b.ID = 143293833 create (a) - [r:Mentors]-> (b) WITH count(*) as dummy
+match (a:Faculty), (b:Student) where a.ID = 386167477 and b.ID = 163728111 create (a) - [r:Mentors]-> (b) WITH count(*) as dummy
+match (a:Faculty), (b:Student) where a.ID = 201586985 and b.ID = 164500920 create (a) - [r:Mentors]-> (b) WITH count(*) as dummy
+match (a:Faculty), (b:Student) where a.ID = 201586985 and b.ID = 164776911 create (a) - [r:Mentors]-> (b) WITH count(*) as dummy
+match (a:Faculty), (b:Student) where a.ID = 466388906 and b.ID = 170815037 create (a) - [r:Mentors]-> (b) WITH count(*) as dummy
+match (a:Faculty), (b:Student) where a.ID = 386167477 and b.ID = 185141262 create (a) - [r:Mentors]-> (b) WITH count(*) as dummy
+match (a:Faculty), (b:Student) where a.ID = 685744439 and b.ID = 191083779 create (a) - [r:Mentors]-> (b) WITH count(*) as dummy
+match (a:Faculty), (b:Student) where a.ID = 997111094 and b.ID = 203745018 create (a) - [r:Mentors]-> (b) WITH count(*) as dummy
+match (a:Faculty), (b:Student) where a.ID = 555010131 and b.ID = 212976207 create (a) - [r:Mentors]-> (b) WITH count(*) as dummy
+match (a:Faculty), (b:Student) where a.ID = 466388906 and b.ID = 222105935 create (a) - [r:Mentors]-> (b) WITH count(*) as dummy
+match (a:Faculty), (b:Student) where a.ID = 997111094 and b.ID = 224620876 create (a) - [r:Mentors]-> (b) WITH count(*) as dummy
+match (a:Faculty), (b:Student) where a.ID = 836826630 and b.ID = 232820149 create (a) - [r:Mentors]-> (b) WITH count(*) as dummy
+match (a:Faculty), (b:Student) where a.ID = 961874958 and b.ID = 252533260 create (a) - [r:Mentors]-> (b) WITH count(*) as dummy
+match (a:Faculty), (b:Student) where a.ID = 961874958 and b.ID = 260369148 create (a) - [r:Mentors]-> (b) WITH count(*) as dummy
+match (a:Faculty), (b:Student) where a.ID = 463249547 and b.ID = 261812056 create (a) - [r:Mentors]-> (b) WITH count(*) as dummy
+match (a:Faculty), (b:Student) where a.ID = 555010131 and b.ID = 262891588 create (a) - [r:Mentors]-> (b) WITH count(*) as dummy
+match (a:Faculty), (b:Student) where a.ID = 836826630 and b.ID = 271978135 create (a) - [r:Mentors]-> (b) WITH count(*) as dummy
+match (a:Faculty), (b:Student) where a.ID = 386167477 and b.ID = 273277984 create (a) - [r:Mentors]-> (b) WITH count(*) as dummy
+match (a:Faculty), (b:Student) where a.ID = 836826630 and b.ID = 279702622 create (a) - [r:Mentors]-> (b) WITH count(*) as dummy
+match (a:Faculty), (b:Student) where a.ID = 961874958 and b.ID = 285719425 create (a) - [r:Mentors]-> (b) WITH count(*) as dummy
+match (a:Faculty), (b:Student) where a.ID = 685744439 and b.ID = 290986112 create (a) - [r:Mentors]-> (b) WITH count(*) as dummy
+match (a:Faculty), (b:Student) where a.ID = 836826630 and b.ID = 296669559 create (a) - [r:Mentors]-> (b) WITH count(*) as dummy
+match (a:Faculty), (b:Student) where a.ID = 997111094 and b.ID = 302335678 create (a) - [r:Mentors]-> (b) WITH count(*) as dummy
+match (a:Faculty), (b:Student) where a.ID = 961874958 and b.ID = 308635036 create (a) - [r:Mentors]-> (b) WITH count(*) as dummy
+match (a:Faculty), (b:Student) where a.ID = 463249547 and b.ID = 315967897 create (a) - [r:Mentors]-> (b) WITH count(*) as dummy
+match (a:Faculty), (b:Student) where a.ID = 997111094 and b.ID = 328718420 create (a) - [r:Mentors]-> (b) WITH count(*) as dummy
+match (a:Faculty), (b:Student) where a.ID = 386167477 and b.ID = 332012037 create (a) - [r:Mentors]-> (b) WITH count(*) as dummy
+match (a:Faculty), (b:Student) where a.ID = 685744439 and b.ID = 340502961 create (a) - [r:Mentors]-> (b) WITH count(*) as dummy
+match (a:Faculty), (b:Student) where a.ID = 555010131 and b.ID = 363200537 create (a) - [r:Mentors]-> (b) WITH count(*) as dummy
+match (a:Faculty), (b:Student) where a.ID = 463249547 and b.ID = 365774792 create (a) - [r:Mentors]-> (b) WITH count(*) as dummy
+match (a:Faculty), (b:Student) where a.ID = 961874958 and b.ID = 382109560 create (a) - [r:Mentors]-> (b) WITH count(*) as dummy
+match (a:Faculty), (b:Student) where a.ID = 201586985 and b.ID = 387215322 create (a) - [r:Mentors]-> (b) WITH count(*) as dummy
+match (a:Faculty), (b:Student) where a.ID = 386167477 and b.ID = 391910519 create (a) - [r:Mentors]-> (b) WITH count(*) as dummy
+match (a:Faculty), (b:Student) where a.ID = 836826630 and b.ID = 406746417 create (a) - [r:Mentors]-> (b) WITH count(*) as dummy
+match (a:Faculty), (b:Student) where a.ID = 997111094 and b.ID = 409508678 create (a) - [r:Mentors]-> (b) WITH count(*) as dummy
+match (a:Faculty), (b:Student) where a.ID = 466388906 and b.ID = 419180204 create (a) - [r:Mentors]-> (b) WITH count(*) as dummy
+match (a:Faculty), (b:Student) where a.ID = 201586985 and b.ID = 432180765 create (a) - [r:Mentors]-> (b) WITH count(*) as dummy
+match (a:Faculty), (b:Student) where a.ID = 466388906 and b.ID = 449976666 create (a) - [r:Mentors]-> (b) WITH count(*) as dummy
+match (a:Faculty), (b:Student) where a.ID = 555010131 and b.ID = 466094162 create (a) - [r:Mentors]-> (b) WITH count(*) as dummy
+match (a:Faculty), (b:Student) where a.ID = 961874958 and b.ID = 467545237 create (a) - [r:Mentors]-> (b) WITH count(*) as dummy
+match (a:Faculty), (b:Student) where a.ID = 961874958 and b.ID = 477453864 create (a) - [r:Mentors]-> (b) WITH count(*) as dummy
+match (a:Faculty), (b:Student) where a.ID = 555010131 and b.ID = 483223789 create (a) - [r:Mentors]-> (b) WITH count(*) as dummy
+match (a:Faculty), (b:Student) where a.ID = 201586985 and b.ID = 483727101 create (a) - [r:Mentors]-> (b) WITH count(*) as dummy
+match (a:Faculty), (b:Student) where a.ID = 555010131 and b.ID = 485619193 create (a) - [r:Mentors]-> (b) WITH count(*) as dummy
+match (a:Faculty), (b:Student) where a.ID = 836826630 and b.ID = 490649143 create (a) - [r:Mentors]-> (b) WITH count(*) as dummy
+match (a:Faculty), (b:Student) where a.ID = 836826630 and b.ID = 495490053 create (a) - [r:Mentors]-> (b) WITH count(*) as dummy
+match (a:Faculty), (b:Student) where a.ID = 961874958 and b.ID = 500094214 create (a) - [r:Mentors]-> (b) WITH count(*) as dummy
+match (a:Faculty), (b:Student) where a.ID = 685744439 and b.ID = 501674545 create (a) - [r:Mentors]-> (b) WITH count(*) as dummy
+match (a:Faculty), (b:Student) where a.ID = 997111094 and b.ID = 504013895 create (a) - [r:Mentors]-> (b) WITH count(*) as dummy
+match (a:Faculty), (b:Student) where a.ID = 961874958 and b.ID = 513110141 create (a) - [r:Mentors]-> (b) WITH count(*) as dummy
+match (a:Faculty), (b:Student) where a.ID = 685744439 and b.ID = 513729696 create (a) - [r:Mentors]-> (b) WITH count(*) as dummy
+match (a:Faculty), (b:Student) where a.ID = 961874958 and b.ID = 550658107 create (a) - [r:Mentors]-> (b) WITH count(*) as dummy
+match (a:Faculty), (b:Student) where a.ID = 463249547 and b.ID = 587735656 create (a) - [r:Mentors]-> (b) WITH count(*) as dummy
+match (a:Faculty), (b:Student) where a.ID = 685744439 and b.ID = 590987789 create (a) - [r:Mentors]-> (b) WITH count(*) as dummy
+match (a:Faculty), (b:Student) where a.ID = 997111094 and b.ID = 601496044 create (a) - [r:Mentors]-> (b) WITH count(*) as dummy
+match (a:Faculty), (b:Student) where a.ID = 466388906 and b.ID = 644488789 create (a) - [r:Mentors]-> (b) WITH count(*) as dummy
+match (a:Faculty), (b:Student) where a.ID = 836826630 and b.ID = 658579865 create (a) - [r:Mentors]-> (b) WITH count(*) as dummy
+match (a:Faculty), (b:Student) where a.ID = 466388906 and b.ID = 664353912 create (a) - [r:Mentors]-> (b) WITH count(*) as dummy
+match (a:Faculty), (b:Student) where a.ID = 463249547 and b.ID = 696302689 create (a) - [r:Mentors]-> (b) WITH count(*) as dummy
+match (a:Faculty), (b:Student) where a.ID = 555010131 and b.ID = 712524758 create (a) - [r:Mentors]-> (b) WITH count(*) as dummy
+match (a:Faculty), (b:Student) where a.ID = 463249547 and b.ID = 712952591 create (a) - [r:Mentors]-> (b) WITH count(*) as dummy
+match (a:Faculty), (b:Student) where a.ID = 201586985 and b.ID = 722131306 create (a) - [r:Mentors]-> (b) WITH count(*) as dummy
+match (a:Faculty), (b:Student) where a.ID = 997111094 and b.ID = 737972250 create (a) - [r:Mentors]-> (b) WITH count(*) as dummy
+match (a:Faculty), (b:Student) where a.ID = 463249547 and b.ID = 743991555 create (a) - [r:Mentors]-> (b) WITH count(*) as dummy
+match (a:Faculty), (b:Student) where a.ID = 466388906 and b.ID = 750913239 create (a) - [r:Mentors]-> (b) WITH count(*) as dummy
+match (a:Faculty), (b:Student) where a.ID = 463249547 and b.ID = 774885901 create (a) - [r:Mentors]-> (b) WITH count(*) as dummy
+match (a:Faculty), (b:Student) where a.ID = 997111094 and b.ID = 785103478 create (a) - [r:Mentors]-> (b) WITH count(*) as dummy
+match (a:Faculty), (b:Student) where a.ID = 685744439 and b.ID = 785273479 create (a) - [r:Mentors]-> (b) WITH count(*) as dummy
+match (a:Faculty), (b:Student) where a.ID = 685744439 and b.ID = 785811329 create (a) - [r:Mentors]-> (b) WITH count(*) as dummy
+match (a:Faculty), (b:Student) where a.ID = 463249547 and b.ID = 787422802 create (a) - [r:Mentors]-> (b) WITH count(*) as dummy
+match (a:Faculty), (b:Student) where a.ID = 961874958 and b.ID = 793034333 create (a) - [r:Mentors]-> (b) WITH count(*) as dummy
+match (a:Faculty), (b:Student) where a.ID = 685744439 and b.ID = 801166066 create (a) - [r:Mentors]-> (b) WITH count(*) as dummy
+match (a:Faculty), (b:Student) where a.ID = 997111094 and b.ID = 803024290 create (a) - [r:Mentors]-> (b) WITH count(*) as dummy
+match (a:Faculty), (b:Student) where a.ID = 386167477 and b.ID = 812073765 create (a) - [r:Mentors]-> (b) WITH count(*) as dummy
+match (a:Faculty), (b:Student) where a.ID = 555010131 and b.ID = 831142613 create (a) - [r:Mentors]-> (b) WITH count(*) as dummy
+match (a:Faculty), (b:Student) where a.ID = 386167477 and b.ID = 845037919 create (a) - [r:Mentors]-> (b) WITH count(*) as dummy
+match (a:Faculty), (b:Student) where a.ID = 997111094 and b.ID = 850631208 create (a) - [r:Mentors]-> (b) WITH count(*) as dummy
+match (a:Faculty), (b:Student) where a.ID = 555010131 and b.ID = 862952924 create (a) - [r:Mentors]-> (b) WITH count(*) as dummy
+match (a:Faculty), (b:Student) where a.ID = 386167477 and b.ID = 867910658 create (a) - [r:Mentors]-> (b) WITH count(*) as dummy
+match (a:Faculty), (b:Student) where a.ID = 836826630 and b.ID = 876550324 create (a) - [r:Mentors]-> (b) WITH count(*) as dummy
+match (a:Faculty), (b:Student) where a.ID = 961874958 and b.ID = 885469446 create (a) - [r:Mentors]-> (b) WITH count(*) as dummy
+match (a:Faculty), (b:Student) where a.ID = 201586985 and b.ID = 895255243 create (a) - [r:Mentors]-> (b) WITH count(*) as dummy
+match (a:Faculty), (b:Student) where a.ID = 201586985 and b.ID = 901511548 create (a) - [r:Mentors]-> (b) WITH count(*) as dummy
+match (a:Faculty), (b:Student) where a.ID = 466388906 and b.ID = 905922853 create (a) - [r:Mentors]-> (b) WITH count(*) as dummy
+match (a:Faculty), (b:Student) where a.ID = 555010131 and b.ID = 907425648 create (a) - [r:Mentors]-> (b) WITH count(*) as dummy
+match (a:Faculty), (b:Student) where a.ID = 466388906 and b.ID = 909334701 create (a) - [r:Mentors]-> (b) WITH count(*) as dummy
+match (a:Faculty), (b:Student) where a.ID = 961874958 and b.ID = 916916939 create (a) - [r:Mentors]-> (b) WITH count(*) as dummy
+match (a:Faculty), (b:Student) where a.ID = 463249547 and b.ID = 930231660 create (a) - [r:Mentors]-> (b) WITH count(*) as dummy
+match (a:Faculty), (b:Student) where a.ID = 836826630 and b.ID = 952145559 create (a) - [r:Mentors]-> (b) WITH count(*) as dummy
+match (a:Faculty), (b:Student) where a.ID = 997111094 and b.ID = 956234659 create (a) - [r:Mentors]-> (b) WITH count(*) as dummy
+match (a:Faculty), (b:Student) where a.ID = 961874958 and b.ID = 965882492 create (a) - [r:Mentors]-> (b) WITH count(*) as dummy
+match (a:Faculty), (b:Student) where a.ID = 466388906 and b.ID = 973071948 create (a) - [r:Mentors]-> (b) WITH count(*) as dummy
+match (a:Faculty), (b:Student) where a.ID = 463249547 and b.ID = 980102825 create (a) - [r:Mentors]-> (b) WITH count(*) as dummy
+match (a:Faculty), (b:Student) where a.ID = 386167477 and b.ID = 480293439 create (a) - [r:Mentors]-> (b) WITH count(*) as dummy
+
+match (a:Faculty), (b:Offering) where a.ID = 201586985 and b.ID = 1 create (a) - [r:Offers]-> (b) WITH count(*) as dummy
+match (a:Faculty), (b:Offering) where a.ID = 201586985 and b.ID = 2 create (a) - [r:Offers]-> (b) WITH count(*) as dummy
+match (a:Faculty), (b:Offering) where a.ID = 386167477 and b.ID = 3 create (a) - [r:Offers]-> (b) WITH count(*) as dummy
+match (a:Faculty), (b:Offering) where a.ID = 386167477 and b.ID = 4 create (a) - [r:Offers]-> (b) WITH count(*) as dummy
+match (a:Faculty), (b:Offering) where a.ID = 463249547 and b.ID = 5 create (a) - [r:Offers]-> (b) WITH count(*) as dummy
+match (a:Faculty), (b:Offering) where a.ID = 685744439 and b.ID = 6 create (a) - [r:Offers]-> (b) WITH count(*) as dummy
+match (a:Faculty), (b:Offering) where a.ID = 696335701 and b.ID = 7 create (a) - [r:Offers]-> (b) WITH count(*) as dummy
+match (a:Faculty), (b:Offering) where a.ID = 696335701 and b.ID = 8 create (a) - [r:Offers]-> (b) WITH count(*) as dummy
+match (a:Faculty), (b:Offering) where a.ID = 696335701 and b.ID = 9 create (a) - [r:Offers]-> (b) WITH count(*) as dummy
+match (a:Faculty), (b:Offering) where a.ID = 836826630 and b.ID = 10 create (a) - [r:Offers]-> (b) WITH count(*) as dummy
+match (a:Faculty), (b:Offering) where a.ID = 836826630 and b.ID = 11 create (a) - [r:Offers]-> (b) WITH count(*) as dummy
+match (a:Faculty), (b:Offering) where a.ID = 961874958 and b.ID = 12 create (a) - [r:Offers]-> (b) WITH count(*) as dummy
+match (a:Faculty), (b:Offering) where a.ID = 961874958 and b.ID = 13 create (a) - [r:Offers]-> (b) WITH count(*) as dummy
+match (a:Faculty), (b:Offering) where a.ID = 997111094 and b.ID = 14 create (a) - [r:Offers]-> (b) WITH count(*) as dummy
+match (a:Faculty), (b:Offering) where a.ID = 997111094 and b.ID = 15 create (a) - [r:Offers]-> (b) WITH count(*) as dummy
+
+match (a:Offering), (b:Course) where a.ID = 1 and b.ID = 722 create (a) - [r:Covers]-> (b) WITH count(*) as dummy
+match (a:Offering), (b:Course) where a.ID = 2 and b.ID = 822 create (a) - [r:Covers]-> (b) WITH count(*) as dummy
+match (a:Offering), (b:Course) where a.ID = 3 and b.ID = 903 create (a) - [r:Covers]-> (b) WITH count(*) as dummy
+match (a:Offering), (b:Course) where a.ID = 4 and b.ID = 113 create (a) - [r:Covers]-> (b) WITH count(*) as dummy
+match (a:Offering), (b:Course) where a.ID = 5 and b.ID = 113 create (a) - [r:Covers]-> (b) WITH count(*) as dummy
+match (a:Offering), (b:Course) where a.ID = 6 and b.ID = 123 create (a) - [r:Covers]-> (b) WITH count(*) as dummy
+match (a:Offering), (b:Course) where a.ID = 7 and b.ID = 33 create (a) - [r:Covers]-> (b) WITH count(*) as dummy
+match (a:Offering), (b:Course) where a.ID = 8 and b.ID = 133 create (a) - [r:Covers]-> (b) WITH count(*) as dummy
+match (a:Offering), (b:Course) where a.ID = 9 and b.ID = 243 create (a) - [r:Covers]-> (b) WITH count(*) as dummy
+match (a:Offering), (b:Course) where a.ID = 10 and b.ID = 243 create (a) - [r:Covers]-> (b) WITH count(*) as dummy
+match (a:Offering), (b:Course) where a.ID = 11 and b.ID = 253 create (a) - [r:Covers]-> (b) WITH count(*) as dummy
+match (a:Offering), (b:Course) where a.ID = 12 and b.ID = 253 create (a) - [r:Covers]-> (b) WITH count(*) as dummy
+match (a:Offering), (b:Course) where a.ID = 13 and b.ID = 363 create (a) - [r:Covers]-> (b) WITH count(*) as dummy
+match (a:Offering), (b:Course) where a.ID = 14 and b.ID = 164 create (a) - [r:Covers]-> (b) WITH count(*) as dummy
+match (a:Offering), (b:Course) where a.ID = 15 and b.ID = 115 create (a) - [r:Covers]-> (b) WITH count(*) as dummy
+
+match (a:Course), (b:Course) where a.ID = 822 and b.ID = 722 create (a) - [r:PreReq]-> (b) WITH count(*) as dummy
+match (a:Course), (b:Course) where a.ID = 903 and b.ID = 822 create (a) - [r:PreReq]-> (b) WITH count(*) as dummy
+match (a:Course), (b:Course) where a.ID = 113 and b.ID = 822 create (a) - [r:PreReq]-> (b) WITH count(*) as dummy
+match (a:Course), (b:Course) where a.ID = 113 and b.ID = 33 create (a) - [r:PreReq]-> (b) WITH count(*) as dummy
+match (a:Course), (b:Course) where a.ID = 123 and b.ID = 113 create (a) - [r:PreReq]-> (b) WITH count(*) as dummy
+match (a:Course), (b:Course) where a.ID = 33 and b.ID = 822 create (a) - [r:PreReq]-> (b) WITH count(*) as dummy
+match (a:Course), (b:Course) where a.ID = 133 and b.ID = 822 create (a) - [r:PreReq]-> (b) WITH count(*) as dummy
+match (a:Course), (b:Course) where a.ID = 243 and b.ID = 822 create (a) - [r:PreReq]-> (b) WITH count(*) as dummy
+match (a:Course), (b:Course) where a.ID = 253 and b.ID = 822 create (a) - [r:PreReq]-> (b) WITH count(*) as dummy
+match (a:Course), (b:Course) where a.ID = 363 and b.ID = 113 create (a) - [r:PreReq]-> (b) WITH count(*) as dummy
+match (a:Course), (b:Course) where a.ID = 164 and b.ID = 113 create (a) - [r:PreReq]-> (b) WITH count(*) as dummy
+match (a:Course), (b:Course) where a.ID = 164 and b.ID = 363 create (a) - [r:PreReq]-> (b) WITH count(*) as dummy
+match (a:Course), (b:Course) where a.ID = 115 and b.ID = 113 create (a) - [r:PreReq]-> (b) WITH count(*) as dummy
+
+match (a:Student), (b:Offering) where a.ID = 191083779 and b.ID = 1 create (a) - [r:Taking{EnrollmentID:'Enrollment002',Grade: 'A-'}]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Offering) where a.ID = 224620876 and b.ID = 1 create (a) - [r:Taking{EnrollmentID:'Enrollment003',Grade: 'C-'}]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Offering) where a.ID = 261812056 and b.ID = 1 create (a) - [r:Taking{EnrollmentID:'Enrollment004',Grade: 'C'}]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Offering) where a.ID = 271978135 and b.ID = 1 create (a) - [r:Taking{EnrollmentID:'Enrollment005',Grade: 'A'}]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Offering) where a.ID = 290986112 and b.ID = 1 create (a) - [r:Taking{EnrollmentID:'Enrollment006',Grade: 'C-'}]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Offering) where a.ID = 363200537 and b.ID = 1 create (a) - [r:Taking{EnrollmentID:'Enrollment007',Grade: 'B-'}]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Offering) where a.ID = 432180765 and b.ID = 1 create (a) - [r:Taking{EnrollmentID:'Enrollment008',Grade: 'B'}]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Offering) where a.ID = 495490053 and b.ID = 1 create (a) - [r:Taking{EnrollmentID:'Enrollment009',Grade: 'C+'}]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Offering) where a.ID = 587735656 and b.ID = 1 create (a) - [r:Taking{EnrollmentID:'Enrollment010',Grade: 'B-'}]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Offering) where a.ID = 590987789 and b.ID = 1 create (a) - [r:Taking{EnrollmentID:'Enrollment011',Grade: 'D'}]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Offering) where a.ID = 712952591 and b.ID = 1 create (a) - [r:Taking{EnrollmentID:'Enrollment012',Grade: 'C-'}]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Offering) where a.ID = 785103478 and b.ID = 1 create (a) - [r:Taking{EnrollmentID:'Enrollment013',Grade: 'A'}]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Offering) where a.ID = 785811329 and b.ID = 1 create (a) - [r:Taking{EnrollmentID:'Enrollment014',Grade: 'B'}]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Offering) where a.ID = 801166066 and b.ID = 1 create (a) - [r:Taking{EnrollmentID:'Enrollment015',Grade: 'A-'}]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Offering) where a.ID = 907425648 and b.ID = 1 create (a) - [r:Taking{EnrollmentID:'Enrollment016',Grade: 'C'}]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Offering) where a.ID = 916916939 and b.ID = 1 create (a) - [r:Taking{EnrollmentID:'Enrollment017',Grade: 'C-'}]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Offering) where a.ID = 163728111 and b.ID = 1 create (a) - [r:Taking{EnrollmentID:'Enrollment018',Grade: 'D+'}]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Offering) where a.ID = 164500920 and b.ID = 1 create (a) - [r:Taking{EnrollmentID:'Enrollment019',Grade: 'B'}]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Offering) where a.ID = 332012037 and b.ID = 1 create (a) - [r:Taking{EnrollmentID:'Enrollment020',Grade: 'B-'}]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Offering) where a.ID = 504013895 and b.ID = 1 create (a) - [r:Taking{EnrollmentID:'Enrollment021',Grade: 'B-'}]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Offering) where a.ID = 513110141 and b.ID = 1 create (a) - [r:Taking{EnrollmentID:'Enrollment022',Grade: 'D'}]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Offering) where a.ID = 513729696 and b.ID = 1 create (a) - [r:Taking{EnrollmentID:'Enrollment023',Grade: 'B'}]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Offering) where a.ID = 664353912 and b.ID = 1 create (a) - [r:Taking{EnrollmentID:'Enrollment024',Grade: 'A'}]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Offering) where a.ID = 743991555 and b.ID = 1 create (a) - [r:Taking{EnrollmentID:'Enrollment025',Grade: 'C+'}]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Offering) where a.ID = 774885901 and b.ID = 1 create (a) - [r:Taking{EnrollmentID:'Enrollment026',Grade: 'B'}]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Offering) where a.ID = 803024290 and b.ID = 1 create (a) - [r:Taking{EnrollmentID:'Enrollment027',Grade: 'A'}]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Offering) where a.ID = 867910658 and b.ID = 1 create (a) - [r:Taking{EnrollmentID:'Enrollment028',Grade: 'A'}]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Offering) where a.ID = 163728111 and b.ID = 2 create (a) - [r:Taking{EnrollmentID:'Enrollment029',Grade: 'C+'}]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Offering) where a.ID = 164776911 and b.ID = 2 create (a) - [r:Taking{EnrollmentID:'Enrollment030',Grade: 'C+'}]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Offering) where a.ID = 191083779 and b.ID = 2 create (a) - [r:Taking{EnrollmentID:'Enrollment031',Grade: 'B-'}]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Offering) where a.ID = 261812056 and b.ID = 2 create (a) - [r:Taking{EnrollmentID:'Enrollment032',Grade: 'B'}]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Offering) where a.ID = 296669559 and b.ID = 2 create (a) - [r:Taking{EnrollmentID:'Enrollment033',Grade: 'A-'}]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Offering) where a.ID = 315967897 and b.ID = 2 create (a) - [r:Taking{EnrollmentID:'Enrollment034',Grade: 'B-'}]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Offering) where a.ID = 365774792 and b.ID = 2 create (a) - [r:Taking{EnrollmentID:'Enrollment035',Grade: 'B-'}]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Offering) where a.ID = 387215322 and b.ID = 2 create (a) - [r:Taking{EnrollmentID:'Enrollment036',Grade: 'C'}]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Offering) where a.ID = 409508678 and b.ID = 2 create (a) - [r:Taking{EnrollmentID:'Enrollment037',Grade: 'A-'}]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Offering) where a.ID = 466094162 and b.ID = 2 create (a) - [r:Taking{EnrollmentID:'Enrollment038',Grade: 'A'}]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Offering) where a.ID = 485619193 and b.ID = 2 create (a) - [r:Taking{EnrollmentID:'Enrollment039',Grade: 'C'}]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Offering) where a.ID = 722131306 and b.ID = 2 create (a) - [r:Taking{EnrollmentID:'Enrollment040',Grade: 'D+'}]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Offering) where a.ID = 785811329 and b.ID = 2 create (a) - [r:Taking{EnrollmentID:'Enrollment041',Grade: 'B'}]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Offering) where a.ID = 876550324 and b.ID = 2 create (a) - [r:Taking{EnrollmentID:'Enrollment042',Grade: 'B-'}]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Offering) where a.ID = 905922853 and b.ID = 2 create (a) - [r:Taking{EnrollmentID:'Enrollment043',Grade: 'A-'}]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Offering) where a.ID = 907425648 and b.ID = 2 create (a) - [r:Taking{EnrollmentID:'Enrollment044',Grade: 'C+'}]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Offering) where a.ID = 973071948 and b.ID = 2 create (a) - [r:Taking{EnrollmentID:'Enrollment045',Grade: 'A-'}]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Offering) where a.ID = 980102825 and b.ID = 2 create (a) - [r:Taking{EnrollmentID:'Enrollment046',Grade: 'D+'}]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Offering) where a.ID = 164500920 and b.ID = 2 create (a) - [r:Taking{EnrollmentID:'Enrollment047',Grade: 'D'}]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Offering) where a.ID = 224620876 and b.ID = 2 create (a) - [r:Taking{EnrollmentID:'Enrollment048',Grade: 'C'}]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Offering) where a.ID = 232820149 and b.ID = 2 create (a) - [r:Taking{EnrollmentID:'Enrollment049',Grade: 'C-'}]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Offering) where a.ID = 419180204 and b.ID = 2 create (a) - [r:Taking{EnrollmentID:'Enrollment050',Grade: 'A'}]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Offering) where a.ID = 490649143 and b.ID = 2 create (a) - [r:Taking{EnrollmentID:'Enrollment051',Grade: 'B'}]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Offering) where a.ID = 513729696 and b.ID = 2 create (a) - [r:Taking{EnrollmentID:'Enrollment052',Grade: 'B'}]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Offering) where a.ID = 587735656 and b.ID = 2 create (a) - [r:Taking{EnrollmentID:'Enrollment053',Grade: 'C'}]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Offering) where a.ID = 787422802 and b.ID = 2 create (a) - [r:Taking{EnrollmentID:'Enrollment054',Grade: 'C+'}]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Offering) where a.ID = 831142613 and b.ID = 2 create (a) - [r:Taking{EnrollmentID:'Enrollment055',Grade: 'B'}]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Offering) where a.ID = 895255243 and b.ID = 2 create (a) - [r:Taking{EnrollmentID:'Enrollment056',Grade: 'A-'}]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Offering) where a.ID = 965882492 and b.ID = 2 create (a) - [r:Taking{EnrollmentID:'Enrollment057',Grade: 'C'}]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Offering) where a.ID = 131838016 and b.ID = 3 create (a) - [r:Taking{EnrollmentID:'Enrollment058',Grade: 'B'}]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Offering) where a.ID = 143293833 and b.ID = 3 create (a) - [r:Taking{EnrollmentID:'Enrollment059',Grade: 'B+'}]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Offering) where a.ID = 232820149 and b.ID = 3 create (a) - [r:Taking{EnrollmentID:'Enrollment060',Grade: 'C-'}]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Offering) where a.ID = 271978135 and b.ID = 3 create (a) - [r:Taking{EnrollmentID:'Enrollment061',Grade: 'D+'}]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Offering) where a.ID = 279702622 and b.ID = 3 create (a) - [r:Taking{EnrollmentID:'Enrollment062',Grade: 'A-'}]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Offering) where a.ID = 328718420 and b.ID = 3 create (a) - [r:Taking{EnrollmentID:'Enrollment063',Grade: 'B-'}]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Offering) where a.ID = 332012037 and b.ID = 3 create (a) - [r:Taking{EnrollmentID:'Enrollment064',Grade: 'C'}]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Offering) where a.ID = 483727101 and b.ID = 3 create (a) - [r:Taking{EnrollmentID:'Enrollment065',Grade: 'C'}]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Offering) where a.ID = 590987789 and b.ID = 3 create (a) - [r:Taking{EnrollmentID:'Enrollment066',Grade: 'A-'}]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Offering) where a.ID = 664353912 and b.ID = 3 create (a) - [r:Taking{EnrollmentID:'Enrollment067',Grade: 'B+'}]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Offering) where a.ID = 712952591 and b.ID = 3 create (a) - [r:Taking{EnrollmentID:'Enrollment068',Grade: 'D+'}]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Offering) where a.ID = 737972250 and b.ID = 3 create (a) - [r:Taking{EnrollmentID:'Enrollment069',Grade: 'A-'}]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Offering) where a.ID = 750913239 and b.ID = 3 create (a) - [r:Taking{EnrollmentID:'Enrollment070',Grade: 'A-'}]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Offering) where a.ID = 785273479 and b.ID = 3 create (a) - [r:Taking{EnrollmentID:'Enrollment071',Grade: 'D'}]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Offering) where a.ID = 831142613 and b.ID = 3 create (a) - [r:Taking{EnrollmentID:'Enrollment072',Grade: 'B-'}]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Offering) where a.ID = 895255243 and b.ID = 3 create (a) - [r:Taking{EnrollmentID:'Enrollment073',Grade: 'C-'}]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Offering) where a.ID = 905922853 and b.ID = 3 create (a) - [r:Taking{EnrollmentID:'Enrollment074',Grade: 'C+'}]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Offering) where a.ID = 185141262 and b.ID = 3 create (a) - [r:Taking{EnrollmentID:'Enrollment075',Grade: 'C'}]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Offering) where a.ID = 252533260 and b.ID = 3 create (a) - [r:Taking{EnrollmentID:'Enrollment076',Grade: 'D+'}]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Offering) where a.ID = 315967897 and b.ID = 3 create (a) - [r:Taking{EnrollmentID:'Enrollment077',Grade: 'A'}]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Offering) where a.ID = 466094162 and b.ID = 3 create (a) - [r:Taking{EnrollmentID:'Enrollment078',Grade: 'C'}]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Offering) where a.ID = 467545237 and b.ID = 3 create (a) - [r:Taking{EnrollmentID:'Enrollment079',Grade: 'B'}]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Offering) where a.ID = 477453864 and b.ID = 3 create (a) - [r:Taking{EnrollmentID:'Enrollment080',Grade: 'C'}]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Offering) where a.ID = 513110141 and b.ID = 3 create (a) - [r:Taking{EnrollmentID:'Enrollment081',Grade: 'B+'}]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Offering) where a.ID = 658579865 and b.ID = 3 create (a) - [r:Taking{EnrollmentID:'Enrollment082',Grade: 'C+'}]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Offering) where a.ID = 785103478 and b.ID = 3 create (a) - [r:Taking{EnrollmentID:'Enrollment083',Grade: 'C'}]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Offering) where a.ID = 793034333 and b.ID = 3 create (a) - [r:Taking{EnrollmentID:'Enrollment084',Grade: 'C'}]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Offering) where a.ID = 812073765 and b.ID = 3 create (a) - [r:Taking{EnrollmentID:'Enrollment085',Grade: 'B+'}]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Offering) where a.ID = 930231660 and b.ID = 3 create (a) - [r:Taking{EnrollmentID:'Enrollment086',Grade: 'C+'}]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Offering) where a.ID = 164776911 and b.ID = 4 create (a) - [r:Taking{EnrollmentID:'Enrollment087',Grade: 'D+'}]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Offering) where a.ID = 222105935 and b.ID = 4 create (a) - [r:Taking{EnrollmentID:'Enrollment088',Grade: 'D+'}]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Offering) where a.ID = 232820149 and b.ID = 4 create (a) - [r:Taking{EnrollmentID:'Enrollment089',Grade: 'D'}]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Offering) where a.ID = 271978135 and b.ID = 4 create (a) - [r:Taking{EnrollmentID:'Enrollment090',Grade: 'B-'}]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Offering) where a.ID = 273277984 and b.ID = 4 create (a) - [r:Taking{EnrollmentID:'Enrollment091',Grade: 'C'}]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Offering) where a.ID = 328718420 and b.ID = 4 create (a) - [r:Taking{EnrollmentID:'Enrollment092',Grade: 'B-'}]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Offering) where a.ID = 363200537 and b.ID = 4 create (a) - [r:Taking{EnrollmentID:'Enrollment093',Grade: 'A'}]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Offering) where a.ID = 387215322 and b.ID = 4 create (a) - [r:Taking{EnrollmentID:'Enrollment094',Grade: 'B'}]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Offering) where a.ID = 466094162 and b.ID = 4 create (a) - [r:Taking{EnrollmentID:'Enrollment095',Grade: 'B-'}]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Offering) where a.ID = 483223789 and b.ID = 4 create (a) - [r:Taking{EnrollmentID:'Enrollment096',Grade: 'A'}]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Offering) where a.ID = 587735656 and b.ID = 4 create (a) - [r:Taking{EnrollmentID:'Enrollment097',Grade: 'A'}]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Offering) where a.ID = 696302689 and b.ID = 4 create (a) - [r:Taking{EnrollmentID:'Enrollment098',Grade: 'D+'}]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Offering) where a.ID = 722131306 and b.ID = 4 create (a) - [r:Taking{EnrollmentID:'Enrollment099',Grade: 'C+'}]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Offering) where a.ID = 812073765 and b.ID = 4 create (a) - [r:Taking{EnrollmentID:'Enrollment100',Grade: 'B-'}]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Offering) where a.ID = 867910658 and b.ID = 4 create (a) - [r:Taking{EnrollmentID:'Enrollment101',Grade: 'B+'}]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Offering) where a.ID = 909334701 and b.ID = 4 create (a) - [r:Taking{EnrollmentID:'Enrollment102',Grade: 'C+'}]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Offering) where a.ID = 930231660 and b.ID = 4 create (a) - [r:Taking{EnrollmentID:'Enrollment103',Grade: 'A-'}]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Offering) where a.ID = 973071948 and b.ID = 4 create (a) - [r:Taking{EnrollmentID:'Enrollment104',Grade: 'C'}]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Offering) where a.ID = 131838016 and b.ID = 5 create (a) - [r:Taking{EnrollmentID:'Enrollment105',Grade: 'A-'}]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Offering) where a.ID = 185141262 and b.ID = 5 create (a) - [r:Taking{EnrollmentID:'Enrollment106',Grade: 'C+'}]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Offering) where a.ID = 203745018 and b.ID = 5 create (a) - [r:Taking{EnrollmentID:'Enrollment107',Grade: 'B-'}]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Offering) where a.ID = 224620876 and b.ID = 5 create (a) - [r:Taking{EnrollmentID:'Enrollment108',Grade: 'C-'}]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Offering) where a.ID = 290986112 and b.ID = 5 create (a) - [r:Taking{EnrollmentID:'Enrollment109',Grade: 'B'}]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Offering) where a.ID = 296669559 and b.ID = 5 create (a) - [r:Taking{EnrollmentID:'Enrollment110',Grade: 'C-'}]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Offering) where a.ID = 308635036 and b.ID = 5 create (a) - [r:Taking{EnrollmentID:'Enrollment111',Grade: 'D'}]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Offering) where a.ID = 490649143 and b.ID = 5 create (a) - [r:Taking{EnrollmentID:'Enrollment112',Grade: 'B'}]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Offering) where a.ID = 743991555 and b.ID = 5 create (a) - [r:Taking{EnrollmentID:'Enrollment113',Grade: 'A'}]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Offering) where a.ID = 793034333 and b.ID = 5 create (a) - [r:Taking{EnrollmentID:'Enrollment114',Grade: 'B-'}]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Offering) where a.ID = 801166066 and b.ID = 5 create (a) - [r:Taking{EnrollmentID:'Enrollment115',Grade: 'D+'}]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Offering) where a.ID = 862952924 and b.ID = 5 create (a) - [r:Taking{EnrollmentID:'Enrollment116',Grade: 'C'}]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Offering) where a.ID = 980102825 and b.ID = 5 create (a) - [r:Taking{EnrollmentID:'Enrollment117',Grade: 'D'}]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Offering) where a.ID = 118784412 and b.ID = 6 create (a) - [r:Taking{EnrollmentID:'Enrollment118',Grade: 'C+'}]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Offering) where a.ID = 124208644 and b.ID = 6 create (a) - [r:Taking{EnrollmentID:'Enrollment119',Grade: 'C+'}]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Offering) where a.ID = 131838016 and b.ID = 6 create (a) - [r:Taking{EnrollmentID:'Enrollment120',Grade: 'D'}]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Offering) where a.ID = 191083779 and b.ID = 6 create (a) - [r:Taking{EnrollmentID:'Enrollment121',Grade: 'B'}]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Offering) where a.ID = 222105935 and b.ID = 6 create (a) - [r:Taking{EnrollmentID:'Enrollment122',Grade: 'B+'}]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Offering) where a.ID = 273277984 and b.ID = 6 create (a) - [r:Taking{EnrollmentID:'Enrollment123',Grade: 'B+'}]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Offering) where a.ID = 285719425 and b.ID = 6 create (a) - [r:Taking{EnrollmentID:'Enrollment124',Grade: 'B-'}]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Offering) where a.ID = 308635036 and b.ID = 6 create (a) - [r:Taking{EnrollmentID:'Enrollment125',Grade: 'B-'}]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Offering) where a.ID = 328718420 and b.ID = 6 create (a) - [r:Taking{EnrollmentID:'Enrollment126',Grade: 'C'}]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Offering) where a.ID = 363200537 and b.ID = 6 create (a) - [r:Taking{EnrollmentID:'Enrollment127',Grade: 'A'}]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Offering) where a.ID = 387215322 and b.ID = 6 create (a) - [r:Taking{EnrollmentID:'Enrollment128',Grade: 'D+'}]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Offering) where a.ID = 466094162 and b.ID = 6 create (a) - [r:Taking{EnrollmentID:'Enrollment129',Grade: 'C'}]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Offering) where a.ID = 513729696 and b.ID = 6 create (a) - [r:Taking{EnrollmentID:'Enrollment130',Grade: 'A'}]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Offering) where a.ID = 658579865 and b.ID = 6 create (a) - [r:Taking{EnrollmentID:'Enrollment131',Grade: 'D'}]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Offering) where a.ID = 696302689 and b.ID = 6 create (a) - [r:Taking{EnrollmentID:'Enrollment132',Grade: 'D'}]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Offering) where a.ID = 787422802 and b.ID = 6 create (a) - [r:Taking{EnrollmentID:'Enrollment133',Grade: 'D'}]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Offering) where a.ID = 803024290 and b.ID = 6 create (a) - [r:Taking{EnrollmentID:'Enrollment134',Grade: 'D'}]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Offering) where a.ID = 845037919 and b.ID = 6 create (a) - [r:Taking{EnrollmentID:'Enrollment135',Grade: 'A-'}]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Offering) where a.ID = 885469446 and b.ID = 6 create (a) - [r:Taking{EnrollmentID:'Enrollment136',Grade: 'A-'}]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Offering) where a.ID = 916916939 and b.ID = 6 create (a) - [r:Taking{EnrollmentID:'Enrollment137',Grade: 'B'}]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Offering) where a.ID = 952145559 and b.ID = 6 create (a) - [r:Taking{EnrollmentID:'Enrollment138',Grade: 'A'}]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Offering) where a.ID = 164776911 and b.ID = 6 create (a) - [r:Taking{EnrollmentID:'Enrollment139',Grade: 'B'}]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Offering) where a.ID = 185141262 and b.ID = 6 create (a) - [r:Taking{EnrollmentID:'Enrollment140',Grade: 'B'}]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Offering) where a.ID = 252533260 and b.ID = 6 create (a) - [r:Taking{EnrollmentID:'Enrollment141',Grade: 'B'}]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Offering) where a.ID = 391910519 and b.ID = 6 create (a) - [r:Taking{EnrollmentID:'Enrollment142',Grade: 'D+'}]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Offering) where a.ID = 409508678 and b.ID = 6 create (a) - [r:Taking{EnrollmentID:'Enrollment143',Grade: 'A'}]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Offering) where a.ID = 432180765 and b.ID = 6 create (a) - [r:Taking{EnrollmentID:'Enrollment144',Grade: 'B+'}]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Offering) where a.ID = 793034333 and b.ID = 6 create (a) - [r:Taking{EnrollmentID:'Enrollment145',Grade: 'D'}]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Offering) where a.ID = 812073765 and b.ID = 6 create (a) - [r:Taking{EnrollmentID:'Enrollment146',Grade: 'D+'}]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Offering) where a.ID = 867910658 and b.ID = 6 create (a) - [r:Taking{EnrollmentID:'Enrollment147',Grade: 'A'}]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Offering) where a.ID = 930231660 and b.ID = 6 create (a) - [r:Taking{EnrollmentID:'Enrollment148',Grade: 'B'}]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Offering) where a.ID = 973071948 and b.ID = 6 create (a) - [r:Taking{EnrollmentID:'Enrollment149',Grade: 'D'}]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Offering) where a.ID = 143293833 and b.ID = 7 create (a) - [r:Taking{EnrollmentID:'Enrollment150',Grade: 'D'}]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Offering) where a.ID = 222105935 and b.ID = 7 create (a) - [r:Taking{EnrollmentID:'Enrollment151',Grade: 'C'}]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Offering) where a.ID = 224620876 and b.ID = 7 create (a) - [r:Taking{EnrollmentID:'Enrollment152',Grade: 'C-'}]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Offering) where a.ID = 262891588 and b.ID = 7 create (a) - [r:Taking{EnrollmentID:'Enrollment153',Grade: 'B+'}]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Offering) where a.ID = 271978135 and b.ID = 7 create (a) - [r:Taking{EnrollmentID:'Enrollment154',Grade: 'C'}]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Offering) where a.ID = 328718420 and b.ID = 7 create (a) - [r:Taking{EnrollmentID:'Enrollment155',Grade: 'C+'}]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Offering) where a.ID = 382109560 and b.ID = 7 create (a) - [r:Taking{EnrollmentID:'Enrollment156',Grade: 'D'}]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Offering) where a.ID = 387215322 and b.ID = 7 create (a) - [r:Taking{EnrollmentID:'Enrollment157',Grade: 'A-'}]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Offering) where a.ID = 391910519 and b.ID = 7 create (a) - [r:Taking{EnrollmentID:'Enrollment158',Grade: 'C+'}]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Offering) where a.ID = 406746417 and b.ID = 7 create (a) - [r:Taking{EnrollmentID:'Enrollment159',Grade: 'D'}]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Offering) where a.ID = 490649143 and b.ID = 7 create (a) - [r:Taking{EnrollmentID:'Enrollment160',Grade: 'A'}]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Offering) where a.ID = 601496044 and b.ID = 7 create (a) - [r:Taking{EnrollmentID:'Enrollment161',Grade: 'B+'}]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Offering) where a.ID = 712524758 and b.ID = 7 create (a) - [r:Taking{EnrollmentID:'Enrollment162',Grade: 'C'}]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Offering) where a.ID = 787422802 and b.ID = 7 create (a) - [r:Taking{EnrollmentID:'Enrollment163',Grade: 'B'}]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Offering) where a.ID = 850631208 and b.ID = 7 create (a) - [r:Taking{EnrollmentID:'Enrollment164',Grade: 'C'}]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Offering) where a.ID = 885469446 and b.ID = 7 create (a) - [r:Taking{EnrollmentID:'Enrollment165',Grade: 'A-'}]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Offering) where a.ID = 901511548 and b.ID = 7 create (a) - [r:Taking{EnrollmentID:'Enrollment166',Grade: 'A-'}]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Offering) where a.ID = 905922853 and b.ID = 7 create (a) - [r:Taking{EnrollmentID:'Enrollment167',Grade: 'A'}]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Offering) where a.ID = 965882492 and b.ID = 7 create (a) - [r:Taking{EnrollmentID:'Enrollment168',Grade: 'A'}]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Offering) where a.ID = 973071948 and b.ID = 7 create (a) - [r:Taking{EnrollmentID:'Enrollment169',Grade: 'A'}]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Offering) where a.ID = 170815037 and b.ID = 7 create (a) - [r:Taking{EnrollmentID:'Enrollment170',Grade: 'D'}]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Offering) where a.ID = 203745018 and b.ID = 7 create (a) - [r:Taking{EnrollmentID:'Enrollment171',Grade: 'A-'}]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Offering) where a.ID = 260369148 and b.ID = 7 create (a) - [r:Taking{EnrollmentID:'Enrollment172',Grade: 'D+'}]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Offering) where a.ID = 261812056 and b.ID = 7 create (a) - [r:Taking{EnrollmentID:'Enrollment173',Grade: 'A'}]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Offering) where a.ID = 279702622 and b.ID = 7 create (a) - [r:Taking{EnrollmentID:'Enrollment174',Grade: 'A'}]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Offering) where a.ID = 363200537 and b.ID = 7 create (a) - [r:Taking{EnrollmentID:'Enrollment175',Grade: 'D+'}]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Offering) where a.ID = 419180204 and b.ID = 7 create (a) - [r:Taking{EnrollmentID:'Enrollment176',Grade: 'D'}]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Offering) where a.ID = 500094214 and b.ID = 7 create (a) - [r:Taking{EnrollmentID:'Enrollment177',Grade: 'C+'}]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Offering) where a.ID = 504013895 and b.ID = 7 create (a) - [r:Taking{EnrollmentID:'Enrollment178',Grade: 'C+'}]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Offering) where a.ID = 513729696 and b.ID = 7 create (a) - [r:Taking{EnrollmentID:'Enrollment179',Grade: 'C+'}]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Offering) where a.ID = 743991555 and b.ID = 7 create (a) - [r:Taking{EnrollmentID:'Enrollment180',Grade: 'B-'}]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Offering) where a.ID = 909334701 and b.ID = 7 create (a) - [r:Taking{EnrollmentID:'Enrollment181',Grade: 'A'}]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Offering) where a.ID = 930231660 and b.ID = 7 create (a) - [r:Taking{EnrollmentID:'Enrollment182',Grade: 'C'}]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Offering) where a.ID = 170815037 and b.ID = 8 create (a) - [r:Taking{EnrollmentID:'Enrollment183',Grade: 'D'}]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Offering) where a.ID = 224620876 and b.ID = 8 create (a) - [r:Taking{EnrollmentID:'Enrollment184',Grade: 'A'}]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Offering) where a.ID = 232820149 and b.ID = 8 create (a) - [r:Taking{EnrollmentID:'Enrollment185',Grade: 'D+'}]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Offering) where a.ID = 315967897 and b.ID = 8 create (a) - [r:Taking{EnrollmentID:'Enrollment186',Grade: 'C+'}]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Offering) where a.ID = 467545237 and b.ID = 8 create (a) - [r:Taking{EnrollmentID:'Enrollment187',Grade: 'D'}]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Offering) where a.ID = 483223789 and b.ID = 8 create (a) - [r:Taking{EnrollmentID:'Enrollment188',Grade: 'C-'}]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Offering) where a.ID = 483727101 and b.ID = 8 create (a) - [r:Taking{EnrollmentID:'Enrollment189',Grade: 'A-'}]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Offering) where a.ID = 696302689 and b.ID = 8 create (a) - [r:Taking{EnrollmentID:'Enrollment190',Grade: 'B'}]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Offering) where a.ID = 801166066 and b.ID = 8 create (a) - [r:Taking{EnrollmentID:'Enrollment191',Grade: 'C'}]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Offering) where a.ID = 956234659 and b.ID = 8 create (a) - [r:Taking{EnrollmentID:'Enrollment192',Grade: 'B-'}]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Offering) where a.ID = 271978135 and b.ID = 8 create (a) - [r:Taking{EnrollmentID:'Enrollment193',Grade: 'D'}]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Offering) where a.ID = 332012037 and b.ID = 8 create (a) - [r:Taking{EnrollmentID:'Enrollment194',Grade: 'B-'}]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Offering) where a.ID = 363200537 and b.ID = 8 create (a) - [r:Taking{EnrollmentID:'Enrollment195',Grade: 'B-'}]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Offering) where a.ID = 495490053 and b.ID = 8 create (a) - [r:Taking{EnrollmentID:'Enrollment196',Grade: 'B-'}]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Offering) where a.ID = 550658107 and b.ID = 8 create (a) - [r:Taking{EnrollmentID:'Enrollment197',Grade: 'D+'}]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Offering) where a.ID = 664353912 and b.ID = 8 create (a) - [r:Taking{EnrollmentID:'Enrollment198',Grade: 'A'}]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Offering) where a.ID = 909334701 and b.ID = 8 create (a) - [r:Taking{EnrollmentID:'Enrollment199',Grade: 'C'}]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Offering) where a.ID = 118784412 and b.ID = 9 create (a) - [r:Taking{EnrollmentID:'Enrollment200',Grade: 'A'}]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Offering) where a.ID = 163728111 and b.ID = 9 create (a) - [r:Taking{EnrollmentID:'Enrollment201',Grade: 'B+'}]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Offering) where a.ID = 203745018 and b.ID = 9 create (a) - [r:Taking{EnrollmentID:'Enrollment202',Grade: 'B'}]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Offering) where a.ID = 222105935 and b.ID = 9 create (a) - [r:Taking{EnrollmentID:'Enrollment203',Grade: 'B'}]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Offering) where a.ID = 252533260 and b.ID = 9 create (a) - [r:Taking{EnrollmentID:'Enrollment204',Grade: 'B-'}]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Offering) where a.ID = 290986112 and b.ID = 9 create (a) - [r:Taking{EnrollmentID:'Enrollment205',Grade: 'B'}]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Offering) where a.ID = 328718420 and b.ID = 9 create (a) - [r:Taking{EnrollmentID:'Enrollment206',Grade: 'B+'}]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Offering) where a.ID = 332012037 and b.ID = 9 create (a) - [r:Taking{EnrollmentID:'Enrollment207',Grade: 'C'}]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Offering) where a.ID = 382109560 and b.ID = 9 create (a) - [r:Taking{EnrollmentID:'Enrollment208',Grade: 'A'}]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Offering) where a.ID = 391910519 and b.ID = 9 create (a) - [r:Taking{EnrollmentID:'Enrollment209',Grade: 'B-'}]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Offering) where a.ID = 490649143 and b.ID = 9 create (a) - [r:Taking{EnrollmentID:'Enrollment210',Grade: 'B+'}]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Offering) where a.ID = 500094214 and b.ID = 9 create (a) - [r:Taking{EnrollmentID:'Enrollment211',Grade: 'C+'}]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Offering) where a.ID = 501674545 and b.ID = 9 create (a) - [r:Taking{EnrollmentID:'Enrollment212',Grade: 'B+'}]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Offering) where a.ID = 587735656 and b.ID = 9 create (a) - [r:Taking{EnrollmentID:'Enrollment213',Grade: 'D+'}]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Offering) where a.ID = 644488789 and b.ID = 9 create (a) - [r:Taking{EnrollmentID:'Enrollment214',Grade: 'A-'}]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Offering) where a.ID = 785811329 and b.ID = 9 create (a) - [r:Taking{EnrollmentID:'Enrollment215',Grade: 'B'}]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Offering) where a.ID = 867910658 and b.ID = 9 create (a) - [r:Taking{EnrollmentID:'Enrollment216',Grade: 'B'}]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Offering) where a.ID = 895255243 and b.ID = 9 create (a) - [r:Taking{EnrollmentID:'Enrollment217',Grade: 'B'}]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Offering) where a.ID = 905922853 and b.ID = 9 create (a) - [r:Taking{EnrollmentID:'Enrollment218',Grade: 'B'}]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Offering) where a.ID = 907425648 and b.ID = 9 create (a) - [r:Taking{EnrollmentID:'Enrollment219',Grade: 'C'}]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Offering) where a.ID = 909334701 and b.ID = 9 create (a) - [r:Taking{EnrollmentID:'Enrollment220',Grade: 'C-'}]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Offering) where a.ID = 980102825 and b.ID = 9 create (a) - [r:Taking{EnrollmentID:'Enrollment221',Grade: 'C'}]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Offering) where a.ID = 143293833 and b.ID = 10 create (a) - [r:Taking{EnrollmentID:'Enrollment222',Grade: 'C-'}]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Offering) where a.ID = 191083779 and b.ID = 10 create (a) - [r:Taking{EnrollmentID:'Enrollment223',Grade: 'A-'}]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Offering) where a.ID = 261812056 and b.ID = 10 create (a) - [r:Taking{EnrollmentID:'Enrollment224',Grade: 'C-'}]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Offering) where a.ID = 262891588 and b.ID = 10 create (a) - [r:Taking{EnrollmentID:'Enrollment225',Grade: 'C+'}]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Offering) where a.ID = 279702622 and b.ID = 10 create (a) - [r:Taking{EnrollmentID:'Enrollment226',Grade: 'A-'}]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Offering) where a.ID = 302335678 and b.ID = 10 create (a) - [r:Taking{EnrollmentID:'Enrollment227',Grade: 'C'}]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Offering) where a.ID = 406746417 and b.ID = 10 create (a) - [r:Taking{EnrollmentID:'Enrollment228',Grade: 'B'}]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Offering) where a.ID = 432180765 and b.ID = 10 create (a) - [r:Taking{EnrollmentID:'Enrollment229',Grade: 'C'}]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Offering) where a.ID = 449976666 and b.ID = 10 create (a) - [r:Taking{EnrollmentID:'Enrollment230',Grade: 'B+'}]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Offering) where a.ID = 467545237 and b.ID = 10 create (a) - [r:Taking{EnrollmentID:'Enrollment231',Grade: 'C+'}]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Offering) where a.ID = 495490053 and b.ID = 10 create (a) - [r:Taking{EnrollmentID:'Enrollment232',Grade: 'C+'}]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Offering) where a.ID = 590987789 and b.ID = 10 create (a) - [r:Taking{EnrollmentID:'Enrollment233',Grade: 'D'}]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Offering) where a.ID = 812073765 and b.ID = 10 create (a) - [r:Taking{EnrollmentID:'Enrollment234',Grade: 'A'}]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Offering) where a.ID = 845037919 and b.ID = 10 create (a) - [r:Taking{EnrollmentID:'Enrollment235',Grade: 'A'}]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Offering) where a.ID = 973071948 and b.ID = 10 create (a) - [r:Taking{EnrollmentID:'Enrollment236',Grade: 'B'}]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Offering) where a.ID = 164500920 and b.ID = 11 create (a) - [r:Taking{EnrollmentID:'Enrollment237',Grade: 'C'}]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Offering) where a.ID = 170815037 and b.ID = 11 create (a) - [r:Taking{EnrollmentID:'Enrollment238',Grade: 'A'}]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Offering) where a.ID = 203745018 and b.ID = 11 create (a) - [r:Taking{EnrollmentID:'Enrollment239',Grade: 'A'}]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Offering) where a.ID = 212976207 and b.ID = 11 create (a) - [r:Taking{EnrollmentID:'Enrollment240',Grade: 'B'}]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Offering) where a.ID = 224620876 and b.ID = 11 create (a) - [r:Taking{EnrollmentID:'Enrollment241',Grade: 'A'}]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Offering) where a.ID = 261812056 and b.ID = 11 create (a) - [r:Taking{EnrollmentID:'Enrollment242',Grade: 'C'}]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Offering) where a.ID = 328718420 and b.ID = 11 create (a) - [r:Taking{EnrollmentID:'Enrollment243',Grade: 'A'}]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Offering) where a.ID = 332012037 and b.ID = 11 create (a) - [r:Taking{EnrollmentID:'Enrollment244',Grade: 'C-'}]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Offering) where a.ID = 391910519 and b.ID = 11 create (a) - [r:Taking{EnrollmentID:'Enrollment245',Grade: 'B'}]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Offering) where a.ID = 406746417 and b.ID = 11 create (a) - [r:Taking{EnrollmentID:'Enrollment246',Grade: 'B+'}]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Offering) where a.ID = 495490053 and b.ID = 11 create (a) - [r:Taking{EnrollmentID:'Enrollment247',Grade: 'B-'}]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Offering) where a.ID = 664353912 and b.ID = 11 create (a) - [r:Taking{EnrollmentID:'Enrollment248',Grade: 'A'}]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Offering) where a.ID = 722131306 and b.ID = 11 create (a) - [r:Taking{EnrollmentID:'Enrollment249',Grade: 'A-'}]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Offering) where a.ID = 785103478 and b.ID = 11 create (a) - [r:Taking{EnrollmentID:'Enrollment250',Grade: 'C+'}]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Offering) where a.ID = 785811329 and b.ID = 11 create (a) - [r:Taking{EnrollmentID:'Enrollment251',Grade: 'C+'}]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Offering) where a.ID = 793034333 and b.ID = 11 create (a) - [r:Taking{EnrollmentID:'Enrollment252',Grade: 'D+'}]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Offering) where a.ID = 850631208 and b.ID = 11 create (a) - [r:Taking{EnrollmentID:'Enrollment253',Grade: 'C+'}]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Offering) where a.ID = 862952924 and b.ID = 11 create (a) - [r:Taking{EnrollmentID:'Enrollment254',Grade: 'C'}]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Offering) where a.ID = 905922853 and b.ID = 11 create (a) - [r:Taking{EnrollmentID:'Enrollment255',Grade: 'A-'}]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Offering) where a.ID = 980102825 and b.ID = 11 create (a) - [r:Taking{EnrollmentID:'Enrollment256',Grade: 'D+'}]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Offering) where a.ID = 232820149 and b.ID = 12 create (a) - [r:Taking{EnrollmentID:'Enrollment257',Grade: 'B-'}]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Offering) where a.ID = 252533260 and b.ID = 12 create (a) - [r:Taking{EnrollmentID:'Enrollment258',Grade: 'C+'}]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Offering) where a.ID = 279702622 and b.ID = 12 create (a) - [r:Taking{EnrollmentID:'Enrollment259',Grade: 'C'}]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Offering) where a.ID = 382109560 and b.ID = 12 create (a) - [r:Taking{EnrollmentID:'Enrollment260',Grade: 'B'}]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Offering) where a.ID = 387215322 and b.ID = 12 create (a) - [r:Taking{EnrollmentID:'Enrollment261',Grade: 'A-'}]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Offering) where a.ID = 485619193 and b.ID = 12 create (a) - [r:Taking{EnrollmentID:'Enrollment262',Grade: 'D'}]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Offering) where a.ID = 504013895 and b.ID = 12 create (a) - [r:Taking{EnrollmentID:'Enrollment263',Grade: 'B'}]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Offering) where a.ID = 587735656 and b.ID = 12 create (a) - [r:Taking{EnrollmentID:'Enrollment264',Grade: 'A'}]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Offering) where a.ID = 774885901 and b.ID = 12 create (a) - [r:Taking{EnrollmentID:'Enrollment265',Grade: 'A-'}]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Offering) where a.ID = 801166066 and b.ID = 12 create (a) - [r:Taking{EnrollmentID:'Enrollment266',Grade: 'C'}]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Offering) where a.ID = 895255243 and b.ID = 12 create (a) - [r:Taking{EnrollmentID:'Enrollment267',Grade: 'A-'}]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Offering) where a.ID = 191083779 and b.ID = 13 create (a) - [r:Taking{EnrollmentID:'Enrollment268',Grade: 'B-'}]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Offering) where a.ID = 261812056 and b.ID = 13 create (a) - [r:Taking{EnrollmentID:'Enrollment269',Grade: 'C-'}]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Offering) where a.ID = 340502961 and b.ID = 13 create (a) - [r:Taking{EnrollmentID:'Enrollment270',Grade: 'C+'}]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Offering) where a.ID = 449976666 and b.ID = 13 create (a) - [r:Taking{EnrollmentID:'Enrollment271',Grade: 'A'}]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Offering) where a.ID = 467545237 and b.ID = 13 create (a) - [r:Taking{EnrollmentID:'Enrollment272',Grade: 'B'}]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Offering) where a.ID = 550658107 and b.ID = 13 create (a) - [r:Taking{EnrollmentID:'Enrollment273',Grade: 'C'}]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Offering) where a.ID = 801166066 and b.ID = 13 create (a) - [r:Taking{EnrollmentID:'Enrollment274',Grade: 'B-'}]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Offering) where a.ID = 845037919 and b.ID = 13 create (a) - [r:Taking{EnrollmentID:'Enrollment275',Grade: 'B+'}]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Offering) where a.ID = 862952924 and b.ID = 13 create (a) - [r:Taking{EnrollmentID:'Enrollment276',Grade: 'C+'}]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Offering) where a.ID = 867910658 and b.ID = 13 create (a) - [r:Taking{EnrollmentID:'Enrollment277',Grade: 'C-'}]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Offering) where a.ID = 271978135 and b.ID = 13 create (a) - [r:Taking{EnrollmentID:'Enrollment278',Grade: 'B+'}]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Offering) where a.ID = 483223789 and b.ID = 13 create (a) - [r:Taking{EnrollmentID:'Enrollment279',Grade: 'A-'}]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Offering) where a.ID = 500094214 and b.ID = 13 create (a) - [r:Taking{EnrollmentID:'Enrollment280',Grade: 'C+'}]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Offering) where a.ID = 658579865 and b.ID = 13 create (a) - [r:Taking{EnrollmentID:'Enrollment281',Grade: 'B'}]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Offering) where a.ID = 722131306 and b.ID = 13 create (a) - [r:Taking{EnrollmentID:'Enrollment282',Grade: 'C'}]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Offering) where a.ID = 787422802 and b.ID = 13 create (a) - [r:Taking{EnrollmentID:'Enrollment283',Grade: 'B+'}]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Offering) where a.ID = 916916939 and b.ID = 13 create (a) - [r:Taking{EnrollmentID:'Enrollment284',Grade: 'C-'}]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Offering) where a.ID = 124208644 and b.ID = 14 create (a) - [r:Taking{EnrollmentID:'Enrollment285',Grade: 'C+'}]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Offering) where a.ID = 185141262 and b.ID = 14 create (a) - [r:Taking{EnrollmentID:'Enrollment286',Grade: 'B+'}]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Offering) where a.ID = 212976207 and b.ID = 14 create (a) - [r:Taking{EnrollmentID:'Enrollment287',Grade: 'B'}]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Offering) where a.ID = 382109560 and b.ID = 14 create (a) - [r:Taking{EnrollmentID:'Enrollment288',Grade: 'B'}]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Offering) where a.ID = 406746417 and b.ID = 14 create (a) - [r:Taking{EnrollmentID:'Enrollment289',Grade: 'C-'}]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Offering) where a.ID = 467545237 and b.ID = 14 create (a) - [r:Taking{EnrollmentID:'Enrollment290',Grade: 'C+'}]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Offering) where a.ID = 483223789 and b.ID = 14 create (a) - [r:Taking{EnrollmentID:'Enrollment291',Grade: 'D+'}]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Offering) where a.ID = 495490053 and b.ID = 14 create (a) - [r:Taking{EnrollmentID:'Enrollment292',Grade: 'C+'}]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Offering) where a.ID = 550658107 and b.ID = 14 create (a) - [r:Taking{EnrollmentID:'Enrollment293',Grade: 'D'}]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Offering) where a.ID = 664353912 and b.ID = 14 create (a) - [r:Taking{EnrollmentID:'Enrollment294',Grade: 'A-'}]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Offering) where a.ID = 737972250 and b.ID = 14 create (a) - [r:Taking{EnrollmentID:'Enrollment295',Grade: 'B-'}]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Offering) where a.ID = 812073765 and b.ID = 14 create (a) - [r:Taking{EnrollmentID:'Enrollment296',Grade: 'B+'}]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Offering) where a.ID = 163728111 and b.ID = 14 create (a) - [r:Taking{EnrollmentID:'Enrollment297',Grade: 'B+'}]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Offering) where a.ID = 296669559 and b.ID = 14 create (a) - [r:Taking{EnrollmentID:'Enrollment298',Grade: 'A-'}]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Offering) where a.ID = 365774792 and b.ID = 14 create (a) - [r:Taking{EnrollmentID:'Enrollment299',Grade: 'A-'}]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Offering) where a.ID = 387215322 and b.ID = 14 create (a) - [r:Taking{EnrollmentID:'Enrollment300',Grade: 'D'}]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Offering) where a.ID = 785273479 and b.ID = 14 create (a) - [r:Taking{EnrollmentID:'Enrollment301',Grade: 'D+'}]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Offering) where a.ID = 793034333 and b.ID = 14 create (a) - [r:Taking{EnrollmentID:'Enrollment302',Grade: 'D'}]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Offering) where a.ID = 862952924 and b.ID = 14 create (a) - [r:Taking{EnrollmentID:'Enrollment303',Grade: 'C-'}]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Offering) where a.ID = 290986112 and b.ID = 15 create (a) - [r:Taking{EnrollmentID:'Enrollment304',Grade: 'C'}]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Offering) where a.ID = 308635036 and b.ID = 15 create (a) - [r:Taking{EnrollmentID:'Enrollment305',Grade: 'D'}]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Offering) where a.ID = 419180204 and b.ID = 15 create (a) - [r:Taking{EnrollmentID:'Enrollment306',Grade: 'A-'}]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Offering) where a.ID = 449976666 and b.ID = 15 create (a) - [r:Taking{EnrollmentID:'Enrollment307',Grade: 'C+'}]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Offering) where a.ID = 477453864 and b.ID = 15 create (a) - [r:Taking{EnrollmentID:'Enrollment308',Grade: 'D+'}]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Offering) where a.ID = 495490053 and b.ID = 15 create (a) - [r:Taking{EnrollmentID:'Enrollment309',Grade: 'A-'}]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Offering) where a.ID = 501674545 and b.ID = 15 create (a) - [r:Taking{EnrollmentID:'Enrollment310',Grade: 'D+'}]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Offering) where a.ID = 504013895 and b.ID = 15 create (a) - [r:Taking{EnrollmentID:'Enrollment311',Grade: 'A-'}]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Offering) where a.ID = 587735656 and b.ID = 15 create (a) - [r:Taking{EnrollmentID:'Enrollment312',Grade: 'D+'}]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Offering) where a.ID = 787422802 and b.ID = 15 create (a) - [r:Taking{EnrollmentID:'Enrollment313',Grade: 'C-'}]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Offering) where a.ID = 909334701 and b.ID = 15 create (a) - [r:Taking{EnrollmentID:'Enrollment314',Grade: 'A-'}]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Offering) where a.ID = 340502961 and b.ID = 15 create (a) - [r:Taking{EnrollmentID:'Enrollment315',Grade: 'D+'}]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Offering) where a.ID = 432180765 and b.ID = 15 create (a) - [r:Taking{EnrollmentID:'Enrollment316',Grade: 'B'}]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Offering) where a.ID = 485619193 and b.ID = 15 create (a) - [r:Taking{EnrollmentID:'Enrollment317',Grade: 'B+'}]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Offering) where a.ID = 644488789 and b.ID = 15 create (a) - [r:Taking{EnrollmentID:'Enrollment318',Grade: 'A-'}]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Offering) where a.ID = 696302689 and b.ID = 15 create (a) - [r:Taking{EnrollmentID:'Enrollment319',Grade: 'C'}]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Offering) where a.ID = 845037919 and b.ID = 15 create (a) - [r:Taking{EnrollmentID:'Enrollment320',Grade: 'B'}]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Offering) where a.ID = 885469446 and b.ID = 15 create (a) - [r:Taking{EnrollmentID:'Enrollment321',Grade: 'C+'}]-> (b) WITH count(*) as dummy
+match (a:Student), (b:Offering) where a.ID = 480293439 and b.ID = 5 create (a) - [r:Taking{EnrollmentID:'Enrollment322',Grade: 'A'}]-> (b)
+

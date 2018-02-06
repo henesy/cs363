@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSPY v2004 rel. 3 U (http://www.xmlspy.com) by Rahul (Iowa State) -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:element name="Coms_Catalog">
+		<xs:annotation>
+			<xs:documentation>Comment describing your root element</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="Front_Material">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="Dept_Name" type="xs:string"/>
+							<xs:element name="DeptURL" type="xs:anyURI"/>
+							<xs:element name="ParentDept" type="xs:string"/>
+							<xs:element name="DeptChair" type="xs:string"/>
+							<xs:element name="FacultyList" type="FacultyListType" maxOccurs="unbounded"/>
+							<xs:element name="UgradInfo" type="xs:string"/>
+							<xs:element name="GradInfo" type="xs:string"/>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="Courses">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="UgradCourses" type="CoursesType" minOccurs="0"/>
+							<xs:element name="Grad_Ugrad_Courses" type="CoursesType" minOccurs="0"/>
+							<xs:element name="GradCourses" type="CoursesType" minOccurs="0"/>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:complexType name="CListType">
+		<xs:sequence>
+			<xs:element name="CourseInitial"/>
+			<xs:element name="CourseNumber">
+				<xs:simpleType>
+					<xs:restriction base="xs:positiveInteger">
+						<xs:minInclusive value="1"/>
+						<xs:maxInclusive value="699"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="CourseName" type="xs:string"/>
+			<xs:element name="CourseListing" type="xs:string" minOccurs="0"/>
+			<xs:element name="ContactHrs" minOccurs="0">
+				<xs:simpleType>
+					<xs:restriction base="xs:integer">
+						<xs:minInclusive value="0"/>
+						<xs:maxInclusive value="9"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="ContactLabHrs" minOccurs="0">
+				<xs:simpleType>
+					<xs:restriction base="xs:integer">
+						<xs:minInclusive value="0"/>
+						<xs:maxInclusive value="9"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="CreditHrs" minOccurs="0">
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:length value="1"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="SemOffrd" minOccurs="0">
+				<xs:complexType>
+					<xs:all>
+						<xs:element name="F" type="xs:string" default="F" minOccurs="0"/>
+						<xs:element name="S" type="xs:string" default="S" minOccurs="0"/>
+						<xs:element name="SS" type="xs:string" default="SS" minOccurs="0"/>
+					</xs:all>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="Prereq" type="xs:string" minOccurs="0"/>
+			<xs:element name="CourseBody" type="xs:string"/>
+			<xs:element name="NMGradCredit" type="xs:string" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:simpleType name="CourseListingType">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="Courses Primarily for Undergraduate Students"/>
+			<xs:enumeration value="Courses Primarily for Graduate Students, Open to Qualified Undergraduate Students"/>
+			<xs:enumeration value="Courses for Graduate Students"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:complexType name="CoursesType">
+		<xs:sequence>
+			<xs:element name="ListTitle" type="CourseListingType"/>
+			<xs:element name="CList" type="CListType" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="FacultyListType">
+		<xs:sequence>
+			<xs:element name="FacultyPosition">
+				<xs:complexType>
+					<xs:simpleContent>
+						<xs:extension base="xs:string">
+							<xs:attribute name="Title">
+								<xs:simpleType>
+									<xs:restriction base="xs:string"/>
+								</xs:simpleType>
+							</xs:attribute>
+						</xs:extension>
+					</xs:simpleContent>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+</xs:schema>

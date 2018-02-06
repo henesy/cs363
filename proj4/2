@@ -1,0 +1,4 @@
+MATCH (student:Student)
+WHERE student.Classification='Sophomore'
+RETURN AVG(student.GPA), student.Classification
+

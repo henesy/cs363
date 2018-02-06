@@ -1,0 +1,98 @@
+TESTING VISUMTREE
+	[*] Reordering daughters (drag daughter to space between sisters)
+	[*] Setting layout style
+	[*] Setting font
+	[*] Calculation of bounding boxes
+	[*] String conversion
+	[*] New mother (Q: attach new mother on which daughter?)
+	[*] New daughter
+	[*] Remove
+	[*] Moving nodes and subtrees
+	[*] Maximals
+	[*] Terminals
+	[*] Abbreviate
+	[*] Bonsai
+	[*] Selected
+	[*] Set AV
+	[*] Get AV
+	[*] Remove AV
+	[*] Get AVM
+	[*] Backwards compatibility with Bo
+	[*] Selecting paths
+	[*] Tooltips
+	[*] Color handling in TreeDemo
+	[*] Printing (Sun-bug work-around: Graphics.getColor() broken on 
+		printing graphics)
+	[*] Bounding box for tree 
+	[*] Return type boolean for setAV/removeAV/etc 
+	[*] PERMchange moves from AVM to Node 
+	[*] Background color of TreePanel and JViewPort size
+	[*] Placement of Tree in ScrollPane
+	[*] Permissions
+        [*] PERMchange      [*] PERMndaughter
+        [*] PERMremove      [*] PERMreorder
+        [*] PERMmove        [*] PERMterminal
+        [*] PERMreceive     [*] PERMabbreviate
+        [*] PERMnmother     [*] PERMbonsai
+	[*] Moving nodes and selection: click down must select
+	[*] Cloning 
+	[*] nextNode, prevNode
+	[*] Select all
+	[*] Select subtree
+	[.] Mother-daughter poly lines in bottom-up mode (strange 
+			update problem with font change?)
+
+	[ ] Documentation
+
+DESIRABLE FEATURES FOR FUTURE RELEASES
+
+	[ ] Selection of nodes within rectangle (not implemented)
+	[ ] Bonsai-macro for calculating bonsai-abbreviation below triangle
+	[ ] Macro-interface, in addition to strings: 
+			String[] TreeMacro.abbrStrings(AVM avm);
+			String[] TreeMacro.tooltip(AVM avm, String attr);
+	[ ] Command keys: 
+			letters when selected: insert text in AVM or value
+			insert: new AVM value
+			arrow-keys: navigate in AVM
+			shift arrow-keys: naviagte in Tree
+			backspace: delete AV pair
+			shift bs: delete node
+	[ ] TreeEvent system
+
+
+COMPATIBILITY WITH BO
+
+	CLASS			METHOD
+	----------		------------------------------
+	TreePanel		repaint()
+	TreePanel		scrollSelectedToVisible()
+	TreePanel		setBorder(null)
+	TreePanel		tree()
+	TreePanel		validate()
+	----------		------------------------------
+	Tree			addDaughter(attribute +"="+ value, insertionIndex)
+	Tree			addMother()
+	Tree			addMother(attribute + "=" + value)
+	Tree			deselect(tree.root())
+	Tree			deselectAll()
+	Tree			getSelectedNodes()
+	Tree			getTerminalNodes(selectedNodes)
+	Tree			init()
+	Tree			maxRoots(nodeList)
+	Tree			remove()
+	Tree			root()
+	Tree			select(selectedNodes)
+	Tree			setAV(attribute + "=" + value)
+	Tree			setTreeFont(zoomFonts[currentZoomIndex])
+	----------		------------------------------
+	Node			addDaughter(-1)
+	Node			daughterAt(i)
+	Node			daughterCount()
+	Node			getAVM()
+	Node			getMother()
+	Node			remove()
+	Node			removeAV(attribute)
+	Node			setAV("lex", terminals[textSelections[0]].word)
+	Node			setAV(source.avm[i][0] + "=" + source.avm[i][1])
+

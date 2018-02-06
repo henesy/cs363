@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<XML_Db dbName = "personnel" numOfRelations = "2">
+    <dbRel relName = "Emp" numOfAttributes = "3" location="Emp">
+        <dbAttr attrName = "Name" attrType = "string" attrLength = "20" />
+        <dbAttr attrName = "DName" attrType = "string" attrLength = "10" />
+        <dbAttr attrName = "Salary" attrType = "integer" attrLength = "4" />
+    	<dbKey attrName = "Name"> </dbKey>
+    </dbRel>
+    <dbRel relName = "Dept" numOfAttributes = "2" location="Dept">
+        <dbAttr attrName = "DName" attrType = "string" attrLength = "10" />
+        <dbAttr attrName = "MName" attrType = "string" attrLength = "20" />
+        <dbKey attrName = "DName"></dbKey>
+    </dbRel>
+
+	<dbConfig headerSize = "8">			    
+		<Emp  spaceUtilization = "80"  numOfTuples = "3800" />
+		<Dept spaceUtilization = "80"  numOfTuples = "1900" />			
+	</dbConfig>
+	
+	<dgConfig>
+		<Emp>
+			<Salary min="40000" max="140000" step="1000"/>
+			<DName prefix="Dept"/>
+			<Name prefix="Name"/>
+		</Emp>
+		<Dept>
+			<DName prefix="Dept"/>
+			<MName prefix="Name"/>
+		</Dept>
+	</dgConfig>
+</XML_Db>

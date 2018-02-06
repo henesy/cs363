@@ -1,0 +1,50 @@
+createstorage£º
+ A(1) Create raw storage (create devices in the storage )
+ A(2) Create bit-map pages (createstoragemanager )
+ A(3) Create directory (xml catalog file in the storage)
+ 
+ 
+ loadstorage:
+ B(1) Create buffer pool in memory  (initiate buffermanager)
+ B(2) Read and pin bit-map page  
+ 
+ unloadstorage:
+  Destroy buffer pool (Destroy buffermanager)
+  
+  Reformat Storage: (Major job: Change page size)
+  Change pageSize in the Storage Config
+  Reformat the storage catalog.
+  
+ 
+ Tips: After reformat storage, must loadstorage again.
+
+
+ 
+Command to use:
+
+$CyDB:> list commands;
+// If storage does not exist, use createStorage first;
+/*$CyDB:>createStorage  StorageConfig.xml;*/
+
+
+$CyDB:>loadStorage StorageConfig.xml;
+
+// In the middle, if you want to reformat storage, use following command
+/*
+$CyDB:>ReformatStorage StorageConfig.xml 16;
+$CyDB:>loadStorage StorageConfig.xml; */
+
+
+
+//$CyDB:>unloadStorage StorageConfig.xml;
+//$CyDB:> startBufferManager 11;
+/* $CyDB:>createStorage  StorageConfig.xml;
+*/
+
+$CyDB:> declare string $$b;
+
+$CyDB:>set $$b := cyclients\edb\workspace\catalog.xml;
+//$EDB:>CreateData $$b;
+
+
+

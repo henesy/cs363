@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<BTreeConfig Name="CreateBTreeAndBulkLoad">
+	<RootPageId>2130</RootPageId>
+	<SequencePageId>2128</SequencePageId>
+	<PageSizeUsed>256</PageSizeUsed>
+	<BTreeName>BTreeBulk1</BTreeName>
+	<BTreeHeight>2</BTreeHeight>
+</BTreeConfig>

@@ -1,0 +1,84 @@
+/* View the contents of Emp.xml, in a popup window;  
+   For Linux, "$OS:> cat ComS363/Emp.xml;" can be used;  
+*/
+
+$CyDB:> DisplayXML ComS363\Demos\Datasets\Emp.xml; 
+
+/* Execute an XQuery query. Saxon, a well-known XQuery engine, 
+   used here, is included and preconfigured in CyDIW with 
+   consent from Saxonica 
+*/  
+
+
+// Example 1: ARITHMATIC AND BOOLEAN EXPRESSIONS;
+
+$Saxon:> 10 * 5;
+
+$Saxon:> if (10 * 5 = 50) then 55 else 56;
+
+// Example 2A: A simple FLWOR expression;
+
+<showtext>
+$Saxon:> 
+<NS> {
+   for $e in doc("ComS363/Demos/Datasets/Emp.xml")//Entry
+   where $e/DName/text() = "Toys" 
+   return <E> { $e/Name, $e/Salary } </E>
+} </NS>; 
+</showtext>
+
+/* 1. By default the Output Pane of the GUI is an html browser.  
+   <showtext>...</showtext> is not part of the command. 
+   It sets the Output Pane to display plain text properly; 
+
+   2. As an exercise, select the query avoiding <showtext>...</showtext> 
+   and press [Run Selected]. 
+*/ 
+
+// Example 2B: Same as 2A but supresses repeatition of namespaces from output;
+
+<showtext>
+$Saxon:> 
+<NS xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"> {
+   for $e in doc("ComS363/Demos/Datasets/Emp.xml")//Entry
+   where $e/DName/text() = "Toys" 
+   return <E> { $e/Name, $e/Salary } </E>
+} </NS>; 
+</showtext>
+
+// Example 3. The following XQuery computes and displays an html document; 
+
+$Saxon:> 
+<table border="1" > 
+   <tr> <td>Name</td> <td >Salary</td> </tr>
+   {
+   for $e in doc("ComS363/Demos/Datasets/Emp.xml")//Entry
+   where $e/DName/text() = "Toys" 
+   return <tr> <td>{$e/Name/text()}</td> <td>{$e/Salary/text()}</td> </tr>
+   }
+</table> ; 
+
+/* Exercise. Add <showtext>...</showtext> and use [Run Selected] 
+   to see how the result is displayed 
+*/  
+
+
+
+// Example 2B: Same as 2A but supresses repeatition of namespaces from output;
+
+$CyDB:> declare string $$PathI; 
+$CyDB:> set $$PathI := ComS363/Demos/Datasets;
+$CyDB:> list variables;
+
+<showtext>
+$Saxon:> 
+<NS xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"> {
+   for $e in doc("$$PathI/Emp.xml")//Entry
+   where $e/DName/text() = "Toys" 
+   return <E> { $e/Name, $e/Salary } </E>
+} </NS>; 
+</showtext>
+
+
+
+

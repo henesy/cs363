@@ -1,0 +1,86 @@
+//Create relationship between Person and Student
+<showtext>
+$Ooquery:> 
+<Item xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"> {
+for $s in doc("C:/Users/yingw/Desktop/newFiles/UniversityOODB(ODMG).3.xml")//Student
+return <E> {concat("match ( a:Student), (b:Person) where a.ID = ",substring($s.@StudentID, 2), " and b.ID =", substring($s.@StudentID, 2)," create (a) - [r:s2p]-> (b)")} </E>
+} </Item>;
+</showtext>
+
+match (a:Student), (b:Person) where a.ID = 118784412 and b.ID = 118784412 create (a) - [r:s2p]-> (b);
+
+//Create relationship between Person and Faculty
+<showtext>
+$Ooquery:> 
+<Item xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"> {
+for $s in doc("C:/Users/yingw/Desktop/newFiles/UniversityOODB(ODMG).3.xml")//Faculty
+return <E> {concat("match ( a:Faculty), (b:Person) where a.ID = ",substring($s.@FacultyID, 2), " and b.ID =", substring($s.@FacultyID, 2)," create (a) - [r:f2p]-> (b)")} </E>
+} </Item>;
+</showtext>
+
+match (a:Faculty), (b:Person) where a.ID = 201586985 and b.ID = 201586985 create (a) - [r:f2p]-> (b);
+
+//Create relationship between Faculty and Student
+<showtext>
+$Ooquery:> 
+<Item xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"> {
+for $s in doc("C:/Users/yingw/Desktop/newFiles/UniversityOODB(ODMG).3.xml")//Student
+return <E> {concat("match ( a:Faculty), (b:Student) where a.ID = ",substring($s.Mentor.@FacultyID, 2), " and b.ID =", substring($s.@StudentID, 2)," create (a) - [r:mentor]-> (b)")} </E>
+} </Item>;
+</showtext>
+
+match (a:Faculty), (b:Student) where a.ID = 201586985 and b.ID = 118784412 create (a) - [r:mentor]-> (b);
+
+//Create relationship between Facult and Offering
+<showtext>
+$Ooquery:> 
+<Item xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"> {
+for $s in doc("C:/Users/yingw/Desktop/newFiles/UniversityOODB(ODMG).3.xml")//Offering
+return <E> {concat("match ( a:Faculty), (b:Offering) where a.ID = ",substring($s.Instructor.@FacultyID, 2), " and b.ID =", substring($s.@OfferingID, 9)," create (a) - [r:teach]-> (b)")} </E>
+} </Item>;
+</showtext>
+
+match (a:Faculty), (b:Offering) where a.ID = 201586985 and b.ID = 1 create (a) - [r:teach]-> (b);
+
+//Create relationship between Offering and Course
+<showtext>
+$Ooquery:> 
+<Item xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"> {
+for $s in doc("C:/Users/yingw/Desktop/newFiles/UniversityOODB(ODMG).3.xml")//Offering
+return <E> {concat("match ( a:Offering), (b:Course) where a.ID = ",substring($s.@OfferingID, 9), " and b.ID =", substring($s.CourseInfo.@CourseID, 2)," create (a) - [r:belong]-> (b)")} </E>
+} </Item>;
+</showtext>
+
+match (a:Offering), (b:Course) where a.ID = 1 and b.ID = 722 create (a) - [r:belong]-> (b);
+
+//Create relationship between Courses
+<showtext>
+$Ooquery:> 
+<Item xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"> {
+for $s in doc("C:/Users/yingw/Desktop/newFiles/UniversityOODB(ODMG).3.xml")//Course
+return <E> {concat("match ( a:Course), (b:Course) where a.ID = ",substring($s.@CourseID, 2), " and b.ID =", substring(string-join( ($s.PreReqs.@CourseID), ''),2,4)," create (a) - [r:preReqs]-> (b)")} </E>
+} </Item>;
+</showtext>
+
+<showtext>
+$Ooquery:> 
+<Item xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"> {
+for $s in doc("C:/Users/yingw/Desktop/newFiles/UniversityOODB(ODMG).3.xml")//Course
+return <E> {concat("match ( a:Course), (b:Course) where a.ID = ",substring($s.@CourseID, 2), " and b.ID =", substring(string-join( ($s.PreReqs.@CourseID), ''),7,4)," create (a) - [r:preReqs]-> (b)")} </E>
+} </Item>;
+</showtext>
+match (a:Course), (b:Course) where a.ID = 722 and b.ID = 822 create (a) - [r:preReqs]-> (b);
+
+
+//Create relationship between Student and Offering
+<showtext>
+$Ooquery:> 
+<Item xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"> {
+for $s in doc("C:/Users/yingw/Desktop/newFiles/UniversityOODB(ODMG).3.xml")//Enrollment
+return <E> {concat("match ( a:Student), (b:Offering) where a.ID = ",substring($s.StudentInfo.@StudentID, 2), " and b.ID =", substring($s.OfferingInfo.@OfferingID, 9), " create (a) - [r:take{ID:'",$s.@EnrollmentID, "',Grade:'",$s.Grade,"'}]-> (b)")} </E>
+} </Item>;
+</showtext>
+
+match (a:Student), (b:Offering) where a.ID = 191083779 and b.ID = 1 create (a) - [r:take{ID:'Enrollment002',Grade: 'A-'}]-> (b);
+
+//

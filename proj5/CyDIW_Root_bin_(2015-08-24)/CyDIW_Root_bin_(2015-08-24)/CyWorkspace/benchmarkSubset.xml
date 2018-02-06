@@ -1,0 +1,51 @@
+<Root><loop1 var="$EngineA">
+   <loop2 var="Q1">
+      <avg>48.333333333333336</avg>
+   </loop2>
+   <loop2 var="Q2">
+      <avg>40.666666666666664</avg>
+   </loop2>
+   <loop2 var="Q3">
+      <avg>37.666666666666664</avg>
+   </loop2>
+   <loop2 var="Q4">
+      <avg>35.666666666666664</avg>
+   </loop2>
+   <loop2 var="Q5">
+      <avg>33</avg>
+   </loop2>
+</loop1>
+<loop1 var="$EngineB">
+   <loop2 var="Q1">
+      <avg>71.66666666666667</avg>
+   </loop2>
+   <loop2 var="Q2">
+      <avg>80.33333333333333</avg>
+   </loop2>
+   <loop2 var="Q3">
+      <avg>69.33333333333333</avg>
+   </loop2>
+   <loop2 var="Q4">
+      <avg>58</avg>
+   </loop2>
+   <loop2 var="Q5">
+      <avg>42.333333333333336</avg>
+   </loop2>
+</loop1>
+<loop1 var="$EngineC">
+   <loop2 var="Q1">
+      <avg>5</avg>
+   </loop2>
+   <loop2 var="Q2">
+      <avg>13</avg>
+   </loop2>
+   <loop2 var="Q3">
+      <avg>15</avg>
+   </loop2>
+   <loop2 var="Q4">
+      <avg>6.666666666666667</avg>
+   </loop2>
+   <loop2 var="Q5">
+      <avg>3.6666666666666665</avg>
+   </loop2>
+</loop1></Root>

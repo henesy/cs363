@@ -1,0 +1,22 @@
+Succesfully run:
+
+1 Enruo's edu demos (JDBC demos)  (Yes), sometimes the last demo will throw a null-pointer (?) // Use loadStorage 
+2 CyDIW_TKDE_demo.txt  (Yes)
+3 XMark_Demo.txt   ()
+   Problems:
+   // Query_03
+      Query_07 
+   
+   Working fine:
+      Query-05
+      Query-02
+4 Jinu's demo (read sequence pages) (Yes)
+
+
+Going to Run:
+ NC94_final Demo (Yes, createbtree has some problem, probably loadstorage command does not work properly)
+
+
+More demos in this version: 
+
+$CyDB:>loadstorage   ;

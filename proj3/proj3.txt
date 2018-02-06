@@ -13,52 +13,155 @@ $CyDB:> list commands;
 $Saxon:> 
 <Item1 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 {
-   for $e in doc("U:/cs363/proj3/Student.xml")/Students/Student
-   for $f in doc("U:/cs363/proj3/Instructor.xml")/Instructors/Instructor
+	for $e in doc("UniversityDocs/Student.xml")/Students/Student
+	for $f in doc("UniversityDocs/Instructor.xml")/Instructors/Instructor
 
-   let $s := doc("U:/cs363/proj3/Person.xml")/Persons/Person[ID = $e/StudentID]/Name
-   let $m := doc("U:/cs363/proj3/Person.xml")/Persons/Person[ID = $f/InstructorID]/Name
+	let $s := doc("UniversityDocs/Person.xml")/Persons/Person[ID = $e/StudentID]/Name
+	let $m := doc("UniversityDocs/Person.xml")/Persons/Person[ID = $f/InstructorID]/Name
 
-   where $e/MentorID = $f/InstructorID
-   return
-   <E> { $s, $m } </E>
+	where $e/MentorID = $f/InstructorID
+	return
+	<E> { $s, $m } </E>
 }
 </Item1>; 
 </showtext>
 
-// Item 2;
+
+//Item 2;
+
+<showtext>
+$Saxon:>
+<Item2 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+{
+	for $e in distinct-values(doc("UniversityDocs/Student.xml")/Students/Student/Classification)
+
+	let $g := avg(doc("UniversityDocs/Student.xml")/Students/Student[Classification=$e]/GPA)
+
+	return <E><Classification>{$e}</Classification><GPA>{$g}</GPA></E>
+}
+</Item2>;
+</showtext>
 
 
+//Item 3;
 
-// Item 3;
+<showtext>
+$Saxon:>
+<Item3 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+{
+	for $esid in distinct-values(doc("UniversityDocs/Enrollment.xml")/Enrollments/Enrollment/StudentID)
+
+	let $e := doc("UniversityDocs/Student.xml")/Students/Student[StudentID=$esid]
+	let $f := doc("UniversityDocs/Instructor.xml")/Instructors/Instructor[InstructorID=$e/MentorID]
+	let $ep := doc("UniversityDocs/Person.xml")/Persons/Person[ID = $e/StudentID]
+	let $fp := doc("UniversityDocs/Person.xml")/Persons/Person[ID = $f/InstructorID]
+
+	return <E><Mentor>{$fp/Name}</Mentor><Student>{$ep/Name}</Student></E>
+}
+</Item3>;
+</showtext>
 
 
+//Item 4;
 
-// Item 4;
+<showtext>
+$Saxon:>
+<Item4 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+{
+	for $e in doc("UniversityDocs/Student.xml")/Students/Student
+
+	let $eg := doc("UniversityDocs/Enrollment.xml")/Enrollments/Enrollment[StudentID = $e/StudentID]/Grade
+	let $ep := doc("UniversityDocs/Person.xml")/Persons/Person[ID = $e/StudentID]
+
+	where $eg = "A"
+	return <E>{$ep/Name}</E>
+}
+</Item4>;
+</showtext>
 
 
+//Item 5;
 
-// Item 5;
+<showtext>
+$Saxon:>
+<Item5 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+{
+	for $e in doc("UniversityDocs/Course.xml")/Courses/Course[PreReq = "CS311"]/CourseCode
+
+	return <E>{$e}</E>
+}
+</Item5>;
+</showtext>
 
 
+//Item 6;
 
-// Item 6;
+<showtext>
+$Saxon:>
+<Item6 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+{
+	for $e in distinct-values(doc("UniversityDocs/Student.xml")/Students/Student/Classification)
 
+	let $f := doc("UniversityDocs/Student.xml")/Students/Student[Classification=$e]
 
+	return <E><Classification>{$e}</Classification><Students>{$f}</Students></E>
+}
+</Item6>;
+</showtext>
+
+// NOTE: I renamed UniversityOODB(ODMG) to UniversityOODB in all cases to fix errors I had;
 
 // Item 7;
 
-
+<showtext>
+$OOXQuery:> 
+<Item7 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+{
+	for $e in doc("UniversityDocs/UniversityOODB.xml")//Faculty[Salary>100000]
+	return <E> { $e.Rank, $e.Name } </E>
+}
+</Item7>;
+</showtext> 
 
 // Item 8;
 
-
+<showtext>
+$OOXQuery:> 
+<Item8 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+{
+	for $e in doc("UniversityDocs/UniversityOODB.xml")//Student
+	return <E> { $e.Name, $e.Mentor.Name } </E>
+}
+</Item8>;
+</showtext>
 
 // Item 9;
 
-
+<showtext>
+$OOXQuery:> 
+<Item9>
+{
+	for $e in doc("UniversityDocs/UniversityOODB.xml")//Faculty
+	return <E><Mentor>{$e.Name}</Mentor>
+		<Mentees>
+		{
+			for $f in $e.Mentoring
+			return <Mentee>{$f.Classification, $f/GPA}</Mentee>
+		}
+		</Mentees>
+	</E>
+}
+</Item9>;
+</showtext>
 
 // Item 10;
 
-
-
+<showtext>
+$OOXQuery:> 
+<Item10 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+{
+	for $e in doc("UniversityDocs/UniversityOODB.xml")//Offering
+	return <E> { $e.CourseInfo.CourseName, $e.Section, $e.Instructor.Name, $e.Enrollments } </E>
+}
+</Item10>;
+</showtext>

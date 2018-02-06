@@ -1,0 +1,41 @@
+//Create relationship between Person and Student;
+//Create relationship between Person and Faculty;
+//Create relationship between Faculty and Student;
+//Create relationship between Facult and Offering;
+//Create relationship between Offering and Course;
+//Create relationship between Courses;
+//Create relationship between Student and Offering;
+
+
+<showtext>
+$Ooquery:> 
+<Item xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"> {
+for $s in doc("C:/Users/yingw/Desktop/newFiles/UniversityOODB(ODMG).3.xml")//Student
+return <E> {concat("match ( a:Student), (b:Person) where a.ID = ",substring($s.@StudentID, 2), " and b.ID =", substring($s.@StudentID, 2)," create (a) - [r:s2p]-> (b)")} </E>
+,
+for $f in doc("C:/Users/yingw/Desktop/newFiles/UniversityOODB(ODMG).3.xml")//Faculty
+return <E> {concat("match ( a:Faculty), (b:Person) where a.ID = ",substring($f.@FacultyID, 2), " and b.ID =", substring($f.@FacultyID, 2)," create (a) - [r:f2p]-> (b)")} </E>
+,
+for $d in doc("C:/Users/yingw/Desktop/newFiles/UniversityOODB(ODMG).3.xml")//Student
+return <E> {concat("match ( a:Faculty), (b:Student) where a.ID = ",substring($d.Mentor.@FacultyID, 2), " and b.ID =", substring($d.@StudentID, 2)," create (a) - [r:mentor]-> (b)")} </E>
+,
+for $c in doc("C:/Users/yingw/Desktop/newFiles/UniversityOODB(ODMG).3.xml")//Offering
+return <E> {concat("match ( a:Faculty), (b:Offering) where a.ID = ",substring($c.Instructor.@FacultyID, 2), " and b.ID =", substring($c.@OfferingID, 10)," create (a) - [r:teach]-> (b)")} </E>
+,
+for $o in doc("C:/Users/yingw/Desktop/newFiles/UniversityOODB(ODMG).3.xml")//Offering
+return <E> {concat("match ( a:Offering), (b:Course) where a.ID = ",substring($o.@OfferingID, 10), " and b.ID =", substring($o.CourseInfo.@CourseID, 3)," create (a) - [r:belong]-> (b)")} </E>
+,
+for $s1 in doc("C:/Users/yingw/Desktop/newFiles/UniversityOODB(ODMG).3.xml")//Course
+return <E> {concat("match ( a:Course), (b:Course) where a.ID = ",substring($s1.@CourseID, 3), " and b.ID =", substring(string-join( ($s1.PreReqs.@CourseID), ''),3,3)," create (a) - [r:preReqs]-> (b)")} </E>
+,
+for $s2 in doc("C:/Users/yingw/Desktop/newFiles/UniversityOODB(ODMG).3.xml")//Course
+return <E> {concat("match ( a:Course), (b:Course) where a.ID = ",substring($s2.@CourseID, 3), " and b.ID =", substring(string-join( ($s2.PreReqs.@CourseID), ''),8,3)," create (a) - [r:preReqs]-> (b)")} </E>
+,
+for $e in doc("C:/Users/yingw/Desktop/newFiles/UniversityOODB(ODMG).3.xml")//Enrollment
+return <E> {concat("match ( a:Student), (b:Offering) where a.ID = ",substring($e.StudentInfo.@StudentID, 2), " and b.ID =", substring($e.OfferingInfo.@OfferingID, 10), " create (a) - [r:take{ID:'",$e.@EnrollmentID, "',Grade:'",$e.Grade,"'}]-> (b)")} </E>
+} </Item>;
+</showtext>
+
+
+
+

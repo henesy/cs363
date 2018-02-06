@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<map name="PersonnelOODB">
+  <key name="EmpType">
+    <value>
+      <listitem>@EmpID</listitem>
+      <listitem>@PersonID PersonType @oID</listitem>
+      <listitem>Name PersonType @oID</listitem>
+      <listitem>DOB PersonType @oID</listitem>
+      <listitem>Salary</listitem>
+      <listitem>WorksIn @Ref DeptType</listitem>
+    </value>
+  </key>
+  <key name="PersonType">
+    <value>
+      <listitem>@PersonID</listitem>
+      <listitem>Name</listitem>
+      <listitem>DOB</listitem>
+    </value>
+  </key>
+  <key name="ManagerType">
+    <value>
+      <listitem>@ManagerID</listitem>
+      <listitem>@EmpID EmpType @oID</listitem>
+      <listitem>@PersonID EmpType @oID PersonType @oID</listitem>
+      <listitem>Name EmpType @oID PersonType @oID</listitem>
+      <listitem>DOB EmpType @oID PersonType @oID</listitem>
+      <listitem>Salary EmpType @oID</listitem>
+      <listitem>WorksIn EmpType @oID @Ref DeptType</listitem>
+      <listitem>Budget</listitem>
+    </value>
+  </key>
+  <key name="DeptType">
+    <value>
+      <listitem>@DeptID</listitem>
+      <listitem>DName</listitem>
+      <listitem>ManagedBy @Ref ManagerType</listitem>
+    </value>
+  </key>
+</map>

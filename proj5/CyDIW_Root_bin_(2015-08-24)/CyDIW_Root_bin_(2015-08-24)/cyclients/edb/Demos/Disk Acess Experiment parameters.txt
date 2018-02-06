@@ -1,0 +1,45 @@
+Experiment 1:
+Emp: Tuples:7600 (20 pages)  BytesPerTuple:34B
+Dept: Tuples:7600 (18 pages) BytesPerTuple:30B
+Space Util: 80%
+PageSize: 16KB
+Buffer Allocate: 4 for outer, 1 for inner (BufferManager's buffer: 6), One for bitmap
+Page Access: 20+ 18*ceiling(20/4) = 110 
+
+Experiment result: It is right
+
+
+
+Experiment 2:
+Emp: Tuples:38500 (100 pages)  BytesPerTuple:34B
+Dept: Tuples:4200 ( 10 pages) BytesPerTuple:30B
+Space Util: 80%
+PageSize: 16KB
+Buffer Allocate: 4 for outer, 1 for inner (BufferManager's buffer: 6), One for bitmap
+Page Access: 100+ 10*ceiling(100/4) = 350 
+
+Experiment result: It is right (Takes time 71952905722 ms )
+
+
+Experiment 3:
+Emp: Tuples:2383 (100 pages)  BytesPerTuple:34B
+Dept: Tuples:265 ( 10 pages) BytesPerTuple:30B
+Space Util: 80%
+PageSize: 1KB (Different Page Size)
+Buffer Allocate: 4 for outer, 1 for inner (BufferManager's buffer: 6), One for bitmap
+Page Access: 100+ 10*ceiling(100/4) = 350 
+
+Experiment result: It is right (Takes time 290931863 ms ), It is very quick to get the answer
+
+
+
+
+Experiment 4:
+Emp: Tuples:2383 (100 pages)  BytesPerTuple:34B
+Dept: Tuples:2780 ( 10 pages) BytesPerTuple:30B
+Space Util: 80%
+PageSize: 1KB (Different Page Size)
+Buffer Allocate: 4 for outer, 1 for inner (BufferManager's buffer: 6), One for bitmap
+Page Access: 100+ 100*ceiling(100/4) = 2600 
+
+Experiment result: It is right (Takes time 2720524394 ms ), It is very quick to get the answer

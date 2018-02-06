@@ -1,0 +1,225 @@
+// ========================= ; 
+// Section A. What a user needs to know;  
+// ========================= ; 
+/* 
+An OOXML document and its schema files should be in place. In this demo 
+they are 
+PesonnelOODB.xml and PersonnelOODB.xsd. The examples shows the use of dotted 
+expressions for inheritance and references. 
+
+Query: 
+Give data of birth of managers of employees earning more than 70,000. 
+*/
+
+<showtext>
+$OOXQuery:> 
+<Item xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"> {
+   for $e in doc("ComS363/Demos/Datasets/PersonnelOODB.xml")//Emp
+   where $e.Salary > 70000
+   return <MDOB> { $e.WorksIn.ManagedBy.Name, $e.WorksIn.ManagedBy.DOB } </MDOB>
+} </Item>;
+</showtext> 
+
+// Note in this query $e.Salary has been used, $e/Salary would also work; 
+
+
+// ======================================= ; 
+// Section B. Internal details of OOXQuery ; 
+// ======================================= ; 
+
+/* In order to support dotted expressions, a transition table is created 
+only on the basis 
+of the schema (PersonnelOODB.xsd in this case) where the instance (PersonnelOODB.xml 
+in this case) plays no role. The transition 
+table specifies how on application of dotted steps 
+transitions are 
+made from one object type to another. The translation table is also an 
+an XML document, PersonnelOODB.DotToId.xml in this case. In current implementation 
+it is stored in the same directory as the schema file (PersonnelOODB.xsd). 
+
+>>> Questions for us: are scheme, instance, and table stored in the same folder? 
+Is the name  PersonnelOODB.DotToId.xml derived from PersonnelOODB.xml?
+
+A dotted OOXQuery query is translated to a legal XQuery query that uses 
+the the id(.) 
+function but no dots. 
+
+CyDIW allows some internal details to be seen with great ease. For example, 
+
+(a) One can see commands that support implementation of OOXML and OOXQuery. 
+
+(b) The translation table can be created explicitly and viewed. In case this 
+is not done the table is automatically created internally when first needed. 
+
+(c) A dotted OOXQuery can be submitted to "$OOXQuery:>" for direct execution. 
+
+(d) Alternatively, a dotted query can be stored in a variable, its 
+translation can be 
+viewed and stored in a variable, and submitted for execution by and XQuery engine 
+("$Saxon:>" in our case).  
+
+(e) CyDIW allows benchmarking for speed of execution with considerable ease 
+(to the extent that it cannot, provably, be any easier). For example one can 
+(i) write pairs of ordinary XQuery queries under ordinary XML and OOXQuery queries 
+under OOXML. 
+
+(ii) compare them for speed of execution using Project R, and store resulting graph 
+in a pdf document,  
+
+(iii) and display it. 
+
+The whole experiment 
+can be realized as a batch of commands in CyDIW) that can 
+be repeated by anyone, 
+anytime, and any where with a single click of [Run All] button.   
+
+Below, we exhibit some of the (a) - (e) features mentioned above. 
+*/
+
+// (a) List OOXML and OOXQuery commands; 
+// ---------------------------------------------; 
+$OOXQuery:> list commands;
+
+/* >>> To do: In the list of commands, "Ooquery" needs to be changed to "OOXQuery" */ 
+
+// (b) Create dot to id(.) map and display it; 
+// ------------------------------------------;
+$OOXQuery:> createDotToIDMap ComS363/Demos/Datasets/PersonnelOODB.xsd;
+ 
+$CyDB:> DisplayXML ComS363/Demos/Datasets/PersonnelOODB.DotToId.xml; 
+
+/* >> ToDO: (i) Is the above command producing the table in desired format. 
+(ii) The command prefix should be changed to $OOXML:> and this client subsystem 
+should be separated from $OOXQuery:>. */
+
+/* (c) and (d): Four ways of executing in CyDIW  
+---------------------------------------------------
+(i) direct execution of a query with $OOXQuery:> 
+(ii) storing the query in a variable then executing with $OOXQuery:> 
+(iii) storing the query in a variable, translatiing it into an XQuery query through a variable 
+and execution it with $XQuery:> 
+(iv) same as (iii) but executing the translated query with $OOXQuery:> 
+*/ 
+
+// (i) Direct execution with $OOXQuery:>. This example is same as that in Section A; 
+// ------------------------------------------------------------------------------------;
+
+<showtext>
+$OOXQuery:> 
+<Item xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"> {
+   for $e in doc("ComS363/Demos/Datasets/PersonnelOODB.xml")//Emp
+   where $e.Salary > 70000
+   return <MDOB> { $e.WorksIn.ManagedBy.Name, $e.WorksIn.ManagedBy.DOB } </MDOB>
+} </Item>;
+</showtext> 
+
+// (ii) storing the query in a variable then executing with $OOXQuery:> ; 
+// ----------------------------------------------------------------------- ; 
+// Create variables. But for repetability, first remove them just in case they have already been created; 
+$CyDB:> undeclare string $$Query1;
+$CyDB:> undeclare string $$Query1Translation;
+$CyDB:> declare string $$Query1;
+$CyDB:> declare string $$Query1Translation;
+ 
+
+// See active variables; 
+$CyDB:> list variables;
+
+$CyDB:> set $$Query1 :=
+<Item xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"> {
+   for $e in doc("ComS363/Demos/Datasets/PersonnelOODB.xml")//Emp
+   where $e.Salary > 70000
+   return <MDOB> { $e.WorksIn.ManagedBy.Name, $e.WorksIn.ManagedBy.DOB } </MDOB>
+} </Item>;
+
+
+// See active variables; 
+$CyDB:> list variables;
+
+// Execute the query in variable Query1 directly by OOXQuery engine;
+<showtext>
+$OOXQuery:> $$Query1;
+</showtext>
+ 
+// (iii) Use variables for query and its translation then execute the latter with $XQuery:> ; 
+// ---------------------------------------------------------------------------------------- ; 
+$OOXQuery:> translate $$Query1 $$Query1Translation;
+ 
+
+$CyDB:> list variables;
+ 
+
+/* >>> ToDo: The translation does not seem to work correctly */ 
+
+<showtext>
+$Saxon:> $$Query1Translation;
+</showtext>
+
+/* >>> ToDo: Corrct result is not returned */ 
+
+// (iv) Same as (iii) but execute with $OOXQuery:> ; 
+// -------------------------------------------------- ; 
+<showtext>
+$OOXQuery:> $$Query1Translation;
+</showtext>
+
+
+// ========================= ; 
+// Section C. More examples ;  
+// ========================= ; 
+<showtext>
+$Saxon:> 
+for $e in doc("ComS363/Demos/Datasets/PersonnelOODB.xml")//Emp
+where $e/@EmpID = 'Emp005'
+return
+<Q10_Output>{
+$e/id($e/WorksIn/@oID)/DName
+}</Q10_Output>
+;
+</showtext>
+
+/* >>> ToDo: above does not seem to work correctly. */
+
+<showtext>
+$OOXQuery:> 
+<root xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"> {
+for $e in doc("ComS363/Demos/Datasets/PersonnelOODB.xml")//Emp
+where $e.@EmpID = 'Emp005'
+return
+<Q10_Output>{
+$e.WorksIn.DName
+}</Q10_Output>
+}</root>;
+</showtext>
+ 
+
+<showtext>
+$Saxon:> 
+for $e in doc("ComS363/Demos/Datasets/PersonnelOODB.xml")//Emp
+let $m := $e/id($e/id($e/WorksIn/@oID)/ManagedBy/@oID)
+where $e/@EmpID = 'Emp005'
+return
+<Q10_Output>{
+for $y in $m
+      return $y/Budget
+}</Q10_Output>
+;
+</showtext>
+
+/* >>> ToDo: above does not seem to work correctly. */
+
+<showtext>
+$OOXQuery:> 
+for $e in doc("ComS363/Demos/Datasets/PersonnelOODB.xml")//Emp
+let $m := $e.WorksIn.ManagedBy
+where $e.@EmpID = 'Emp005'
+return
+<Q10_Output>{
+for $y in $m
+      return $y.Budget
+/text()
+}</Q10_Output>
+;
+</showtext>
+
+

@@ -1,0 +1,38 @@
+// Compile and run a java program from CyDIW; 
+
+/* <<< INSTRUCTIONS TO USERS 
+>>>
+
+Windows users: Carefully edit the TWO occurences of "C:\Program Files (x86)\Java\jdk1.8.0_31" 
+in the following batch to reflect the correct location of Java JDK on your computer.  
+
+Non-Windows users: In "$CyDB:> set $$osType := Windows;" command, change Windows to Linux or Mac (no quotations) 
+*/ 
+
+$CyDB:> undeclare string $$osType; 
+$CyDB:> declare string $$osType; 
+$CyDB:> set $$osType := Windows;
+$CyDB:> list variables;
+
+// Compile and run your Java program ; 
+
+$CyDB:> if ($$osType=="Windows") {
+
+  $OS:>set PATH=C:\Program Files (x86)\Java\jdk1.8.0_31\bin<;>
+            && set CLASSPATH=C:\Program Files (x86)\Java\jdk1.8.0_31\lib<;>
+            && javac -d ComS363\Demos\A_Java_Demo ComS363\Demos\A_Java_Demo\Java_Demo.java;
+
+  // Run a JDBC demo, note how jar file for my-sql driver is included ;
+
+  $OS:> java -cp ComS363\Demos\A_Java_Demo
+            Java_Demo > ComS363\Projects\P0\Java_Demo_Output.txt;
+
+  // Print the computed and expected outputs and make sure they are comparable;
+} else {
+  $OS:> javac -d ComS363/Demos/A_Java_Demo ComS363/Demos/A_Java_Demo/Java_Demo.java;
+  $OS:> java -cp ComS363/Demos/A_Java_Demo Java_Demo > ComS363/Demos/A_Java_Demo/Java_Demo_Output.txt;
+}
+
+// Print the computed and expected outputs and make sure they compare; 
+$CyDB:> displaytxt ComS363\Demos\A_Java_Demo\Java_Demo_Output_(Sample).txt; 
+$CyDB:> displaytxt ComS363\Projects\P0\Java_Demo_Output.txt; 

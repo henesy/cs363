@@ -1,0 +1,3 @@
+MATCH (sperson)<-[:S2P]-(student2)-[:Taking]->(enrollment)<-[:Taking]-(student:Student)<-[:Mentors]-(mentor)-[:F2P]->(fperson)
+RETURN sperson.Name, fperson.Name
+

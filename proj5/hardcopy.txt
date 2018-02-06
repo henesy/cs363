@@ -1,0 +1,35 @@
+
+B-tree:
+page size = 1024
+number records = 1000000
+record size = 100
+pointer size = 4
+key size = 4
+
+q = ceil(1024 /(100 + 4)) = 10
+p = floor((1024 - 4)/(4 + 4)) = 127
+
+h-0 = 100000
+h-1 = 782
+h-2 = 7
+h-3 = 1
+height = 4
+number nodes = 100790
+
+Project:
+page size = 484
+number records = 10000
+record size = 35
+pointer size = 4
+key size = 4
+
+q = ceil(484/(35 + 4)) = 13
+p = floor((484 - 4)/(4 + 4)) = 60
+
+h-0 = 770
+h-1 = 13
+h-2 = 1
+
+height = 3
+number nodes = 784
+

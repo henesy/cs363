@@ -1,0 +1,25 @@
+#Query7
+MATCH (n:Faculty)-[:f2p]->(p:Person) where n.Salary>=100000 RETURN p.Name as Instructor,n.Rank as Rank;
+
+#Query8
+MATCH (s:Student)-[:s2p]->(p1:Person)
+MATCH (f:Faculty)-[:f2p]->(p2:Person)
+where s<-[:mentor]-f
+return p1.Name as StudentName,p2.Name as MentorName;
+
+#Query9
+MATCH (f:Faculty)-[r:mentor]->(s:Student)
+MATCH (f:Faculty)-[:f2p]->(p:Person)
+RETURN p.Name as FacultyName, s.Classification as Classification,s.GPA as GPA;
+
+#Query10
+MATCH (o:Offering)<-[r1:teach]->(f:Faculty)
+MATCH (p:Person)<-[r2:f2p]->(f:Faculty)
+MATCH (o:Offering)<-[r3:belong]->(c:Course)
+MATCH (o:Offering)<-[r4:take]->(s:Student)
+return c.CourseName as CourseName, o.Section as Section, p.Name as Instructor, s.ID as Enrollment;
+
+test query
+MATCH (a:Course)-[:preReqs]->(b:Course) where a.CourseCode="CS227" RETURN a.preReqs as PreReq;
+
+should return null

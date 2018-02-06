@@ -1,0 +1,41 @@
+$CyDB:>createStorage  QuickStorageConfig.xml;
+$CyDB:>loadStorage QuickStorageConfig.xml;
+
+// View metadata for records; 
+$CyDB:> DisplayXML .\cyutils\btree\workspace\MyTupleConfig.xml ;
+
+// Create variables to hold the names of metadata, data file, and BTrees; 
+$CyDB:> declare string $$MyTupleConfig := .\cyutils\btree\workspace\MyTupleConfig.xml;
+$CyDB:> declare string $$MyDataFile := .\cyutils\btree\workspace\MyDataFile.txt;
+
+$CyDB:> declare string $$MyBTreeConfigBulk256 := .\cyutils\btree\workspace\MyBTreeConfigBulk256.xml;
+$CyDB:> declare string $$MyBTreeConfigBulk1024 := .\cyutils\btree\workspace\MyBTreeConfigBulk1024.xml;
+$CyDB:> declare string $$MyBTreeConfigBulk512 := .\cyutils\btree\workspace\MyBTreeConfigBulk512.xml;
+
+// See all variables; 
+$CyDB:> list variables; 
+
+// Preapare the dataset, store it in a text file, and view it; 
+// $Cyutils:> BTreePrepareSortedData $$MyTupleConfig $$MyDataFile; 
+$CyDB:> 
+DisplayTXT .\cyutils\btree\workspace\MyDataFile.txt; 
+
+$CyDB:> getPageAllocatedCount; 
+$CyUtils:> BTreeCreateEmpty $$MyBTreeConfigBulk256 $$MyTupleConfig;
+$CyUtils:> BTreeBulkLoad $$MyBTreeConfigBulk256 $$MyTupleConfig $$MyDataFile;
+$CyDB:> getPageAllocatedCount; 
+$CyDB:> DisplayXML .\cyutils\btree\workspace\MyBTreeConfigBulk256.xml;
+
+$CyDB:> getPageAllocatedCount; 
+$CyUtils:> BTreeCreateEmpty $$MyBTreeConfigBulk1024 $$MyTupleConfig;
+$CyUtils:> BTreeBulkLoad $$MyBTreeConfigBulk1024 $$MyTupleConfig $$MyDataFile; 
+$CyDB:> getPageAllocatedCount; 
+$CyDB:> DisplayXML .\cyutils\btree\workspace\MyBTreeConfigBulk1024.xml;
+ 
+
+$CyDB:> getPageAllocatedCount; 
+$CyUtils:> BTreeCreateEmpty $$MyBTreeConfigBulk512 $$MyTupleConfig;
+$CyUtils:> BTreeBulkLoad $$MyBTreeConfigBulk512 $$MyTupleConfig $$MyDataFile; 
+$CyDB:> getPageAllocatedCount; 
+$CyDB:> DisplayXML .\cyutils\btree\workspace\MyBTreeConfigBulk512.xml;
+

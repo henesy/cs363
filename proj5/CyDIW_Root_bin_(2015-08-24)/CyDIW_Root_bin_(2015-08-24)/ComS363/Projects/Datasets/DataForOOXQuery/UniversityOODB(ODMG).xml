@@ -1,0 +1,3221 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<University xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="UniversityOODB(ODMG).xsd">
+	<Person PersonID="p115423723">
+		<Name>Wee Fletcher</Name>
+		<Address>1234 Hayward Avenue</Address>
+		<DOB>1974-09-23</DOB>
+	</Person>
+	<Person PersonID="p118784412">
+		<Name>Jinchao Henson</Name>
+		<Address>236 Westland Street</Address>
+		<DOB>1976-07-24</DOB>
+	</Person>
+	<Person PersonID="p120308944">
+		<Name>Gene Lehmer</Name>
+		<Address>746 Creekside</Address>
+		<DOB>1974-12-06</DOB>
+	</Person>
+	<Person PersonID="p124208644">
+		<Name>John Basaraba</Name>
+		<Address>678 Westside Apartments</Address>
+		<DOB>1974-06-07</DOB>
+	</Person>
+	<Person PersonID="p126544126">
+		<Name>Jason Wang</Name>
+		<Address>876 Westburrow</Address>
+		<DOB>1977-09-15</DOB>
+	</Person>
+	<Person PersonID="p131838016">
+		<Name>Daniel Woo</Name>
+		<Address>890 3rd Street</Address>
+		<DOB>1976-03-12</DOB>
+	</Person>
+	<Person PersonID="p143293833">
+		<Name>Jamie Yang</Name>
+		<Address>365 Ash Avenue</Address>
+		<DOB>1972-02-08</DOB>
+	</Person>
+	<Person PersonID="p163728111">
+		<Name>Todd Lu</Name>
+		<Address>89 Williamstown</Address>
+		<DOB>1977-12-12</DOB>
+	</Person>
+	<Person PersonID="p164500920">
+		<Name>Omar Shahnawaz</Name>
+		<Address>8234 9th Street</Address>
+		<DOB>1975-08-28</DOB>
+	</Person>
+	<Person PersonID="p164776911">
+		<Name>Jason Huang</Name>
+		<Address>8900 Wilhelm Drive</Address>
+		<DOB>1976-09-30</DOB>
+	</Person>
+	<Person PersonID="p170815037">
+		<Name>Yeow Huang</Name>
+		<Address>3456 Osborn Drive</Address>
+		<DOB>1975-11-23</DOB>
+	</Person>
+	<Person PersonID="p185141262">
+		<Name>William Stumpf</Name>
+		<Address>6389 Stange Avenue</Address>
+		<DOB>1973-05-23</DOB>
+	</Person>
+	<Person PersonID="p191083779">
+		<Name>Sameer Shah</Name>
+		<Address>30 West Street</Address>
+		<DOB>1978-09-15</DOB>
+	</Person>
+	<Person PersonID="p201586985">
+		<Name>Min Tuyet</Name>
+		<Address>378 Northridge</Address>
+		<DOB>1976-12-03</DOB>
+	</Person>
+	<Person PersonID="p203745018">
+		<Name>Brian Stumpf</Name>
+		<Address>6780 Leword Avenue</Address>
+		<DOB>1976-09-01</DOB>
+	</Person>
+	<Person PersonID="p212976207">
+		<Name>Jason Newman</Name>
+		<Address>786 Johnson Avenue</Address>
+		<DOB>1974-09-28</DOB>
+	</Person>
+	<Person PersonID="p221157745">
+		<Name>Adam Lee</Name>
+		<Address>234 Lincoln Way</Address>
+		<DOB>1976-01-09</DOB>
+	</Person>
+	<Person PersonID="p222105935">
+		<Name>Wee Wang</Name>
+		<Address>368 Kennedy Blvd</Address>
+		<DOB>1978-01-12</DOB>
+	</Person>
+	<Person PersonID="p224620876">
+		<Name>Feng Huang</Name>
+		<Address>824 South Blvd</Address>
+		<DOB>1975-01-23</DOB>
+	</Person>
+	<Person PersonID="p232820149">
+		<Name>Lin Zhou</Name>
+		<Address>678 Prince Blvd</Address>
+		<DOB>1976-11-30</DOB>
+	</Person>
+	<Person PersonID="p252533260">
+		<Name>Eric Wang</Name>
+		<Address>3478 South 18th Street</Address>
+		<DOB>1975-04-14</DOB>
+	</Person>
+	<Person PersonID="p259028125">
+		<Name>Aaron Newman</Name>
+		<Address>456 Stanton Drive</Address>
+		<DOB>1976-03-14</DOB>
+	</Person>
+	<Person PersonID="p260369148">
+		<Name>Yanqiu Huang</Name>
+		<Address>780 Westpark</Address>
+		<DOB>1973-11-19</DOB>
+	</Person>
+	<Person PersonID="p261812056">
+		<Name>Jason Carney</Name>
+		<Address>864 9th Street</Address>
+		<DOB>1974-09-30</DOB>
+	</Person>
+	<Person PersonID="p262891588">
+		<Name>Randy Hellman</Name>
+		<Address>7832 Knapp Street</Address>
+		<DOB>1973-09-13</DOB>
+	</Person>
+	<Person PersonID="p271978135">
+		<Name>Wen White</Name>
+		<Address>834 West Street</Address>
+		<DOB>1976-04-11</DOB>
+	</Person>
+	<Person PersonID="p273277984">
+		<Name>Lee Andrews</Name>
+		<Address>786 Burlington</Address>
+		<DOB>1976-05-13</DOB>
+	</Person>
+	<Person PersonID="p279702622">
+		<Name>Zhen Messer</Name>
+		<Address>246 Creekside</Address>
+		<DOB>1974-03-13</DOB>
+	</Person>
+	<Person PersonID="p285719425">
+		<Name>Chee Yang</Name>
+		<Address>9602 Manhattan</Address>
+		<DOB>1977-03-04</DOB>
+	</Person>
+	<Person PersonID="p290986112">
+		<Name>Golam Bagga</Name>
+		<Address>468 Northridge</Address>
+		<DOB>1973-12-03</DOB>
+	</Person>
+	<Person PersonID="p296669559">
+		<Name>Wee Tuyet</Name>
+		<Address>2300 Westside Park</Address>
+		<DOB>1976-06-01</DOB>
+	</Person>
+	<Person PersonID="p302335678">
+		<Name>Eric Dennis</Name>
+		<Address>2345 Sterling Apartments</Address>
+		<DOB>1975-11-12</DOB>
+	</Person>
+	<Person PersonID="p308635036">
+		<Name>Scot Lee</Name>
+		<Address>3800 Bloomington</Address>
+		<DOB>1976-02-14</DOB>
+	</Person>
+	<Person PersonID="p315967897">
+		<Name>Jialiang Jiang</Name>
+		<Address>4563 South Street</Address>
+		<DOB>1974-03-16</DOB>
+	</Person>
+	<Person PersonID="p328718420">
+		<Name>Colleen Parcher</Name>
+		<Address>9046 Burlington</Address>
+		<DOB>1977-04-05</DOB>
+	</Person>
+	<Person PersonID="p330260152">
+		<Name>Ling Tesar</Name>
+		<Address>4678 West Street</Address>
+		<DOB>1978-05-06</DOB>
+	</Person>
+	<Person PersonID="p332012037">
+		<Name>Randy Lewis</Name>
+		<Address>34 Wilhelm Drive</Address>
+		<DOB>1972-06-07</DOB>
+	</Person>
+	<Person PersonID="p340502961">
+		<Name>Josh Woo</Name>
+		<Address>1002 Creekside</Address>
+		<DOB>1973-07-08</DOB>
+	</Person>
+	<Person PersonID="p363200537">
+		<Name>Wee Whitteney</Name>
+		<Address>1004 Northridge</Address>
+		<DOB>1974-08-09</DOB>
+	</Person>
+	<Person PersonID="p365774792">
+		<Name>William Yang</Name>
+		<Address>1800 13th Street</Address>
+		<DOB>1975-09-10</DOB>
+	</Person>
+	<Person PersonID="p382109560">
+		<Name>Dennis Fletcher</Name>
+		<Address>225 North Hyland</Address>
+		<DOB>1976-10-11</DOB>
+	</Person>
+	<Person PersonID="p386167477">
+		<Name>Seth Carney</Name>
+		<Address>346 Ash Drive</Address>
+		<DOB>1977-11-12</DOB>
+	</Person>
+	<Person PersonID="p387215322">
+		<Name>Colleen Good</Name>
+		<Address>356 Chamberlain Street</Address>
+		<DOB>1978-12-13</DOB>
+	</Person>
+	<Person PersonID="p391910519">
+		<Name>Ming Jiang</Name>
+		<Address>24 Main Street</Address>
+		<DOB>1972-01-14</DOB>
+	</Person>
+	<Person PersonID="p406746417">
+		<Name>Ryan Schmidt</Name>
+		<Address>240 East Lincoln Way</Address>
+		<DOB>1973-02-15</DOB>
+	</Person>
+	<Person PersonID="p409508678">
+		<Name>Golam Mohammad</Name>
+		<Address>2040 6th Street</Address>
+		<DOB>1974-03-16</DOB>
+	</Person>
+	<Person PersonID="p419180204">
+		<Name>Kerry Marks</Name>
+		<Address>2400 West Street</Address>
+		<DOB>1975-04-17</DOB>
+	</Person>
+	<Person PersonID="p432180765">
+		<Name>Eric Loader</Name>
+		<Address>268 Burlington</Address>
+		<DOB>1976-05-18</DOB>
+	</Person>
+	<Person PersonID="p449976666">
+		<Name>Jun Wang</Name>
+		<Address>1006 Lebert Hall</Address>
+		<DOB>1956-09-15</DOB>
+	</Person>
+	<Person PersonID="p463249547">
+		<Name>Chad Moore</Name>
+		<Address>245 Stange Avenue</Address>
+		<DOB>1977-06-19</DOB>
+	</Person>
+	<Person PersonID="p466094162">
+		<Name>Stumpf Andrews</Name>
+		<Address>3400 28th Street</Address>
+		<DOB>1978-07-20</DOB>
+	</Person>
+	<Person PersonID="p466388906">
+		<Name>Darren Lehmann</Name>
+		<Address>348 Duff Avenue</Address>
+		<DOB>1972-08-21</DOB>
+	</Person>
+	<Person PersonID="p467545237">
+		<Name>Damien Martyn</Name>
+		<Address>240 Pammel Drive</Address>
+		<DOB>1973-09-22</DOB>
+	</Person>
+	<Person PersonID="p477453864">
+		<Name>Brett Lee</Name>
+		<Address>340 Pammel Drive</Address>
+		<DOB>1974-10-23</DOB>
+	</Person>
+	<Person PersonID="p483223789">
+		<Name>Jan Harvey</Name>
+		<Address>2430 South Dakota</Address>
+		<DOB>1975-11-24</DOB>
+	</Person>
+	<Person PersonID="p483727101">
+		<Name>Jim Slater</Name>
+		<Address>2300 Franklin Avenue</Address>
+		<DOB>1976-12-25</DOB>
+	</Person>
+	<Person PersonID="p485619193">
+		<Name>Daniel Hayden</Name>
+		<Address>235 North Hyland</Address>
+		<DOB>1977-01-26</DOB>
+	</Person>
+	<Person PersonID="p490649143">
+		<Name>Naseer Hussain</Name>
+		<Address>263 North Hyland</Address>
+		<DOB>1978-02-27</DOB>
+	</Person>
+	<Person PersonID="p495490053">
+		<Name>Michael Vaughan</Name>
+		<Address>153 North Hyland</Address>
+		<DOB>1972-03-28</DOB>
+	</Person>
+	<Person PersonID="p500094214">
+		<Name>Bradley Hoggs</Name>
+		<Address>246 Franklin Avenue</Address>
+		<DOB>1972-04-29</DOB>
+	</Person>
+	<Person PersonID="p501674545">
+		<Name>Dennis Patten</Name>
+		<Address>240 Knapp Street</Address>
+		<DOB>1973-05-30</DOB>
+	</Person>
+	<Person PersonID="p504013895">
+		<Name>Philip Simmons</Name>
+		<Address>1008 Cooper Hall</Address>
+		<DOB>1960-11-12</DOB>
+	</Person>
+	<Person PersonID="p513110141">
+		<Name>Augustin Logie</Name>
+		<Address>230 Sheldon Avenue</Address>
+		<DOB>1974-06-01</DOB>
+	</Person>
+	<Person PersonID="p513729696">
+		<Name>Barry Pollock</Name>
+		<Address>246 Osborn Drive</Address>
+		<DOB>1975-07-02</DOB>
+	</Person>
+	<Person PersonID="p547083692">
+		<Name>Neil Foster</Name>
+		<Address>243 Union Drive</Address>
+		<DOB>1976-08-03</DOB>
+	</Person>
+	<Person PersonID="p550658107">
+		<Name>Neil Radford</Name>
+		<Address>245 University Village</Address>
+		<DOB>1977-09-04</DOB>
+	</Person>
+	<Person PersonID="p555010131">
+		<Name>Graeme Dilly</Name>
+		<Address>564 Schiletter</Address>
+		<DOB>1978-10-05</DOB>
+	</Person>
+	<Person PersonID="p587735656">
+		<Name>Wilf slack</Name>
+		<Address>560 Ash Avenue</Address>
+		<DOB>1972-11-06</DOB>
+	</Person>
+	<Person PersonID="p590987789">
+		<Name>Alex Tudor</Name>
+		<Address>44 Stanton Drive</Address>
+		<DOB>1973-12-07</DOB>
+	</Person>
+	<Person PersonID="p601496044">
+		<Name>Craig White</Name>
+		<Address>340 Duff Avenue</Address>
+		<DOB>1974-01-08</DOB>
+	</Person>
+	<Person PersonID="p616740646">
+		<Name>Derek Crooks</Name>
+		<Address>1200 28th Street</Address>
+		<DOB>1975-02-09</DOB>
+	</Person>
+	<Person PersonID="p644488789">
+		<Name>Dave Whatmore</Name>
+		<Address>1034 West Street</Address>
+		<DOB>1977-04-11</DOB>
+	</Person>
+	<Person PersonID="p658579865">
+		<Name>Jeremy Koney</Name>
+		<Address>2410 Chamberlain</Address>
+		<DOB>1978-05-12</DOB>
+	</Person>
+	<Person PersonID="p664353912">
+		<Name>Merv Hughes</Name>
+		<Address>2400 Sheldon Avenue</Address>
+		<DOB>1972-06-13</DOB>
+	</Person>
+	<Person PersonID="p685744439">
+		<Name>John Bracewell</Name>
+		<Address>1005 Lebert Hall</Address>
+		<DOB>1962-09-24</DOB>
+	</Person>
+	<Person PersonID="p696302689">
+		<Name>Martin Crowe</Name>
+		<Address>1240 Stanton Drive</Address>
+		<DOB>1973-07-14</DOB>
+	</Person>
+	<Person PersonID="p696335701">
+		<Name>Gavin Larson</Name>
+		<Address>1200 6th Street</Address>
+		<DOB>1974-08-15</DOB>
+	</Person>
+	<Person PersonID="p712524758">
+		<Name>Chris Harris</Name>
+		<Address>2300 Chamberlain</Address>
+		<DOB>1975-09-16</DOB>
+	</Person>
+	<Person PersonID="p712952591">
+		<Name>Chris Cairns</Name>
+		<Address>210 North Hyland</Address>
+		<DOB>1976-10-17</DOB>
+	</Person>
+	<Person PersonID="p722131306">
+		<Name>Glen Turner</Name>
+		<Address>2390 Ash Avenue</Address>
+		<DOB>1977-11-18</DOB>
+	</Person>
+	<Person PersonID="p737972250">
+		<Name>Deepak Patel</Name>
+		<Address>123 Bluebird Avenue</Address>
+		<DOB>1978-12-19</DOB>
+	</Person>
+	<Person PersonID="p743991555">
+		<Name>Aldin Baptist</Name>
+		<Address>2345 Knapp</Address>
+		<DOB>1972-01-20</DOB>
+	</Person>
+	<Person PersonID="p750913239">
+		<Name>John Poweel</Name>
+		<Address>234 13th Street</Address>
+		<DOB>1973-02-21</DOB>
+	</Person>
+	<Person PersonID="p774885901">
+		<Name>Barbara Potters</Name>
+		<Address>2786 6th Street</Address>
+		<DOB>1974-03-22</DOB>
+	</Person>
+	<Person PersonID="p785103478">
+		<Name>Jennifer Lowe</Name>
+		<Address>199 North Hyland</Address>
+		<DOB>1975-04-23</DOB>
+	</Person>
+	<Person PersonID="p785273479">
+		<Name>Juan Rodriguez</Name>
+		<Address>25 Thomson Blvd</Address>
+		<DOB>1976-05-24</DOB>
+	</Person>
+	<Person PersonID="p785811329">
+		<Name>Marcus Trescothick</Name>
+		<Address>34 Rampart Row</Address>
+		<DOB>1977-06-25</DOB>
+	</Person>
+	<Person PersonID="p787422802">
+		<Name>Vikram Solanki</Name>
+		<Address>678 Queens Blvd</Address>
+		<DOB>1978-07-26</DOB>
+	</Person>
+	<Person PersonID="p793034333">
+		<Name>Ronnie Irani</Name>
+		<Address>789 Gutherie Avenue</Address>
+		<DOB>1972-08-27</DOB>
+	</Person>
+	<Person PersonID="p801166066">
+		<Name>Alan Sherear</Name>
+		<Address>890 Richard Street</Address>
+		<DOB>1973-09-28</DOB>
+	</Person>
+	<Person PersonID="p803024290">
+		<Name>Rud Gullit</Name>
+		<Address>2345 West Street</Address>
+		<DOB>1974-10-29</DOB>
+	</Person>
+	<Person PersonID="p812073765">
+		<Name>Martin Vasquez</Name>
+		<Address>2678 Rand Street</Address>
+		<DOB>1975-11-30</DOB>
+	</Person>
+	<Person PersonID="p831142613">
+		<Name>John Freeman</Name>
+		<Address>2456 Stanton Street</Address>
+		<DOB>1976-12-31</DOB>
+	</Person>
+	<Person PersonID="p836826630">
+		<Name>Philip Richards</Name>
+		<Address>6754 Bluebird Avenue</Address>
+		<DOB>1977-01-01</DOB>
+	</Person>
+	<Person PersonID="p839437833">
+		<Name>Phil Edmonds</Name>
+		<Address>2312 Peder Street</Address>
+		<DOB>1978-02-02</DOB>
+	</Person>
+	<Person PersonID="p845037919">
+		<Name>John Emburey</Name>
+		<Address>3452 Warden Road</Address>
+		<DOB>1972-03-03</DOB>
+	</Person>
+	<Person PersonID="p850631208">
+		<Name>Robin Smith</Name>
+		<Address>4562 Carmichael Road</Address>
+		<DOB>1973-04-04</DOB>
+	</Person>
+	<Person PersonID="p862952924">
+		<Name>Gavin Robertson</Name>
+		<Address>7654 Hill Road</Address>
+		<DOB>1974-05-05</DOB>
+	</Person>
+	<Person PersonID="p867910658">
+		<Name>Justin Langer</Name>
+		<Address>5678 Mcnally Street</Address>
+		<DOB>1975-06-06</DOB>
+	</Person>
+	<Person PersonID="p876550324">
+		<Name>Greg Blewett</Name>
+		<Address>234 Dayton</Address>
+		<DOB>1976-07-07</DOB>
+	</Person>
+	<Person PersonID="p885469446">
+		<Name>John Matthews</Name>
+		<Address>578 3rd Street</Address>
+		<DOB>1977-08-08</DOB>
+	</Person>
+	<Person PersonID="p895255243">
+		<Name>Ray Bright</Name>
+		<Address>1001 Cooper Hall</Address>
+		<DOB>1955-12-11</DOB>
+	</Person>
+	<Person PersonID="p901511548">
+		<Name>Evan Chatfield</Name>
+		<Address>1002 Cooper Hall</Address>
+		<DOB>1963-03-04</DOB>
+	</Person>
+	<Person PersonID="p905922853">
+		<Name>Shaun Elliot</Name>
+		<Address>456 Carver Street</Address>
+		<DOB>1978-09-09</DOB>
+	</Person>
+	<Person PersonID="p907425648">
+		<Name>Perminder Singh</Name>
+		<Address>1003 Cooper Hall</Address>
+		<DOB>1952-11-28</DOB>
+	</Person>
+	<Person PersonID="p909334701">
+		<Name>Jacques Kallis</Name>
+		<Address>1004 Cooper Hall</Address>
+		<DOB>1964-02-27</DOB>
+	</Person>
+	<Person PersonID="p916916939">
+		<Name>Alan Donald</Name>
+		<Address>2410 Knapp Street</Address>
+		<DOB>1972-10-10</DOB>
+	</Person>
+	<Person PersonID="p924248824">
+		<Name>Geoff Marsh</Name>
+		<Address>2345 Wembley</Address>
+		<DOB>1973-11-11</DOB>
+	</Person>
+	<Person PersonID="p930231660">
+		<Name>David Boon</Name>
+		<Address>1005 Cooper Hall</Address>
+		<DOB>1965-07-04</DOB>
+	</Person>
+	<Person PersonID="p952145559">
+		<Name>Dean Jones</Name>
+		<Address>1006 Cooper Hall</Address>
+		<DOB>1962-01-02</DOB>
+	</Person>
+	<Person PersonID="p956234659">
+		<Name>Tom Moody</Name>
+		<Address>590 James Street</Address>
+		<DOB>1974-12-12</DOB>
+	</Person>
+	<Person PersonID="p961874958">
+		<Name>Ricky Ponting</Name>
+		<Address>592 James Street</Address>
+		<DOB>1975-01-13</DOB>
+	</Person>
+	<Person PersonID="p965882492">
+		<Name>Alan Border</Name>
+		<Address>1007 Cooper Hall</Address>
+		<DOB>1963-01-24</DOB>
+	</Person>
+	<Person PersonID="p973071948">
+		<Name>Kepler Wessels</Name>
+		<Address>234 Bloomington</Address>
+		<DOB>1976-02-14</DOB>
+	</Person>
+	<Person PersonID="p980102825">
+		<Name>Peter Kirsten</Name>
+		<Address>1468 Stanton Avenue</Address>
+		<DOB>1977-03-15</DOB>
+	</Person>
+	<Person PersonID="p985954783">
+		<Name>Chris Pringle</Name>
+		<Address>2456 East London</Address>
+		<DOB>1978-04-16</DOB>
+	</Person>
+	<Person PersonID="p992485307">
+		<Name>Craig Matthews</Name>
+		<Address>290 Riddle Street</Address>
+		<DOB>1972-05-17</DOB>
+	</Person>
+	<Person PersonID="p996056608">
+		<Name>Richard Snell</Name>
+		<Address>256 Franklin Street</Address>
+		<DOB>1973-06-18</DOB>
+	</Person>
+	<Person PersonID="p997111094">
+		<Name>Richard Ellison</Name>
+		<Address>456 Ontario</Address>
+		<DOB>1974-07-19</DOB>
+	</Person>
+	<Person PersonID="p480293439">
+		<Name>Jason Briggs</Name>
+		<Address>215, N.Hyland Ave.</Address>
+		<DOB>1975-01-15</DOB>
+	</Person>
+	<Person PersonID="p000957303">
+		<Name>Horns Trevor</Name>
+		<Address>23, Canberra St.</Address>
+		<DOB>1964-02-23</DOB>
+	</Person>
+	<Faculty FacultyID="f201586985">
+		<ISA oType="PersonType" oID="p201586985"/>
+		<Salary>120000</Salary>
+		<Rank>Professor</Rank>
+		<Mentoring oID="s118784412 s164500920 s164776911 s387215322 s432180765 s483727101 s722131306 s895255243 s901511548" oType="StudentType"/>
+		<Instructing oType="OfferingType" oID="Offering001 Offering002"/>
+	</Faculty>
+	<Faculty FacultyID="f386167477">
+		<ISA oType="PersonType" oID="p386167477"/>
+		<Salary>100000</Salary>
+		<Rank>Reader</Rank>
+		<Mentoring oType="StudentType" oID="s131838016 s163728111 s185141262 s273277984 s332012037 s391910519 s812073765 s845037919 s867910658 s480293439"/>
+		<Instructing oType="OfferingType" oID="Offering003 Offering004"/>
+	</Faculty>
+	<Faculty FacultyID="f463249547">
+		<ISA oType="PersonType" oID="p463249547"/>
+		<Salary>100000</Salary>
+		<Rank>Reader</Rank>
+		<Mentoring oType="StudentType" oID="s143293833 s261812056 s315967897 s365774792 s587735656 s696302689 s712952591 s743991555 s774885901 s787422802 s930231660 s980102825"/>
+		<Instructing oType="OfferingType" oID="Offering005"/>
+	</Faculty>
+	<Faculty FacultyID="f466388906">
+		<ISA oType="PersonType" oID="p466388906"/>
+		<Salary>88000</Salary>
+		<Rank>Instructor</Rank>
+		<Mentoring oType="StudentType" oID="s222105935 s419180204 s449976666 s644488789 s664353912 s750913239 s905922853 s909334701 s973071948"/>
+		<Instructing oType="OfferingType" />
+</Faculty>
+	<Faculty FacultyID="f555010131">
+		<ISA oType="PersonType" oID="p555010131"/>
+		<Salary>120000</Salary>
+		<Rank>Professor</Rank>
+		<Mentoring oType="StudentType" oID="s212976207 s262891588 s363200537 s466094162 s483223789 s485619193 s712524758 s831142613 s862952924 s907425648"/>
+		<Instructing oType="OfferingType" />
+</Faculty>
+	<Faculty FacultyID="f685744439">
+		<ISA oType="PersonType" oID="p685744439"/>
+		<Salary>100000</Salary>
+		<Rank>Reader</Rank>
+		<Mentoring oType="StudentType" oID="s191083779 s290986112 s340502961 s501674545 s513729696 s590987789 s785273479 s785811329 s801166066"/>
+		<Instructing oType="OfferingType" oID="Offering006"/>
+	</Faculty>
+	<Faculty FacultyID="f696335701">
+		<ISA oType="PersonType" oID="p696335701"/>
+		<Salary>80000</Salary>
+		<Rank>Instructor</Rank>
+		<Mentoring oType="StudentType" oID="s252533260 s260369148 s382109560 s500094214 s513110141 s550658107 s916916939"/>
+		<Instructing oType="OfferingType" oID="Offering007 Offering008 Offering009"/>
+	</Faculty>
+	<Faculty FacultyID="f836826630">
+		<ISA oType="PersonType" oID="p836826630"/>
+		<Salary>80000</Salary>
+		<Rank>Instructor</Rank>
+		<Mentoring oType="StudentType" oID="s232820149 s271978135 s279702622 s296669559 s406746417 s490649143 s495490053 s658579865 s876550324 s952145559"/>
+		<Instructing oType="OfferingType" oID="Offering010 Offering011"/>
+	</Faculty>
+	<Faculty FacultyID="f961874958">
+		<ISA oType="PersonType" oID="p961874958"/>
+		<Salary>132000</Salary>
+		<Rank>Professor</Rank>
+		<Mentoring oType="StudentType" oID="s285719425 s308635036 s467545237 s477453864 s793034333 s885469446 s965882492"/>
+		<Instructing oType="OfferingType" oID="Offering012 Offering013"/>
+	</Faculty>
+	<Faculty FacultyID="f997111094">
+		<ISA oType="PersonType" oID="p997111094"/>
+		<Salary>100000</Salary>
+		<Rank>Reader</Rank>
+		<Mentoring oType="StudentType" oID="s203745018 s224620876 s302335678 s328718420 s409508678 s504013895 s601496044 s737972250 s785103478 s803024290 s850631208 s956234659"/>
+		<Instructing oType="OfferingType" oID="Offering014 Offering015"/>
+	</Faculty>
+	<Student StudentID="s118784412">
+		<ISA oType="PersonType" oID="p118784412"/>
+		<Classification>Sophomore</Classification>
+		<CreditHours>39</CreditHours>
+		<GPA>3.19</GPA>
+		<Mentor oType="FacultyType" oID="f201586985"/>
+		<EnrolledIn oType="EnrollmentType" oID="Enrollment118 Enrollment200"/>
+	</Student>
+	<Student StudentID="s124208644">
+		<ISA oType="PersonType" oID="p124208644"/>
+		<Classification>Senior</Classification>
+		<CreditHours>96</CreditHours>
+		<GPA>2.78</GPA>
+		<Mentor oType="FacultyType" oID="f997111094"/>
+		<EnrolledIn oType="EnrollmentType" oID="Enrollment285 Enrollment119"/>
+	</Student>
+	<Student StudentID="s131838016">
+		<ISA oType="PersonType" oID="p131838016"/>
+		<Classification>Junior</Classification>
+		<CreditHours>68</CreditHours>
+		<GPA>2.95</GPA>
+		<Mentor oType="FacultyType" oID="f386167477"/>
+		<EnrolledIn oType="EnrollmentType" oID="Enrollment120 Enrollment058 Enrollment105"/>
+	</Student>
+	<Student StudentID="s143293833">
+		<ISA oType="PersonType" oID="p143293833"/>
+		<Classification>Freshman</Classification>
+		<CreditHours>21</CreditHours>
+		<GPA>3.46</GPA>
+		<Mentor oType="FacultyType" oID="f463249547"/>
+		<EnrolledIn oType="EnrollmentType" oID="Enrollment150 Enrollment222 Enrollment059"/>
+	</Student>
+	<Student StudentID="s163728111">
+		<ISA oType="PersonType" oID="p163728111"/>
+		<Classification>Sophomore</Classification>
+		<CreditHours>42</CreditHours>
+		<GPA>3.66</GPA>
+		<Mentor oType="FacultyType" oID="f386167477"/>
+		<EnrolledIn oType="EnrollmentType" oID="Enrollment201 Enrollment297 Enrollment018 Enrollment029"/>
+	</Student>
+	<Student StudentID="s164500920">
+		<ISA oType="PersonType" oID="p164500920"/>
+		<Classification>Senior</Classification>
+		<CreditHours>99</CreditHours>
+		<GPA>3.78</GPA>
+		<Mentor oType="FacultyType" oID="f201586985"/>
+		<EnrolledIn oType="EnrollmentType" oID="Enrollment047 Enrollment237 Enrollment019"/>
+	</Student>
+	<Student StudentID="s164776911">
+		<ISA oType="PersonType" oID="p164776911"/>
+		<Classification>Junior</Classification>
+		<CreditHours>76</CreditHours>
+		<GPA>4</GPA>
+		<Mentor oType="FacultyType" oID="f201586985"/>
+		<EnrolledIn oType="EnrollmentType" oID="Enrollment030 Enrollment087 Enrollment139"/>
+	</Student>
+	<Student StudentID="s170815037">
+		<ISA oType="PersonType" oID="p170815037"/>
+		<Classification>Freshman</Classification>
+		<CreditHours>21</CreditHours>
+		<GPA>3.56</GPA>
+		<Mentor oType="FacultyType" oID="f466388906"/>
+		<EnrolledIn oType="EnrollmentType" oID="Enrollment170 Enrollment183 Enrollment238"/>
+	</Student>
+	<Student StudentID="s185141262">
+		<ISA oType="PersonType" oID="p185141262"/>
+		<Classification>Sophomore</Classification>
+		<CreditHours>54</CreditHours>
+		<GPA>2.29</GPA>
+		<Mentor oType="FacultyType" oID="f386167477"/>
+		<EnrolledIn oType="EnrollmentType" oID="Enrollment286 Enrollment075 Enrollment106 Enrollment140"/>
+	</Student>
+	<Student StudentID="s191083779">
+		<ISA oType="PersonType" oID="p191083779"/>
+		<Classification>Senior</Classification>
+		<CreditHours>98</CreditHours>
+		<GPA>4</GPA>
+		<Mentor oType="FacultyType" oID="f685744439"/>
+		<EnrolledIn oType="EnrollmentType" oID="Enrollment223 Enrollment268 Enrollment002 Enrollment031 Enrollment121"/>
+	</Student>
+	<Student StudentID="s203745018">
+		<ISA oType="PersonType" oID="p203745018"/>
+		<Classification>Junior</Classification>
+		<CreditHours>70</CreditHours>
+		<GPA>3.45</GPA>
+		<Mentor oType="FacultyType" oID="f997111094"/>
+		<EnrolledIn oType="EnrollmentType" oID="Enrollment171 Enrollment202 Enrollment239 Enrollment107"/>
+	</Student>
+	<Student StudentID="s212976207">
+		<ISA oType="PersonType" oID="p212976207"/>
+		<Classification>Freshman</Classification>
+		<CreditHours>24</CreditHours>
+		<GPA>4</GPA>
+		<Mentor oType="FacultyType" oID="f555010131"/>
+		<EnrolledIn oType="EnrollmentType" oID="Enrollment240 Enrollment287"/>
+	</Student>
+	<Student StudentID="s222105935">
+		<ISA oType="PersonType" oID="p222105935"/>
+		<Classification>Sophomore</Classification>
+		<CreditHours>39</CreditHours>
+		<GPA>3.23</GPA>
+		<Mentor oType="FacultyType" oID="f466388906"/>
+		<EnrolledIn oType="EnrollmentType" oID="Enrollment088 Enrollment122 Enrollment151 Enrollment203"/>
+	</Student>
+	<Student StudentID="s224620876">
+		<ISA oType="PersonType" oID="p224620876"/>
+		<Classification>Senior</Classification>
+		<CreditHours>105</CreditHours>
+		<GPA>3.3</GPA>
+		<Mentor oType="FacultyType" oID="f997111094"/>
+		<EnrolledIn oType="EnrollmentType" oID="Enrollment241 Enrollment003 Enrollment048 Enrollment108 Enrollment152 Enrollment184"/>
+	</Student>
+	<Student StudentID="s232820149">
+		<ISA oType="PersonType" oID="p232820149"/>
+		<Classification>Junior</Classification>
+		<CreditHours>69</CreditHours>
+		<GPA>2.3</GPA>
+		<Mentor oType="FacultyType" oID="f836826630"/>
+		<EnrolledIn oType="EnrollmentType" oID="Enrollment185 Enrollment257 Enrollment049 Enrollment060 Enrollment089"/>
+	</Student>
+	<Student StudentID="s252533260">
+		<ISA oType="PersonType" oID="p252533260"/>
+		<Classification>Freshman</Classification>
+		<CreditHours>24</CreditHours>
+		<GPA>2.19</GPA>
+		<Mentor oType="FacultyType" oID="f696335701"/>
+		<EnrolledIn oType="EnrollmentType" oID="Enrollment141 Enrollment204 Enrollment258 Enrollment076"/>
+	</Student>
+	<Student StudentID="s260369148">
+		<ISA oType="PersonType" oID="p260369148"/>
+		<Classification>Sophomore</Classification>
+		<CreditHours>39</CreditHours>
+		<GPA>2.99</GPA>
+		<Mentor oType="FacultyType" oID="f696335701"/>
+		<EnrolledIn oType="EnrollmentType" oID="Enrollment172"/>
+	</Student>
+	<Student StudentID="s261812056">
+		<ISA oType="PersonType" oID="p261812056"/>
+		<Classification>Senior</Classification>
+		<CreditHours>102</CreditHours>
+		<GPA>3.48</GPA>
+		<Mentor oType="FacultyType" oID="f463249547"/>
+		<EnrolledIn oType="EnrollmentType" oID="Enrollment173 Enrollment224 Enrollment242 Enrollment269 Enrollment004 Enrollment032"/>
+	</Student>
+	<Student StudentID="s262891588">
+		<ISA oType="PersonType" oID="p262891588"/>
+		<Classification>Junior</Classification>
+		<CreditHours>82</CreditHours>
+		<GPA>3.5</GPA>
+		<Mentor oType="FacultyType" oID="f555010131"/>
+		<EnrolledIn oType="EnrollmentType" oID="Enrollment153 Enrollment225"/>
+	</Student>
+	<Student StudentID="s271978135">
+		<ISA oType="PersonType" oID="p271978135"/>
+		<Classification>Freshman</Classification>
+		<CreditHours>24</CreditHours>
+		<GPA>3.78</GPA>
+		<Mentor oType="FacultyType" oID="f836826630"/>
+		<EnrolledIn oType="EnrollmentType" oID="Enrollment278 Enrollment005 Enrollment061 Enrollment090 Enrollment154 Enrollment193"/>
+	</Student>
+	<Student StudentID="s273277984">
+		<ISA oType="PersonType" oID="p273277984"/>
+		<Classification>Sophomore</Classification>
+		<CreditHours>42</CreditHours>
+		<GPA>3.9</GPA>
+		<Mentor oType="FacultyType" oID="f386167477"/>
+		<EnrolledIn oType="EnrollmentType" oID="Enrollment091 Enrollment123"/>
+	</Student>
+	<Student StudentID="s279702622">
+		<ISA oType="PersonType" oID="p279702622"/>
+		<Classification>Senior</Classification>
+		<CreditHours>105</CreditHours>
+		<GPA>3.45</GPA>
+		<Mentor oType="FacultyType" oID="f836826630"/>
+		<EnrolledIn oType="EnrollmentType" oID="Enrollment174 Enrollment226 Enrollment259 Enrollment062"/>
+	</Student>
+	<Student StudentID="s285719425">
+		<ISA oType="PersonType" oID="p285719425"/>
+		<Classification>Junior</Classification>
+		<CreditHours>72</CreditHours>
+		<GPA>2.3</GPA>
+		<Mentor oType="FacultyType" oID="f961874958"/>
+		<EnrolledIn oType="EnrollmentType" oID="Enrollment124"/>
+	</Student>
+	<Student StudentID="s290986112">
+		<ISA oType="PersonType" oID="p290986112"/>
+		<Classification>Freshman</Classification>
+		<CreditHours>18</CreditHours>
+		<GPA>3.23</GPA>
+		<Mentor oType="FacultyType" oID="f685744439"/>
+		<EnrolledIn oType="EnrollmentType" oID="Enrollment205 Enrollment304 Enrollment006 Enrollment109"/>
+	</Student>
+	<Student StudentID="s296669559">
+		<ISA oType="PersonType" oID="p296669559"/>
+		<Classification>Sophomore</Classification>
+		<CreditHours>48</CreditHours>
+		<GPA>3.67</GPA>
+		<Mentor oType="FacultyType" oID="f836826630"/>
+		<EnrolledIn oType="EnrollmentType" oID="Enrollment110 Enrollment298 Enrollment033"/>
+	</Student>
+	<Student StudentID="s302335678">
+		<ISA oType="PersonType" oID="p302335678"/>
+		<Classification>Senior</Classification>
+		<CreditHours>105</CreditHours>
+		<GPA>3.66</GPA>
+		<Mentor oType="FacultyType" oID="f997111094"/>
+		<EnrolledIn oType="EnrollmentType" oID="Enrollment227"/>
+	</Student>
+	<Student StudentID="s308635036">
+		<ISA oType="PersonType" oID="p308635036"/>
+		<Classification>Junior</Classification>
+		<CreditHours>78</CreditHours>
+		<GPA>3.45</GPA>
+		<Mentor oType="FacultyType" oID="f961874958"/>
+		<EnrolledIn oType="EnrollmentType" oID="Enrollment305 Enrollment111 Enrollment125"/>
+	</Student>
+	<Student StudentID="s315967897">
+		<ISA oType="PersonType" oID="p315967897"/>
+		<Classification>Freshman</Classification>
+		<CreditHours>18</CreditHours>
+		<GPA>3.89</GPA>
+		<Mentor oType="FacultyType" oID="f463249547"/>
+		<EnrolledIn oType="EnrollmentType" oID="Enrollment186 Enrollment034 Enrollment077"/>
+	</Student>
+	<Student StudentID="s328718420">
+		<ISA oType="PersonType" oID="p328718420"/>
+		<Classification>Sophomore</Classification>
+		<CreditHours>42</CreditHours>
+		<GPA>3.96</GPA>
+		<Mentor oType="FacultyType" oID="f997111094"/>
+		<EnrolledIn oType="EnrollmentType" oID="Enrollment063 Enrollment092 Enrollment126 Enrollment155 Enrollment206 Enrollment243"/>
+	</Student>
+	<Student StudentID="s332012037">
+		<ISA oType="PersonType" oID="p332012037"/>
+		<Classification>Senior</Classification>
+		<CreditHours>99</CreditHours>
+		<GPA>3.45</GPA>
+		<Mentor oType="FacultyType" oID="f386167477"/>
+		<EnrolledIn oType="EnrollmentType" oID="Enrollment244 Enrollment020 Enrollment064 Enrollment194 Enrollment207"/>
+	</Student>
+	<Student StudentID="s340502961">
+		<ISA oType="PersonType" oID="p340502961"/>
+		<Classification>Junior</Classification>
+		<CreditHours>82</CreditHours>
+		<GPA>3.78</GPA>
+		<Mentor oType="FacultyType" oID="f685744439"/>
+		<EnrolledIn oType="EnrollmentType" oID="Enrollment270 Enrollment315"/>
+	</Student>
+	<Student StudentID="s363200537">
+		<ISA oType="PersonType" oID="p363200537"/>
+		<Classification>Freshman</Classification>
+		<CreditHours>27</CreditHours>
+		<GPA>2.67</GPA>
+		<Mentor oType="FacultyType" oID="f555010131"/>
+		<EnrolledIn oType="EnrollmentType" oID="Enrollment007 Enrollment093 Enrollment127 Enrollment175 Enrollment195"/>
+	</Student>
+	<Student StudentID="s365774792">
+		<ISA oType="PersonType" oID="p365774792"/>
+		<Classification>Sophomore</Classification>
+		<CreditHours>56</CreditHours>
+		<GPA>2.45</GPA>
+		<Mentor oType="FacultyType" oID="f463249547"/>
+		<EnrolledIn oType="EnrollmentType" oID="Enrollment299 Enrollment035"/>
+	</Student>
+	<Student StudentID="s382109560">
+		<ISA oType="PersonType" oID="p382109560"/>
+		<Classification>Senior</Classification>
+		<CreditHours>95</CreditHours>
+		<GPA>2.78</GPA>
+		<Mentor oType="FacultyType" oID="f696335701"/>
+		<EnrolledIn oType="EnrollmentType" oID="Enrollment156 Enrollment208 Enrollment260 Enrollment288"/>
+	</Student>
+	<Student StudentID="s387215322">
+		<ISA oType="PersonType" oID="p387215322"/>
+		<Classification>Junior</Classification>
+		<CreditHours>78</CreditHours>
+		<GPA>2.89</GPA>
+		<Mentor oType="FacultyType" oID="f201586985"/>
+		<EnrolledIn oType="EnrollmentType" oID="Enrollment300 Enrollment036 Enrollment094 Enrollment128 Enrollment157 Enrollment261"/>
+	</Student>
+	<Student StudentID="s391910519">
+		<ISA oType="PersonType" oID="p391910519"/>
+		<Classification>Freshman</Classification>
+		<CreditHours>18</CreditHours>
+		<GPA>2.67</GPA>
+		<Mentor oType="FacultyType" oID="f386167477"/>
+		<EnrolledIn oType="EnrollmentType" oID="Enrollment142 Enrollment158 Enrollment209 Enrollment245"/>
+	</Student>
+	<Student StudentID="s406746417">
+		<ISA oType="PersonType" oID="p406746417"/>
+		<Classification>Sophomore</Classification>
+		<CreditHours>48</CreditHours>
+		<GPA>2.34</GPA>
+		<Mentor oType="FacultyType" oID="f836826630"/>
+		<EnrolledIn oType="EnrollmentType" oID="Enrollment246 Enrollment289 Enrollment159 Enrollment228"/>
+	</Student>
+	<Student StudentID="s409508678">
+		<ISA oType="PersonType" oID="p409508678"/>
+		<Classification>Senior</Classification>
+		<CreditHours>98</CreditHours>
+		<GPA>3.47</GPA>
+		<Mentor oType="FacultyType" oID="f997111094"/>
+		<EnrolledIn oType="EnrollmentType" oID="Enrollment037 Enrollment143"/>
+	</Student>
+	<Student StudentID="s419180204">
+		<ISA oType="PersonType" oID="p419180204"/>
+		<Classification>Junior</Classification>
+		<CreditHours>76</CreditHours>
+		<GPA>3.89</GPA>
+		<Mentor oType="FacultyType" oID="f466388906"/>
+		<EnrolledIn oType="EnrollmentType" oID="Enrollment176 Enrollment306 Enrollment050"/>
+	</Student>
+	<Student StudentID="s432180765">
+		<ISA oType="PersonType" oID="p432180765"/>
+		<Classification>Freshman</Classification>
+		<CreditHours>12</CreditHours>
+		<GPA>3.89</GPA>
+		<Mentor oType="FacultyType" oID="f201586985"/>
+		<EnrolledIn oType="EnrollmentType" oID="Enrollment144 Enrollment229 Enrollment316 Enrollment008"/>
+	</Student>
+	<Student StudentID="s449976666">
+		<ISA oType="PersonType" oID="p449976666"/>
+		<Classification>Sophomore</Classification>
+		<CreditHours>45</CreditHours>
+		<GPA>3.65</GPA>
+		<Mentor oType="FacultyType" oID="f466388906"/>
+		<EnrolledIn oType="EnrollmentType" oID="Enrollment230 Enrollment271 Enrollment307"/>
+	</Student>
+	<Student StudentID="s466094162">
+		<ISA oType="PersonType" oID="p466094162"/>
+		<Classification>Senior</Classification>
+		<CreditHours>112</CreditHours>
+		<GPA>3.88</GPA>
+		<Mentor oType="FacultyType" oID="f555010131"/>
+		<EnrolledIn oType="EnrollmentType" oID="Enrollment038 Enrollment078 Enrollment095 Enrollment129"/>
+	</Student>
+	<Student StudentID="s467545237">
+		<ISA oType="PersonType" oID="p467545237"/>
+		<Classification>Junior</Classification>
+		<CreditHours>78</CreditHours>
+		<GPA>3.56</GPA>
+		<Mentor oType="FacultyType" oID="f961874958"/>
+		<EnrolledIn oType="EnrollmentType" oID="Enrollment187 Enrollment231 Enrollment272 Enrollment290 Enrollment079"/>
+	</Student>
+	<Student StudentID="s477453864">
+		<ISA oType="PersonType" oID="p477453864"/>
+		<Classification>Freshman</Classification>
+		<CreditHours>12</CreditHours>
+		<GPA>3.9</GPA>
+		<Mentor oType="FacultyType" oID="f961874958"/>
+		<EnrolledIn oType="EnrollmentType" oID="Enrollment080 Enrollment308"/>
+	</Student>
+	<Student StudentID="s483223789">
+		<ISA oType="PersonType" oID="p483223789"/>
+		<Classification>Sophomore</Classification>
+		<CreditHours>48</CreditHours>
+		<GPA>3.96</GPA>
+		<Mentor oType="FacultyType" oID="f555010131"/>
+		<EnrolledIn oType="EnrollmentType" oID="Enrollment096 Enrollment188 Enrollment279 Enrollment291"/>
+	</Student>
+	<Student StudentID="s483727101">
+		<ISA oType="PersonType" oID="p483727101"/>
+		<Classification>Senior</Classification>
+		<CreditHours>102</CreditHours>
+		<GPA>3.76</GPA>
+		<Mentor oType="FacultyType" oID="f201586985"/>
+		<EnrolledIn oType="EnrollmentType" oID="Enrollment065 Enrollment189"/>
+	</Student>
+	<Student StudentID="s485619193">
+		<ISA oType="PersonType" oID="p485619193"/>
+		<Classification>Junior</Classification>
+		<CreditHours>78</CreditHours>
+		<GPA>3.21</GPA>
+		<Mentor oType="FacultyType" oID="f555010131"/>
+		<EnrolledIn oType="EnrollmentType" oID="Enrollment262 Enrollment317 Enrollment039"/>
+	</Student>
+	<Student StudentID="s490649143">
+		<ISA oType="PersonType" oID="p490649143"/>
+		<Classification>Freshman</Classification>
+		<CreditHours>27</CreditHours>
+		<GPA>3.19</GPA>
+		<Mentor oType="FacultyType" oID="f836826630"/>
+		<EnrolledIn oType="EnrollmentType" oID="Enrollment051 Enrollment112 Enrollment160 Enrollment210"/>
+	</Student>
+	<Student StudentID="s495490053">
+		<ISA oType="PersonType" oID="p495490053"/>
+		<Classification>Sophomore</Classification>
+		<CreditHours>39</CreditHours>
+		<GPA>2.89</GPA>
+		<Mentor oType="FacultyType" oID="f836826630"/>
+		<EnrolledIn oType="EnrollmentType" oID="Enrollment196 Enrollment232 Enrollment247 Enrollment292 Enrollment309 Enrollment009"/>
+	</Student>
+	<Student StudentID="s500094214">
+		<ISA oType="PersonType" oID="p500094214"/>
+		<Classification>Senior</Classification>
+		<CreditHours>112</CreditHours>
+		<GPA>3.45</GPA>
+		<Mentor oType="FacultyType" oID="f696335701"/>
+		<EnrolledIn oType="EnrollmentType" oID="Enrollment177 Enrollment211 Enrollment280"/>
+	</Student>
+	<Student StudentID="s501674545">
+		<ISA oType="PersonType" oID="p501674545"/>
+		<Classification>Junior</Classification>
+		<CreditHours>78</CreditHours>
+		<GPA>2.78</GPA>
+		<Mentor oType="FacultyType" oID="f685744439"/>
+		<EnrolledIn oType="EnrollmentType" oID="Enrollment310 Enrollment212"/>
+	</Student>
+	<Student StudentID="s504013895">
+		<ISA oType="PersonType" oID="p504013895"/>
+		<Classification>Freshman</Classification>
+		<CreditHours>18</CreditHours>
+		<GPA>2.98</GPA>
+		<Mentor oType="FacultyType" oID="f997111094"/>
+		<EnrolledIn oType="EnrollmentType" oID="Enrollment263 Enrollment311 Enrollment021 Enrollment178"/>
+	</Student>
+	<Student StudentID="s513110141">
+		<ISA oType="PersonType" oID="p513110141"/>
+		<Classification>Sophomore</Classification>
+		<CreditHours>48</CreditHours>
+		<GPA>2.34</GPA>
+		<Mentor oType="FacultyType" oID="f696335701"/>
+		<EnrolledIn oType="EnrollmentType" oID="Enrollment022 Enrollment081"/>
+	</Student>
+	<Student StudentID="s513729696">
+		<ISA oType="PersonType" oID="p513729696"/>
+		<Classification>Senior</Classification>
+		<CreditHours>102</CreditHours>
+		<GPA>1.98</GPA>
+		<Mentor oType="FacultyType" oID="f685744439"/>
+		<EnrolledIn oType="EnrollmentType" oID="Enrollment130 Enrollment179 Enrollment023 Enrollment052"/>
+	</Student>
+	<Student StudentID="s550658107">
+		<ISA oType="PersonType" oID="p550658107"/>
+		<Classification>Junior</Classification>
+		<CreditHours>66</CreditHours>
+		<GPA>2.14</GPA>
+		<Mentor oType="FacultyType" oID="f696335701"/>
+		<EnrolledIn oType="EnrollmentType" oID="Enrollment197 Enrollment273 Enrollment293"/>
+	</Student>
+	<Student StudentID="s587735656">
+		<ISA oType="PersonType" oID="p587735656"/>
+		<Classification>Freshman</Classification>
+		<CreditHours>25</CreditHours>
+		<GPA>3.45</GPA>
+		<Mentor oType="FacultyType" oID="f463249547"/>
+		<EnrolledIn oType="EnrollmentType" oID="Enrollment312 Enrollment010 Enrollment053 Enrollment097 Enrollment213 Enrollment264"/>
+	</Student>
+	<Student StudentID="s590987789">
+		<ISA oType="PersonType" oID="p590987789"/>
+		<Classification>Sophomore</Classification>
+		<CreditHours>45</CreditHours>
+		<GPA>3.23</GPA>
+		<Mentor oType="FacultyType" oID="f685744439"/>
+		<EnrolledIn oType="EnrollmentType" oID="Enrollment011 Enrollment066 Enrollment233"/>
+	</Student>
+	<Student StudentID="s601496044">
+		<ISA oType="PersonType" oID="p601496044"/>
+		<Classification>Senior</Classification>
+		<CreditHours>105</CreditHours>
+		<GPA>3.45</GPA>
+		<Mentor oType="FacultyType" oID="f997111094"/>
+		<EnrolledIn oType="EnrollmentType" oID="Enrollment161"/>
+	</Student>
+	<Student StudentID="s644488789">
+		<ISA oType="PersonType" oID="p644488789"/>
+		<Classification>Freshman</Classification>
+		<CreditHours>24</CreditHours>
+		<GPA>2.99</GPA>
+		<Mentor oType="FacultyType" oID="f466388906"/>
+		<EnrolledIn oType="EnrollmentType" oID="Enrollment214 Enrollment318"/>
+	</Student>
+	<Student StudentID="s658579865">
+		<ISA oType="PersonType" oID="p658579865"/>
+		<Classification>Sophomore</Classification>
+		<CreditHours>42</CreditHours>
+		<GPA>3.67</GPA>
+		<Mentor oType="FacultyType" oID="f836826630"/>
+		<EnrolledIn oType="EnrollmentType" oID="Enrollment082 Enrollment131 Enrollment281"/>
+	</Student>
+	<Student StudentID="s664353912">
+		<ISA oType="PersonType" oID="p664353912"/>
+		<Classification>Senior</Classification>
+		<CreditHours>99</CreditHours>
+		<GPA>3.89</GPA>
+		<Mentor oType="FacultyType" oID="f466388906"/>
+		<EnrolledIn oType="EnrollmentType" oID="Enrollment294 Enrollment024 Enrollment067 Enrollment198 Enrollment248"/>
+	</Student>
+	<Student StudentID="s696302689">
+		<ISA oType="PersonType" oID="p696302689"/>
+		<Classification>Junior</Classification>
+		<CreditHours>81</CreditHours>
+		<GPA>3.9</GPA>
+		<Mentor oType="FacultyType" oID="f463249547"/>
+		<EnrolledIn oType="EnrollmentType" oID="Enrollment098 Enrollment132 Enrollment190 Enrollment319"/>
+	</Student>
+	<Student StudentID="s712524758">
+		<ISA oType="PersonType" oID="p712524758"/>
+		<Classification>Freshman</Classification>
+		<CreditHours>21</CreditHours>
+		<GPA>4</GPA>
+		<Mentor oType="FacultyType" oID="f555010131"/>
+		<EnrolledIn oType="EnrollmentType" oID="Enrollment162"/>
+	</Student>
+	<Student StudentID="s712952591">
+		<ISA oType="PersonType" oID="p712952591"/>
+		<Classification>Junior</Classification>
+		<CreditHours>72</CreditHours>
+		<GPA>3.98</GPA>
+		<Mentor oType="FacultyType" oID="f463249547"/>
+		<EnrolledIn oType="EnrollmentType" oID="Enrollment012 Enrollment068"/>
+	</Student>
+	<Student StudentID="s722131306">
+		<ISA oType="PersonType" oID="p722131306"/>
+		<Classification>Senior</Classification>
+		<CreditHours>112</CreditHours>
+		<GPA>3.87</GPA>
+		<Mentor oType="FacultyType" oID="f201586985"/>
+		<EnrolledIn oType="EnrollmentType" oID="Enrollment040 Enrollment099 Enrollment249 Enrollment282"/>
+	</Student>
+	<Student StudentID="s737972250">
+		<ISA oType="PersonType" oID="p737972250"/>
+		<Classification>Junior</Classification>
+		<CreditHours>80</CreditHours>
+		<GPA>3.45</GPA>
+		<Mentor oType="FacultyType" oID="f997111094"/>
+		<EnrolledIn oType="EnrollmentType" oID="Enrollment295 Enrollment069"/>
+	</Student>
+	<Student StudentID="s743991555">
+		<ISA oType="PersonType" oID="p743991555"/>
+		<Classification>Freshman</Classification>
+		<CreditHours>27</CreditHours>
+		<GPA>3.23</GPA>
+		<Mentor oType="FacultyType" oID="f463249547"/>
+		<EnrolledIn oType="EnrollmentType" oID="Enrollment113 Enrollment180 Enrollment025"/>
+	</Student>
+	<Student StudentID="s750913239">
+		<ISA oType="PersonType" oID="p750913239"/>
+		<Classification>Sophomore</Classification>
+		<CreditHours>54</CreditHours>
+		<GPA>3.23</GPA>
+		<Mentor oType="FacultyType" oID="f466388906"/>
+		<EnrolledIn oType="EnrollmentType" oID="Enrollment070"/>
+	</Student>
+	<Student StudentID="s774885901">
+		<ISA oType="PersonType" oID="p774885901"/>
+		<Classification>Senior</Classification>
+		<CreditHours>99</CreditHours>
+		<GPA>3.67</GPA>
+		<Mentor oType="FacultyType" oID="f463249547"/>
+		<EnrolledIn oType="EnrollmentType" oID="Enrollment265 Enrollment026"/>
+	</Student>
+	<Student StudentID="s785103478">
+		<ISA oType="PersonType" oID="p785103478"/>
+		<Classification>Junior</Classification>
+		<CreditHours>84</CreditHours>
+		<GPA>3.78</GPA>
+		<Mentor oType="FacultyType" oID="f997111094"/>
+		<EnrolledIn oType="EnrollmentType" oID="Enrollment083 Enrollment250 Enrollment013"/>
+	</Student>
+	<Student StudentID="s785273479">
+		<ISA oType="PersonType" oID="p785273479"/>
+		<Classification>Freshman</Classification>
+		<CreditHours>24</CreditHours>
+		<GPA>3.89</GPA>
+		<Mentor oType="FacultyType" oID="f685744439"/>
+		<EnrolledIn oType="EnrollmentType" oID="Enrollment071 Enrollment301"/>
+	</Student>
+	<Student StudentID="s785811329">
+		<ISA oType="PersonType" oID="p785811329"/>
+		<Classification>Sophomore</Classification>
+		<CreditHours>48</CreditHours>
+		<GPA>2.67</GPA>
+		<Mentor oType="FacultyType" oID="f685744439"/>
+		<EnrolledIn oType="EnrollmentType" oID="Enrollment014 Enrollment041 Enrollment215 Enrollment251"/>
+	</Student>
+	<Student StudentID="s787422802">
+		<ISA oType="PersonType" oID="p787422802"/>
+		<Classification>Senior</Classification>
+		<CreditHours>94</CreditHours>
+		<GPA>3</GPA>
+		<Mentor oType="FacultyType" oID="f463249547"/>
+		<EnrolledIn oType="EnrollmentType" oID="Enrollment283 Enrollment313 Enrollment054 Enrollment133 Enrollment163"/>
+	</Student>
+	<Student StudentID="s793034333">
+		<ISA oType="PersonType" oID="p793034333"/>
+		<Classification>Junior</Classification>
+		<CreditHours>75</CreditHours>
+		<GPA>3.17</GPA>
+		<Mentor oType="FacultyType" oID="f961874958"/>
+		<EnrolledIn oType="EnrollmentType" oID="Enrollment252 Enrollment302 Enrollment084 Enrollment114 Enrollment145"/>
+	</Student>
+	<Student StudentID="s801166066">
+		<ISA oType="PersonType" oID="p801166066"/>
+		<Classification>Freshman</Classification>
+		<CreditHours>18</CreditHours>
+		<GPA>3.12</GPA>
+		<Mentor oType="FacultyType" oID="f685744439"/>
+		<EnrolledIn oType="EnrollmentType" oID="Enrollment191 Enrollment266 Enrollment274 Enrollment015 Enrollment115"/>
+	</Student>
+	<Student StudentID="s803024290">
+		<ISA oType="PersonType" oID="p803024290"/>
+		<Classification>Sophomore</Classification>
+		<CreditHours>54</CreditHours>
+		<GPA>3.89</GPA>
+		<Mentor oType="FacultyType" oID="f997111094"/>
+		<EnrolledIn oType="EnrollmentType" oID="Enrollment027 Enrollment134"/>
+	</Student>
+	<Student StudentID="s812073765">
+		<ISA oType="PersonType" oID="p812073765"/>
+		<Classification>Senior</Classification>
+		<CreditHours>105</CreditHours>
+		<GPA>4</GPA>
+		<Mentor oType="FacultyType" oID="f386167477"/>
+		<EnrolledIn oType="EnrollmentType" oID="Enrollment146 Enrollment234 Enrollment296 Enrollment085 Enrollment086  Enrollment100"/>
+	</Student>
+	<Student StudentID="s831142613">
+		<ISA oType="PersonType" oID="p831142613"/>
+		<Classification>Junior</Classification>
+		<CreditHours>75</CreditHours>
+		<GPA>3.67</GPA>
+		<Mentor oType="FacultyType" oID="f555010131"/>
+		<EnrolledIn oType="EnrollmentType" oID="Enrollment055 Enrollment072"/>
+	</Student>
+	<Student StudentID="s845037919">
+		<ISA oType="PersonType" oID="p845037919"/>
+		<Classification>Freshman</Classification>
+		<CreditHours>24</CreditHours>
+		<GPA>2.34</GPA>
+		<Mentor oType="FacultyType" oID="f386167477"/>
+		<EnrolledIn oType="EnrollmentType" oID="Enrollment135 Enrollment235 Enrollment275 Enrollment320"/>
+	</Student>
+	<Student StudentID="s850631208">
+		<ISA oType="PersonType" oID="p850631208"/>
+		<Classification>Sophomore</Classification>
+		<CreditHours>52</CreditHours>
+		<GPA>2.19</GPA>
+		<Mentor oType="FacultyType" oID="f997111094"/>
+		<EnrolledIn oType="EnrollmentType" oID="Enrollment164 Enrollment253"/>
+	</Student>
+	<Student StudentID="s862952924">
+		<ISA oType="PersonType" oID="p862952924"/>
+		<Classification>Senior</Classification>
+		<CreditHours>96</CreditHours>
+		<GPA>1.96</GPA>
+		<Mentor oType="FacultyType" oID="f555010131"/>
+		<EnrolledIn oType="EnrollmentType" oID="Enrollment254 Enrollment276 Enrollment303 Enrollment116"/>
+	</Student>
+	<Student StudentID="s867910658">
+		<ISA oType="PersonType" oID="p867910658"/>
+		<Classification>Junior</Classification>
+		<CreditHours>75</CreditHours>
+		<GPA>3.89</GPA>
+		<Mentor oType="FacultyType" oID="f386167477"/>
+		<EnrolledIn oType="EnrollmentType" oID="Enrollment101 Enrollment147 Enrollment216 Enrollment277 Enrollment028"/>
+	</Student>
+	<Student StudentID="s876550324">
+		<ISA oType="PersonType" oID="p876550324"/>
+		<Classification>Freshman</Classification>
+		<CreditHours>21</CreditHours>
+		<GPA>3.89</GPA>
+		<Mentor oType="FacultyType" oID="f836826630"/>
+		<EnrolledIn oType="EnrollmentType" oID="Enrollment042"/>
+	</Student>
+	<Student StudentID="s885469446">
+		<ISA oType="PersonType" oID="p885469446"/>
+		<Classification>Sophomore</Classification>
+		<CreditHours>48</CreditHours>
+		<GPA>3.45</GPA>
+		<Mentor oType="FacultyType" oID="f961874958"/>
+		<EnrolledIn oType="EnrollmentType" oID="Enrollment136 Enrollment165 Enrollment321"/>
+	</Student>
+	<Student StudentID="s895255243">
+		<ISA oType="PersonType" oID="p895255243"/>
+		<Classification>Senior</Classification>
+		<CreditHours>98</CreditHours>
+		<GPA>3.42</GPA>
+		<Mentor oType="FacultyType" oID="f201586985"/>
+		<EnrolledIn oType="EnrollmentType" oID="Enrollment056 Enrollment073 Enrollment217 Enrollment267"/>
+	</Student>
+	<Student StudentID="s901511548">
+		<ISA oType="PersonType" oID="p901511548"/>
+		<Classification>Junior</Classification>
+		<CreditHours>80</CreditHours>
+		<GPA>3.32</GPA>
+		<Mentor oType="FacultyType" oID="f201586985"/>
+		<EnrolledIn oType="EnrollmentType" oID="Enrollment166"/>
+	</Student>
+	<Student StudentID="s905922853">
+		<ISA oType="PersonType" oID="p905922853"/>
+		<Classification>Freshman</Classification>
+		<CreditHours>21</CreditHours>
+		<GPA>3.4</GPA>
+		<Mentor oType="FacultyType" oID="f466388906"/>
+		<EnrolledIn oType="EnrollmentType" oID="Enrollment167 Enrollment218 Enrollment255 Enrollment043 Enrollment074"/>
+	</Student>
+	<Student StudentID="s907425648">
+		<ISA oType="PersonType" oID="p907425648"/>
+		<Classification>Sophomore</Classification>
+		<CreditHours>52</CreditHours>
+		<GPA>4</GPA>
+		<Mentor oType="FacultyType" oID="f555010131"/>
+		<EnrolledIn oType="EnrollmentType" oID="Enrollment219 Enrollment016 Enrollment044"/>
+	</Student>
+	<Student StudentID="s909334701">
+		<ISA oType="PersonType" oID="p909334701"/>
+		<Classification>Senior</Classification>
+		<CreditHours>105</CreditHours>
+		<GPA>3.12</GPA>
+		<Mentor oType="FacultyType" oID="f466388906"/>
+		<EnrolledIn oType="EnrollmentType" oID="Enrollment102 Enrollment181 Enrollment199 Enrollment220 Enrollment314"/>
+	</Student>
+	<Student StudentID="s916916939">
+		<ISA oType="PersonType" oID="p916916939"/>
+		<Classification>Junior</Classification>
+		<CreditHours>80</CreditHours>
+		<GPA>3.9</GPA>
+		<Mentor oType="FacultyType" oID="f696335701"/>
+		<EnrolledIn oType="EnrollmentType" oID="Enrollment017 Enrollment137 Enrollment284"/>
+	</Student>
+	<Student StudentID="s930231660">
+		<ISA oType="PersonType" oID="p930231660"/>
+		<Classification>Freshman</Classification>
+		<CreditHours>21</CreditHours>
+		<GPA>3.87</GPA>
+		<Mentor oType="FacultyType" oID="f463249547"/>
+		<EnrolledIn oType="EnrollmentType" oID="Enrollment103 Enrollment148"/>
+	</Student>
+	<Student StudentID="s952145559">
+		<ISA oType="PersonType" oID="p952145559"/>
+		<Classification>Sophomore</Classification>
+		<CreditHours>54</CreditHours>
+		<GPA>4</GPA>
+		<Mentor oType="FacultyType" oID="f836826630"/>
+		<EnrolledIn oType="EnrollmentType" oID="Enrollment138"/>
+	</Student>
+	<Student StudentID="s956234659">
+		<ISA oType="PersonType" oID="p956234659"/>
+		<Classification>Senior</Classification>
+		<CreditHours>95</CreditHours>
+		<GPA>4</GPA>
+		<Mentor oType="FacultyType" oID="f997111094"/>
+		<EnrolledIn oType="EnrollmentType" oID="Enrollment192"/>
+	</Student>
+	<Student StudentID="s965882492">
+		<ISA oType="PersonType" oID="p965882492"/>
+		<Classification>Junior</Classification>
+		<CreditHours>76</CreditHours>
+		<GPA>3.89</GPA>
+		<Mentor oType="FacultyType" oID="f961874958"/>
+		<EnrolledIn oType="EnrollmentType" oID="Enrollment057 Enrollment168"/>
+	</Student>
+	<Student StudentID="s973071948">
+		<ISA oType="PersonType" oID="p973071948"/>
+		<Classification>Freshman</Classification>
+		<CreditHours>24</CreditHours>
+		<GPA>3.98</GPA>
+		<Mentor oType="FacultyType" oID="f466388906"/>
+		<EnrolledIn oType="EnrollmentType" oID="Enrollment045 Enrollment104 Enrollment149 Enrollment169 Enrollment236"/>
+	</Student>
+	<Student StudentID="s980102825">
+		<ISA oType="PersonType" oID="p980102825"/>
+		<Classification>Sophomore</Classification>
+		<CreditHours>45</CreditHours>
+		<GPA>3.42</GPA>
+		<Mentor oType="FacultyType" oID="f463249547"/>
+		<EnrolledIn oType="EnrollmentType" oID="Enrollment046 Enrollment117 Enrollment221 Enrollment256"/>
+	</Student>
+	<Student StudentID="s480293439">
+		<ISA oType="PersonType" oID="p480293439"/>
+		<Classification>Junior</Classification>
+		<CreditHours>75</CreditHours>
+		<GPA>3.48</GPA>
+		<Mentor oType="FacultyType" oID="f386167477"/>
+		<EnrolledIn oType="EnrollmentType" oID="Enrollment322"/>
+	</Student>
+	<Course CourseID="c0722">
+		<CourseCode>CS227</CourseCode>
+		<CourseName>Introduction to C++</CourseName>
+		<PreReqs oType="CourseType" />
+		<OfferedAs oType="OfferingType" oID="Offering001"/>
+	</Course>
+	<Course CourseID="c0822">
+		<CourseCode>CS228</CourseCode>
+		<CourseName>Data Structures in C++</CourseName>
+		<PreReqs oType="CourseType" oID="c0722"/>
+		<OfferedAs oType="OfferingType" oID="Offering002"/>
+	</Course>
+	<Course CourseID="c0903">
+		<CourseCode>CS309</CourseCode>
+		<CourseName>Software Engineering</CourseName>
+		<PreReqs oType="CourseType" oID="c0822"/>
+		<OfferedAs oType="OfferingType" oID="Offering003"/>
+	</Course>
+	<Course CourseID="c0113">
+		<CourseCode>CS311</CourseCode>
+		<CourseName>Design and Analysis of Algorithms</CourseName>
+		<PreReqs oType="CourseType" oID="c0822 c0033"/>
+		<OfferedAs oType="OfferingType" oID="Offering004 Offering005"/>
+		</Course>
+	<Course CourseID="c0123">
+		<CourseCode>CS321</CourseCode>
+		<CourseName>Computer Architecture</CourseName>
+		<PreReqs oType="CourseType" oID="c0113"/>
+		<OfferedAs oType="OfferingType" oID="Offering006"/>
+	</Course>
+	<Course CourseID="c0033">
+		<CourseCode>CS330</CourseCode>
+		<CourseName>Discrete Mathematics</CourseName>
+		<PreReqs oType="CourseType" oID="c0822"/>
+		<OfferedAs oType="OfferingType" oID="Offering007"/>
+	</Course>
+	<Course CourseID="c0133">
+		<CourseCode>CS331</CourseCode>
+		<CourseName>Theory of Computation</CourseName>
+		<PreReqs oType="CourseType" oID="c0822"/>
+		<OfferedAs oType="OfferingType" oID="Offering008"/>
+	</Course>
+	<Course CourseID="c0243">
+		<CourseCode>CS342</CourseCode>
+		<CourseName>Programming languages</CourseName>
+		<PreReqs oType="CourseType" oID="c0822"/>
+		<OfferedAs oType="OfferingType" oID="Offering009 Offering010"/>
+	</Course>
+	<Course CourseID="c0253">
+		<CourseCode>CS352</CourseCode>
+		<CourseName>Operating Systems</CourseName>
+		<PreReqs oType="CourseType" oID="c0822"/>
+		<OfferedAs oType="OfferingType" oID="Offering011 Offering012"/>
+	</Course>
+	<Course CourseID="c0363">
+		<CourseCode>CS363</CourseCode>
+		<CourseName>Introduction to Database Systems</CourseName>
+		<PreReqs oType="CourseType" oID="c0113"/>
+		<OfferedAs oType="OfferingType" oID="Offering013"/>
+	</Course>
+	<Course CourseID="c0164">
+		<CourseCode>CS461</CourseCode>
+		<CourseName>Database Internals</CourseName>
+		<PreReqs oType="CourseType" oID="c0113 c0363"/>
+		<OfferedAs oType="OfferingType" oID="Offering014"/>
+	</Course>
+	<Course CourseID="c0115">
+		<CourseCode>CS511</CourseCode>
+		<CourseName>Advanced Design and Analysis of Algorithms</CourseName>
+		<PreReqs oType="CourseType" oID="c0113"/>
+		<OfferedAs oType="OfferingType" oID="Offering015"/>
+	</Course>
+	<Offering OfferingID="Offering001">
+		<CourseInfo oType="CourseType" oID="c0722"/>
+		<Section>1</Section>
+		<Instructor oType="FacultyType" oID="f201586985"/>
+		<Enrollments oType="EnrollmentType" oID="Enrollment002 Enrollment003 Enrollment004 Enrollment005 Enrollment006 Enrollment007 Enrollment008 Enrollment009 Enrollment010 Enrollment011 Enrollment012 Enrollment013 Enrollment014 Enrollment015 Enrollment016 Enrollment017 Enrollment018 Enrollment019 Enrollment020 Enrollment021 Enrollment022 Enrollment023 Enrollment024 Enrollment025 Enrollment026 Enrollment027 Enrollment028"/>
+	</Offering>
+	<Offering OfferingID="Offering002">
+		<CourseInfo oType="CourseType" oID="c0822"/>
+		<Section>1</Section>
+		<Instructor oType="FacultyType" oID="f201586985"/>
+		<Enrollments oType="EnrollmentType" oID="Enrollment029 Enrollment030 Enrollment031 Enrollment032 Enrollment033 Enrollment034 Enrollment035 Enrollment036 Enrollment037 Enrollment038 Enrollment039 Enrollment040 Enrollment041 Enrollment050 Enrollment051 Enrollment052 Enrollment053 Enrollment054 Enrollment055 Enrollment056 Enrollment057"/>
+	</Offering>
+	<Offering OfferingID="Offering003">
+		<CourseInfo oType="CourseType" oID="c0903"/>
+		<Section>1</Section>
+		<Instructor oType="FacultyType" oID="f386167477"/>
+		<Enrollments oType="EnrollmentType" oID="Enrollment058 Enrollment059 Enrollment060 Enrollment061 Enrollment062 Enrollment063 Enrollment064 Enrollment065 Enrollment066 Enrollment067 Enrollment068 Enrollment069 Enrollment070 Enrollment071 Enrollment072 Enrollment073 Enrollment074 Enrollment075 Enrollment076 Enrollment077 Enrollment078 Enrollment079 Enrollment080 Enrollment081 Enrollment082 Enrollment083 Enrollment084 Enrollment085 Enrollment086"/>
+	</Offering>
+	<Offering OfferingID="Offering004">
+		<CourseInfo oType="CourseType" oID="c0113"/>
+		<Section>1</Section>
+		<Instructor oType="FacultyType" oID="f386167477"/>
+		<Enrollments oType="EnrollmentType" oID="Enrollment087 Enrollment088 Enrollment089 Enrollment090 Enrollment091 Enrollment092 Enrollment093 Enrollment094 Enrollment095 Enrollment096 Enrollment097 Enrollment098 Enrollment099 Enrollment100 Enrollment101 Enrollment102 Enrollment103 Enrollment104"/>
+	</Offering>
+	<Offering OfferingID="Offering005">
+		<CourseInfo oType="CourseType" oID="c0113"/>
+		<Section>2</Section>
+		<Instructor oType="FacultyType" oID="f463249547"/>
+		<Enrollments oType="EnrollmentType" oID="Enrollment105 Enrollment106 Enrollment107 Enrollment108 Enrollment109 Enrollment110 Enrollment111 Enrollment112 Enrollment113 Enrollment114 Enrollment115 Enrollment116 Enrollment117  Enrollment322"/>
+	</Offering>
+	<Offering OfferingID="Offering006">
+		<CourseInfo oType="CourseType" oID="c0123"/>
+		<Section>1</Section>
+		<Instructor oType="FacultyType" oID="f685744439"/>
+		<Enrollments oType="EnrollmentType" oID="Enrollment118 Enrollment119 Enrollment120 Enrollment121 Enrollment122 Enrollment123 Enrollment124 Enrollment125 Enrollment126 Enrollment127 Enrollment128 Enrollment129 Enrollment130 Enrollment131 Enrollment132 Enrollment133 Enrollment134 Enrollment135 Enrollment136 Enrollment137 Enrollment138 Enrollment139 Enrollment140 Enrollment141 Enrollment142 Enrollment143 Enrollment144 Enrollment145 Enrollment146 Enrollment147 Enrollment148 Enrollment149"/>
+	</Offering>
+	<Offering OfferingID="Offering007">
+		<CourseInfo oType="CourseType" oID="c0033"/>
+		<Section>1</Section>
+		<Instructor oType="FacultyType" oID="f696335701"/>
+		<Enrollments oType="EnrollmentType" oID="Enrollment150 Enrollment151 Enrollment152 Enrollment153 Enrollment154 Enrollment155 Enrollment156 Enrollment157 Enrollment158 Enrollment159 Enrollment160 Enrollment161 Enrollment162 Enrollment163 Enrollment164 Enrollment165 Enrollment166 Enrollment167 Enrollment168 Enrollment169 Enrollment170 Enrollment171 Enrollment172 Enrollment173 Enrollment174 Enrollment175 Enrollment176 Enrollment177 Enrollment178 Enrollment179 Enrollment180 Enrollment181 Enrollment182"/>
+	</Offering>
+	<Offering OfferingID="Offering008">
+		<CourseInfo oType="CourseType" oID="c0133"/>
+		<Section>2</Section>
+		<Instructor oType="FacultyType" oID="f696335701"/>
+		<Enrollments oType="EnrollmentType" oID="Enrollment183 Enrollment184 Enrollment185 Enrollment186 Enrollment187 Enrollment188 Enrollment189 Enrollment190 Enrollment191 Enrollment192 Enrollment193 Enrollment194 Enrollment195 Enrollment196 Enrollment197 Enrollment198 Enrollment199"/>
+	</Offering>
+	<Offering OfferingID="Offering009">
+		<CourseInfo oType="CourseType" oID="c0243"/>
+		<Section>1</Section>
+		<Instructor oType="FacultyType" oID="f696335701"/>
+		<Enrollments oType="EnrollmentType" oID="Enrollment200 Enrollment201 Enrollment202 Enrollment203 Enrollment204 Enrollment205 Enrollment206 Enrollment207 Enrollment208 Enrollment209 Enrollment210 Enrollment211 Enrollment212 Enrollment213 Enrollment214 Enrollment215 Enrollment216 Enrollment217 Enrollment218 Enrollment219 Enrollment220 Enrollment221"/>
+	</Offering>
+	<Offering OfferingID="Offering010">
+		<CourseInfo oType="CourseType" oID="c0243"/>
+		<Section>2</Section>
+		<Instructor oType="FacultyType" oID="f836826630"/>
+		<Enrollments oType="EnrollmentType" oID="Enrollment222 Enrollment223 Enrollment224 Enrollment225 Enrollment226 Enrollment227 Enrollment228 Enrollment229 Enrollment230 Enrollment231 Enrollment232 Enrollment233 Enrollment234 Enrollment235 Enrollment236"/>
+	</Offering>
+	<Offering OfferingID="Offering011">
+		<CourseInfo oType="CourseType" oID="c0253"/>
+		<Section>1</Section>
+		<Instructor oType="FacultyType" oID="f836826630"/>
+		<Enrollments oType="EnrollmentType" oID="Enrollment237 Enrollment238 Enrollment239 Enrollment240 Enrollment241 Enrollment242 Enrollment243 Enrollment244 Enrollment245 Enrollment246 Enrollment247 Enrollment248 Enrollment249 Enrollment250 Enrollment251 Enrollment252 Enrollment253 Enrollment254 Enrollment255 Enrollment256"/>
+	</Offering>
+	<Offering OfferingID="Offering012">
+		<CourseInfo oType="CourseType" oID="c0253"/>
+		<Section>2</Section>
+		<Instructor oType="FacultyType" oID="f961874958"/>
+		<Enrollments oType="EnrollmentType" oID="Enrollment257 Enrollment258 Enrollment259 Enrollment260 Enrollment261 Enrollment262 Enrollment263 Enrollment264 Enrollment265 Enrollment266 Enrollment267"/>
+	</Offering>
+	<Offering OfferingID="Offering013">
+		<CourseInfo oType="CourseType" oID="c0363"/>
+		<Section>2</Section>
+		<Instructor oType="FacultyType" oID="f961874958"/>
+		<Enrollments oType="EnrollmentType" oID="Enrollment268 Enrollment269 Enrollment270 Enrollment271 Enrollment272 Enrollment273 Enrollment274 Enrollment275 Enrollment276 Enrollment277 Enrollment278 Enrollment279 Enrollment280 Enrollment281 Enrollment282 Enrollment283 Enrollment284"/>
+	</Offering>
+	<Offering OfferingID="Offering014">
+		<CourseInfo oType="CourseType" oID="c0164"/>
+		<Section>2</Section>
+		<Instructor oType="FacultyType" oID="f997111094"/>
+		<Enrollments oType="EnrollmentType" oID="Enrollment285 Enrollment286 Enrollment287 Enrollment288 Enrollment289 Enrollment290 Enrollment291 Enrollment292 Enrollment293 Enrollment294 Enrollment295 Enrollment296 Enrollment297 Enrollment298 Enrollment299 Enrollment300 Enrollment301 Enrollment302 Enrollment303"/>
+	</Offering>
+	<Offering OfferingID="Offering015">
+		<CourseInfo oType="CourseType" oID="c0115"/>
+		<Section>2</Section>
+		<Instructor oType="FacultyType" oID="f997111094"/>
+		<Enrollments oType="EnrollmentType" oID="Enrollment304 Enrollment305 Enrollment306 Enrollment307 Enrollment308 Enrollment309 Enrollment310 Enrollment311 Enrollment312 Enrollment313 Enrollment314 Enrollment315 Enrollment316 Enrollment317 Enrollment318 Enrollment319 Enrollment320 Enrollment321"/>
+	</Offering>
+	<Enrollment EnrollmentID="Enrollment002">
+		<OfferingInfo oType="OfferingType" oID="Offering001"/>
+		<StudentInfo oType="StudentType" oID="s191083779"/>
+		<Grade>A-</Grade>
+	</Enrollment>
+	<Enrollment EnrollmentID="Enrollment003">
+		<OfferingInfo oType="OfferingType" oID="Offering001"/>
+		<StudentInfo oType="StudentType" oID="s224620876"/>
+		<Grade>C-</Grade>
+	</Enrollment>
+	<Enrollment EnrollmentID="Enrollment004">
+		<OfferingInfo oType="OfferingType" oID="Offering001"/>
+		<StudentInfo oType="StudentType" oID="s261812056"/>
+		<Grade>C</Grade>
+	</Enrollment>
+	<Enrollment EnrollmentID="Enrollment005">
+		<OfferingInfo oType="OfferingType" oID="Offering001"/>
+		<StudentInfo oType="StudentType" oID="s271978135"/>
+		<Grade>A</Grade>
+	</Enrollment>
+	<Enrollment EnrollmentID="Enrollment006">
+		<OfferingInfo oType="OfferingType" oID="Offering001"/>
+		<StudentInfo oType="StudentType" oID="s290986112"/>
+		<Grade>C-</Grade>
+	</Enrollment>
+	<Enrollment EnrollmentID="Enrollment007">
+		<OfferingInfo oType="OfferingType" oID="Offering001"/>
+		<StudentInfo oType="StudentType" oID="s363200537"/>
+		<Grade>B-</Grade>
+	</Enrollment>
+	<Enrollment EnrollmentID="Enrollment008">
+		<OfferingInfo oType="OfferingType" oID="Offering001"/>
+		<StudentInfo oType="StudentType" oID="s432180765"/>
+		<Grade>B</Grade>
+	</Enrollment>
+	<Enrollment EnrollmentID="Enrollment009">
+		<OfferingInfo oType="OfferingType" oID="Offering001"/>
+		<StudentInfo oType="StudentType" oID="s495490053"/>
+		<Grade>C+</Grade>
+	</Enrollment>
+	<Enrollment EnrollmentID="Enrollment010">
+		<OfferingInfo oType="OfferingType" oID="Offering001"/>
+		<StudentInfo oType="StudentType" oID="s587735656"/>
+		<Grade>B-</Grade>
+	</Enrollment>
+	<Enrollment EnrollmentID="Enrollment011">
+		<OfferingInfo oType="OfferingType" oID="Offering001"/>
+		<StudentInfo oType="StudentType" oID="s590987789"/>
+		<Grade>D</Grade>
+	</Enrollment>
+	<Enrollment EnrollmentID="Enrollment012">
+		<OfferingInfo oType="OfferingType" oID="Offering001"/>
+		<StudentInfo oType="StudentType" oID="s712952591"/>
+		<Grade>C-</Grade>
+	</Enrollment>
+	<Enrollment EnrollmentID="Enrollment013">
+		<OfferingInfo oType="OfferingType" oID="Offering001"/>
+		<StudentInfo oType="StudentType" oID="s785103478"/>
+		<Grade>A</Grade>
+	</Enrollment>
+	<Enrollment EnrollmentID="Enrollment014">
+		<OfferingInfo oType="OfferingType" oID="Offering001"/>
+		<StudentInfo oType="StudentType" oID="s785811329"/>
+		<Grade>B</Grade>
+	</Enrollment>
+	<Enrollment EnrollmentID="Enrollment015">
+		<OfferingInfo oType="OfferingType" oID="Offering001"/>
+		<StudentInfo oType="StudentType" oID="s801166066"/>
+		<Grade>A-</Grade>
+	</Enrollment>
+	<Enrollment EnrollmentID="Enrollment016">
+		<OfferingInfo oType="OfferingType" oID="Offering001"/>
+		<StudentInfo oType="StudentType" oID="s907425648"/>
+		<Grade>C</Grade>
+	</Enrollment>
+	<Enrollment EnrollmentID="Enrollment017">
+		<OfferingInfo oType="OfferingType" oID="Offering001"/>
+		<StudentInfo oType="StudentType" oID="s916916939"/>
+		<Grade>C-</Grade>
+	</Enrollment>
+	<Enrollment EnrollmentID="Enrollment018">
+		<OfferingInfo oType="OfferingType" oID="Offering001"/>
+		<StudentInfo oType="StudentType" oID="s163728111"/>
+		<Grade>D+</Grade>
+	</Enrollment>
+	<Enrollment EnrollmentID="Enrollment019">
+		<OfferingInfo oType="OfferingType" oID="Offering001"/>
+		<StudentInfo oType="StudentType" oID="s164500920"/>
+		<Grade>B</Grade>
+	</Enrollment>
+	<Enrollment EnrollmentID="Enrollment020">
+		<OfferingInfo oType="OfferingType" oID="Offering001"/>
+		<StudentInfo oType="StudentType" oID="s332012037"/>
+		<Grade>B-</Grade>
+	</Enrollment>
+	<Enrollment EnrollmentID="Enrollment021">
+		<OfferingInfo oType="OfferingType" oID="Offering001"/>
+		<StudentInfo oType="StudentType" oID="s504013895"/>
+		<Grade>B-</Grade>
+	</Enrollment>
+	<Enrollment EnrollmentID="Enrollment022">
+		<OfferingInfo oType="OfferingType" oID="Offering001"/>
+		<StudentInfo oType="StudentType" oID="s513110141"/>
+		<Grade>D</Grade>
+	</Enrollment>
+	<Enrollment EnrollmentID="Enrollment023">
+		<OfferingInfo oType="OfferingType" oID="Offering001"/>
+		<StudentInfo oType="StudentType" oID="s513729696"/>
+		<Grade>B</Grade>
+	</Enrollment>
+	<Enrollment EnrollmentID="Enrollment024">
+		<OfferingInfo oType="OfferingType" oID="Offering001"/>
+		<StudentInfo oType="StudentType" oID="s664353912"/>
+		<Grade>A</Grade>
+	</Enrollment>
+	<Enrollment EnrollmentID="Enrollment025">
+		<OfferingInfo oType="OfferingType" oID="Offering001"/>
+		<StudentInfo oType="StudentType" oID="s743991555"/>
+		<Grade>C+</Grade>
+	</Enrollment>
+	<Enrollment EnrollmentID="Enrollment026">
+		<OfferingInfo oType="OfferingType" oID="Offering001"/>
+		<StudentInfo oType="StudentType" oID="s774885901"/>
+		<Grade>B</Grade>
+	</Enrollment>
+	<Enrollment EnrollmentID="Enrollment027">
+		<OfferingInfo oType="OfferingType" oID="Offering001"/>
+		<StudentInfo oType="StudentType" oID="s803024290"/>
+		<Grade>A</Grade>
+	</Enrollment>
+	<Enrollment EnrollmentID="Enrollment028">
+		<OfferingInfo oType="OfferingType" oID="Offering001"/>
+		<StudentInfo oType="StudentType" oID="s867910658"/>
+		<Grade>A</Grade>
+	</Enrollment>
+	<Enrollment EnrollmentID="Enrollment029">
+		<OfferingInfo oType="OfferingType" oID="Offering002"/>
+		<StudentInfo oType="StudentType" oID="s163728111"/>
+		<Grade>C+</Grade>
+	</Enrollment>
+	<Enrollment EnrollmentID="Enrollment030">
+		<OfferingInfo oType="OfferingType" oID="Offering002"/>
+		<StudentInfo oType="StudentType" oID="s164776911"/>
+		<Grade>C+</Grade>
+	</Enrollment>
+	<Enrollment EnrollmentID="Enrollment031">
+		<OfferingInfo oType="OfferingType" oID="Offering002"/>
+		<StudentInfo oType="StudentType" oID="s191083779"/>
+		<Grade>B-</Grade>
+	</Enrollment>
+	<Enrollment EnrollmentID="Enrollment032">
+		<OfferingInfo oType="OfferingType" oID="Offering002"/>
+		<StudentInfo oType="StudentType" oID="s261812056"/>
+		<Grade>B</Grade>
+	</Enrollment>
+	<Enrollment EnrollmentID="Enrollment033">
+		<OfferingInfo oType="OfferingType" oID="Offering002"/>
+		<StudentInfo oType="StudentType" oID="s296669559"/>
+		<Grade>A-</Grade>
+	</Enrollment>
+	<Enrollment EnrollmentID="Enrollment034">
+		<OfferingInfo oType="OfferingType" oID="Offering002"/>
+		<StudentInfo oType="StudentType" oID="s315967897"/>
+		<Grade>B-</Grade>
+	</Enrollment>
+	<Enrollment EnrollmentID="Enrollment035">
+		<OfferingInfo oType="OfferingType" oID="Offering002"/>
+		<StudentInfo oType="StudentType" oID="s365774792"/>
+		<Grade>B-</Grade>
+	</Enrollment>
+	<Enrollment EnrollmentID="Enrollment036">
+		<OfferingInfo oType="OfferingType" oID="Offering002"/>
+		<StudentInfo oType="StudentType" oID="s387215322"/>
+		<Grade>C</Grade>
+	</Enrollment>
+	<Enrollment EnrollmentID="Enrollment037">
+		<OfferingInfo oType="OfferingType" oID="Offering002"/>
+		<StudentInfo oType="StudentType" oID="s409508678"/>
+		<Grade>A-</Grade>
+	</Enrollment>
+	<Enrollment EnrollmentID="Enrollment038">
+		<OfferingInfo oType="OfferingType" oID="Offering002"/>
+		<StudentInfo oType="StudentType" oID="s466094162"/>
+		<Grade>A</Grade>
+	</Enrollment>
+	<Enrollment EnrollmentID="Enrollment039">
+		<OfferingInfo oType="OfferingType" oID="Offering002"/>
+		<StudentInfo oType="StudentType" oID="s485619193"/>
+		<Grade>C</Grade>
+	</Enrollment>
+	<Enrollment EnrollmentID="Enrollment040">
+		<OfferingInfo oType="OfferingType" oID="Offering002"/>
+		<StudentInfo oType="StudentType" oID="s722131306"/>
+		<Grade>D+</Grade>
+	</Enrollment>
+	<Enrollment EnrollmentID="Enrollment041">
+		<OfferingInfo oType="OfferingType" oID="Offering002"/>
+		<StudentInfo oType="StudentType" oID="s785811329"/>
+		<Grade>B</Grade>
+	</Enrollment>
+	<Enrollment EnrollmentID="Enrollment042">
+		<OfferingInfo oType="OfferingType" oID="Offering002"/>
+		<StudentInfo oType="StudentType" oID="s876550324"/>
+		<Grade>B-</Grade>
+	</Enrollment>
+	<Enrollment EnrollmentID="Enrollment043">
+		<OfferingInfo oType="OfferingType" oID="Offering002"/>
+		<StudentInfo oType="StudentType" oID="s905922853"/>
+		<Grade>A-</Grade>
+	</Enrollment>
+	<Enrollment EnrollmentID="Enrollment044">
+		<OfferingInfo oType="OfferingType" oID="Offering002"/>
+		<StudentInfo oType="StudentType" oID="s907425648"/>
+		<Grade>C+</Grade>
+	</Enrollment>
+	<Enrollment EnrollmentID="Enrollment045">
+		<OfferingInfo oType="OfferingType" oID="Offering002"/>
+		<StudentInfo oType="StudentType" oID="s973071948"/>
+		<Grade>A-</Grade>
+	</Enrollment>
+	<Enrollment EnrollmentID="Enrollment046">
+		<OfferingInfo oType="OfferingType" oID="Offering002"/>
+		<StudentInfo oType="StudentType" oID="s980102825"/>
+		<Grade>D+</Grade>
+	</Enrollment>
+	<Enrollment EnrollmentID="Enrollment047">
+		<OfferingInfo oType="OfferingType" oID="Offering002"/>
+		<StudentInfo oType="StudentType" oID="s164500920"/>
+		<Grade>D</Grade>
+	</Enrollment>
+	<Enrollment EnrollmentID="Enrollment048">
+		<OfferingInfo oType="OfferingType" oID="Offering002"/>
+		<StudentInfo oType="StudentType" oID="s224620876"/>
+		<Grade>C</Grade>
+	</Enrollment>
+	<Enrollment EnrollmentID="Enrollment049">
+		<OfferingInfo oType="OfferingType" oID="Offering002"/>
+		<StudentInfo oType="StudentType" oID="s232820149"/>
+		<Grade>C-</Grade>
+	</Enrollment>
+	<Enrollment EnrollmentID="Enrollment050">
+		<OfferingInfo oType="OfferingType" oID="Offering002"/>
+		<StudentInfo oType="StudentType" oID="s419180204"/>
+		<Grade>A</Grade>
+	</Enrollment>
+	<Enrollment EnrollmentID="Enrollment051">
+		<OfferingInfo oType="OfferingType" oID="Offering002"/>
+		<StudentInfo oType="StudentType" oID="s490649143"/>
+		<Grade>B</Grade>
+	</Enrollment>
+	<Enrollment EnrollmentID="Enrollment052">
+		<OfferingInfo oType="OfferingType" oID="Offering002"/>
+		<StudentInfo oType="StudentType" oID="s513729696"/>
+		<Grade>B</Grade>
+	</Enrollment>
+	<Enrollment EnrollmentID="Enrollment053">
+		<OfferingInfo oType="OfferingType" oID="Offering002"/>
+		<StudentInfo oType="StudentType" oID="s587735656"/>
+		<Grade>C</Grade>
+	</Enrollment>
+	<Enrollment EnrollmentID="Enrollment054">
+		<OfferingInfo oType="OfferingType" oID="Offering002"/>
+		<StudentInfo oType="StudentType" oID="s787422802"/>
+		<Grade>C+</Grade>
+	</Enrollment>
+	<Enrollment EnrollmentID="Enrollment055">
+		<OfferingInfo oType="OfferingType" oID="Offering002"/>
+		<StudentInfo oType="StudentType" oID="s831142613"/>
+		<Grade>B</Grade>
+	</Enrollment>
+	<Enrollment EnrollmentID="Enrollment056">
+		<OfferingInfo oType="OfferingType" oID="Offering002"/>
+		<StudentInfo oType="StudentType" oID="s895255243"/>
+		<Grade>A-</Grade>
+	</Enrollment>
+	<Enrollment EnrollmentID="Enrollment057">
+		<OfferingInfo oType="OfferingType" oID="Offering002"/>
+		<StudentInfo oType="StudentType" oID="s965882492"/>
+		<Grade>C</Grade>
+	</Enrollment>
+	<Enrollment EnrollmentID="Enrollment058">
+		<OfferingInfo oType="OfferingType" oID="Offering003"/>
+		<StudentInfo oType="StudentType" oID="s131838016"/>
+		<Grade>B</Grade>
+	</Enrollment>
+	<Enrollment EnrollmentID="Enrollment059">
+		<OfferingInfo oType="OfferingType" oID="Offering003"/>
+		<StudentInfo oType="StudentType" oID="s143293833"/>
+		<Grade>B+</Grade>
+	</Enrollment>
+	<Enrollment EnrollmentID="Enrollment060">
+		<OfferingInfo oType="OfferingType" oID="Offering003"/>
+		<StudentInfo oType="StudentType" oID="s232820149"/>
+		<Grade>C-</Grade>
+	</Enrollment>
+	<Enrollment EnrollmentID="Enrollment061">
+		<OfferingInfo oType="OfferingType" oID="Offering003"/>
+		<StudentInfo oType="StudentType" oID="s271978135"/>
+		<Grade>D+</Grade>
+	</Enrollment>
+	<Enrollment EnrollmentID="Enrollment062">
+		<OfferingInfo oType="OfferingType" oID="Offering003"/>
+		<StudentInfo oType="StudentType" oID="s279702622"/>
+		<Grade>A-</Grade>
+	</Enrollment>
+	<Enrollment EnrollmentID="Enrollment063">
+		<OfferingInfo oType="OfferingType" oID="Offering003"/>
+		<StudentInfo oType="StudentType" oID="s328718420"/>
+		<Grade>B-</Grade>
+	</Enrollment>
+	<Enrollment EnrollmentID="Enrollment064">
+		<OfferingInfo oType="OfferingType" oID="Offering003"/>
+		<StudentInfo oType="StudentType" oID="s332012037"/>
+		<Grade>C</Grade>
+	</Enrollment>
+	<Enrollment EnrollmentID="Enrollment065">
+		<OfferingInfo oType="OfferingType" oID="Offering003"/>
+		<StudentInfo oType="StudentType" oID="s483727101"/>
+		<Grade>C</Grade>
+	</Enrollment>
+	<Enrollment EnrollmentID="Enrollment066">
+		<OfferingInfo oType="OfferingType" oID="Offering003"/>
+		<StudentInfo oType="StudentType" oID="s590987789"/>
+		<Grade>A-</Grade>
+	</Enrollment>
+	<Enrollment EnrollmentID="Enrollment067">
+		<OfferingInfo oType="OfferingType" oID="Offering003"/>
+		<StudentInfo oType="StudentType" oID="s664353912"/>
+		<Grade>B+</Grade>
+	</Enrollment>
+	<Enrollment EnrollmentID="Enrollment068">
+		<OfferingInfo oType="OfferingType" oID="Offering003"/>
+		<StudentInfo oType="StudentType" oID="s712952591"/>
+		<Grade>D+</Grade>
+	</Enrollment>
+	<Enrollment EnrollmentID="Enrollment069">
+		<OfferingInfo oType="OfferingType" oID="Offering003"/>
+		<StudentInfo oType="StudentType" oID="s737972250"/>
+		<Grade>A-</Grade>
+	</Enrollment>
+	<Enrollment EnrollmentID="Enrollment070">
+		<OfferingInfo oType="OfferingType" oID="Offering003"/>
+		<StudentInfo oType="StudentType" oID="s750913239"/>
+		<Grade>A-</Grade>
+	</Enrollment>
+	<Enrollment EnrollmentID="Enrollment071">
+		<OfferingInfo oType="OfferingType" oID="Offering003"/>
+		<StudentInfo oType="StudentType" oID="s785273479"/>
+		<Grade>D</Grade>
+	</Enrollment>
+	<Enrollment EnrollmentID="Enrollment072">
+		<OfferingInfo oType="OfferingType" oID="Offering003"/>
+		<StudentInfo oType="StudentType" oID="s831142613"/>
+		<Grade>B-</Grade>
+	</Enrollment>
+	<Enrollment EnrollmentID="Enrollment073">
+		<OfferingInfo oType="OfferingType" oID="Offering003"/>
+		<StudentInfo oType="StudentType" oID="s895255243"/>
+		<Grade>C-</Grade>
+	</Enrollment>
+	<Enrollment EnrollmentID="Enrollment074">
+		<OfferingInfo oType="OfferingType" oID="Offering003"/>
+		<StudentInfo oType="StudentType" oID="s905922853"/>
+		<Grade>C+</Grade>
+	</Enrollment>
+	<Enrollment EnrollmentID="Enrollment075">
+		<OfferingInfo oType="OfferingType" oID="Offering003"/>
+		<StudentInfo oType="StudentType" oID="s185141262"/>
+		<Grade>C</Grade>
+	</Enrollment>
+	<Enrollment EnrollmentID="Enrollment076">
+		<OfferingInfo oType="OfferingType" oID="Offering003"/>
+		<StudentInfo oType="StudentType" oID="s252533260"/>
+		<Grade>D+</Grade>
+	</Enrollment>
+	<Enrollment EnrollmentID="Enrollment077">
+		<OfferingInfo oType="OfferingType" oID="Offering003"/>
+		<StudentInfo oType="StudentType" oID="s315967897"/>
+		<Grade>A</Grade>
+	</Enrollment>
+	<Enrollment EnrollmentID="Enrollment078">
+		<OfferingInfo oType="OfferingType" oID="Offering003"/>
+		<StudentInfo oType="StudentType" oID="s466094162"/>
+		<Grade>C</Grade>
+	</Enrollment>
+	<Enrollment EnrollmentID="Enrollment079">
+		<OfferingInfo oType="OfferingType" oID="Offering003"/>
+		<StudentInfo oType="StudentType" oID="s467545237"/>
+		<Grade>B</Grade>
+	</Enrollment>
+	<Enrollment EnrollmentID="Enrollment080">
+		<OfferingInfo oType="OfferingType" oID="Offering003"/>
+		<StudentInfo oType="StudentType" oID="s477453864"/>
+		<Grade>C</Grade>
+	</Enrollment>
+	<Enrollment EnrollmentID="Enrollment081">
+		<OfferingInfo oType="OfferingType" oID="Offering003"/>
+		<StudentInfo oType="StudentType" oID="s513110141"/>
+		<Grade>B+</Grade>
+	</Enrollment>
+	<Enrollment EnrollmentID="Enrollment082">
+		<OfferingInfo oType="OfferingType" oID="Offering003"/>
+		<StudentInfo oType="StudentType" oID="s658579865"/>
+		<Grade>C+</Grade>
+	</Enrollment>
+	<Enrollment EnrollmentID="Enrollment083">
+		<OfferingInfo oType="OfferingType" oID="Offering003"/>
+		<StudentInfo oType="StudentType" oID="s785103478"/>
+		<Grade>C</Grade>
+	</Enrollment>
+	<Enrollment EnrollmentID="Enrollment084">
+		<OfferingInfo oType="OfferingType" oID="Offering003"/>
+		<StudentInfo oType="StudentType" oID="s793034333"/>
+		<Grade>C</Grade>
+	</Enrollment>
+	<Enrollment EnrollmentID="Enrollment085">
+		<OfferingInfo oType="OfferingType" oID="Offering003"/>
+		<StudentInfo oType="StudentType" oID="s812073765"/>
+		<Grade>B+</Grade>
+	</Enrollment>
+	<Enrollment EnrollmentID="Enrollment086">
+		<OfferingInfo oType="OfferingType" oID="Offering003"/>
+		<StudentInfo oType="StudentType" oID="s930231660"/>
+		<Grade>C+</Grade>
+	</Enrollment>
+	<Enrollment EnrollmentID="Enrollment087">
+		<OfferingInfo oType="OfferingType" oID="Offering004"/>
+		<StudentInfo oType="StudentType" oID="s164776911"/>
+		<Grade>D+</Grade>
+	</Enrollment>
+	<Enrollment EnrollmentID="Enrollment088">
+		<OfferingInfo oType="OfferingType" oID="Offering004"/>
+		<StudentInfo oType="StudentType" oID="s222105935"/>
+		<Grade>D+</Grade>
+	</Enrollment>
+	<Enrollment EnrollmentID="Enrollment089">
+		<OfferingInfo oType="OfferingType" oID="Offering004"/>
+		<StudentInfo oType="StudentType" oID="s232820149"/>
+		<Grade>D</Grade>
+	</Enrollment>
+	<Enrollment EnrollmentID="Enrollment090">
+		<OfferingInfo oType="OfferingType" oID="Offering004"/>
+		<StudentInfo oType="StudentType" oID="s271978135"/>
+		<Grade>B-</Grade>
+	</Enrollment>
+	<Enrollment EnrollmentID="Enrollment091">
+		<OfferingInfo oType="OfferingType" oID="Offering004"/>
+		<StudentInfo oType="StudentType" oID="s273277984"/>
+		<Grade>C</Grade>
+	</Enrollment>
+	<Enrollment EnrollmentID="Enrollment092">
+		<OfferingInfo oType="OfferingType" oID="Offering004"/>
+		<StudentInfo oType="StudentType" oID="s328718420"/>
+		<Grade>B-</Grade>
+	</Enrollment>
+	<Enrollment EnrollmentID="Enrollment093">
+		<OfferingInfo oType="OfferingType" oID="Offering004"/>
+		<StudentInfo oType="StudentType" oID="s363200537"/>
+		<Grade>A</Grade>
+	</Enrollment>
+	<Enrollment EnrollmentID="Enrollment094">
+		<OfferingInfo oType="OfferingType" oID="Offering004"/>
+		<StudentInfo oType="StudentType" oID="s387215322"/>
+		<Grade>B</Grade>
+	</Enrollment>
+	<Enrollment EnrollmentID="Enrollment095">
+		<OfferingInfo oType="OfferingType" oID="Offering004"/>
+		<StudentInfo oType="StudentType" oID="s466094162"/>
+		<Grade>B-</Grade>
+	</Enrollment>
+	<Enrollment EnrollmentID="Enrollment096">
+		<OfferingInfo oType="OfferingType" oID="Offering004"/>
+		<StudentInfo oType="StudentType" oID="s483223789"/>
+		<Grade>A</Grade>
+	</Enrollment>
+	<Enrollment EnrollmentID="Enrollment097">
+		<OfferingInfo oType="OfferingType" oID="Offering004"/>
+		<StudentInfo oType="StudentType" oID="s587735656"/>
+		<Grade>A</Grade>
+	</Enrollment>
+	<Enrollment EnrollmentID="Enrollment098">
+		<OfferingInfo oType="OfferingType" oID="Offering004"/>
+		<StudentInfo oType="StudentType" oID="s696302689"/>
+		<Grade>D+</Grade>
+	</Enrollment>
+	<Enrollment EnrollmentID="Enrollment099">
+		<OfferingInfo oType="OfferingType" oID="Offering004"/>
+		<StudentInfo oType="StudentType" oID="s722131306"/>
+		<Grade>C+</Grade>
+	</Enrollment>
+	<Enrollment EnrollmentID="Enrollment100">
+		<OfferingInfo oType="OfferingType" oID="Offering004"/>
+		<StudentInfo oType="StudentType" oID="s812073765"/>
+		<Grade>B-</Grade>
+	</Enrollment>
+	<Enrollment EnrollmentID="Enrollment101">
+		<OfferingInfo oType="OfferingType" oID="Offering004"/>
+		<StudentInfo oType="StudentType" oID="s867910658"/>
+		<Grade>B+</Grade>
+	</Enrollment>
+	<Enrollment EnrollmentID="Enrollment102">
+		<OfferingInfo oType="OfferingType" oID="Offering004"/>
+		<StudentInfo oType="StudentType" oID="s909334701"/>
+		<Grade>C+</Grade>
+	</Enrollment>
+	<Enrollment EnrollmentID="Enrollment103">
+		<OfferingInfo oType="OfferingType" oID="Offering004"/>
+		<StudentInfo oType="StudentType" oID="s930231660"/>
+		<Grade>A-</Grade>
+	</Enrollment>
+	<Enrollment EnrollmentID="Enrollment104">
+		<OfferingInfo oType="OfferingType" oID="Offering004"/>
+		<StudentInfo oType="StudentType" oID="s973071948"/>
+		<Grade>C</Grade>
+	</Enrollment>
+	<Enrollment EnrollmentID="Enrollment105">
+		<OfferingInfo oType="OfferingType" oID="Offering005"/>
+		<StudentInfo oType="StudentType" oID="s131838016"/>
+		<Grade>A-</Grade>
+	</Enrollment>
+	<Enrollment EnrollmentID="Enrollment106">
+		<OfferingInfo oType="OfferingType" oID="Offering005"/>
+		<StudentInfo oType="StudentType" oID="s185141262"/>
+		<Grade>C+</Grade>
+	</Enrollment>
+	<Enrollment EnrollmentID="Enrollment107">
+		<OfferingInfo oType="OfferingType" oID="Offering005"/>
+		<StudentInfo oType="StudentType" oID="s203745018"/>
+		<Grade>B-</Grade>
+	</Enrollment>
+	<Enrollment EnrollmentID="Enrollment108">
+		<OfferingInfo oType="OfferingType" oID="Offering005"/>
+		<StudentInfo oType="StudentType" oID="s224620876"/>
+		<Grade>C-</Grade>
+	</Enrollment>
+	<Enrollment EnrollmentID="Enrollment109">
+		<OfferingInfo oType="OfferingType" oID="Offering005"/>
+		<StudentInfo oType="StudentType" oID="s290986112"/>
+		<Grade>B</Grade>
+	</Enrollment>
+	<Enrollment EnrollmentID="Enrollment110">
+		<OfferingInfo oType="OfferingType" oID="Offering005"/>
+		<StudentInfo oType="StudentType" oID="s296669559"/>
+		<Grade>C-</Grade>
+	</Enrollment>
+	<Enrollment EnrollmentID="Enrollment111">
+		<OfferingInfo oType="OfferingType" oID="Offering005"/>
+		<StudentInfo oType="StudentType" oID="s308635036"/>
+		<Grade>D</Grade>
+	</Enrollment>
+	<Enrollment EnrollmentID="Enrollment112">
+		<OfferingInfo oType="OfferingType" oID="Offering005"/>
+		<StudentInfo oType="StudentType" oID="s490649143"/>
+		<Grade>B</Grade>
+	</Enrollment>
+	<Enrollment EnrollmentID="Enrollment113">
+		<OfferingInfo oType="OfferingType" oID="Offering005"/>
+		<StudentInfo oType="StudentType" oID="s743991555"/>
+		<Grade>A</Grade>
+	</Enrollment>
+	<Enrollment EnrollmentID="Enrollment114">
+		<OfferingInfo oType="OfferingType" oID="Offering005"/>
+		<StudentInfo oType="StudentType" oID="s793034333"/>
+		<Grade>B-</Grade>
+	</Enrollment>
+	<Enrollment EnrollmentID="Enrollment115">
+		<OfferingInfo oType="OfferingType" oID="Offering005"/>
+		<StudentInfo oType="StudentType" oID="s801166066"/>
+		<Grade>D+</Grade>
+	</Enrollment>
+	<Enrollment EnrollmentID="Enrollment116">
+		<OfferingInfo oType="OfferingType" oID="Offering005"/>
+		<StudentInfo oType="StudentType" oID="s862952924"/>
+		<Grade>C</Grade>
+	</Enrollment>
+	<Enrollment EnrollmentID="Enrollment117">
+		<OfferingInfo oType="OfferingType" oID="Offering005"/>
+		<StudentInfo oType="StudentType" oID="s980102825"/>
+		<Grade>D</Grade>
+	</Enrollment>
+	<Enrollment EnrollmentID="Enrollment118">
+		<OfferingInfo oType="OfferingType" oID="Offering006"/>
+		<StudentInfo oType="StudentType" oID="s118784412"/>
+		<Grade>C+</Grade>
+	</Enrollment>
+	<Enrollment EnrollmentID="Enrollment119">
+		<OfferingInfo oType="OfferingType" oID="Offering006"/>
+		<StudentInfo oType="StudentType" oID="s124208644"/>
+		<Grade>C+</Grade>
+	</Enrollment>
+	<Enrollment EnrollmentID="Enrollment120">
+		<OfferingInfo oType="OfferingType" oID="Offering006"/>
+		<StudentInfo oType="StudentType" oID="s131838016"/>
+		<Grade>D</Grade>
+	</Enrollment>
+	<Enrollment EnrollmentID="Enrollment121">
+		<OfferingInfo oType="OfferingType" oID="Offering006"/>
+		<StudentInfo oType="StudentType" oID="s191083779"/>
+		<Grade>B</Grade>
+	</Enrollment>
+	<Enrollment EnrollmentID="Enrollment122">
+		<OfferingInfo oType="OfferingType" oID="Offering006"/>
+		<StudentInfo oType="StudentType" oID="s222105935"/>
+		<Grade>B+</Grade>
+	</Enrollment>
+	<Enrollment EnrollmentID="Enrollment123">
+		<OfferingInfo oType="OfferingType" oID="Offering006"/>
+		<StudentInfo oType="StudentType" oID="s273277984"/>
+		<Grade>B+</Grade>
+	</Enrollment>
+	<Enrollment EnrollmentID="Enrollment124">
+		<OfferingInfo oType="OfferingType" oID="Offering006"/>
+		<StudentInfo oType="StudentType" oID="s285719425"/>
+		<Grade>B-</Grade>
+	</Enrollment>
+	<Enrollment EnrollmentID="Enrollment125">
+		<OfferingInfo oType="OfferingType" oID="Offering006"/>
+		<StudentInfo oType="StudentType" oID="s308635036"/>
+		<Grade>B-</Grade>
+	</Enrollment>
+	<Enrollment EnrollmentID="Enrollment126">
+		<OfferingInfo oType="OfferingType" oID="Offering006"/>
+		<StudentInfo oType="StudentType" oID="s328718420"/>
+		<Grade>C</Grade>
+	</Enrollment>
+	<Enrollment EnrollmentID="Enrollment127">
+		<OfferingInfo oType="OfferingType" oID="Offering006"/>
+		<StudentInfo oType="StudentType" oID="s363200537"/>
+		<Grade>A</Grade>
+	</Enrollment>
+	<Enrollment EnrollmentID="Enrollment128">
+		<OfferingInfo oType="OfferingType" oID="Offering006"/>
+		<StudentInfo oType="StudentType" oID="s387215322"/>
+		<Grade>D+</Grade>
+	</Enrollment>
+	<Enrollment EnrollmentID="Enrollment129">
+		<OfferingInfo oType="OfferingType" oID="Offering006"/>
+		<StudentInfo oType="StudentType" oID="s466094162"/>
+		<Grade>C</Grade>
+	</Enrollment>
+	<Enrollment EnrollmentID="Enrollment130">
+		<OfferingInfo oType="OfferingType" oID="Offering006"/>
+		<StudentInfo oType="StudentType" oID="s513729696"/>
+		<Grade>A</Grade>
+	</Enrollment>
+	<Enrollment EnrollmentID="Enrollment131">
+		<OfferingInfo oType="OfferingType" oID="Offering006"/>
+		<StudentInfo oType="StudentType" oID="s658579865"/>
+		<Grade>D</Grade>
+	</Enrollment>
+	<Enrollment EnrollmentID="Enrollment132">
+		<OfferingInfo oType="OfferingType" oID="Offering006"/>
+		<StudentInfo oType="StudentType" oID="s696302689"/>
+		<Grade>D</Grade>
+	</Enrollment>
+	<Enrollment EnrollmentID="Enrollment133">
+		<OfferingInfo oType="OfferingType" oID="Offering006"/>
+		<StudentInfo oType="StudentType" oID="s787422802"/>
+		<Grade>D</Grade>
+	</Enrollment>
+	<Enrollment EnrollmentID="Enrollment134">
+		<OfferingInfo oType="OfferingType" oID="Offering006"/>
+		<StudentInfo oType="StudentType" oID="s803024290"/>
+		<Grade>D</Grade>
+	</Enrollment>
+	<Enrollment EnrollmentID="Enrollment135">
+		<OfferingInfo oType="OfferingType" oID="Offering006"/>
+		<StudentInfo oType="StudentType" oID="s845037919"/>
+		<Grade>A-</Grade>
+	</Enrollment>
+	<Enrollment EnrollmentID="Enrollment136">
+		<OfferingInfo oType="OfferingType" oID="Offering006"/>
+		<StudentInfo oType="StudentType" oID="s885469446"/>
+		<Grade>A-</Grade>
+	</Enrollment>
+	<Enrollment EnrollmentID="Enrollment137">
+		<OfferingInfo oType="OfferingType" oID="Offering006"/>
+		<StudentInfo oType="StudentType" oID="s916916939"/>
+		<Grade>B</Grade>
+	</Enrollment>
+	<Enrollment EnrollmentID="Enrollment138">
+		<OfferingInfo oType="OfferingType" oID="Offering006"/>
+		<StudentInfo oType="StudentType" oID="s952145559"/>
+		<Grade>A</Grade>
+	</Enrollment>
+	<Enrollment EnrollmentID="Enrollment139">
+		<OfferingInfo oType="OfferingType" oID="Offering006"/>
+		<StudentInfo oType="StudentType" oID="s164776911"/>
+		<Grade>B</Grade>
+	</Enrollment>
+	<Enrollment EnrollmentID="Enrollment140">
+		<OfferingInfo oType="OfferingType" oID="Offering006"/>
+		<StudentInfo oType="StudentType" oID="s185141262"/>
+		<Grade>B</Grade>
+	</Enrollment>
+	<Enrollment EnrollmentID="Enrollment141">
+		<OfferingInfo oType="OfferingType" oID="Offering006"/>
+		<StudentInfo oType="StudentType" oID="s252533260"/>
+		<Grade>B</Grade>
+	</Enrollment>
+	<Enrollment EnrollmentID="Enrollment142">
+		<OfferingInfo oType="OfferingType" oID="Offering006"/>
+		<StudentInfo oType="StudentType" oID="s391910519"/>
+		<Grade>D+</Grade>
+	</Enrollment>
+	<Enrollment EnrollmentID="Enrollment143">
+		<OfferingInfo oType="OfferingType" oID="Offering006"/>
+		<StudentInfo oType="StudentType" oID="s409508678"/>
+		<Grade>A</Grade>
+	</Enrollment>
+	<Enrollment EnrollmentID="Enrollment144">
+		<OfferingInfo oType="OfferingType" oID="Offering006"/>
+		<StudentInfo oType="StudentType" oID="s432180765"/>
+		<Grade>B+</Grade>
+	</Enrollment>
+	<Enrollment EnrollmentID="Enrollment145">
+		<OfferingInfo oType="OfferingType" oID="Offering006"/>
+		<StudentInfo oType="StudentType" oID="s793034333"/>
+		<Grade>D</Grade>
+	</Enrollment>
+	<Enrollment EnrollmentID="Enrollment146">
+		<OfferingInfo oType="OfferingType" oID="Offering006"/>
+		<StudentInfo oType="StudentType" oID="s812073765"/>
+		<Grade>D+</Grade>
+	</Enrollment>
+	<Enrollment EnrollmentID="Enrollment147">
+		<OfferingInfo oType="OfferingType" oID="Offering006"/>
+		<StudentInfo oType="StudentType" oID="s867910658"/>
+		<Grade>A</Grade>
+	</Enrollment>
+	<Enrollment EnrollmentID="Enrollment148">
+		<OfferingInfo oType="OfferingType" oID="Offering006"/>
+		<StudentInfo oType="StudentType" oID="s930231660"/>
+		<Grade>B</Grade>
+	</Enrollment>
+	<Enrollment EnrollmentID="Enrollment149">
+		<OfferingInfo oType="OfferingType" oID="Offering006"/>
+		<StudentInfo oType="StudentType" oID="s973071948"/>
+		<Grade>D</Grade>
+	</Enrollment>
+	<Enrollment EnrollmentID="Enrollment150">
+		<OfferingInfo oType="OfferingType" oID="Offering007"/>
+		<StudentInfo oType="StudentType" oID="s143293833"/>
+		<Grade>D</Grade>
+	</Enrollment>
+	<Enrollment EnrollmentID="Enrollment151">
+		<OfferingInfo oType="OfferingType" oID="Offering007"/>
+		<StudentInfo oType="StudentType" oID="s222105935"/>
+		<Grade>C</Grade>
+	</Enrollment>
+	<Enrollment EnrollmentID="Enrollment152">
+		<OfferingInfo oType="OfferingType" oID="Offering007"/>
+		<StudentInfo oType="StudentType" oID="s224620876"/>
+		<Grade>C-</Grade>
+	</Enrollment>
+	<Enrollment EnrollmentID="Enrollment153">
+		<OfferingInfo oType="OfferingType" oID="Offering007"/>
+		<StudentInfo oType="StudentType" oID="s262891588"/>
+		<Grade>B+</Grade>
+	</Enrollment>
+	<Enrollment EnrollmentID="Enrollment154">
+		<OfferingInfo oType="OfferingType" oID="Offering007"/>
+		<StudentInfo oType="StudentType" oID="s271978135"/>
+		<Grade>C</Grade>
+	</Enrollment>
+	<Enrollment EnrollmentID="Enrollment155">
+		<OfferingInfo oType="OfferingType" oID="Offering007"/>
+		<StudentInfo oType="StudentType" oID="s328718420"/>
+		<Grade>C+</Grade>
+	</Enrollment>
+	<Enrollment EnrollmentID="Enrollment156">
+		<OfferingInfo oType="OfferingType" oID="Offering007"/>
+		<StudentInfo oType="StudentType" oID="s382109560"/>
+		<Grade>D</Grade>
+	</Enrollment>
+	<Enrollment EnrollmentID="Enrollment157">
+		<OfferingInfo oType="OfferingType" oID="Offering007"/>
+		<StudentInfo oType="StudentType" oID="s387215322"/>
+		<Grade>A-</Grade>
+	</Enrollment>
+	<Enrollment EnrollmentID="Enrollment158">
+		<OfferingInfo oType="OfferingType" oID="Offering007"/>
+		<StudentInfo oType="StudentType" oID="s391910519"/>
+		<Grade>C+</Grade>
+	</Enrollment>
+	<Enrollment EnrollmentID="Enrollment159">
+		<OfferingInfo oType="OfferingType" oID="Offering007"/>
+		<StudentInfo oType="StudentType" oID="s406746417"/>
+		<Grade>D</Grade>
+	</Enrollment>
+	<Enrollment EnrollmentID="Enrollment160">
+		<OfferingInfo oType="OfferingType" oID="Offering007"/>
+		<StudentInfo oType="StudentType" oID="s490649143"/>
+		<Grade>A</Grade>
+	</Enrollment>
+	<Enrollment EnrollmentID="Enrollment161">
+		<OfferingInfo oType="OfferingType" oID="Offering007"/>
+		<StudentInfo oType="StudentType" oID="s601496044"/>
+		<Grade>B+</Grade>
+	</Enrollment>
+	<Enrollment EnrollmentID="Enrollment162">
+		<OfferingInfo oType="OfferingType" oID="Offering007"/>
+		<StudentInfo oType="StudentType" oID="s712524758"/>
+		<Grade>C</Grade>
+	</Enrollment>
+	<Enrollment EnrollmentID="Enrollment163">
+		<OfferingInfo oType="OfferingType" oID="Offering007"/>
+		<StudentInfo oType="StudentType" oID="s787422802"/>
+		<Grade>B</Grade>
+	</Enrollment>
+	<Enrollment EnrollmentID="Enrollment164">
+		<OfferingInfo oType="OfferingType" oID="Offering007"/>
+		<StudentInfo oType="StudentType" oID="s850631208"/>
+		<Grade>C</Grade>
+	</Enrollment>
+	<Enrollment EnrollmentID="Enrollment165">
+		<OfferingInfo oType="OfferingType" oID="Offering007"/>
+		<StudentInfo oType="StudentType" oID="s885469446"/>
+		<Grade>A-</Grade>
+	</Enrollment>
+	<Enrollment EnrollmentID="Enrollment166">
+		<OfferingInfo oType="OfferingType" oID="Offering007"/>
+		<StudentInfo oType="StudentType" oID="s901511548"/>
+		<Grade>A-</Grade>
+	</Enrollment>
+	<Enrollment EnrollmentID="Enrollment167">
+		<OfferingInfo oType="OfferingType" oID="Offering007"/>
+		<StudentInfo oType="StudentType" oID="s905922853"/>
+		<Grade>A</Grade>
+	</Enrollment>
+	<Enrollment EnrollmentID="Enrollment168">
+		<OfferingInfo oType="OfferingType" oID="Offering007"/>
+		<StudentInfo oType="StudentType" oID="s965882492"/>
+		<Grade>A</Grade>
+	</Enrollment>
+	<Enrollment EnrollmentID="Enrollment169">
+		<OfferingInfo oType="OfferingType" oID="Offering007"/>
+		<StudentInfo oType="StudentType" oID="s973071948"/>
+		<Grade>A</Grade>
+	</Enrollment>
+	<Enrollment EnrollmentID="Enrollment170">
+		<OfferingInfo oType="OfferingType" oID="Offering007"/>
+		<StudentInfo oType="StudentType" oID="s170815037"/>
+		<Grade>D</Grade>
+	</Enrollment>
+	<Enrollment EnrollmentID="Enrollment171">
+		<OfferingInfo oType="OfferingType" oID="Offering007"/>
+		<StudentInfo oType="StudentType" oID="s203745018"/>
+		<Grade>A-</Grade>
+	</Enrollment>
+	<Enrollment EnrollmentID="Enrollment172">
+		<OfferingInfo oType="OfferingType" oID="Offering007"/>
+		<StudentInfo oType="StudentType" oID="s260369148"/>
+		<Grade>D+</Grade>
+	</Enrollment>
+	<Enrollment EnrollmentID="Enrollment173">
+		<OfferingInfo oType="OfferingType" oID="Offering007"/>
+		<StudentInfo oType="StudentType" oID="s261812056"/>
+		<Grade>A</Grade>
+	</Enrollment>
+	<Enrollment EnrollmentID="Enrollment174">
+		<OfferingInfo oType="OfferingType" oID="Offering007"/>
+		<StudentInfo oType="StudentType" oID="s279702622"/>
+		<Grade>A</Grade>
+	</Enrollment>
+	<Enrollment EnrollmentID="Enrollment175">
+		<OfferingInfo oType="OfferingType" oID="Offering007"/>
+		<StudentInfo oType="StudentType" oID="s363200537"/>
+		<Grade>D+</Grade>
+	</Enrollment>
+	<Enrollment EnrollmentID="Enrollment176">
+		<OfferingInfo oType="OfferingType" oID="Offering007"/>
+		<StudentInfo oType="StudentType" oID="s419180204"/>
+		<Grade>D</Grade>
+	</Enrollment>
+	<Enrollment EnrollmentID="Enrollment177">
+		<OfferingInfo oType="OfferingType" oID="Offering007"/>
+		<StudentInfo oType="StudentType" oID="s500094214"/>
+		<Grade>C+</Grade>
+	</Enrollment>
+	<Enrollment EnrollmentID="Enrollment178">
+		<OfferingInfo oType="OfferingType" oID="Offering007"/>
+		<StudentInfo oType="StudentType" oID="s504013895"/>
+		<Grade>C+</Grade>
+	</Enrollment>
+	<Enrollment EnrollmentID="Enrollment179">
+		<OfferingInfo oType="OfferingType" oID="Offering007"/>
+		<StudentInfo oType="StudentType" oID="s513729696"/>
+		<Grade>C+</Grade>
+	</Enrollment>
+	<Enrollment EnrollmentID="Enrollment180">
+		<OfferingInfo oType="OfferingType" oID="Offering007"/>
+		<StudentInfo oType="StudentType" oID="s743991555"/>
+		<Grade>B-</Grade>
+	</Enrollment>
+	<Enrollment EnrollmentID="Enrollment181">
+		<OfferingInfo oType="OfferingType" oID="Offering007"/>
+		<StudentInfo oType="StudentType" oID="s909334701"/>
+		<Grade>A</Grade>
+	</Enrollment>
+	<Enrollment EnrollmentID="Enrollment182">
+		<OfferingInfo oType="OfferingType" oID="Offering007"/>
+		<StudentInfo oType="StudentType" oID="s930231660"/>
+		<Grade>C</Grade>
+	</Enrollment>
+	<Enrollment EnrollmentID="Enrollment183">
+		<OfferingInfo oType="OfferingType" oID="Offering008"/>
+		<StudentInfo oType="StudentType" oID="s170815037"/>
+		<Grade>D</Grade>
+	</Enrollment>
+	<Enrollment EnrollmentID="Enrollment184">
+		<OfferingInfo oType="OfferingType" oID="Offering008"/>
+		<StudentInfo oType="StudentType" oID="s224620876"/>
+		<Grade>A</Grade>
+	</Enrollment>
+	<Enrollment EnrollmentID="Enrollment185">
+		<OfferingInfo oType="OfferingType" oID="Offering008"/>
+		<StudentInfo oType="StudentType" oID="s232820149"/>
+		<Grade>D+</Grade>
+	</Enrollment>
+	<Enrollment EnrollmentID="Enrollment186">
+		<OfferingInfo oType="OfferingType" oID="Offering008"/>
+		<StudentInfo oType="StudentType" oID="s315967897"/>
+		<Grade>C+</Grade>
+	</Enrollment>
+	<Enrollment EnrollmentID="Enrollment187">
+		<OfferingInfo oType="OfferingType" oID="Offering008"/>
+		<StudentInfo oType="StudentType" oID="s467545237"/>
+		<Grade>D</Grade>
+	</Enrollment>
+	<Enrollment EnrollmentID="Enrollment188">
+		<OfferingInfo oType="OfferingType" oID="Offering008"/>
+		<StudentInfo oType="StudentType" oID="s483223789"/>
+		<Grade>C-</Grade>
+	</Enrollment>
+	<Enrollment EnrollmentID="Enrollment189">
+		<OfferingInfo oType="OfferingType" oID="Offering008"/>
+		<StudentInfo oType="StudentType" oID="s483727101"/>
+		<Grade>A-</Grade>
+	</Enrollment>
+	<Enrollment EnrollmentID="Enrollment190">
+		<OfferingInfo oType="OfferingType" oID="Offering008"/>
+		<StudentInfo oType="StudentType" oID="s696302689"/>
+		<Grade>B</Grade>
+	</Enrollment>
+	<Enrollment EnrollmentID="Enrollment191">
+		<OfferingInfo oType="OfferingType" oID="Offering008"/>
+		<StudentInfo oType="StudentType" oID="s801166066"/>
+		<Grade>C</Grade>
+	</Enrollment>
+	<Enrollment EnrollmentID="Enrollment192">
+		<OfferingInfo oType="OfferingType" oID="Offering008"/>
+		<StudentInfo oType="StudentType" oID="s956234659"/>
+		<Grade>B-</Grade>
+	</Enrollment>
+	<Enrollment EnrollmentID="Enrollment193">
+		<OfferingInfo oType="OfferingType" oID="Offering008"/>
+		<StudentInfo oType="StudentType" oID="s271978135"/>
+		<Grade>D</Grade>
+	</Enrollment>
+	<Enrollment EnrollmentID="Enrollment194">
+		<OfferingInfo oType="OfferingType" oID="Offering008"/>
+		<StudentInfo oType="StudentType" oID="s332012037"/>
+		<Grade>B-</Grade>
+	</Enrollment>
+	<Enrollment EnrollmentID="Enrollment195">
+		<OfferingInfo oType="OfferingType" oID="Offering008"/>
+		<StudentInfo oType="StudentType" oID="s363200537"/>
+		<Grade>B-</Grade>
+	</Enrollment>
+	<Enrollment EnrollmentID="Enrollment196">
+		<OfferingInfo oType="OfferingType" oID="Offering008"/>
+		<StudentInfo oType="StudentType" oID="s495490053"/>
+		<Grade>B-</Grade>
+	</Enrollment>
+	<Enrollment EnrollmentID="Enrollment197">
+		<OfferingInfo oType="OfferingType" oID="Offering008"/>
+		<StudentInfo oType="StudentType" oID="s550658107"/>
+		<Grade>D+</Grade>
+	</Enrollment>
+	<Enrollment EnrollmentID="Enrollment198">
+		<OfferingInfo oType="OfferingType" oID="Offering008"/>
+		<StudentInfo oType="StudentType" oID="s664353912"/>
+		<Grade>A</Grade>
+	</Enrollment>
+	<Enrollment EnrollmentID="Enrollment199">
+		<OfferingInfo oType="OfferingType" oID="Offering008"/>
+		<StudentInfo oType="StudentType" oID="s909334701"/>
+		<Grade>C</Grade>
+	</Enrollment>
+	<Enrollment EnrollmentID="Enrollment200">
+		<OfferingInfo oType="OfferingType" oID="Offering009"/>
+		<StudentInfo oType="StudentType" oID="s118784412"/>
+		<Grade>A</Grade>
+	</Enrollment>
+	<Enrollment EnrollmentID="Enrollment201">
+		<OfferingInfo oType="OfferingType" oID="Offering009"/>
+		<StudentInfo oType="StudentType" oID="s163728111"/>
+		<Grade>B+</Grade>
+	</Enrollment>
+	<Enrollment EnrollmentID="Enrollment202">
+		<OfferingInfo oType="OfferingType" oID="Offering009"/>
+		<StudentInfo oType="StudentType" oID="s203745018"/>
+		<Grade>B</Grade>
+	</Enrollment>
+	<Enrollment EnrollmentID="Enrollment203">
+		<OfferingInfo oType="OfferingType" oID="Offering009"/>
+		<StudentInfo oType="StudentType" oID="s222105935"/>
+		<Grade>B</Grade>
+	</Enrollment>
+	<Enrollment EnrollmentID="Enrollment204">
+		<OfferingInfo oType="OfferingType" oID="Offering009"/>
+		<StudentInfo oType="StudentType" oID="s252533260"/>
+		<Grade>B-</Grade>
+	</Enrollment>
+	<Enrollment EnrollmentID="Enrollment205">
+		<OfferingInfo oType="OfferingType" oID="Offering009"/>
+		<StudentInfo oType="StudentType" oID="s290986112"/>
+		<Grade>B</Grade>
+	</Enrollment>
+	<Enrollment EnrollmentID="Enrollment206">
+		<OfferingInfo oType="OfferingType" oID="Offering009"/>
+		<StudentInfo oType="StudentType" oID="s328718420"/>
+		<Grade>B+</Grade>
+	</Enrollment>
+	<Enrollment EnrollmentID="Enrollment207">
+		<OfferingInfo oType="OfferingType" oID="Offering009"/>
+		<StudentInfo oType="StudentType" oID="s332012037"/>
+		<Grade>C</Grade>
+	</Enrollment>
+	<Enrollment EnrollmentID="Enrollment208">
+		<OfferingInfo oType="OfferingType" oID="Offering009"/>
+		<StudentInfo oType="StudentType" oID="s382109560"/>
+		<Grade>A</Grade>
+	</Enrollment>
+	<Enrollment EnrollmentID="Enrollment209">
+		<OfferingInfo oType="OfferingType" oID="Offering009"/>
+		<StudentInfo oType="StudentType" oID="s391910519"/>
+		<Grade>B-</Grade>
+	</Enrollment>
+	<Enrollment EnrollmentID="Enrollment210">
+		<OfferingInfo oType="OfferingType" oID="Offering009"/>
+		<StudentInfo oType="StudentType" oID="s490649143"/>
+		<Grade>B+</Grade>
+	</Enrollment>
+	<Enrollment EnrollmentID="Enrollment211">
+		<OfferingInfo oType="OfferingType" oID="Offering009"/>
+		<StudentInfo oType="StudentType" oID="s500094214"/>
+		<Grade>C+</Grade>
+	</Enrollment>
+	<Enrollment EnrollmentID="Enrollment212">
+		<OfferingInfo oType="OfferingType" oID="Offering009"/>
+		<StudentInfo oType="StudentType" oID="s501674545"/>
+		<Grade>B+</Grade>
+	</Enrollment>
+	<Enrollment EnrollmentID="Enrollment213">
+		<OfferingInfo oType="OfferingType" oID="Offering009"/>
+		<StudentInfo oType="StudentType" oID="s587735656"/>
+		<Grade>D+</Grade>
+	</Enrollment>
+	<Enrollment EnrollmentID="Enrollment214">
+		<OfferingInfo oType="OfferingType" oID="Offering009"/>
+		<StudentInfo oType="StudentType" oID="s644488789"/>
+		<Grade>A-</Grade>
+	</Enrollment>
+	<Enrollment EnrollmentID="Enrollment215">
+		<OfferingInfo oType="OfferingType" oID="Offering009"/>
+		<StudentInfo oType="StudentType" oID="s785811329"/>
+		<Grade>B</Grade>
+	</Enrollment>
+	<Enrollment EnrollmentID="Enrollment216">
+		<OfferingInfo oType="OfferingType" oID="Offering009"/>
+		<StudentInfo oType="StudentType" oID="s867910658"/>
+		<Grade>B</Grade>
+	</Enrollment>
+	<Enrollment EnrollmentID="Enrollment217">
+		<OfferingInfo oType="OfferingType" oID="Offering009"/>
+		<StudentInfo oType="StudentType" oID="s895255243"/>
+		<Grade>B</Grade>
+	</Enrollment>
+	<Enrollment EnrollmentID="Enrollment218">
+		<OfferingInfo oType="OfferingType" oID="Offering009"/>
+		<StudentInfo oType="StudentType" oID="s905922853"/>
+		<Grade>B</Grade>
+	</Enrollment>
+	<Enrollment EnrollmentID="Enrollment219">
+		<OfferingInfo oType="OfferingType" oID="Offering009"/>
+		<StudentInfo oType="StudentType" oID="s907425648"/>
+		<Grade>C</Grade>
+	</Enrollment>
+	<Enrollment EnrollmentID="Enrollment220">
+		<OfferingInfo oType="OfferingType" oID="Offering009"/>
+		<StudentInfo oType="StudentType" oID="s909334701"/>
+		<Grade>C-</Grade>
+	</Enrollment>
+	<Enrollment EnrollmentID="Enrollment221">
+		<OfferingInfo oType="OfferingType" oID="Offering009"/>
+		<StudentInfo oType="StudentType" oID="s980102825"/>
+		<Grade>C</Grade>
+	</Enrollment>
+	<Enrollment EnrollmentID="Enrollment222">
+		<OfferingInfo oType="OfferingType" oID="Offering010"/>
+		<StudentInfo oType="StudentType" oID="s143293833"/>
+		<Grade>C-</Grade>
+	</Enrollment>
+	<Enrollment EnrollmentID="Enrollment223">
+		<OfferingInfo oType="OfferingType" oID="Offering010"/>
+		<StudentInfo oType="StudentType" oID="s191083779"/>
+		<Grade>A-</Grade>
+	</Enrollment>
+	<Enrollment EnrollmentID="Enrollment224">
+		<OfferingInfo oType="OfferingType" oID="Offering010"/>
+		<StudentInfo oType="StudentType" oID="s261812056"/>
+		<Grade>C-</Grade>
+	</Enrollment>
+	<Enrollment EnrollmentID="Enrollment225">
+		<OfferingInfo oType="OfferingType" oID="Offering010"/>
+		<StudentInfo oType="StudentType" oID="s262891588"/>
+		<Grade>C+</Grade>
+	</Enrollment>
+	<Enrollment EnrollmentID="Enrollment226">
+		<OfferingInfo oType="OfferingType" oID="Offering010"/>
+		<StudentInfo oType="StudentType" oID="s279702622"/>
+		<Grade>A-</Grade>
+	</Enrollment>
+	<Enrollment EnrollmentID="Enrollment227">
+		<OfferingInfo oType="OfferingType" oID="Offering010"/>
+		<StudentInfo oType="StudentType" oID="s302335678"/>
+		<Grade>C</Grade>
+	</Enrollment>
+	<Enrollment EnrollmentID="Enrollment228">
+		<OfferingInfo oType="OfferingType" oID="Offering010"/>
+		<StudentInfo oType="StudentType" oID="s406746417"/>
+		<Grade>B</Grade>
+	</Enrollment>
+	<Enrollment EnrollmentID="Enrollment229">
+		<OfferingInfo oType="OfferingType" oID="Offering010"/>
+		<StudentInfo oType="StudentType" oID="s432180765"/>
+		<Grade>C</Grade>
+	</Enrollment>
+	<Enrollment EnrollmentID="Enrollment230">
+		<OfferingInfo oType="OfferingType" oID="Offering010"/>
+		<StudentInfo oType="StudentType" oID="s449976666"/>
+		<Grade>B+</Grade>
+	</Enrollment>
+	<Enrollment EnrollmentID="Enrollment231">
+		<OfferingInfo oType="OfferingType" oID="Offering010"/>
+		<StudentInfo oType="StudentType" oID="s467545237"/>
+		<Grade>C+</Grade>
+	</Enrollment>
+	<Enrollment EnrollmentID="Enrollment232">
+		<OfferingInfo oType="OfferingType" oID="Offering010"/>
+		<StudentInfo oType="StudentType" oID="s495490053"/>
+		<Grade>C+</Grade>
+	</Enrollment>
+	<Enrollment EnrollmentID="Enrollment233">
+		<OfferingInfo oType="OfferingType" oID="Offering010"/>
+		<StudentInfo oType="StudentType" oID="s590987789"/>
+		<Grade>D</Grade>
+	</Enrollment>
+	<Enrollment EnrollmentID="Enrollment234">
+		<OfferingInfo oType="OfferingType" oID="Offering010"/>
+		<StudentInfo oType="StudentType" oID="s812073765"/>
+		<Grade>A</Grade>
+	</Enrollment>
+	<Enrollment EnrollmentID="Enrollment235">
+		<OfferingInfo oType="OfferingType" oID="Offering010"/>
+		<StudentInfo oType="StudentType" oID="s845037919"/>
+		<Grade>A</Grade>
+	</Enrollment>
+	<Enrollment EnrollmentID="Enrollment236">
+		<OfferingInfo oType="OfferingType" oID="Offering010"/>
+		<StudentInfo oType="StudentType" oID="s973071948"/>
+		<Grade>B</Grade>
+	</Enrollment>
+	<Enrollment EnrollmentID="Enrollment237">
+		<OfferingInfo oType="OfferingType" oID="Offering011"/>
+		<StudentInfo oType="StudentType" oID="s164500920"/>
+		<Grade>C</Grade>
+	</Enrollment>
+	<Enrollment EnrollmentID="Enrollment238">
+		<OfferingInfo oType="OfferingType" oID="Offering011"/>
+		<StudentInfo oType="StudentType" oID="s170815037"/>
+		<Grade>A</Grade>
+	</Enrollment>
+	<Enrollment EnrollmentID="Enrollment239">
+		<OfferingInfo oType="OfferingType" oID="Offering011"/>
+		<StudentInfo oType="StudentType" oID="s203745018"/>
+		<Grade>A</Grade>
+	</Enrollment>
+	<Enrollment EnrollmentID="Enrollment240">
+		<OfferingInfo oType="OfferingType" oID="Offering011"/>
+		<StudentInfo oType="StudentType" oID="s212976207"/>
+		<Grade>B</Grade>
+	</Enrollment>
+	<Enrollment EnrollmentID="Enrollment241">
+		<OfferingInfo oType="OfferingType" oID="Offering011"/>
+		<StudentInfo oType="StudentType" oID="s224620876"/>
+		<Grade>A</Grade>
+	</Enrollment>
+	<Enrollment EnrollmentID="Enrollment242">
+		<OfferingInfo oType="OfferingType" oID="Offering011"/>
+		<StudentInfo oType="StudentType" oID="s261812056"/>
+		<Grade>C</Grade>
+	</Enrollment>
+	<Enrollment EnrollmentID="Enrollment243">
+		<OfferingInfo oType="OfferingType" oID="Offering011"/>
+		<StudentInfo oType="StudentType" oID="s328718420"/>
+		<Grade>A</Grade>
+	</Enrollment>
+	<Enrollment EnrollmentID="Enrollment244">
+		<OfferingInfo oType="OfferingType" oID="Offering011"/>
+		<StudentInfo oType="StudentType" oID="s332012037"/>
+		<Grade>C-</Grade>
+	</Enrollment>
+	<Enrollment EnrollmentID="Enrollment245">
+		<OfferingInfo oType="OfferingType" oID="Offering011"/>
+		<StudentInfo oType="StudentType" oID="s391910519"/>
+		<Grade>B</Grade>
+	</Enrollment>
+	<Enrollment EnrollmentID="Enrollment246">
+		<OfferingInfo oType="OfferingType" oID="Offering011"/>
+		<StudentInfo oType="StudentType" oID="s406746417"/>
+		<Grade>B+</Grade>
+	</Enrollment>
+	<Enrollment EnrollmentID="Enrollment247">
+		<OfferingInfo oType="OfferingType" oID="Offering011"/>
+		<StudentInfo oType="StudentType" oID="s495490053"/>
+		<Grade>B-</Grade>
+	</Enrollment>
+	<Enrollment EnrollmentID="Enrollment248">
+		<OfferingInfo oType="OfferingType" oID="Offering011"/>
+		<StudentInfo oType="StudentType" oID="s664353912"/>
+		<Grade>A</Grade>
+	</Enrollment>
+	<Enrollment EnrollmentID="Enrollment249">
+		<OfferingInfo oType="OfferingType" oID="Offering011"/>
+		<StudentInfo oType="StudentType" oID="s722131306"/>
+		<Grade>A-</Grade>
+	</Enrollment>
+	<Enrollment EnrollmentID="Enrollment250">
+		<OfferingInfo oType="OfferingType" oID="Offering011"/>
+		<StudentInfo oType="StudentType" oID="s785103478"/>
+		<Grade>C+</Grade>
+	</Enrollment>
+	<Enrollment EnrollmentID="Enrollment251">
+		<OfferingInfo oType="OfferingType" oID="Offering011"/>
+		<StudentInfo oType="StudentType" oID="s785811329"/>
+		<Grade>C+</Grade>
+	</Enrollment>
+	<Enrollment EnrollmentID="Enrollment252">
+		<OfferingInfo oType="OfferingType" oID="Offering011"/>
+		<StudentInfo oType="StudentType" oID="s793034333"/>
+		<Grade>D+</Grade>
+	</Enrollment>
+	<Enrollment EnrollmentID="Enrollment253">
+		<OfferingInfo oType="OfferingType" oID="Offering011"/>
+		<StudentInfo oType="StudentType" oID="s850631208"/>
+		<Grade>C+</Grade>
+	</Enrollment>
+	<Enrollment EnrollmentID="Enrollment254">
+		<OfferingInfo oType="OfferingType" oID="Offering011"/>
+		<StudentInfo oType="StudentType" oID="s862952924"/>
+		<Grade>C</Grade>
+	</Enrollment>
+	<Enrollment EnrollmentID="Enrollment255">
+		<OfferingInfo oType="OfferingType" oID="Offering011"/>
+		<StudentInfo oType="StudentType" oID="s905922853"/>
+		<Grade>A-</Grade>
+	</Enrollment>
+	<Enrollment EnrollmentID="Enrollment256">
+		<OfferingInfo oType="OfferingType" oID="Offering011"/>
+		<StudentInfo oType="StudentType" oID="s980102825"/>
+		<Grade>D+</Grade>
+	</Enrollment>
+	<Enrollment EnrollmentID="Enrollment257">
+		<OfferingInfo oType="OfferingType" oID="Offering012"/>
+		<StudentInfo oType="StudentType" oID="s232820149"/>
+		<Grade>B-</Grade>
+	</Enrollment>
+	<Enrollment EnrollmentID="Enrollment258">
+		<OfferingInfo oType="OfferingType" oID="Offering012"/>
+		<StudentInfo oType="StudentType" oID="s252533260"/>
+		<Grade>C+</Grade>
+	</Enrollment>
+	<Enrollment EnrollmentID="Enrollment259">
+		<OfferingInfo oType="OfferingType" oID="Offering012"/>
+		<StudentInfo oType="StudentType" oID="s279702622"/>
+		<Grade>C</Grade>
+	</Enrollment>
+	<Enrollment EnrollmentID="Enrollment260">
+		<OfferingInfo oType="OfferingType" oID="Offering012"/>
+		<StudentInfo oType="StudentType" oID="s382109560"/>
+		<Grade>B</Grade>
+	</Enrollment>
+	<Enrollment EnrollmentID="Enrollment261">
+		<OfferingInfo oType="OfferingType" oID="Offering012"/>
+		<StudentInfo oType="StudentType" oID="s387215322"/>
+		<Grade>A-</Grade>
+	</Enrollment>
+	<Enrollment EnrollmentID="Enrollment262">
+		<OfferingInfo oType="OfferingType" oID="Offering012"/>
+		<StudentInfo oType="StudentType" oID="s485619193"/>
+		<Grade>D</Grade>
+	</Enrollment>
+	<Enrollment EnrollmentID="Enrollment263">
+		<OfferingInfo oType="OfferingType" oID="Offering012"/>
+		<StudentInfo oType="StudentType" oID="s504013895"/>
+		<Grade>B</Grade>
+	</Enrollment>
+	<Enrollment EnrollmentID="Enrollment264">
+		<OfferingInfo oType="OfferingType" oID="Offering012"/>
+		<StudentInfo oType="StudentType" oID="s587735656"/>
+		<Grade>A</Grade>
+	</Enrollment>
+	<Enrollment EnrollmentID="Enrollment265">
+		<OfferingInfo oType="OfferingType" oID="Offering012"/>
+		<StudentInfo oType="StudentType" oID="s774885901"/>
+		<Grade>A-</Grade>
+	</Enrollment>
+	<Enrollment EnrollmentID="Enrollment266">
+		<OfferingInfo oType="OfferingType" oID="Offering012"/>
+		<StudentInfo oType="StudentType" oID="s801166066"/>
+		<Grade>C</Grade>
+	</Enrollment>
+	<Enrollment EnrollmentID="Enrollment267">
+		<OfferingInfo oType="OfferingType" oID="Offering012"/>
+		<StudentInfo oType="StudentType" oID="s895255243"/>
+		<Grade>A-</Grade>
+	</Enrollment>
+	<Enrollment EnrollmentID="Enrollment268">
+		<OfferingInfo oType="OfferingType" oID="Offering013"/>
+		<StudentInfo oType="StudentType" oID="s191083779"/>
+		<Grade>B-</Grade>
+	</Enrollment>
+	<Enrollment EnrollmentID="Enrollment269">
+		<OfferingInfo oType="OfferingType" oID="Offering013"/>
+		<StudentInfo oType="StudentType" oID="s261812056"/>
+		<Grade>C-</Grade>
+	</Enrollment>
+	<Enrollment EnrollmentID="Enrollment270">
+		<OfferingInfo oType="OfferingType" oID="Offering013"/>
+		<StudentInfo oType="StudentType" oID="s340502961"/>
+		<Grade>C+</Grade>
+	</Enrollment>
+	<Enrollment EnrollmentID="Enrollment271">
+		<OfferingInfo oType="OfferingType" oID="Offering013"/>
+		<StudentInfo oType="StudentType" oID="s449976666"/>
+		<Grade>A</Grade>
+	</Enrollment>
+	<Enrollment EnrollmentID="Enrollment272">
+		<OfferingInfo oType="OfferingType" oID="Offering013"/>
+		<StudentInfo oType="StudentType" oID="s467545237"/>
+		<Grade>B</Grade>
+	</Enrollment>
+	<Enrollment EnrollmentID="Enrollment273">
+		<OfferingInfo oType="OfferingType" oID="Offering013"/>
+		<StudentInfo oType="StudentType" oID="s550658107"/>
+		<Grade>C</Grade>
+	</Enrollment>
+	<Enrollment EnrollmentID="Enrollment274">
+		<OfferingInfo oType="OfferingType" oID="Offering013"/>
+		<StudentInfo oType="StudentType" oID="s801166066"/>
+		<Grade>B-</Grade>
+	</Enrollment>
+	<Enrollment EnrollmentID="Enrollment275">
+		<OfferingInfo oType="OfferingType" oID="Offering013"/>
+		<StudentInfo oType="StudentType" oID="s845037919"/>
+		<Grade>B+</Grade>
+	</Enrollment>
+	<Enrollment EnrollmentID="Enrollment276">
+		<OfferingInfo oType="OfferingType" oID="Offering013"/>
+		<StudentInfo oType="StudentType" oID="s862952924"/>
+		<Grade>C+</Grade>
+	</Enrollment>
+	<Enrollment EnrollmentID="Enrollment277">
+		<OfferingInfo oType="OfferingType" oID="Offering013"/>
+		<StudentInfo oType="StudentType" oID="s867910658"/>
+		<Grade>C-</Grade>
+	</Enrollment>
+	<Enrollment EnrollmentID="Enrollment278">
+		<OfferingInfo oType="OfferingType" oID="Offering013"/>
+		<StudentInfo oType="StudentType" oID="s271978135"/>
+		<Grade>B+</Grade>
+	</Enrollment>
+	<Enrollment EnrollmentID="Enrollment279">
+		<OfferingInfo oType="OfferingType" oID="Offering013"/>
+		<StudentInfo oType="StudentType" oID="s483223789"/>
+		<Grade>A-</Grade>
+	</Enrollment>
+	<Enrollment EnrollmentID="Enrollment280">
+		<OfferingInfo oType="OfferingType" oID="Offering013"/>
+		<StudentInfo oType="StudentType" oID="s500094214"/>
+		<Grade>C+</Grade>
+	</Enrollment>
+	<Enrollment EnrollmentID="Enrollment281">
+		<OfferingInfo oType="OfferingType" oID="Offering013"/>
+		<StudentInfo oType="StudentType" oID="s658579865"/>
+		<Grade>B</Grade>
+	</Enrollment>
+	<Enrollment EnrollmentID="Enrollment282">
+		<OfferingInfo oType="OfferingType" oID="Offering013"/>
+		<StudentInfo oType="StudentType" oID="s722131306"/>
+		<Grade>C</Grade>
+	</Enrollment>
+	<Enrollment EnrollmentID="Enrollment283">
+		<OfferingInfo oType="OfferingType" oID="Offering013"/>
+		<StudentInfo oType="StudentType" oID="s787422802"/>
+		<Grade>B+</Grade>
+	</Enrollment>
+	<Enrollment EnrollmentID="Enrollment284">
+		<OfferingInfo oType="OfferingType" oID="Offering013"/>
+		<StudentInfo oType="StudentType" oID="s916916939"/>
+		<Grade>C-</Grade>
+	</Enrollment>
+	<Enrollment EnrollmentID="Enrollment285">
+		<OfferingInfo oType="OfferingType" oID="Offering014"/>
+		<StudentInfo oType="StudentType" oID="s124208644"/>
+		<Grade>C+</Grade>
+	</Enrollment>
+	<Enrollment EnrollmentID="Enrollment286">
+		<OfferingInfo oType="OfferingType" oID="Offering014"/>
+		<StudentInfo oType="StudentType" oID="s185141262"/>
+		<Grade>B+</Grade>
+	</Enrollment>
+	<Enrollment EnrollmentID="Enrollment287">
+		<OfferingInfo oType="OfferingType" oID="Offering014"/>
+		<StudentInfo oType="StudentType" oID="s212976207"/>
+		<Grade>B</Grade>
+	</Enrollment>
+	<Enrollment EnrollmentID="Enrollment288">
+		<OfferingInfo oType="OfferingType" oID="Offering014"/>
+		<StudentInfo oType="StudentType" oID="s382109560"/>
+		<Grade>B</Grade>
+	</Enrollment>
+	<Enrollment EnrollmentID="Enrollment289">
+		<OfferingInfo oType="OfferingType" oID="Offering014"/>
+		<StudentInfo oType="StudentType" oID="s406746417"/>
+		<Grade>C-</Grade>
+	</Enrollment>
+	<Enrollment EnrollmentID="Enrollment290">
+		<OfferingInfo oType="OfferingType" oID="Offering014"/>
+		<StudentInfo oType="StudentType" oID="s467545237"/>
+		<Grade>C+</Grade>
+	</Enrollment>
+	<Enrollment EnrollmentID="Enrollment291">
+		<OfferingInfo oType="OfferingType" oID="Offering014"/>
+		<StudentInfo oType="StudentType" oID="s483223789"/>
+		<Grade>D+</Grade>
+	</Enrollment>
+	<Enrollment EnrollmentID="Enrollment292">
+		<OfferingInfo oType="OfferingType" oID="Offering014"/>
+		<StudentInfo oType="StudentType" oID="s495490053"/>
+		<Grade>C+</Grade>
+	</Enrollment>
+	<Enrollment EnrollmentID="Enrollment293">
+		<OfferingInfo oType="OfferingType" oID="Offering014"/>
+		<StudentInfo oType="StudentType" oID="s550658107"/>
+		<Grade>D</Grade>
+	</Enrollment>
+	<Enrollment EnrollmentID="Enrollment294">
+		<OfferingInfo oType="OfferingType" oID="Offering014"/>
+		<StudentInfo oType="StudentType" oID="s664353912"/>
+		<Grade>A-</Grade>
+	</Enrollment>
+	<Enrollment EnrollmentID="Enrollment295">
+		<OfferingInfo oType="OfferingType" oID="Offering014"/>
+		<StudentInfo oType="StudentType" oID="s737972250"/>
+		<Grade>B-</Grade>
+	</Enrollment>
+	<Enrollment EnrollmentID="Enrollment296">
+		<OfferingInfo oType="OfferingType" oID="Offering014"/>
+		<StudentInfo oType="StudentType" oID="s812073765"/>
+		<Grade>B+</Grade>
+	</Enrollment>
+	<Enrollment EnrollmentID="Enrollment297">
+		<OfferingInfo oType="OfferingType" oID="Offering014"/>
+		<StudentInfo oType="StudentType" oID="s163728111"/>
+		<Grade>B+</Grade>
+	</Enrollment>
+	<Enrollment EnrollmentID="Enrollment298">
+		<OfferingInfo oType="OfferingType" oID="Offering014"/>
+		<StudentInfo oType="StudentType" oID="s296669559"/>
+		<Grade>A-</Grade>
+	</Enrollment>
+	<Enrollment EnrollmentID="Enrollment299">
+		<OfferingInfo oType="OfferingType" oID="Offering014"/>
+		<StudentInfo oType="StudentType" oID="s365774792"/>
+		<Grade>A-</Grade>
+	</Enrollment>
+	<Enrollment EnrollmentID="Enrollment300">
+		<OfferingInfo oType="OfferingType" oID="Offering014"/>
+		<StudentInfo oType="StudentType" oID="s387215322"/>
+		<Grade>D</Grade>
+	</Enrollment>
+	<Enrollment EnrollmentID="Enrollment301">
+		<OfferingInfo oType="OfferingType" oID="Offering014"/>
+		<StudentInfo oType="StudentType" oID="s785273479"/>
+		<Grade>D+</Grade>
+	</Enrollment>
+	<Enrollment EnrollmentID="Enrollment302">
+		<OfferingInfo oType="OfferingType" oID="Offering014"/>
+		<StudentInfo oType="StudentType" oID="s793034333"/>
+		<Grade>D</Grade>
+	</Enrollment>
+	<Enrollment EnrollmentID="Enrollment303">
+		<OfferingInfo oType="OfferingType" oID="Offering014"/>
+		<StudentInfo oType="StudentType" oID="s862952924"/>
+		<Grade>C-</Grade>
+	</Enrollment>
+	<Enrollment EnrollmentID="Enrollment304">
+		<OfferingInfo oType="OfferingType" oID="Offering015"/>
+		<StudentInfo oType="StudentType" oID="s290986112"/>
+		<Grade>C</Grade>
+	</Enrollment>
+	<Enrollment EnrollmentID="Enrollment305">
+		<OfferingInfo oType="OfferingType" oID="Offering015"/>
+		<StudentInfo oType="StudentType" oID="s308635036"/>
+		<Grade>D</Grade>
+	</Enrollment>
+	<Enrollment EnrollmentID="Enrollment306">
+		<OfferingInfo oType="OfferingType" oID="Offering015"/>
+		<StudentInfo oType="StudentType" oID="s419180204"/>
+		<Grade>A-</Grade>
+	</Enrollment>
+	<Enrollment EnrollmentID="Enrollment307">
+		<OfferingInfo oType="OfferingType" oID="Offering015"/>
+		<StudentInfo oType="StudentType" oID="s449976666"/>
+		<Grade>C+</Grade>
+	</Enrollment>
+	<Enrollment EnrollmentID="Enrollment308">
+		<OfferingInfo oType="OfferingType" oID="Offering015"/>
+		<StudentInfo oType="StudentType" oID="s477453864"/>
+		<Grade>D+</Grade>
+	</Enrollment>
+	<Enrollment EnrollmentID="Enrollment309">
+		<OfferingInfo oType="OfferingType" oID="Offering015"/>
+		<StudentInfo oType="StudentType" oID="s495490053"/>
+		<Grade>A-</Grade>
+	</Enrollment>
+	<Enrollment EnrollmentID="Enrollment310">
+		<OfferingInfo oType="OfferingType" oID="Offering015"/>
+		<StudentInfo oType="StudentType" oID="s501674545"/>
+		<Grade>D+</Grade>
+	</Enrollment>
+	<Enrollment EnrollmentID="Enrollment311">
+		<OfferingInfo oType="OfferingType" oID="Offering015"/>
+		<StudentInfo oType="StudentType" oID="s504013895"/>
+		<Grade>A-</Grade>
+	</Enrollment>
+	<Enrollment EnrollmentID="Enrollment312">
+		<OfferingInfo oType="OfferingType" oID="Offering015"/>
+		<StudentInfo oType="StudentType" oID="s587735656"/>
+		<Grade>D+</Grade>
+	</Enrollment>
+	<Enrollment EnrollmentID="Enrollment313">
+		<OfferingInfo oType="OfferingType" oID="Offering015"/>
+		<StudentInfo oType="StudentType" oID="s787422802"/>
+		<Grade>C-</Grade>
+	</Enrollment>
+	<Enrollment EnrollmentID="Enrollment314">
+		<OfferingInfo oType="OfferingType" oID="Offering015"/>
+		<StudentInfo oType="StudentType" oID="s909334701"/>
+		<Grade>A-</Grade>
+	</Enrollment>
+	<Enrollment EnrollmentID="Enrollment315">
+		<OfferingInfo oType="OfferingType" oID="Offering015"/>
+		<StudentInfo oType="StudentType" oID="s340502961"/>
+		<Grade>D+</Grade>
+	</Enrollment>
+	<Enrollment EnrollmentID="Enrollment316">
+		<OfferingInfo oType="OfferingType" oID="Offering015"/>
+		<StudentInfo oType="StudentType" oID="s432180765"/>
+		<Grade>B</Grade>
+	</Enrollment>
+	<Enrollment EnrollmentID="Enrollment317">
+		<OfferingInfo oType="OfferingType" oID="Offering015"/>
+		<StudentInfo oType="StudentType" oID="s485619193"/>
+		<Grade>B+</Grade>
+	</Enrollment>
+	<Enrollment EnrollmentID="Enrollment318">
+		<OfferingInfo oType="OfferingType" oID="Offering015"/>
+		<StudentInfo oType="StudentType" oID="s644488789"/>
+		<Grade>A-</Grade>
+	</Enrollment>
+	<Enrollment EnrollmentID="Enrollment319">
+		<OfferingInfo oType="OfferingType" oID="Offering015"/>
+		<StudentInfo oType="StudentType" oID="s696302689"/>
+		<Grade>C</Grade>
+	</Enrollment>
+	<Enrollment EnrollmentID="Enrollment320">
+		<OfferingInfo oType="OfferingType" oID="Offering015"/>
+		<StudentInfo oType="StudentType" oID="s845037919"/>
+		<Grade>B</Grade>
+	</Enrollment>
+	<Enrollment EnrollmentID="Enrollment321">
+		<OfferingInfo oType="OfferingType" oID="Offering015"/>
+		<StudentInfo oType="StudentType" oID="s885469446"/>
+		<Grade>C+</Grade>
+	</Enrollment>
+	<Enrollment EnrollmentID="Enrollment322">
+		<OfferingInfo oType="OfferingType" oID="Offering005"/>
+		<StudentInfo oType="StudentType" oID="s480293439"/>
+		<Grade>A</Grade>
+	</Enrollment>
+</University>

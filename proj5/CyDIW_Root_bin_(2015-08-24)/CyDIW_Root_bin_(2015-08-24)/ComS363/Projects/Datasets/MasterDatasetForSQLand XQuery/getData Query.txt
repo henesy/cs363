@@ -1,0 +1,60 @@
+//Get Person
+
+<showtext>
+$OOXQuery:>
+<Item> {
+for $e in doc("ComS363/Demos/Datasets/UniversityOODB(ODMG).3.xml")//Person
+return <Tuple>{<Name>{$e.Name/text()}</Name>, <ID>{$e.@PersonID}</ID>, <Address>{$e.Address/text()}</Address>,<DOB>{$e.DOB/text()}</DOB>}</Tuple>
+} </Item>;
+</showtext>
+
+//Get Faculty
+
+<showtext>
+$OOXQuery:>
+<Item> {
+for $e in doc("ComS363/Demos/Datasets/UniversityOODB(ODMG).3.xml")//Faculty
+return <Tuple>{<FacultyID>{$e.@FacultyID}</FacultyID>, <Rank>{$e.Rank/text()}</Rank>,<Salary>{$e.Salary/text()}</Salary>}</Tuple>
+} </Item>;
+</showtext>
+
+//Get Student
+
+<showtext>
+$OOXQuery:>
+<Item> {
+for $e in doc("ComS363/Demos/Datasets/UniversityOODB(ODMG).3.xml")//Student
+return <Tuple>{<StudentID>{$e.@StudentID}</StudentID>, <Classification>{$e.Classification/text()}</Classification>,<GPA>{$e.GPA/text()}</GPA>, <MentorID>{$e.Mentor.@FacultyID}</MentorID>,<CreditHours>{$e.CreditHours/text()}</CreditHours>}</Tuple>
+} </Item>;
+</showtext>
+
+//Get Course
+
+<showtext>
+$OOXQuery:>
+<Item> {
+for $e in doc("ComS363/Demos/Datasets/UniversityOODB(ODMG).3.xml")//Course
+return <Tuple>{<CourseCode>{$e.CourseCode/text()}</CourseCode>, <CourseName>{$e.CourseName/text()}</CourseName>,<PreReq>{$e.PreReqs.CourseCode/text()}</PreReq>}</Tuple>
+} </Item>;
+</showtext>
+
+
+//Get Offering
+
+<showtext>
+$OOXQuery:>
+<Item> {
+for $e in doc("ComS363/Demos/Datasets/UniversityOODB(ODMG).3.xml")//Offering
+return <Tuple>{<CourseCode>{$e.CourseInfo.CourseCode/text()}</CourseCode>, <SectionNo>{$e.Section/text()}</SectionNo>,<InstructorID>{$e.Instructor.@FacultyID}</InstructorID>}</Tuple>
+} </Item>;
+</showtext>
+
+//Get Enrollment
+
+<showtext>
+$OOXQuery:>
+<Item> {
+for $e in doc("ComS363/Demos/Datasets/UniversityOODB(ODMG).3.xml")//Enrollment
+return <Tuple>{<CourseCode>{$e.OfferingInfo.CourseInfo.CourseCode/text()}</CourseCode>, <SectionNo>{$e.OfferingInfo.Section/text()}</SectionNo>,<StudentID>{$e.StudentInfo.@StudentID}</StudentID>,<Grade>{$e.Grade/text()}</Grade>}</Tuple>
+} </Item>;
+</showtext>

@@ -1,0 +1,73 @@
+/* The is a demo for your MySQL database */  
+
+// The /* ... */ type comments do not display in the output pane; 
+// The // type comments must end in a semicolon and will be displayed in the output pane; 
+
+// Section 0. Connect to your database;
+// The database must exist even though it may be empty; 
+
+$MySQL:> connect;
+
+// In case the database is not empty execute the following; 
+// Note: Normally you do not take dropping of tables so casually ; 
+// But here you will find it very convinient;  
+// These commands will ensure that your experiment (batch of commands) is repetable; 
+$MySQL:> drop table Dept;
+$MySQL:> drop table Emp;
+
+// Section 1. Create Tables in the database; 
+
+$MySQL:> create table Emp (
+Name char(15) not null,
+DName char(10),
+Salary integer,
+primary key (Name));
+
+$MySQL:> create table Dept (
+DName char(10),
+MName char(15),
+primary key (DName) );
+
+// Section 2. Check conteents of empty tables; 
+
+$MySQL:> select * from Emp;
+$MySQL:> select * from Dept;
+
+// Section 3. Bulk-load tables; 
+
+// View the data you are about to load; 
+$CyDB:> DisplayXML ComS363/Demos/Datasets/Personnel_Dataset.xml; 
+
+
+// Now load; 
+$MySQL:> load | Emp | ComS363/Demos/Datasets/Personnel_Dataset.xml;
+$MySQL:> load | Dept | ComS363/Demos/Datasets/Personnel_Dataset.xml;  
+ 
+// Section 3. Check loaded tables; 
+$MySQL:> select * from Emp;
+$MySQL:> select * from Dept; 
+
+// Section 4. Queries and updates; 
+
+$MySQL:> select d.MName 
+from Emp e, Dept d 
+where e.Name = 'John'
+   and e.DName = d.DName; 
+
+$MySQL:> update Emp
+set Salary = Salary + 10000
+where Name = 'Superman';
+
+$MySQL:> select * from Emp;
+
+$MySQL:> delete from Emp 
+where Salary > 100000;
+
+$MySQL:> select * from Emp;
+
+$MySQL:> insert into 
+Emp (Name, DName, Salary)
+values ('Superman', 'Audit', 100000); 
+
+$MySQL:> disconnect;
+ 

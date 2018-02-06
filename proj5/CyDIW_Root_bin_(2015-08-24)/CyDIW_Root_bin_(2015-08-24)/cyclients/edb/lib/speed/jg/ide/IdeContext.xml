@@ -1,0 +1,1186 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="yes" ?>
+
+<IdeContext>
+
+<!-- Editor Definitions -->
+
+ <KnownComponentEditors>
+  
+  <GUIProjectEditor>
+   <ContainsSubEditors>
+    <ProjectEditor />
+    <RemarksEditor />
+   </ContainsSubEditors>
+  </GUIProjectEditor>
+  
+  <BoxEditor>
+   <ContainsSubEditors>
+    <ClassEditor />
+    <BoxEditor />
+    <SizeRatioEditor />
+    <SizePreferredEditor />
+    <SizeMinMaxEditor />
+    <RemarksEditor />
+   </ContainsSubEditors>
+   <ActivationDefaults>
+    <Properties Type="HorizontalGlue">
+     <MinimumSize DimX="0" DimY="0" />
+     <MaximumSize DimX="0" DimY="0" />
+     <PreferredSize DimX="0" DimY="0" />
+     <Size DimX="0" DimY="0" />
+    </Properties>
+   </ActivationDefaults>
+  </BoxEditor>
+  
+  <JButtonEditor>
+   <ContainsSubEditors>
+    <ClassEditor />
+    <LabelEditor />
+    <AbstractButtonEditor />
+    <IconEditor />
+    <AppearanceEditor />
+    <MarginEditor />
+    <BorderEditor />
+    <ColorEditor />
+    <FontEditor />
+    <SizeRatioEditor />
+    <SizePreferredEditor />
+    <SizeMinMaxEditor />
+    <BoundsEditor />
+    <LayinEditor />
+    <GridBagEditor />
+    <RemarksEditor />
+   </ContainsSubEditors>
+   <ActivationDefaults>
+    <Properties 
+     AlignmentX="0.0" AlignmentY="0.5" Constraint="Center" Enabled="true" 
+     HorizontalAlignment="Center" Group="" HorizontalTextPosition="Trailing" 
+     IconTextGap="4" Mnemonic="" Selected="false" Text="" ToolTip="" 
+     VerticalAlignment="Center" VerticalTextPosition="Center" Visible="true">
+     <Bounds DimX="100" DimY="34" PosX="10" PosY="10" />
+     <Border Type="Line" Thickness="1" Color="Black" Rounded="false" />
+     <Color FG="0:0:0" BG="204:204:204" />
+     <Font Name="Dialog" Size="12" Style="Bold" />
+     <Margin Left="14" Top="2" Right="14" Bottom="2" />
+     <MinimumSize DimX="34" DimY="10" />
+     <MaximumSize DimX="34" DimY="10" />
+     <PreferredSize DimX="0" DimY="0" />
+     <Size DimX="0" DimY="0" />
+    </Properties>
+   </ActivationDefaults>
+  </JButtonEditor>
+  
+  <JCheckBoxEditor>
+   <ContainsSubEditors>
+    <ClassEditor />
+    <LabelEditor />
+    <AbstractButtonEditor />
+    <IconEditor />
+    <AppearanceEditor />
+    <MarginEditor />
+    <BorderEditor />
+    <ColorEditor />
+    <FontEditor />
+    <SizeRatioEditor />
+    <SizePreferredEditor />
+    <SizeMinMaxEditor />
+    <BoundsEditor />
+    <LayinEditor />
+    <GridBagEditor />
+    <RemarksEditor />
+   </ContainsSubEditors>
+   <ActivationDefaults>
+    <Properties 
+     AlignmentX="0.0" AlignmentY="0.5" Constraint="Center" Enabled="true" 
+     HorizontalAlignment="Leading" Group="" HorizontalTextPosition="Trailing" 
+     IconTextGap="4" Mnemonic="" Selected="false" Text="" ToolTip="" 
+     VerticalAlignment="Center" VerticalTextPosition="Center" Visible="true">
+     <Bounds DimX="100" DimY="21" PosX="10" PosY="10" />
+     <Border Type="Line" Thickness="1" Color="Black" Rounded="false" />
+     <Color FG="0:0:0" BG="204:204:204" />
+     <Font Name="Dialog" Size="12" Style="Bold" />
+     <Margin Left="2" Top="2" Right="2" Bottom="2" />
+     <MinimumSize DimX="21" DimY="21" />
+     <MaximumSize DimX="21" DimY="21" />
+     <PreferredSize DimX="21" DimY="21" />
+     <Size DimX="0" DimY="0" />
+    </Properties>
+   </ActivationDefaults>
+  </JCheckBoxEditor>
+  
+  <JCheckBoxMenuItemEditor>
+   <ContainsSubEditors>
+    <ClassEditor />
+    <MenuEditor />
+    <LabelEditor />
+    <AbstractButtonEditor />
+    <IconEditor />
+    <!-- no effect MarginEditor / -->
+    <AppearanceEditor />
+    <BorderEditor />
+    <ColorEditor />
+    <FontEditor />
+    <SizePreferredEditor />
+    <SizeMinMaxEditor />
+    <RemarksEditor />
+   </ContainsSubEditors>
+   <ActivationDefaults>
+    <Properties Armed="false" Accelerator="" OnRelease="false"
+     AlignmentX="0.5" AlignmentY="0.5" Constraint="Center" Enabled="true" 
+     HorizontalAlignment="Leading" Group="" HorizontalTextPosition="Trailing" 
+     IconTextGap="4" Mnemonic="" Selected="false" Text="" ToolTip="" 
+     VerticalAlignment="Center" VerticalTextPosition="Center" Visible="true">
+     <Border Type="Line" Thickness="1" Color="Black" Rounded="false" />
+     <Color FG="0:0:0" BG="204:204:204" />
+     <Font Name="Dialog" Size="12" Style="Bold" />
+     <!-- Margin Left="2" Top="2" Right="2" Bottom="2" / -->
+     <MinimumSize DimX="0" DimY="0" />
+     <MaximumSize DimX="32767" DimY="32767" />
+     <PreferredSize DimX="35" DimY="5" />
+     <Size DimX="0" DimY="0" />
+    </Properties>
+   </ActivationDefaults>
+  </JCheckBoxMenuItemEditor>
+  
+  <JComboBoxEditor>
+   <ContainsSubEditors>
+    <ClassEditor />
+    <ComboBoxEditor />
+    <ItemsEditor />
+    <AppearanceEditor />
+    <ColorEditor />
+    <FontEditor />
+    <SizeRatioEditor />
+    <SizePreferredEditor />
+    <SizeMinMaxEditor />
+    <BoundsEditor />
+    <LayinEditor />
+    <GridBagEditor />
+    <RemarksEditor />
+   </ContainsSubEditors>
+   <ActivationDefaults>
+    <Properties ItemSource="ItemElements" SelectedIndex="-1" MaximumRowCount="8" Editable="false"
+     AlignmentX="0.5" AlignmentY="0.5" Constraint="Center" Enabled="true" ToolTip="" Visible="true">
+     <Bounds DimX="100" DimY="21" PosX="10" PosY="10" />
+     <Color FG="0:0:0" BG="204:204:204" />
+     <Font Name="Dialog" Size="12" Style="Bold" />
+     <MinimumSize DimX="31" DimY="25" />
+     <MaximumSize DimX="32767" DimY="32767" />
+     <PreferredSize DimX="31" DimY="25" />
+     <Size DimX="0" DimY="0" />
+     <ItemElements>
+   	  <Item>Item_1</Item>
+      <Item>Item_2</Item>
+      <Item>Item_3</Item>
+     </ItemElements>
+    </Properties>
+   </ActivationDefaults>
+  </JComboBoxEditor>
+  
+  <JDesktopPaneEditor>
+   <ContainsSubEditors>
+    <ClassEditor />
+    <DesktopPaneEditor />
+    <ColorEditor />
+    <SizeRatioEditor />
+    <SizePreferredEditor />
+    <SizeMinMaxEditor />
+    <LayoutEditor />
+    <LayinEditor />
+    <RemarksEditor />
+   </ContainsSubEditors>
+   <ActivationDefaults>
+    <Properties AlignmentX="0.5" AlignmentY="0.5" Constraint="Center" DragMode="Live" Enabled="true" ToolTip="" Visible="true">
+     <Color BG="153:153:204" />
+     <Layout Manager="Null" />
+     <MinimumSize DimX="0" DimY="0" />
+     <MaximumSize DimX="2147483647" DimY="2147483647" />
+     <PreferredSize DimX="0" DimY="0" />
+     <Size DimX="0" DimY="0" />
+    </Properties>
+   </ActivationDefaults>
+  </JDesktopPaneEditor>
+  
+  <JDialogEditor>
+   <ContainsSubEditors>
+    <ClassEditor />
+    <DialogEditor />
+    <WindowEditor />
+    <ColorEditor />
+    <BoundsEditor />
+    <LayoutEditor />
+    <RemarksEditor />
+   </ContainsSubEditors>
+   <ActivationDefaults>
+    <Properties Title="myJDialog" Modal="true" Resizable="true" DefaultCloseOperation="DISPOSE_ON_CLOSE">
+     <Color FG="0:0:0" BG="204:204:204" />
+     <MaximizedBounds DimX="640" DimY="480"/>
+     <Bounds DimX="640" DimY="480" PosX="96" PosY="72"/>
+     <Layout Manager="BorderLayout" Hgap="0" Vgap="0" />
+    </Properties>
+   </ActivationDefaults>
+  </JDialogEditor>
+  
+  <JEditorPaneEditor>
+   <ContainsSubEditors>
+    <ClassEditor />
+    <EditPaneEditor />
+    <AppearanceEditor />
+    <MarginEditor />
+    <BorderEditor />
+    <SizeRatioEditor />
+    <SizePreferredEditor />
+    <SizeMinMaxEditor />
+    <BoundsEditor />
+    <LayinEditor />
+    <GridBagEditor />
+    <RemarksEditor />
+   </ContainsSubEditors>
+   <ActivationDefaults>
+    <Properties ContentType="text/plain" ContentPage=""
+     AlignmentX="0.5" AlignmentY="0.5" CaretPosition="0" Cols="1" Constraint="Center" 
+     Editable="true" Enabled="true" Text="" ToolTip="" Visible="true">
+     <Border Type="Line" Thickness="1" Color="Black" Rounded="false" />
+     <Bounds DimX="100" DimY="20" PosX="10" PosY="10" />
+     <Margin Left="0" Top="0" Right="0" Bottom="0" />
+     <MinimumSize DimX="10" DimY="10" />
+     <MaximumSize DimX="32767" DimY="32767" />
+     <PreferredSize DimX="10" DimY="10" />
+     <Size DimX="0" DimY="0" />
+    </Properties>
+   </ActivationDefaults>
+  </JEditorPaneEditor>
+  
+  <JFormattedTextFieldEditor>
+   <ContainsSubEditors>
+    <ClassEditor />
+    <FormattedTextEditor />
+    <TextComponentEditor />
+    <TextEditor />
+    <AppearanceEditor />
+    <MarginEditor />
+    <TextSelectionColorEditor />
+    <ColorEditor />
+    <BorderEditor />
+    <FontEditor />
+    <SizeRatioEditor />
+    <SizePreferredEditor />
+    <SizeMinMaxEditor />
+    <BoundsEditor />
+    <LayinEditor />
+    <GridBagEditor />
+    <RemarksEditor />
+   </ContainsSubEditors>
+   <ActivationDefaults>
+    <Properties Format="Number" FocusLostBehavior="CommitOrRevert"
+     HorizontalAlignment="Left" AlignmentX="0.0" AlignmentY="0.5" CaretPosition="0" 
+     Cols="1" Constraint="Center" Editable="true" Enabled="true" SelectedTextColor="0:0:0" 
+     SelectionColor="204:204:255" Text="" ToolTip="" Visible="true">
+     <FormatPattern Date="EEE, d MMM yyyy HH:mm:ss" Number="#,##0.00 ¤;-#,##0.00 ¤" />
+     <Border Type="Line" Thickness="1" Color="Black" Rounded="false" />
+     <Bounds DimX="100" DimY="20" PosX="10" PosY="10" />
+     <Color FG="0:0:0" BG="255:255:255" />
+     <Font Name="Dialog" Size="12" Style="Plain" />
+     <Margin Left="0" Top="0" Right="0" Bottom="0" />
+     <MinimumSize DimX="10" DimY="10" />
+     <MaximumSize DimX="32767" DimY="32767" />
+     <PreferredSize DimX="10" DimY="10" />
+     <Size DimX="0" DimY="0" />
+    </Properties>
+   </ActivationDefaults>
+  </JFormattedTextFieldEditor>
+  
+  <JFrameEditor>
+   <ContainsSubEditors>
+    <ClassEditor />
+    <WindowEditor />
+    <FrameIconEditor />
+    <ColorEditor />
+    <FrameEditor />
+    <BoundsEditor />
+    <LayoutEditor />
+    <RemarksEditor />
+   </ContainsSubEditors>
+   <ActivationDefaults>
+    <Properties Title="myJFrame" Resizable="true" DefaultCloseOperation="EXIT_ON_CLOSE" ExtendedState="MAXIMIZED_BOTH">
+     <Color FG="0:0:0" BG="204:204:204" />
+     <MaximizedBounds DimX="800" DimY="600"/>
+     <Bounds DimX="640" DimY="480" PosX="64" PosY="48"/>
+     <Layout Manager="BorderLayout" Hgap="0" Vgap="0" />
+    </Properties>
+   </ActivationDefaults>
+  </JFrameEditor>
+  
+  <JInternalFrameEditor>
+   <ContainsSubEditors>
+    <ClassEditor />
+    <InternalFrameEditor />
+    <WindowEditor />
+    <FrameIconEditor />
+    <AppearanceEditor/>
+    <ColorEditor />
+    <SizeRatioEditor />
+    <SizePreferredEditor />
+    <SizeMinMaxEditor />
+    <BoundsEditor />
+    <LayoutEditor />
+    <LayinEditor />
+    <RemarksEditor />
+   </ContainsSubEditors>
+   <ActivationDefaults>
+    <Properties AlignmentX="0.5" AlignmentY="0.5" Closable="false" Constraint="Center"
+     DefaultCloseOperation="DISPOSE_ON_CLOSE" Enabled="true" Iconifiable="false" 
+     Maximizable="false" Resizable="false" Title="" ToolTip="" Visible="false">
+     <Color FG="0:0:0" BG="204:204:204" />
+     <Bounds DimX="320" DimY="240" PosX="0" PosY="0"/>
+     <Layout Manager="BorderLayout" Hgap="0" Vgap="0" />
+     <MinimumSize DimX="40" DimY="33" />
+     <MaximumSize DimX="2147483647" DimY="2147483647" />
+     <PreferredSize DimX="30" DimY="33" />
+     <Size DimX="0" DimY="0" />
+    </Properties>
+   </ActivationDefaults>
+  </JInternalFrameEditor>
+  
+  <JLabelEditor>
+   <ContainsSubEditors>
+    <ClassEditor />
+    <LabelEditor />
+    <IconEditor />
+    <AppearanceEditor />
+    <BorderEditor />
+    <ColorEditor />
+    <FontEditor />
+    <SizeRatioEditor />
+    <SizePreferredEditor />
+    <SizeMinMaxEditor />
+    <BoundsEditor />
+    <LayinEditor />
+    <GridBagEditor />
+    <RemarksEditor />
+   </ContainsSubEditors>
+   <ActivationDefaults>
+    <Properties 
+     AlignmentX="0.0" AlignmentY="0.5" Constraint="Center" HorizontalAlignment="Leading" 
+     HorizontalTextPosition="Trailing" IconTextGap="4" Enabled="true" Text="" ToolTip="" 
+     VerticalAlignment="Center" VerticalTextPosition="Center" Visible="true">
+     <Bounds DimX="100" DimY="20" PosX="10" PosY="10" />
+     <Border Type="Line" Thickness="1" Color="Black" Rounded="false" />
+     <Color FG="0:0:0" BG="204:204:204" />
+     <Font Name="Dialog" Size="12" Style="Bold" />
+     <MinimumSize DimX="0" DimY="0" />
+     <MaximumSize DimX="0" DimY="0" />
+     <PreferredSize DimX="0" DimY="0" />
+     <Size DimX="0" DimY="0" />
+    </Properties>
+   </ActivationDefaults>
+  </JLabelEditor>
+  
+  <JListEditor>
+   <ContainsSubEditors>
+    <ClassEditor />
+    <ListEditor />
+    <ItemsEditor />
+    <AppearanceEditor />
+    <TextSelectionColorEditor />
+    <ColorEditor />
+    <BorderEditor />
+    <FontEditor />
+    <SizeRatioEditor />
+    <SizePreferredEditor />
+    <SizeMinMaxEditor />
+    <BoundsEditor />
+    <LayinEditor />
+    <GridBagEditor />
+    <RemarksEditor />
+   </ContainsSubEditors>
+   <ActivationDefaults>
+    <Properties 
+     AlignmentX="0.5" AlignmentY="0.5" Constraint="Center" Enabled="true" 
+     FixedCellHeight="-1" FixedCellWidth="-1" LayoutOrientation="VERTICAL" 
+     ItemSource="ItemElements" SelectedIndex="-1" SelectionMode="M-Interval"
+     SelectedTextColor="0:0:0" SelectionColor="204:204:255" 
+     ToolTip="" ValueIsAdjusting="false" Visible="true" VisibleRowCount="8">
+     <Bounds DimX="100" DimY="21" PosX="10" PosY="10" />
+     <Border Type="Line" Thickness="1" Color="Black" Rounded="false" />
+     <Color FG="0:0:0" BG="255:255:255" />
+     <Font Name="Dialog" Size="12" Style="Bold" />
+     <MinimumSize DimX="0" DimY="0" />
+     <MaximumSize DimX="0" DimY="0" />
+     <PreferredSize DimX="0" DimY="0" />
+     <Size DimX="0" DimY="0" />
+     <ItemElements>
+   	  <Item>Item_1</Item>
+      <Item>Item_2</Item>
+      <Item>Item_3</Item>
+     </ItemElements>
+    </Properties>
+   </ActivationDefaults>
+  </JListEditor>
+  
+  <JMenuEditor>
+   <ContainsSubEditors>
+    <ClassEditor />
+    <MenuEditor />
+    <LabelEditor />
+    <AbstractButtonEditor />
+    <IconEditor />
+    <!-- no effect MarginEditor / -->
+    <AppearanceEditor />
+    <BorderEditor />
+    <ColorEditor />
+    <FontEditor />
+    <SizePreferredEditor />
+    <SizeMinMaxEditor />
+    <RemarksEditor />
+   </ContainsSubEditors>
+   <ActivationDefaults>
+    <Properties Armed="false" Accelerator="" OnRelease="false"
+     AlignmentX="0.5" AlignmentY="0.5" Constraint="Center" Enabled="true" 
+     HorizontalAlignment="Leading" Group="" HorizontalTextPosition="Trailing" 
+     IconTextGap="4" Mnemonic="" Selected="false" Text="" ToolTip="" 
+     VerticalAlignment="Center" VerticalTextPosition="Center" Visible="true">
+     <Border Type="Line" Thickness="1" Color="Black" Rounded="false" />
+     <Color FG="0:0:0" BG="204:204:204" />
+     <Font Name="Dialog" Size="12" Style="Bold" />
+     <!-- Margin Left="2" Top="2" Right="2" Bottom="2" / -->
+     <MinimumSize DimX="0" DimY="0" />
+     <MaximumSize DimX="32767" DimY="32767" />
+     <PreferredSize DimX="25" DimY="5" />
+     <Size DimX="0" DimY="0" />
+    </Properties>
+   </ActivationDefaults>
+  </JMenuEditor>
+  
+  <JMenuBarEditor>
+   <ContainsSubEditors>
+    <ClassEditor />
+    <MarginEditor />
+    <BorderEditor />
+    <ColorEditor />
+    <RemarksEditor />
+   </ContainsSubEditors>
+   <ActivationDefaults>
+    <Properties>
+     <Border Type="Etched" SubType="Lowered" />
+     <Color FG="0:0:0" BG="204:204:204" />
+     <Margin Left="0" Top="0" Right="0" Bottom="0" />
+    </Properties>
+   </ActivationDefaults>
+  </JMenuBarEditor>
+  
+  <JMenuItemEditor>
+   <ContainsSubEditors>
+    <ClassEditor />
+    <MenuEditor />
+    <LabelEditor />
+    <AbstractButtonEditor />
+    <IconEditor />
+    <!-- no effect MarginEditor / -->
+    <AppearanceEditor />
+    <BorderEditor />
+    <ColorEditor />
+    <FontEditor />
+    <SizePreferredEditor />
+    <SizeMinMaxEditor />
+    <RemarksEditor />
+   </ContainsSubEditors>
+   <ActivationDefaults>
+    <Properties Armed="false" Accelerator="" OnRelease="false"
+     AlignmentX="0.5" AlignmentY="0.5" Constraint="Center" Enabled="true" 
+     HorizontalAlignment="Leading" Group="" HorizontalTextPosition="Trailing" 
+     IconTextGap="4" Mnemonic="" Selected="false" Text="" ToolTip="" 
+     VerticalAlignment="Center" VerticalTextPosition="Center" Visible="true">
+     <Border Type="Line" Thickness="1" Color="Black" Rounded="false" />
+     <Color FG="0:0:0" BG="204:204:204" />
+     <Font Name="Dialog" Size="12" Style="Bold" />
+     <!-- Margin Left="2" Top="2" Right="2" Bottom="2" / -->
+     <MinimumSize DimX="0" DimY="0" />
+     <MaximumSize DimX="32767" DimY="32767" />
+     <PreferredSize DimX="25" DimY="5" />
+     <Size DimX="0" DimY="0" />
+    </Properties>
+   </ActivationDefaults>
+  </JMenuItemEditor>
+  
+  <JPanelEditor>
+   <ContainsSubEditors>
+    <ClassEditor />
+    <TabComponentEditor />
+    <AppearanceEditor />
+    <BorderEditor />
+    <ColorEditor />
+    <SizeRatioEditor />
+    <SizePreferredEditor />
+    <SizeMinMaxEditor />
+    <LayoutEditor />
+    <LayinEditor />
+    <GridBagEditor />
+    <RemarksEditor />
+   </ContainsSubEditors>
+   <ActivationDefaults>
+    <Properties AlignmentX="0.5" AlignmentY="0.5" Constraint="Center" Enabled="true" ToolTip="" Visible="true">
+     <Border Type="Etched" SubType="Lowered" />
+     <Color FG="0:0:0" BG="204:204:204" />
+     <Layout Manager="FlowLayout" Alignment="Center" Hgap="5" Vgap="5" />
+     <MinimumSize DimX="10" DimY="10" />
+     <MaximumSize DimX="32767" DimY="32767" />
+     <PreferredSize DimX="10" DimY="10" />
+     <Size DimX="0" DimY="0" />
+    </Properties>
+   </ActivationDefaults>
+  </JPanelEditor>
+  
+  <JPasswordFieldEditor>
+   <ContainsSubEditors>
+    <ClassEditor />
+    <TextComponentEditor />
+    <TextEditor />
+    <AppearanceEditor />
+    <MarginEditor />
+    <TextSelectionColorEditor />
+    <ColorEditor />
+    <BorderEditor />
+    <FontEditor />
+    <SizeRatioEditor />
+    <SizePreferredEditor />
+    <SizeMinMaxEditor />
+    <BoundsEditor />
+    <LayinEditor />
+    <GridBagEditor />
+    <RemarksEditor />
+   </ContainsSubEditors>
+   <ActivationDefaults>
+    <Properties HorizontalAlignment="Left" AlignmentX="0.0" AlignmentY="0.5" CaretPosition="0" Cols="1" 
+     Constraint="Center" Editable="true" Enabled="true" SelectedTextColor="0:0:0" 
+     SelectionColor="204:204:255" Text="" ToolTip="" Visible="true">
+     <Border Type="Line" Thickness="1" Color="Black" Rounded="false" />
+     <Bounds DimX="100" DimY="20" PosX="10" PosY="10" />
+     <Color FG="0:0:0" BG="255:255:255" />
+     <Font Name="Dialog" Size="12" Style="Plain" />
+     <Margin Left="0" Top="0" Right="0" Bottom="0" />
+     <MinimumSize DimX="10" DimY="10" />
+     <MaximumSize DimX="32767" DimY="32767" />
+     <PreferredSize DimX="10" DimY="10" />
+     <Size DimX="0" DimY="0" />
+    </Properties>
+   </ActivationDefaults>
+  </JPasswordFieldEditor>
+  
+  <JPopupMenuEditor>
+   <ContainsSubEditors>
+    <ClassEditor />
+    <PopupEditor />
+    <BorderEditor />
+    <ColorEditor />
+    <RemarksEditor />
+   </ContainsSubEditors>
+   <ActivationDefaults>
+    <Properties BorderPainted="true" Label="">
+     <Border Type="Line" Thickness="1" Color="Black" Rounded="false" />
+     <Color FG="0:0:0" BG="204:204:204" />
+     <RelLocation PosX="0" PosY="0" />
+     <Size DimX="0" DimY="0" />
+    </Properties>
+   </ActivationDefaults>
+  </JPopupMenuEditor>
+  
+  <JProgressBarEditor>
+   <ContainsSubEditors>
+    <ClassEditor />
+    <ProgressEditor />
+    <OrientationEditor />
+    <AppearanceEditor />
+    <BorderEditor />
+    <ColorEditor />
+    <FontEditor />
+    <SizeRatioEditor />
+    <SizePreferredEditor />
+    <SizeMinMaxEditor />
+    <BoundsEditor />
+    <LayinEditor />
+    <GridBagEditor />
+    <RemarksEditor />
+   </ContainsSubEditors>
+   <ActivationDefaults>
+    <Properties 
+     Minimum="0" Maximum="100" Value="0" BorderPainted="true" StringPainted="false" String="0%"
+     AlignmentX="0.5" AlignmentY="0.5" Constraint="Center" Enabled="true" Orientation="Horizontal" ToolTip="" Visible="true">
+     <Bounds DimX="100" DimY="21" PosX="10" PosY="10" />
+     <Border Type="Line" Thickness="1" Color="Black" Rounded="false" />
+     <Color FG="153:153:204" BG="204:204:204" />
+     <Font Name="Dialog" Size="12" Style="Plain" />
+     <MinimumSize DimX="10" DimY="14" />
+     <MaximumSize DimX="32767" DimY="14" />
+     <PreferredSize DimX="148" DimY="14" />
+     <Size DimX="0" DimY="0" />
+    </Properties>
+   </ActivationDefaults>
+  </JProgressBarEditor>
+  
+  <JRadioButtonEditor>
+   <ContainsSubEditors>
+    <ClassEditor />
+    <LabelEditor />
+    <AbstractButtonEditor />
+    <IconEditor />
+    <AppearanceEditor />
+    <MarginEditor />
+    <BorderEditor />
+    <ColorEditor />
+    <FontEditor />
+    <SizeRatioEditor />
+    <SizePreferredEditor />
+    <SizeMinMaxEditor />
+    <BoundsEditor />
+    <LayinEditor />
+    <GridBagEditor />
+    <RemarksEditor />
+   </ContainsSubEditors>
+   <ActivationDefaults>
+    <Properties 
+     AlignmentX="0.0" AlignmentY="0.5" Constraint="Center" Enabled="true" 
+     HorizontalAlignment="Leading" Group="" HorizontalTextPosition="Trailing" 
+     IconTextGap="4" Mnemonic="" Selected="false" Text="" ToolTip="" 
+     VerticalAlignment="Center" VerticalTextPosition="Center" Visible="true">
+     <Bounds DimX="100" DimY="21" PosX="10" PosY="10" />
+     <Border Type="Line" Thickness="1" Color="Black" Rounded="false" />
+     <Color FG="0:0:0" BG="204:204:204" />
+     <Font Name="Dialog" Size="12" Style="Bold" />
+     <Margin Left="2" Top="2" Right="2" Bottom="2" />
+     <MinimumSize DimX="21" DimY="21" />
+     <MaximumSize DimX="21" DimY="21" />
+     <PreferredSize DimX="21" DimY="21" />
+     <Size DimX="0" DimY="0" />
+    </Properties>
+   </ActivationDefaults>
+  </JRadioButtonEditor>
+  
+  <JRadioButtonMenuItemEditor>
+   <ContainsSubEditors>
+    <ClassEditor />
+    <MenuEditor />
+    <LabelEditor />
+    <AbstractButtonEditor />
+    <IconEditor />
+    <!-- no effect MarginEditor / -->
+    <AppearanceEditor />
+    <BorderEditor />
+    <ColorEditor />
+    <FontEditor />
+    <SizePreferredEditor />
+    <SizeMinMaxEditor />
+    <RemarksEditor />
+   </ContainsSubEditors>
+   <ActivationDefaults>
+    <Properties Armed="false" Accelerator="" OnRelease="false"
+     AlignmentX="0.5" AlignmentY="0.5" Constraint="Center" Enabled="true" 
+     HorizontalAlignment="Leading" Group="" HorizontalTextPosition="Trailing" 
+     IconTextGap="4" Mnemonic="" Selected="false" Text="" ToolTip="" 
+     VerticalAlignment="Center" VerticalTextPosition="Center" Visible="true">
+     <Border Type="Line" Thickness="1" Color="Black" Rounded="false" />
+     <Color FG="0:0:0" BG="204:204:204" />
+     <Font Name="Dialog" Size="12" Style="Bold" />
+     <!-- Margin Left="2" Top="2" Right="2" Bottom="2" / -->
+     <MinimumSize DimX="0" DimY="0" />
+     <MaximumSize DimX="32767" DimY="32767" />
+     <PreferredSize DimX="35" DimY="5" />
+     <Size DimX="0" DimY="0" />
+    </Properties>
+   </ActivationDefaults>
+  </JRadioButtonMenuItemEditor>
+  
+  <JScrollPaneEditor>
+   <ContainsSubEditors>
+    <ClassEditor />
+    <ScrollPaneEditor />
+    <TabComponentEditor />
+    <AppearanceEditor />
+    <BorderEditor />
+    <SizeRatioEditor />
+    <SizePreferredEditor />
+    <SizeMinMaxEditor />
+    <LayinEditor />
+    <GridBagEditor />
+    <RemarksEditor />
+   </ContainsSubEditors>
+   <ActivationDefaults>
+    <Properties AlignmentX="0.5" AlignmentY="0.5" Constraint="Center" Enabled="true" ToolTip="" Visible="true">
+     <Border Type="Etched" SubType="Lowered" />
+     <Layout HorizontalScrollBar="AS_NEEDED" VerticalScrollBar="AS_NEEDED"/>
+     <MinimumSize DimX="22" DimY="22" />
+     <MaximumSize DimX="32767" DimY="32767" />
+     <PreferredSize DimX="3" DimY="3" />
+     <Size DimX="0" DimY="0" />
+    </Properties>
+   </ActivationDefaults>
+  </JScrollPaneEditor>
+  
+  <JSeparatorEditor>
+   <ContainsSubEditors>
+    <ClassEditor />
+    <OrientationEditor />
+    <AppearanceEditor />
+    <ColorEditor />
+    <SizeRatioEditor />
+    <SizePreferredEditor />
+    <SizeMinMaxEditor />
+    <BoundsEditor />
+    <RemarksEditor />
+   </ContainsSubEditors>
+   <ActivationDefaults>
+    <Properties 
+     AlignmentX="0.5" AlignmentY="0.5" Constraint="Center" Enabled="true" 
+     Mnemonic="" Orientation="Horizontal" ToolTip="" Visible="true">
+     <Bounds DimX="100" DimY="2" PosX="10" PosY="10" />
+     <Color FG="255:255:255" BG="102:102:153" />
+     <MinimumSize DimX="0" DimY="0" />
+     <MaximumSize DimX="32767" DimY="32767" />
+     <PreferredSize DimX="0" DimY="2" />
+     <Size DimX="0" DimY="0" />
+    </Properties>
+   </ActivationDefaults>
+  </JSeparatorEditor>
+  
+  <JSliderEditor>
+   <ContainsSubEditors>
+    <ClassEditor />
+    <SliderEditor />
+    <OrientationEditor />
+    <AppearanceEditor />
+    <BorderEditor />
+    <ColorEditor />
+    <SizeRatioEditor />
+    <SizePreferredEditor />
+    <SizeMinMaxEditor />
+    <BoundsEditor />
+    <LayinEditor />
+    <GridBagEditor />
+    <RemarksEditor />
+   </ContainsSubEditors>
+   <ActivationDefaults>
+    <Properties Extent="0" Inverted="false" Minimum="0" Maximum="100" PaintLabels="false" 
+     PaintTrack="true" MinorTick="0" MajorTick="0" PaintTicks="false" SnapToTicks="false"
+     Value="50" ValueIsAdjusting="false"
+     AlignmentX="0.5" AlignmentY="0.5" Constraint="Center" Enabled="true" Orientation="Horizontal" ToolTip="" Visible="true">
+     <Bounds DimX="100" DimY="21" PosX="10" PosY="10" />
+     <Border Type="Line" Thickness="1" Color="Black" Rounded="false" />
+     <Color FG="153:153:204" BG="204:204:204" />
+     <MinimumSize DimX="36" DimY="16" />
+     <MaximumSize DimX="32767" DimY="16" />
+     <PreferredSize DimX="200" DimY="16" />
+     <Size DimX="0" DimY="0" />
+    </Properties>
+   </ActivationDefaults>
+  </JSliderEditor>
+  
+  <JSpinnerEditor>
+   <ContainsSubEditors>
+    <ClassEditor />
+    <SpinnerEditor />
+    <AppearanceEditor />
+    <MarginEditor />
+    <TextSelectionColorEditor />
+    <ColorEditor />
+    <BorderEditor />
+    <FontEditor />
+    <SizeRatioEditor />
+    <SizePreferredEditor />
+    <SizeMinMaxEditor />
+    <BoundsEditor />
+    <LayinEditor />
+    <GridBagEditor />
+    <RemarksEditor />
+   </ContainsSubEditors>
+   <ActivationDefaults>
+    <Properties SelectedTextColor="0:0:0" SelectionColor="204:204:255"
+     AlignmentX="0.5" AlignmentY="0.5" Constraint="Center" Enabled="true" ToolTip="" Visible="true">
+     <SpinnerModels ActivationModel="Integer">
+      <SpinnerModel Model="Date" init="946681200000" step="MONTH" start="946681200000" stop="1262214000000"/>
+      <SpinnerModel Model="Double" init="0.0" step="1.0" start="0.0" stop="100.0"/>
+      <SpinnerModel Model="Integer" init="0" step="1" start="0" stop="100"/>
+     </SpinnerModels>
+     <Bounds DimX="31" DimY="24" PosX="10" PosY="10" />
+     <Border Type="Line" Thickness="1" Color="Black" Rounded="false" />
+     <Margin Left="0" Top="0" Right="0" Bottom="0" />
+     <Color FG="0:0:0" BG="255:255:255" />
+     <Font Name="Dialog" Size="12" Style="Plain" />
+     <MinimumSize DimX="31" DimY="24" />
+     <MaximumSize DimX="32767" DimY="32767" />
+     <PreferredSize DimX="31" DimY="24" />
+     <Size DimX="0" DimY="0" />
+    </Properties>
+   </ActivationDefaults>
+  </JSpinnerEditor>
+  
+  <JSplitPaneEditor>
+   <ContainsSubEditors>
+    <ClassEditor />
+    <SplitPaneEditor />
+    <OrientationEditor />
+    <TabComponentEditor />
+    <AppearanceEditor />
+    <BorderEditor />
+    <ColorEditor />
+    <SizeRatioEditor />
+    <SizePreferredEditor />
+    <SizeMinMaxEditor />
+    <LayinEditor />
+    <GridBagEditor />
+    <RemarksEditor />
+   </ContainsSubEditors>
+   <ActivationDefaults>
+    <Properties AlignmentX="0.0" AlignmentY="0.0" Constraint="Center" 
+     Enabled="true" Orientation="Horizontal" ToolTip="" Visible="true"
+     OneTouchExpandable="false" DividerLocationP="0.25" ResizeWeight="0.0" 
+     DividerSize="10" ContinuousLayout="false" DividerLocation="-1">
+     <Border Type="Etched" SubType="Lowered" />
+     <Color FG="0:0:0" BG="204:204:204" />
+     <MinimumSize DimX="214" DimY="28" />
+     <MaximumSize DimX="2147483647" DimY="2147483647" />
+     <PreferredSize DimX="214" DimY="28" />
+     <Size DimX="0" DimY="0" />
+    </Properties>
+   </ActivationDefaults>
+  </JSplitPaneEditor>
+  
+  <JTabbedPaneEditor>
+   <ContainsSubEditors>
+    <ClassEditor />
+    <TabPlacementEditor />
+    <AppearanceEditor />
+    <BorderEditor />
+    <ColorEditor />
+    <SizeRatioEditor />
+    <SizePreferredEditor />
+    <SizeMinMaxEditor />
+    <LayinEditor />
+    <GridBagEditor />
+    <RemarksEditor />
+   </ContainsSubEditors>
+   <ActivationDefaults>
+    <Properties AlignmentX="0.5" AlignmentY="0.5" Constraint="Center" 
+     Enabled="true" TabLayout="Wrap" TabPlacement="Top" ToolTip="" Visible="true">
+     <Border Type="Etched" SubType="Lowered" />
+     <Color FG="0:0:0" BG="153:153:153" />
+     <MinimumSize DimX="8" DimY="5" />
+     <MaximumSize DimX="32767" DimY="32767" />
+     <PreferredSize DimX="8" DimY="5" />
+     <Size DimX="0" DimY="0" />
+    </Properties>
+   </ActivationDefaults>
+  </JTabbedPaneEditor>
+  
+  <JTableEditor>
+   <ContainsSubEditors>
+    <ClassEditor />
+    <TableEditor />
+    <AppearanceEditor />
+    <TextSelectionColorEditor />
+    <ColorEditor />
+    <BorderEditor />
+    <FontEditor />
+    <SizeRatioEditor />
+    <SizePreferredEditor />
+    <SizeMinMaxEditor />
+    <BoundsEditor />
+    <LayinEditor />
+    <GridBagEditor />
+    <RemarksEditor />
+   </ContainsSubEditors>
+   <ActivationDefaults>
+    <Properties AutoResizeMode="AllColumns" ColumnSelectionAllowed="false"
+     RowHeight="16" RowSelectionAllowed="true"  ShowGrid="true"
+     AlignmentX="0.5" AlignmentY="0.5" Constraint="Center" Enabled="true" 
+     SelectionMode="M-Interval" SelectedTextColor="0:0:0" 
+     SelectionColor="204:204:255" ToolTip="" Visible="true">
+     <Bounds DimX="100" DimY="21" PosX="10" PosY="10" />
+     <Border Type="Line" Thickness="1" Color="Black" Rounded="false" />
+     <Color FG="0:0:0" BG="255:255:255" />
+     <Font Name="Dialog" Size="12" Style="Bold" />
+     <MinimumSize DimX="0" DimY="0" />
+     <MaximumSize DimX="0" DimY="0" />
+     <PreferredSize DimX="0" DimY="0" />
+     <Size DimX="0" DimY="0" />
+    </Properties>
+   </ActivationDefaults>
+  </JTableEditor>
+  
+  <JTextAreaEditor>
+   <ContainsSubEditors>
+    <ClassEditor />
+    <TextAreaEditor />
+    <TextComponentEditor />
+    <TextEditor />
+    <AppearanceEditor />
+    <MarginEditor />
+    <TextSelectionColorEditor />
+    <ColorEditor />
+    <BorderEditor />
+    <FontEditor />
+    <SizeRatioEditor />
+    <SizePreferredEditor />
+    <SizeMinMaxEditor />
+    <BoundsEditor />
+    <LayinEditor />
+    <GridBagEditor />
+    <RemarksEditor />
+   </ContainsSubEditors>
+   <ActivationDefaults>
+    <Properties AlignmentX="0.5" AlignmentY="0.5" CaretPosition="0" Cols="1" Constraint="Center" 
+     Editable="true" Enabled="true" LineWrap="true" Rows="1" SelectedTextColor="0:0:0"
+     SelectionColor="204:204:255" Text="" ToolTip="" Visible="true" WordWrap="true">
+     <Border Type="Line" Thickness="1" Color="Black" Rounded="false" />
+     <Bounds DimX="100" DimY="20" PosX="10" PosY="10" />
+     <Color FG="0:0:0" BG="255:255:255" />
+     <Font Name="Dialog" Size="12" Style="Plain" />
+     <Margin Left="0" Top="0" Right="0" Bottom="0" />
+     <MinimumSize DimX="10" DimY="10" />
+     <MaximumSize DimX="32767" DimY="32767" />
+     <PreferredSize DimX="10" DimY="10" />
+     <Size DimX="0" DimY="0" />
+    </Properties>
+   </ActivationDefaults>
+  </JTextAreaEditor>
+  
+  <JTextFieldEditor>
+   <ContainsSubEditors>
+    <ClassEditor />
+    <TextComponentEditor />
+    <TextEditor />
+    <AppearanceEditor />
+    <MarginEditor />
+    <TextSelectionColorEditor />
+    <ColorEditor />
+    <BorderEditor />
+    <FontEditor />
+    <SizeRatioEditor />
+    <SizePreferredEditor />
+    <SizeMinMaxEditor />
+    <BoundsEditor />
+    <LayinEditor />
+    <GridBagEditor />
+    <RemarksEditor />
+   </ContainsSubEditors>
+   <ActivationDefaults>
+    <Properties HorizontalAlignment="Left" AlignmentX="0.0" AlignmentY="0.5" CaretPosition="0" 
+     Cols="1" Constraint="Center" Editable="true" Enabled="true" SelectedTextColor="0:0:0" 
+     SelectionColor="204:204:255" Text="" ToolTip="" Visible="true">
+     <Border Type="Line" Thickness="1" Color="Black" Rounded="false" />
+     <Bounds DimX="100" DimY="20" PosX="10" PosY="10" />
+     <Color FG="0:0:0" BG="255:255:255" />
+     <Font Name="Dialog" Size="12" Style="Plain" />
+     <Margin Left="0" Top="0" Right="0" Bottom="0" />
+     <MinimumSize DimX="10" DimY="10" />
+     <MaximumSize DimX="32767" DimY="32767" />
+     <PreferredSize DimX="10" DimY="10" />
+     <Size DimX="0" DimY="0" />
+    </Properties>
+   </ActivationDefaults>
+  </JTextFieldEditor>
+  
+  <JToggleButtonEditor>
+   <ContainsSubEditors>
+    <ClassEditor />
+    <LabelEditor />
+    <AbstractButtonEditor />
+    <IconEditor />
+    <AppearanceEditor />
+    <MarginEditor />
+    <BorderEditor />
+    <ColorEditor />
+    <FontEditor />
+    <SizeRatioEditor />
+    <SizePreferredEditor />
+    <SizeMinMaxEditor />
+    <BoundsEditor />
+    <LayinEditor />
+    <GridBagEditor />
+    <RemarksEditor />
+   </ContainsSubEditors>
+   <ActivationDefaults>
+    <Properties 
+     AlignmentX="0.0" AlignmentY="0.5" Constraint="Center" Enabled="true" 
+     HorizontalAlignment="Leading" Group="" HorizontalTextPosition="Trailing" 
+     IconTextGap="4" Mnemonic="" Selected="false" Text="" ToolTip="" 
+     VerticalAlignment="Center" VerticalTextPosition="Center" Visible="true">
+     <Bounds DimX="100" DimY="21" PosX="10" PosY="10" />
+     <Border Type="Line" Thickness="1" Color="Black" Rounded="false" />
+     <Color FG="0:0:0" BG="204:204:204" />
+     <Font Name="Dialog" Size="12" Style="Bold" />
+     <Margin Left="2" Top="2" Right="2" Bottom="2" />
+     <MinimumSize DimX="21" DimY="21" />
+     <MaximumSize DimX="21" DimY="21" />
+     <PreferredSize DimX="21" DimY="21" />
+     <Size DimX="0" DimY="0" />
+    </Properties>
+   </ActivationDefaults>
+  </JToggleButtonEditor>
+  
+  <JToolBarEditor>
+   <ContainsSubEditors>
+    <ClassEditor />
+    <ToolbarEditor />
+    <MarginEditor />
+    <BorderEditor />
+    <ColorEditor />
+    <LayinEditor />
+    <RemarksEditor />
+   </ContainsSubEditors>
+   <ActivationDefaults>
+    <Properties 
+     AlignmentX="0.5" AlignmentY="0.0"  BorderPainted="true" Constraint="North" 
+     Enabled="true" Floatable="true" Orientation="Horizontal" ToolTip="" Visible="true">
+     <Border Type="Line" Thickness="1" Color="Black" Rounded="false" />
+     <Color FG="0:0:0" BG="204:204:204" />
+     <Margin Left="0" Top="0" Right="0" Bottom="0" />
+    </Properties>
+   </ActivationDefaults>
+  </JToolBarEditor>
+  
+  <JToolBarSeparatorEditor>
+   <ContainsSubEditors>
+    <ClassEditor />
+    <SeparatorSizeEditor />
+    <RemarksEditor />
+   </ContainsSubEditors>
+   <ActivationDefaults>
+    <Properties>
+     <Size DimX="0" DimY="0" />
+    </Properties>
+   </ActivationDefaults>
+  </JToolBarSeparatorEditor>
+  
+  <JTreeEditor>
+   <ContainsSubEditors>
+    <ClassEditor />
+    <ItemsEditor />
+    <AppearanceEditor />
+    <BorderEditor />
+    <ColorEditor />
+    <FontEditor />
+    <SizeRatioEditor />
+    <SizePreferredEditor />
+    <SizeMinMaxEditor />
+    <BoundsEditor />
+    <LayinEditor />
+    <RemarksEditor />
+   </ContainsSubEditors>
+   <ActivationDefaults>
+    <Properties ItemSource="Root"
+     AlignmentX="0.5" AlignmentY="0.5" Constraint="Center" Enabled="true" ToolTip="" Visible="true">
+     <Bounds DimX="0" DimY="0" PosX="0" PosY="0" />
+     <Border Type="Line" Thickness="1" Color="Black" Rounded="false" />
+     <Color FG="0:0:0" BG="255:255:255" />
+     <Font Name="Dialog" Size="12" Style="Plain" />
+     <MinimumSize DimX="0" DimY="0" />
+     <MaximumSize DimX="78" DimY="72" />
+     <PreferredSize DimX="78" DimY="72" />
+     <Size DimX="0" DimY="0" />
+  	 <Root>
+      <leaf_1/>
+      <leaf_2/>
+      <leaf_3/>
+     </Root>
+    </Properties>
+   </ActivationDefaults>
+  </JTreeEditor>
+  
+ </KnownComponentEditors>
+
+<!-- SubEditor Definitions -->
+ 
+ <KnownSubEditors>
+ 
+  <AbstractButtonEditor Class="speed.jg.ide.edit.AbstractButtonEditor" />
+  <AppearanceEditor Class="speed.jg.ide.edit.AppearanceEditor" />
+  <BorderEditor Class="speed.jg.ide.edit.BorderEditor" />
+  <BoundsEditor Class="speed.jg.ide.edit.BoundsEditor" />
+  <BoxEditor Class="speed.jg.ide.edit.BoxEditor" />
+  <ClassEditor Class="speed.jg.ide.edit.ClassEditor" />
+  <ColorEditor Class="speed.jg.ide.edit.ColorEditor" />
+  <ComboBoxEditor Class="speed.jg.ide.edit.ComboBoxEditor" />
+  <DesktopPaneEditor Class="speed.jg.ide.edit.DesktopPaneEditor" />
+  <DialogEditor Class="speed.jg.ide.edit.DialogEditor" />
+  <EditPaneEditor Class="speed.jg.ide.edit.EditPaneEditor" />
+  <FontEditor Class="speed.jg.ide.edit.FontEditor" />
+  <FormattedTextEditor Class="speed.jg.ide.edit.FormattedTextEditor" />
+  <FrameEditor Class="speed.jg.ide.edit.FrameEditor" />
+  <FrameIconEditor Class="speed.jg.ide.edit.FrameIconEditor" />
+  <GridBagEditor Class="speed.jg.ide.edit.GridBagEditor" />
+  <IconEditor Class="speed.jg.ide.edit.IconEditor" />
+  <InternalFrameEditor Class="speed.jg.ide.edit.InternalFrameEditor" />
+  <ItemsEditor Class="speed.jg.ide.edit.ItemsEditor" />
+  <LabelEditor Class="speed.jg.ide.edit.LabelEditor" />
+  <ListEditor Class="speed.jg.ide.edit.ListEditor" />
+  <LayinEditor Class="speed.jg.ide.edit.LayinEditor" />
+  <LayoutEditor Class="speed.jg.ide.edit.LayoutEditor" />
+  <MarginEditor Class="speed.jg.ide.edit.MarginEditor" />
+  <MenuEditor Class="speed.jg.ide.edit.MenuEditor" />
+  <OrientationEditor Class="speed.jg.ide.edit.OrientationEditor" />
+  <PopupEditor Class="speed.jg.ide.edit.PopupEditor" />
+  <ProgressEditor Class="speed.jg.ide.edit.ProgressEditor" />
+  <ProjectEditor Class="speed.jg.ide.edit.ProjectEditor" />
+  <RemarksEditor Class="speed.jg.ide.edit.RemarksEditor" />
+  <ScrollPaneEditor Class="speed.jg.ide.edit.ScrollPaneEditor" />
+  <SeparatorSizeEditor Class="speed.jg.ide.edit.SeparatorSizeEditor" />
+  <SizeMinMaxEditor Class="speed.jg.ide.edit.SizeMinMaxEditor" />
+  <SizePreferredEditor Class="speed.jg.ide.edit.SizePreferredEditor" />
+  <SizeRatioEditor Class="speed.jg.ide.edit.SizeRatioEditor" />
+  <SliderEditor Class="speed.jg.ide.edit.SliderEditor" />
+  <SplitPaneEditor Class="speed.jg.ide.edit.SplitPaneEditor" />
+  <SpinnerEditor Class="speed.jg.ide.edit.SpinnerEditor" />
+  <TabComponentEditor Class="speed.jg.ide.edit.TabComponentEditor" />
+  <TableEditor Class="speed.jg.ide.edit.TableEditor" />
+  <TabPlacementEditor Class="speed.jg.ide.edit.TabPlacementEditor" />
+  <TextAreaEditor Class="speed.jg.ide.edit.TextAreaEditor" />
+  <TextComponentEditor Class="speed.jg.ide.edit.TextComponentEditor" />
+  <TextEditor Class="speed.jg.ide.edit.TextEditor" />
+  <TextSelectionColorEditor Class="speed.jg.ide.edit.TextSelectionColorEditor" />
+  <ToolbarEditor Class="speed.jg.ide.edit.ToolbarEditor" />
+  <WindowEditor Class="speed.jg.ide.edit.WindowEditor" />
+  
+ </KnownSubEditors>
+ 
+ <!-- later on enabling from outside -->
+ 
+ <NewComponentDefaults>
+  
+  <JDialogEditor>
+   <NewInstance Name="myJDialog" />
+   <ComponentProperties Title="myJDialog" Modal="true" Resizable="true" DefaultCloseOperation="DISPOSE_ON_CLOSE">
+    <MaximizedBounds DimX="640" DimY="480"/>
+    <Bounds DimX="640" DimY="480" PosX="96" PosY="72"/>
+    <Layout Manager="BorderLayout" Hgap="0" Vgap="0" />
+   </ComponentProperties>
+  </JDialogEditor>
+  
+  <JFrameEditor>
+   <NewInstance Name="myJFrame" />
+   <ComponentProperties Title="myJFrame" Resizable="true" DefaultCloseOperation="EXIT_ON_CLOSE" ExtendedState="MAXIMIZED_BOTH">
+    <MaximizedBounds DimX="800" DimY="600"/>
+    <Bounds DimX="640" DimY="480" PosX="64" PosY="48"/>
+    <Layout Manager="BorderLayout" Hgap="0" Vgap="0" />
+   </ComponentProperties>
+  </JFrameEditor>
+  
+  <JPanelEditor>
+   <NewInstance Name="myJPanel" />
+   <ComponentProperties AlignmentX="0.5" AlignmentY="0.5" Constraint="Center" Enabled="true" ToolTip="" Visible="true">
+    <Border Type="Etched" SubType="Lowered" />
+    <Color FG="0:0:0" BG="204:204:204" />
+    <Layout Manager="FlowLayout" Alignment="Center" Hgap="5" Vgap="5" />
+    <MinimumSize DimX="10" DimY="10" />
+    <MaximumSize DimX="32767" DimY="32767" />
+    <PreferredSize DimX="10" DimY="10" />
+    <Size DimX="400" DimY="300" />
+   </ComponentProperties>
+  </JPanelEditor>
+  
+  <JTextFieldEditor>
+   <NewInstance Name="myJTextField" />
+  </JTextFieldEditor>
+  
+ </NewComponentDefaults>
+ 
+</IdeContext>

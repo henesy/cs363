@@ -1,0 +1,18 @@
+<theWeb> 
+   <Website Link="w.J"> 
+      <Name>John</Name> 
+      <Age>25</Age> 
+      <Relatives> 
+         <Mother Link = "w.M"/> 
+         <Sister Link = "w.I"/> 
+      </Relatives> 
+   </Website> 
+   <Website Link="w.M">
+      <Name>John</Name> 
+      <Age>25</Age> 
+   </Website> 
+   <Website Link="w.I">
+      <Name>John</Name> 
+      <Age>25</Age> 
+   </Website> 
+</theWeb> 

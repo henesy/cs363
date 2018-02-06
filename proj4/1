@@ -1,0 +1,4 @@
+MATCH (sp:Person)<-[:S2P]-(student)<-[:Mentors]-(mentor)-[M2P]-(mp)
+WHERE exists(mp.Name) AND exists(sp.Name) 
+RETURN mp.Name, sp.Name
+

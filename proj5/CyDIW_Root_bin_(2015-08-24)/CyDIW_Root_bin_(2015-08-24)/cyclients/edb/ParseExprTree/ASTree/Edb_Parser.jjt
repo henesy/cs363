@@ -1,0 +1,276 @@
+options {
+	NODE_DEFAULT_VOID = true;
+	NODE_PREFIX="XML";
+}
+
+PARSER_BEGIN(Edb_Query_Parser)
+
+package cyclients.edb.ParseExprTree.ASTree;
+public class Edb_Query_Parser {}
+
+PARSER_END(Edb_Query_Parser)
+
+
+/***********************************************************************
+ * Token definitions
+ ***********************************************************************/
+
+/* There may be tokens here which don't relate to SQL, but we needed for
+   the rest of our project  */ 
+
+SKIP:
+{
+    " "
+  | "\n"
+  | "\r"
+  | "\t"
+}
+
+
+SKIP:
+{
+  <COMMENT_LINE: "--" (~["\n","\r"])* ("\n"|"\r"|"\r\n") >
+}
+
+
+SKIP:
+{
+  <COMMENT_BLOCK: "/*" (~["*"])* "*" ("*" | (~["*","/"] (~["*"])* "*"))* "/">
+}
+
+
+TOKEN:  /* Keywords */
+{
+    < SELECT: "select" >
+  | < FROM: "from" >
+  | < WHERE: "where" >
+  | < AND: "and" >
+  | < OR: "or" >
+  | < NOT: "not" >
+  | < DOT: "." >
+}     
+
+TOKEN:  /* Literals */
+{
+    < INTEGER_LITERAL: (["+","-"])? (["0"-"9"])+ >
+  | < FLOAT_LITERAL:
+        (["+","-"])?  (["0"-"9"])+ "." (["0"-"9"])+ (<EXPONENT>)?
+        | (["+","-"])? "." (["0"-"9"])+ (<EXPONENT>)?
+        | (["+","-"])? (["0"-"9"])+ <EXPONENT>
+        | (["+","-"])? (["0"-"9"])+ (<EXPONENT>)?
+    >
+  | < #EXPONENT: ["e","E"] (["+","-"])? (["0"-"9"])+ >
+  | < STRING_LITERAL: ( "'" (~["'"])* ( "''" (~["'"])* )* "'" )
+                    |  ( "\"" (~["\""])* ( "\" \"" (~["\""])* )* "\"" ) >
+
+}
+
+
+TOKEN:  /* Identifiers */
+{
+    < Identifier: ( <LETTER> )+ ( "_" | "$" | "#" | <DIGIT> | <LETTER> )* >
+  | < #LETTER: ["A"-"Z", "a"-"z"] >
+  | < #DIGIT: ["0"-"9"] >
+}
+
+
+TOKEN:  /* Separators and operators */
+{
+    < COMMA: "," >
+  | < LESS: "<" >
+  | < LESSEQUAL: "<=" >
+  | < GREATER: ">" >
+  | < GREATEREQUAL: ">=" >
+  | < EQUAL: "=" >
+  | < NOTEQUAL: "!=" >
+  | < NOTEQUAL2: "<>" >
+  | < LPAREN: "(" >
+  | < RPAREN: ")" >
+  | < ASTERISK: "*" >
+  | < SLASH: "/" >
+  | < PLUS: "+" >
+  | < MINUS: "-" >
+  | < NOTLESSTHAN: "!<" >
+  | < NOTLESSTHANEQUAL: "!<=" >
+  | < NOTGREATTHAN: "!>" >
+  | < NOTGREATTHANEQUAL: "!>=" >
+
+}
+
+/* The Top module. */
+SimpleNode parse()  #dbQuery :
+{}
+{
+	SFWStatement() <EOF> { return jjtThis; }
+}
+
+/* The Root Node. */
+void SFWStatement()  #dbSFWStatement :
+{}
+{
+	SelectClause() FromClause()  WhereClause()
+}
+
+/* Select Clause */
+void SelectClause() #dbSelectClause:
+{}
+{
+	<SELECT>  SelectColumnClause()
+}
+
+
+/* Select Clause which projects only the specified Column Attributes. */
+void SelectColumnClause() #void:
+{}
+{
+	ColumnClause() ( <COMMA>  ColumnClause() )*
+	
+}
+
+/* Column Attribute Clause which is represented as a Table DOT Column. */
+void ColumnClause() #dbAttr: 
+{}
+{
+	TableOrAliasClause() <DOT> TableColumnVariable()
+	|
+	TableAllColumn()
+}
+
+/* Table Clause which contains either the Relation Name or an Alias of it. */
+void  TableOrAliasClause() #dbRelVar:
+{}
+{
+       TableAliasVariable() /* | TableVariable() */
+}
+
+/* Token for the Relation Attribute. */
+void TableVariable() #dbRelName:
+{ Token t; }
+{
+	t = <Identifier> { jjtThis.setText(t.image); }
+}
+
+
+/* Token for the column Attribute. */
+void TableAllColumn() #dbAttrName:
+{ Token t; }
+{
+	t = <ASTERISK> { jjtThis.setText(t.image); }
+}
+
+/* Token for the column Attribute. */
+void TableColumnVariable() #dbAttrName:
+{ Token t; }
+{
+	t = <Identifier> { jjtThis.setText(t.image); }
+}
+
+/* Token for the Relation Alias Attribute.*/
+void TableAliasVariable() #dbRelAliasName:
+{ Token t; }
+{
+	t = <Identifier> { jjtThis.setText(t.image); }
+}
+
+/* From Clause represented as either a single or a join of two tables. */
+void FromClause() #dbFromClause:
+{}
+{
+	<FROM> TableClause() ( <COMMA> TableClause() )?
+}
+
+/* Relation Clause which contains the Relation Name and its optional Alias Name.*/
+void  TableClause() #dbRelVar:
+{}
+{
+       TableVariable() ( TableAliasVariable() )?
+}
+
+/* Where Clause containing a conjunction of conditions. */
+void  WhereClause() #dbWhereClause:
+{}
+{
+       <WHERE> BooleanExpression()
+}
+
+/* Boolean Exxpression representing a single condition.*/
+void BooleanExpression()  #BooleanFactor:
+{}
+{
+	 Element()
+	 |
+	 ( ColumnClause() | Element() ) ComparisonOperator() ( ColumnClause() | Element() )
+	 |
+	 NotNode() <LPAREN> BooleanExpression() <RPAREN>
+	 | 
+	 <LPAREN> BooleanExpression() ( AndNode() | OrNode() ) BooleanExpression() <RPAREN>
+	 
+
+}
+
+void NotNode()  #NOT:
+{}
+{
+	 <NOT>
+}
+
+void AndNode()  #AND:
+{}
+{
+	 <AND>
+}
+
+void OrNode()  #OR:
+{}
+{
+	 <OR>
+}
+
+/* Token for the Comparison Operator. */
+void ComparisonOperator() #comparisonOp:
+{ Token t; }
+{
+         t = <LESS>           		{ jjtThis.setText(t.image); }
+       | t = <LESSEQUAL>      		{ jjtThis.setText(t.image); }
+       | t = <GREATER>        		{ jjtThis.setText(t.image); }  
+       | t = <GREATEREQUAL>   		{ jjtThis.setText(t.image); }
+       | t = <EQUAL>          		{ jjtThis.setText(t.image); }
+       | t = <NOTEQUAL>       		{ jjtThis.setText(t.image); }
+       | t = <NOTEQUAL2>      		{ jjtThis.setText(t.image); }
+       | t = <NOTLESSTHAN>      	{ jjtThis.setText(t.image); }
+       | t = <NOTLESSTHANEQUAL>     { jjtThis.setText(t.image); }
+       | t = <NOTGREATTHAN>      	{ jjtThis.setText(t.image); }
+       | t = <NOTGREATTHANEQUAL>    { jjtThis.setText(t.image); }
+       
+}
+
+/* Token for a Constant. */
+void Element() #dbConstValue:
+{}
+{
+		IntegerLiteral()
+	| 	FloatLiteral()
+    |	StringLiteral() 
+}
+
+/* Token for an Integer Literal. */
+void IntegerLiteral() #INTEGERLITERAL :
+{Token t;}
+{
+	t = <INTEGER_LITERAL> {jjtThis.setText(t.image);}
+}
+
+/* Token for a float Literal. */
+void FloatLiteral() #FLOATLITERAL :
+{Token t;}
+{
+	t = <FLOAT_LITERAL> {jjtThis.setText(t.image);}
+}
+
+/* Token for a String Literal. */
+void StringLiteral() #STRINGLITERAL :
+{Token t;}
+{
+	t = <STRING_LITERAL> {jjtThis.setText(t.image);}
+}
+

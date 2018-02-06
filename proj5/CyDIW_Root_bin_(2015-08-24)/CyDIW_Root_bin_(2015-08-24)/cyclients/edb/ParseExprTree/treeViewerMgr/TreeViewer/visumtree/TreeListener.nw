@@ -1,0 +1,11 @@
+\section{TreeListener interface}
+
+	Interface for classes with aspirations as Tree listeners.
+
+<<TreeListener.java>>=
+package visumtree;
+
+public interface TreeListener {
+	public void treeActionPerformed(TreeEvent e);
+}
+@

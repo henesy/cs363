@@ -1,0 +1,5 @@
+      <Client Name="Ooquery" Prefix="Ooquery" Enabled="yes"
+      ClassPath="" 
+      LibraryPath="cyclients\ooquery\lib" 
+	  WorkspacePath="" 
+      ClientAdapter="cyclients.ooquery.adapter.OoqueryAdapter" /> 

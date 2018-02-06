@@ -1,0 +1,75 @@
+
+$CyDB:> list commands;
+// If storage does not exist, use createStorage first;
+/*$CyDB:>createStorage  StorageConfig.xml;*/
+$CyDB:>loadStorage StorageConfig.xml;
+//$CyDB:>unloadStorage StorageConfig.xml;
+//$CyDB:> startBufferManager 11;
+/* $CyDB:>createStorage  StorageConfig.xml;
+*/
+
+/*  You can reformat the storage any time.
+
+$CyDB:>ReformatStorage StorageConfig.xml 16; 
+$CyDB:>loadStorage StorageConfig.xml;
+*/
+
+$CyDB:> declare string $$b;
+
+$CyDB:>set $$b := cyclients\edb\workspace\catalog.xml;
+//$EDB:>CreateData $$b;
+
+
+// The first parameter is the catalog file, the second command is the buffer number which is used by this EDB;
+
+$EDB:>LoadDB $$b 10 ;
+
+
+$CyDB:> declare string[10] $$a;
+
+// single relation;
+$CyDB:>set $$a[0] := $EDB:>select e.Name, e.Salary, e.DName
+from Emp e
+where e.Salary > 0;
+
+
+
+
+
+$CyDB:> declare string $$c;
+$CyDB:>set $$c :=cyclients\edb\workspace\ASTree.xml;
+$CyDB:> declare string[4] $$d;
+$CyDB:>set $$d[0] :=cyclients\edb\workspace\InitalExpTree0.xml;
+$CyDB:> declare string[4] $$e;
+$CyDB:>set $$e[0] :=cyclients\edb\workspace\OptimalExpTree0.xml;
+
+
+$EDB:>BuildAST $$a[0] $$c;
+
+$EDB:>BuildInitalExpressionTree $$c $$d[0] ;
+  
+$EDB:>BuildOptimalExpressionTree $$d[0] $$e[0];
+
+
+
+
+
+
+$CyDB:> createLog <root> logTestCompEmpBuf4.xml;
+
+$CyDB:> declare int $$j;
+
+ $CyDB:> foreach $$j in (5) log custom >><loop1  var ="($$j)">  logTestCompEmpBuf4.xml
+{
+  $EDB:>Execute $$e[0] $$j 10-$$j  log custom >><loop2>  logTestCompEmpBuf4.xml;  
+}
+
+$CyDB:> resetPageAccessRelativeCount;
+
+$EDB:>Execute $$e[0] 4 1;  
+$CyDB:> getPageAccessRelativeCount;
+
+$CyDB:>list commands;
+$OS:> CyDIW_Workspace\logTestCompEmpBuf4.xml;
+
+

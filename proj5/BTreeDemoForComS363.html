@@ -1,0 +1,29 @@
+
+$CyDB:> createStorage QuickStorageConfig.xml;  $CyDB:> loadStorage QuickStorageConfig.xml;  // View metadata for records; $CyDB:> DisplayXML .\cyutils\btree\workspace\MyTupleConfig.xml;  // Create variables to hold the names of metadata, data file, and BTrees; $CyDB:> declare string MyTupleConfig:= .\cyutils\btree\workspace\MyTupleConfig.xml;  $CyDB:> declare string MyDataFile:= .\cyutils\btree\workspace\MyDataFile.txt;  $CyDB:> declare string MyBTreeConfigBulk256:= .\cyutils\btree\workspace\MyBTreeConfigBulk256.xml;  $CyDB:> declare string MyBTreeConfigBulk1024:= .\cyutils\btree\workspace\MyBTreeConfigBulk1024.xml;  $CyDB:> declare string MyBTreeConfigBulk512:= .\cyutils\btree\workspace\MyBTreeConfigBulk512.xml;  // See all variables; $CyDB:> list variables; ------------Variables List------------
+String variables:
+	MyBTreeConfigBulk256 = .\cyutils\btree\workspace\MyBTreeConfigBulk256.xml
+	MyDataFile = .\cyutils\btree\workspace\MyDataFile.txt
+	MyBTreeConfigBulk1024 = .\cyutils\btree\workspace\MyBTreeConfigBulk1024.xml
+	MyBTreeConfigBulk512 = .\cyutils\btree\workspace\MyBTreeConfigBulk512.xml
+	MyTupleConfig = .\cyutils\btree\workspace\MyTupleConfig.xml
+
+
+ // Preapare the dataset, store it in a text file, and view it; // $Cyutils:> BTreePrepareSortedData $$MyTupleConfig $$MyDataFile; $CyDB:> DisplayTXT .\cyutils\btree\workspace\MyDataFile.txt;  $CyDB:> getPageAllocatedCount; Page Allocated Count: 0
+ $CyUtils:> BTreeCreateEmpty $$MyBTreeConfigBulk256 $$MyTupleConfig; $CyUtils:> BTreeCreateEmpty <BTreeConfigXmlFile> <TupleConfigXmlFile>;
+Successfully build a new btree, root page id is: 2, sequence page id is: 2
+$CyUtils:> BTreeBulkLoad $$MyBTreeConfigBulk256 $$MyTupleConfig $$MyDataFile; $CyUtils:> BTreeBulkLoad <BTreeConfigXmlFile> <TupleConfigXmlFile> <TupleTxtFile>;
+Successfully bulkloaded sorted data into storage!
+$CyDB:> getPageAllocatedCount; Page Allocated Count: 1731
+ $CyDB:> DisplayXML .\cyutils\btree\workspace\MyBTreeConfigBulk256.xml;  $CyDB:> getPageAllocatedCount; Page Allocated Count: 1731
+ $CyUtils:> BTreeCreateEmpty $$MyBTreeConfigBulk1024 $$MyTupleConfig; $CyUtils:> BTreeCreateEmpty <BTreeConfigXmlFile> <TupleConfigXmlFile>;
+Successfully build a new btree, root page id is: 1733, sequence page id is: 1733
+$CyUtils:> BTreeBulkLoad $$MyBTreeConfigBulk1024 $$MyTupleConfig $$MyDataFile; $CyUtils:> BTreeBulkLoad <BTreeConfigXmlFile> <TupleConfigXmlFile> <TupleTxtFile>;
+Successfully bulkloaded sorted data into storage!
+$CyDB:> getPageAllocatedCount; Page Allocated Count: 2093
+ $CyDB:> DisplayXML .\cyutils\btree\workspace\MyBTreeConfigBulk1024.xml;  $CyDB:> getPageAllocatedCount; Page Allocated Count: 2093
+ $CyUtils:> BTreeCreateEmpty $$MyBTreeConfigBulk512 $$MyTupleConfig; $CyUtils:> BTreeCreateEmpty <BTreeConfigXmlFile> <TupleConfigXmlFile>;
+Successfully build a new btree, root page id is: 2095, sequence page id is: 2095
+$CyUtils:> BTreeBulkLoad $$MyBTreeConfigBulk512 $$MyTupleConfig $$MyDataFile; $CyUtils:> BTreeBulkLoad <BTreeConfigXmlFile> <TupleConfigXmlFile> <TupleTxtFile>;
+Successfully bulkloaded sorted data into storage!
+$CyDB:> getPageAllocatedCount; Page Allocated Count: 2877
+ $CyDB:> DisplayXML .\cyutils\btree\workspace\MyBTreeConfigBulk512.xml; 

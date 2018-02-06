@@ -1,0 +1,96 @@
+\section{TreeEvent class}
+
+<<TreeEvent.java>>=
+<<License>>
+
+package visumtree;
+
+public class TreeEvent {
+	<<TreeEvent variables>>
+	<<TreeEvent constructors>>
+	<<TreeEvent methods>>
+}
+@ %def TreeEvent
+
+\subsection{Variables}
+
+<<TreeEvent variables>>=
+public int type;
+public int status;
+
+// Tree events
+public static final int SELECT = 0;
+public static final int NEWDAUGHTER = 1;
+public static final int NEWMOTHER = 2;
+public static final int MOVE = 3;
+public static final int REORDER = 4;
+public static final int REMOVE = 5;
+public static final int CHANGE = 6;
+public static final int LAYOUT = 7;
+
+// Return status
+public static final int SUCCESS = 0;
+public static final int FAIL = 1;
+
+// Deprecated
+public static final int ADDDAUGHTER = 1;
+public static final int ADDMOTHER = 2;
+@
+
+\subsection{Constructors}
+
+<<TreeEvent constructors>>=
+TreeEvent(int type, int status) {
+	this.type = type;
+	this.status = status;
+}
+TreeEvent(int type, boolean success) {
+	this(type, success ? SUCCESS : FAIL);
+}
+TreeEvent(int type) {
+	this(type, SUCCESS);
+}
+@
+
+\subsection{Methods}
+
+<<TreeEvent methods>>=
+<<TreeEvent.type>>
+<<TreeEvent.status>>
+<<TreeEvent.toString>>
+@ 
+
+	\header{int type()} returns the type number of the event. 
+
+<<TreeEvent.type>>=
+public int type() {
+	return type;
+}
+@ %def type
+
+	\header{int status()} returns the status for this event (like
+	UNIX, $0$ means success, non-zero failure).
+
+<<TreeEvent.status>>=
+public int status() {
+	return status;
+}
+@
+	\header{String toString()} returns a string representation of the
+	TreeEvent object. 
+
+<<TreeEvent.toString>>=
+public String toString() {
+	switch(type) {
+		case SELECT: return "Select"; 
+		case NEWDAUGHTER: return "New daughter"; 
+		case NEWMOTHER: return "New mother"; 
+		case MOVE: return "Move"; 
+		case REORDER: return "Reorder"; 
+		case REMOVE: return "Remove"; 
+		case CHANGE: return "Change";
+		case LAYOUT: return "Layout";
+		default: return "?";
+	}
+}
+@ %def toString

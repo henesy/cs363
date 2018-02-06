@@ -1,0 +1,174 @@
+
+\section{Value class}
+
+	The Value class is used to represent values in attribute-value
+	matrices (AVMs), with their associated options: foreground and
+	background color of attribute and value, visibility of the AV
+	pair, and its associated tooltip text. 
+	
+<<Value.java>>=
+<<License>>
+package visumtree;
+
+import java.awt.*;
+import java.io.*;
+import java.util.*;
+
+class Value implements Cloneable {
+	<<Value variables>>
+	<<Value constructors>>
+	<<Value option compilation>>
+}
+@ %def Value
+
+\subsection{Variables}
+
+<<Value variables>>=
+// Data variables
+Object value;						// Associated value of value object
+
+// Compiled options
+transient Color attrFG;				// Attribute's foreground color
+transient Color attrBG;				// Attribute's background color
+transient Color valFG;				// Value's foreground color
+transient Color valBG;				// Value's foreground color
+transient boolean visible;			// AV-pair visible?
+transient String tooltip;			// Tooltip text for AV pair
+transient String tooltipString;		// Compiled tooltip text for AV pair
+
+// Layout variables
+transient int yref; 				// Reference point's y-coordinate
+@ 
+
+\subsection{Constructors}
+
+	The constructor \header{Value(Object value)} creates a new Value
+	object with associated value \code{value}. 
+
+<<Value constructors>>=
+public Value(Object value) {
+	this.value = value;
+}
+<<Value.clone>>
+@ 
+
+	\header{Object clone()} returns a clone of this object.
+
+<<Value.clone>>=
+public Object clone() {
+	Value clone;
+	try {
+		clone = (Value) super.clone();
+
+		// Clone value
+		if (clone.value instanceof AVM)
+			clone.value = ((AVM) value).clone();
+	} catch (CloneNotSupportedException cnse) {
+		System.err.println(cnse);
+		return null;
+	}
+
+	// Return clone
+	return clone;
+}
+@ %def clone
+
+\subsection{Option compilation}
+
+<<Value option compilation>>=
+<<Value.compileAV>>
+<<Value.compileAVoptions>>
+@ 
+
+	\header{compileAV(TreeInfo info, AVM avm, String attr)} compiles
+	AV options for the attribute \code{attr} on the basis of
+	uncompiled options with paths \code{avm}, \code{avm.@attr}, and
+	\code{avm.@attr=value} in \code{TreeInfo.options}, and paths
+	\code{@attr} and \code{@attr=val} in \code{avm}. Valid options are
+	\code{attrFG}, \code{attrBG}, \code{valFG}, \code{valBG},
+	\code{visible} and \code{tooltip}. Invalid values are ignored. 
+
+<<Value.compileAV>>=
+void compileAV(TreeInfo info, AVM avm, String attr) {
+	if (value == null || attr.charAt(0) == '@') {
+		// Value is null or attr is an option
+		visible = false;
+	} else {
+		// Value is non-null, attr not an option
+
+		// Compute string representation of value
+		String val = value.toString();
+
+		// Set compiled options to default values
+		attrFG = null;
+		attrBG = null;
+		valFG = null;
+		valBG = null;
+		visible = true;
+		tooltip = null;
+
+		// Compile options from avm, avm.@attr, avm.@attr=value in info.options
+		compileAVoptions(info, avm, info.options.getAV("avm"));
+		compileAVoptions(info, avm, info.options.getAV("avm.@"+attr));
+		compileAVoptions(info, avm, info.options.getAV("avm.@"+attr+"="+val));
+
+		// Compile options @attr and @attr=value in avm
+		compileAVoptions(info, avm, avm.getAV("@"+attr));
+		compileAVoptions(info, avm, avm.getAV("@"+attr+"="+val));
+
+		// Compile tooltip string
+		tooltipString = info.expandMacro(tooltip, avm, attr);
+	}
+}
+@ %def compileAV
+
+	\pheader{compileAVoptions(TreeInfo info, AVM avm, AVM options)}
+	compiles AV options according to the uncompiled options in the
+	\code{options} AVM. Valid options are \code{attrFG},
+	\code{attrBG}, \code{valFG}, \code{valBG}, \code{visible} and
+	\code{tooltip}. Invalid values are ignored. 
+
+<<Value.compileAVoptions>>=
+void compileAVoptions(TreeInfo info, AVM avm, Object optionsObj) {
+	String attr;
+	Object val;
+
+	// optionsObj must be non-null AVM
+	if (optionsObj instanceof AVM) {
+		AVM options = (AVM) optionsObj;
+
+		// Process each attribute in options
+		for (int i = 0; i < options.size(); ++i) {
+			// Read attribute and value
+			attr = options.attributeAt(i);
+			val = options.valueAt(i);
+		
+			// Test for and process option
+			if (attr.charAt(0) == ':') {
+				// Option is a macro
+				compileAVoptions(info, avm, 
+					info.options.getAV("macro."+attr.substring(1)));
+			} else if (val instanceof Color || val == null) {
+				// Option value is a color
+				if (attr.equals("attrFG")) {
+					attrFG = (Color) val;
+				} else if (attr.equals("attrBG")) {
+					attrBG = (Color) val;
+				} else if (attr.equals("valFG")) {
+					valFG = (Color) val;
+				} else if (attr.equals("valBG")) {
+					valBG = (Color) val;
+				}
+			} else if (val instanceof Boolean) {
+				if (attr.equals("visible"))
+					visible = ((Boolean) val).booleanValue();
+			} else if (val instanceof String || val == null) {
+				if (attr.equals("tooltip")) 
+					tooltip = (String) val;
+			}
+		}
+	}
+}
+@ %def compileAVoptions
+
+	

@@ -1,0 +1,78 @@
+/* Kweelt - a framework to query XML documents
+ * Copyright (C) 2000,  Arnaud Sahuguet (Arnaud.Sahuguet@polytechnique.org)
+ *
+ * This program is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU General Public License
+ * as published by the Free Software Foundation; either version 2
+ * of the License, or (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program; if not, write to the Free Software
+ * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
+ */
+
+
+
+/**
+ * NodeFactoryImpl.java
+ *
+ *
+ * Created: Tue Jun 27 14:30:14 2000
+ *
+ * @author Arnaud Sahuguet
+ * @version
+ */
+
+package xacute.impl.dom;
+
+import xacute.common.Node;
+import xacute.common.NodeList;
+
+import xacute.util.NodeFactoryDefaultImpl;
+
+import org.xml.sax.InputSource;
+
+import oracle.xml.parser.v2.DOMParser;
+
+
+/**
+ * A NodeFactory needs to define 4 things:
+ * - its name
+ * - the XML parser to use
+ * - the Node implementation to use
+ * - the NodeList implementation to use (i.e. how to create an empty list)
+ */
+
+public class NodeFactoryOracle
+    extends NodeFactoryDefaultImpl
+{
+
+    /* the name of the factory */
+    public String getFactoryName()
+    {
+	return "DOM / Oracle parser. (by Arnaud)";
+    }
+
+    /* how to build an empty NodeList */
+    public NodeList makeEmptyNodeList()
+    {
+	return new NodeListImpl();
+    }
+
+    /* returns the root of the document, as a xacute.common.Node */
+    protected Node parse(InputSource is)
+	throws Exception
+    {
+	
+	DOMParser parser = new DOMParser();
+	parser.parse(is);
+	return new NodeImpl(parser.getDocument().getDocumentElement());
+    }
+}
+
+

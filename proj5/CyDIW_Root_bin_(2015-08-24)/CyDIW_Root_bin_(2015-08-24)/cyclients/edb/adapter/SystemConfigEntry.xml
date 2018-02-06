@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+
+<RegistrationRoot>
+
+  <ExternalSystemRegistration>
+  
+
+	<Client Name="edb" Prefix="edb" Enabled="yes"
+      ClassPath="" 
+      LibraryPath="cyclients\edb\lib" 
+      WorkspacePath="cyclients\edb\workspace"
+      ClientAdapter="cyclients.edb.adapter.EDBAdapter" />
+	  
+	  
+  </ExternalSystemRegistration>
+
+</RegistrationRoot>

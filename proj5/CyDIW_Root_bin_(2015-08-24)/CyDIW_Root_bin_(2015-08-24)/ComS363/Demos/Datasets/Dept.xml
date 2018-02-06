@@ -1,0 +1,19 @@
+
+<Depts xsi:noNamespaceSchemaLocation="Dept.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Entry>
+    <DName>Credit</DName>
+    <MName>Hari</MName>
+  </Entry>
+  <Entry>
+    <DName>Toys</DName>
+    <MName>Mary</MName>
+  </Entry>
+  <Entry>
+    <DName>Shoes</DName>
+    <MName>Leu</MName>
+  </Entry>
+  <Entry>
+    <DName>Audit</DName>
+    <MName>Superman</MName>
+  </Entry>
+</Depts>

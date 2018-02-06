@@ -1,0 +1,6 @@
+ 
+	     <Client Name="Neo" Prefix="Neo" Enabled="yes"
+      ClassPath="" 
+      LibraryPath="cyclients\Neo4j\lib" 
+      WorkspacePath="" 
+      ClientAdapter="cyclients.Neo4j.adapter.Neo4jAdapter" /> 
